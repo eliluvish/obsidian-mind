@@ -8,6 +8,35 @@
             "type": "command",
             "command": "find \"$CLAUDE_PROJECT_DIR\" -not -path '*/.git/*' -not -path '*/.obsidian/*' -not -path '*/.claude/*' -not -path '*/.claude-plugin/*' -not -name '.DS_Store' -not -name '.gitignore' -type f | sed \"s|$CLAUDE_PROJECT_DIR/||\" | sort",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "echo 'VAULT MODE: Obsidian Mind vault active.\n- Entry point: Home.md | Bases: bases/ | Active work: work/active/\n- Load obsidian-markdown skill before editing .md files\n- Every note needs: date, quarter, description, tags, at least one wikilink\n- New work notes → work/active/ | Completed → work/archive/YYYY/ | Incidents → work/incidents/\n- People → org/people/ | Brain → brain/ | Reference → reference/\n- Use /incident-capture for incidents, /project-archive when completing projects'",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo \"$TOOL_INPUT\" | grep -q '\\.md\"'; then echo 'Obsidian note check: frontmatter (date, quarter, description, tags), wikilinks to at least one other note, correct folder per CLAUDE.md. Templates folder is excluded from Bases.'; fi",
+            "timeout": 2
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Session end checklist:\n- Archive completed projects? (work/active/ → work/archive/YYYY/)\n- Update indexes? (Index.md, Memories.md, People & Context, Brag Doc)\n- New notes linked? (orphans are bugs)\n- Run /vault-audit if many notes were created/modified'",
+            "timeout": 2
           }
         ]
       }

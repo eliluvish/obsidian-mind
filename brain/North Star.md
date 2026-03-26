@@ -1,7 +1,8 @@
 ---
 date:
+description: "Living document of goals, focus areas, and aspirations — read at session start, updated when direction shifts"
 tags:
-  - claude
+  - brain
   - north-star
 aliases:
   - Goals

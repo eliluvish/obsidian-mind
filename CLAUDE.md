@@ -12,16 +12,44 @@ This vault has [obsidian-skills](https://github.com/kepano/obsidian-skills) inst
 - **obsidian-bases**: Create `.base` files with views, filters, and formulas. Bases core plugin is enabled. See `references/FUNCTIONS_REFERENCE.md`.
 - **defuddle**: Extract clean markdown from web pages via `defuddle parse <url> --md`.
 
+### Custom Slash Commands
+
+Defined in `.claude/commands/`. See [[Skills]] for full documentation.
+
+| Command | Purpose |
+|---------|---------|
+| `/peer-scan` | Deep scan a peer's GitHub PRs for review prep |
+| `/slack-scan` | Deep scan Slack channels/DMs for evidence |
+| `/capture-1on1` | Capture 1:1 meeting transcript into structured vault note |
+| `/vault-audit` | Audit indexes, links, orphans, stale context |
+| `/review-brief` | Generate review brief (manager or peer version) |
+| `/incident-capture` | Capture incident from Slack channels/DMs into structured vault notes |
+| `/project-archive` | Move completed project from active/ to archive/, update indexes |
+| `/wrap-up` | Full session review -- verify notes, indexes, links, suggest improvements |
+
 ## Vault Structure
 
 | Folder | Purpose | Key Files |
 |--------|---------|-----------|
-| `work/` | Work notes, project tracking | `Index.md` (MOC) |
-| `perf/` | Performance reviews, brag doc | `Brag Doc.md`, `Review Template.md` |
-| `perf/competencies/` | Atomic competency notes (link targets for work notes) | One note per competency |
-| `claude/` | Claude-facing context | `Memories.md` (index), topic memory notes, `Skills.md`, `North Star.md` |
-| `thinking/` | Claude's scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
-| `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, `Thinking Note.md`, `Competency Note.md` |
+| `Home.md` | **Vault entry point** -- embedded Base views, quick links | Open this first |
+| `bases/` | **All Bases centralized** -- dynamic views for navigation | `Work Dashboard`, `Incidents`, `People Directory`, `1-1 History`, `Review Evidence`, `Competency Map`, `Templates` |
+| `work/` | Work notes index | `Index.md` (detailed MOC) |
+| `work/active/` | **Current projects only** (1-3 files) | Move here when starting, move to archive when done |
+| `work/archive/YYYY/` | Completed work organized by year | Grows over time |
+| `work/incidents/` | Incident docs (main note + RCA + deep dive + drafts) | Per-incident grouping |
+| `work/1-1/` | 1:1 meeting notes (accumulate weekly) | Named `<Person> YYYY-MM-DD.md` |
+| `perf/` | Performance framework, brag doc | `Brag Doc.md` (index) |
+| `perf/brag/` | Quarterly brag notes | One per quarter, e.g. `Q1 2025.md` |
+| `perf/competencies/` | Atomic competency notes (link targets) | One note per competency |
+| `perf/evidence/` | PR deep scans, data extracts for reviews | Named `<Person> PRs - <Period>.md` |
+| `perf/<cycle>/` | Review cycle briefs + artifacts | Review briefs (private, manager, peer) |
+| `brain/` | Claude's operational knowledge | `Memories.md`, `Key Decisions.md`, `Patterns.md`, `Gotchas.md`, `Skills.md`, `North Star.md` |
+| `org/` | Organizational knowledge index | `People & Context.md` (MOC) |
+| `org/people/` | Atomic person notes | One note per person |
+| `org/teams/` | Team notes as graph nodes | One note per team |
+| `reference/` | Codebase knowledge, architecture maps | Flow docs, architecture docs |
+| `thinking/` | Scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
+| `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, etc. |
 
 ## Obsidian CLI
 
@@ -48,55 +76,90 @@ obsidian orphans                                   # Unlinked notes
 
 A SessionStart hook automatically injects the vault file listing into context. No need to run `ls` or `find` -- you already know what files exist.
 
-1. Read `claude/North Star.md` -- ground suggestions in current goals
-2. Check `work/Index.md` -- see active projects and recent notes
-3. Scan `claude/Memories.md` -- index of memory topics, then read relevant topic notes
-4. `obsidian tasks daily todo` -- see pending items
+1. Read `Home.md` -- vault entry point with embedded dashboards
+2. Read `brain/North Star.md` -- ground suggestions in current goals
+3. Check `work/Index.md` -- see active projects and recent notes
+4. Scan `brain/Memories.md` -- index of memory topics, then read relevant topic notes
+5. `obsidian tasks daily todo` -- see pending items
 
 ### Ending a Substantial Session
 
-Before wrapping up a session where meaningful work was done:
+**When the user says "wrap up", "let's wrap", "wrapping up", or similar -- invoke `/wrap-up` automatically.** This runs a full review of the session.
 
-1. Update `work/Index.md` if new notes or decisions were created
-2. Update the relevant memory topic note (not `Memories.md` itself) with key learnings
-3. Update `perf/Brag Doc.md` if wins or impact were achieved
-4. Offer to update `claude/North Star.md` if goals shifted or new focus emerged
-5. Verify all new notes link to at least one existing note
-6. If work demonstrates competencies, add competency links to the work note's `## Related`
+If `/wrap-up` is not invoked, at minimum do these before wrapping up:
+
+1. **Archive completed projects**: `git mv` from `work/active/` to `work/archive/YYYY/`, update `status: completed` (or use `/project-archive`)
+2. Update `work/Index.md` if new notes or decisions were created
+3. Update the relevant brain topic note (`brain/Key Decisions.md`, `brain/Patterns.md`, `brain/Gotchas.md`) with key learnings
+4. Update `org/People & Context.md` if org knowledge changed
+5. Update `perf/Brag Doc.md` if wins or impact were achieved
+6. Offer to update `brain/North Star.md` if goals shifted or new focus emerged
+7. Verify all new notes link to at least one existing note (orphans are bugs)
+8. If work demonstrates competencies, add competency links to the work note's `## Related`
+9. Run `/vault-audit` if the session created many notes
 
 Skip steps that don't apply. The goal is transferring durable knowledge from conversation to vault state.
 
 ### Thinking Workflow
 
-Use `thinking/` for drafts, reasoning, and analysis before writing final notes. **Thinking notes are scratchpads, not storage.** They exist to help you reason — once the reasoning produces durable knowledge, promote it to proper notes and delete the scratchpad.
+Use `thinking/` for drafts, reasoning, and analysis before writing final notes. **Thinking notes are scratchpads, not storage.** They exist to help you reason -- once the reasoning produces durable knowledge, promote it to proper notes and delete the scratchpad.
 
 1. Create a thinking note: `thinking/YYYY-MM-DD-descriptive-name.md`
 2. Use the Thinking Note template
 3. Reason through the problem, analyze options, draft content
-4. Promote findings to atomic notes in the correct folder (not one monolith — one note per distinct concept)
-5. Delete the thinking note — it served its purpose
+4. Promote findings to atomic notes in the correct folder (not one monolith -- one note per distinct concept)
+5. Delete the thinking note -- it served its purpose
 6. If the thinking process itself is worth preserving (unusual), keep it but link to the promoted notes
 
 ### Creating Notes
 
-1. **Always use YAML frontmatter** with at minimum `date`, `description` (~150 chars), `tags`, and type-specific fields.
+1. **Always use YAML frontmatter** with at minimum `date`, `description` (~150 chars), `tags`, and type-specific fields. Work notes and incidents also need `quarter` (e.g., `Q1-2026`). Incidents need `ticket`, `severity`, `role`.
 2. **Use templates** from `templates/`. Fill `{{placeholders}}` with real values.
-3. **Place files correctly**: work notes and decisions in `work/`, drafts in `thinking/`, perf content in `perf/`, competency notes in `perf/competencies/`, Claude context in `claude/`. Nothing in vault root except this file.
+3. **Place files correctly**:
+   - **Active** work notes, decisions, peer review prep -- `work/active/`
+   - **Completed** work notes -- `work/archive/YYYY/` (by year)
+   - Incident docs -- `work/incidents/`
+   - 1:1 meeting notes -- `work/1-1/`
+   - Performance content -- `perf/` (cycle subfolder for review briefs)
+   - PR evidence -- `perf/evidence/`
+   - Competency definitions -- `perf/competencies/`
+   - People -- `org/people/`
+   - Teams -- `org/teams/`
+   - Claude operational context -- `brain/`
+   - Codebase knowledge -- `reference/`
+   - Drafts -- `thinking/`
+   - Vault root: only `Home.md` and `CLAUDE.md`.
 4. **Name files descriptively.** Use the note title as filename.
+
+### Note Types
+
+| Type | Location | Naming | Key Sections |
+|------|----------|--------|--------------|
+| Work note | `work/active/` (then `archive/YYYY/` when done) | Descriptive title | Context, What/Why, Links, Related |
+| Incident | `work/incidents/` | Ticket number or descriptive title | Context, Root Cause, Timeline, Impact, Analysis, Related |
+| 1:1 note | `work/1-1/` | `<Person> YYYY-MM-DD.md` | Key Takeaways, Action Items, Quotes, What to Watch, Related |
+| PR analysis | `perf/evidence/` | `<Person> PRs - <Period>.md` | PR Count, Projects, Quality, Growth, Full Table |
+| Review brief | `perf/<cycle>/` | `H1 2026 Review Brief.md` | Arc, Impact, Competencies, Documentation Trail |
+| Person note | `org/people/` | Full name | Role & Team, Relationship, Key Moments, Notes |
+| Team note | `org/teams/` | Team name | Members, Scope, Interactions |
+| Competency | `perf/competencies/` | Competency name | Definition, level criteria, Evidence (via backlinks) |
+| Brain note | `brain/` | Topic name | Topic-specific content |
 
 ### Linking -- This Is Critical
 
-**Graph principle**: This vault is a graph, not a wiki. A note's value comes from its connections, not its length. Link FROM evidence TO concepts -- never curate evidence lists inside concept notes. Let backlinks do the work.
+**Graph-first, not folder-first.** Folders help browse in the sidebar. Links help discover through connections. Both matter, but links are the primary organizational tool.
 
-**Atomicity rule**: Before writing or appending to any note, ask: "Does this cover multiple distinct concepts that could be separate nodes?" If a note has or would have 3+ independent sections that don't need each other to make sense, split into atomic notes that link to each other. A graph of small, connected nodes is more useful than a document with internal headings. This applies equally to creating new notes AND growing existing ones — when an existing note outgrows its original scope, split it.
+**A note without links is a bug.** When creating a note, the FIRST thing to do after writing content is add wikilinks. Every new note must link to at least one existing note.
+
+**Atomicity rule**: Before writing or appending to any note, ask: "Does this cover multiple distinct concepts that could be separate nodes?" If a note has or would have 3+ independent sections that don't need each other to make sense, split into atomic notes that link to each other.
 
 Note types have graph roles:
-- **Evidence nodes** (work notes, decisions): add outbound links to concepts they demonstrate
+- **Evidence nodes** (work notes, 1:1s, PR analyses): add outbound links to concepts they demonstrate
 - **Concept nodes** (competencies, patterns): stay definitional -- evidence arrives via backlinks
-- **Index nodes** (Index, Brag Doc, Memories): actively curate links -- they're navigational
+- **Index nodes** (Index, Brag Doc, Memories, People & Context): actively curate links -- they're navigational
+- **Person nodes** (org/people/): link to projects, teams, evidence. Receive backlinks from work notes.
 
-Every new note must link to at least one existing note. Proactively suggest connections.
-
+Link syntax:
 - `[[Note Title]]` -- standard wikilink
 - `[[Note Title|display text]]` -- aliased link
 - `[[Note Title#Heading]]` -- deep link to section
@@ -106,23 +169,23 @@ Every new note must link to at least one existing note. Proactively suggest conn
 #### When to Link
 
 - **Work note <-> Decision**: bidirectional links
-- **Work note -> Competency**: in `## Related`, link to competencies demonstrated with a brief annotation (e.g., `[[Competency Name]] -- what was demonstrated`)
+- **Work note -> Competency**: in `## Related`, link to competencies demonstrated
+- **Work note -> Team**: in `## Related`, link to team(s) involved
+- **Work note -> Person**: link people involved (especially in 1:1 notes)
+- **Person -> PR analysis**: link to their evidence file if one exists
 - **Brag Doc -> Work note**: every entry links to evidence
-- **Brag Doc -> Competency**: in `#### Competency Evidence` per quarter, link both competency and evidence work note
-- **Review Template -> Competency + Work note**: per-competency assessment row with evidence links
 - **Memories -> Source**: every memory links to where it was learned
-- **Skills -> Usage**: skills link to notes where used
 - **Index -> Everything**: `work/Index.md` links to all work notes
-- **Thinking -> Final note**: thinking notes link to what they feed into, and vice versa
 - **North Star -> Projects**: active focus areas link to project work notes
 
 ### Maintaining Indexes
 
 Update these when creating or archiving notes:
 
-- **`work/Index.md`** -- add to Active Projects or Recent Notes, move completed to Archive, keep Decisions Log current
-- **`claude/Memories.md`** -- index of memory topics. Add new memories to the relevant topic note, not here.
-- **`claude/Skills.md`** -- register vault-specific workflows (not obsidian-skills -- those are in `.claude/skills/`)
+- **`work/Index.md`** -- add to Active Projects or Recent Notes, move completed to Archive
+- **`brain/Memories.md`** -- index of memory topics. Add new memories to the relevant topic note, not here.
+- **`brain/Skills.md`** -- register vault-specific workflows and slash commands
+- **`org/People & Context.md`** -- update when people, teams, or org structure changes
 - **`perf/Brag Doc.md`** -- log wins with links to evidence, add new quarters as needed
 
 ### Decision Records
@@ -130,7 +193,7 @@ Update these when creating or archiving notes:
 1. Create in `work/` using the Decision Record template
 2. Link from the work note(s) that led to the decision
 3. Add to the Decisions Log table in `work/Index.md`
-4. If significant, note in the relevant memory topic note
+4. If significant, note in `brain/Key Decisions.md`
 
 ### Wins & Achievements
 
@@ -138,7 +201,7 @@ When significant work is completed, add to `perf/Brag Doc.md` with links to the 
 
 ## North Star
 
-`claude/North Star.md` is a living document of goals and focus areas.
+`brain/North Star.md` is a living document of goals and focus areas.
 
 - **Read it** at the start of substantial sessions
 - **Reference it** when suggesting priorities or trade-offs
@@ -149,27 +212,74 @@ When significant work is completed, add to `perf/Brag Doc.md` with links to the 
 
 Use tags in frontmatter (not inline):
 
-- **Type**: `work-note`, `decision`, `claude`, `perf`, `thinking`, `north-star`, `competency`
+- **Type**: `work-note`, `decision`, `perf`, `thinking`, `north-star`, `competency`, `person`, `team`, `brain`
 - **Index**: `index`, `moc`
 - **Status** (frontmatter field): `active`, `completed`, `archived`, `proposed`, `accepted`, `deprecated`
-- **Project**: as needed, e.g. `project/my-project`
+- **Team** (frontmatter field on people + work notes): your team names, e.g. `Backend`, `Platform`, `Mobile`
+- **Cycle** (frontmatter field on review-related notes): `h1-2026`, `h2-2025`, etc.
+- **Person** (frontmatter field on evidence notes): full name of the person
+- **Project**: as needed, e.g. `project/auth-refactor`
+
+## Properties for Querying
+
+Beyond tags, use these frontmatter properties to enable search and Bases views:
+
+- `cycle: h1-2026` -- find all review material for a cycle
+- `person: "Jane Smith"` -- find all evidence related to a person
+- `team: Backend` -- find all notes related to a team
+- `status: active` -- find active projects
+- `quarter: Q1-2026` -- find all work for a quarter (used by Work Dashboard Base)
+- `ticket: TICKET-123` -- find incident by ticket number
+- `severity: high` -- incident severity
+- `role: incident-lead` -- your role in an incident
 
 ## Two Memory Systems
 
 | System | Location | Purpose |
 |--------|----------|---------|
 | **Claude Code memory** | `~/.claude/` | Auto-loaded. Workflow prefs, quick-recall. |
-| **Vault memories** | `claude/Memories.md` + topic notes | Part of the graph. Rich, linked knowledge. |
+| **Vault memories** | `brain/Memories.md` + topic notes | Part of the graph. Rich, linked knowledge. |
 
 Claude Code memory for session-level preferences. Vault memories for knowledge that benefits from linking and Obsidian browsing.
+
+## Agent Guidelines
+
+### Graph-First Thinking
+
+- **Folders group by purpose, links group by meaning.** A note lives in ONE folder (its home) but links to MANY notes (its context).
+- When creating a note, add wikilinks FIRST. A note without links is a bug.
+- Prefer bidirectional links: if A links to B, B should link back to A (unless B is a concept node that receives backlinks passively).
+- Before creating a new subfolder, ask: "Can I solve this with a tag, a property, or a link instead?" Folders are for browsing convenience, not for categorization.
+- After every substantial session, verify new notes have at least one inbound link.
+
+### Where to Put Things
+
+- **Writing about a person?** -- `org/people/`
+- **Writing about a team?** -- `org/teams/`
+- **Writing about how the codebase works?** -- `brain/` (Patterns, Gotchas, Key Decisions)
+- **Writing about what Claude should remember?** -- `brain/Memories.md` topic notes
+- **Capturing a 1:1 meeting?** -- `work/1-1/`
+- **Deep scanning PRs for review?** -- `perf/evidence/`
+- **Creating review briefs?** -- `perf/<cycle>/`
+- **Tracking active project work?** -- `work/active/`
+- **Capturing an incident?** -- `work/incidents/` (use `/incident-capture`)
+
+### Don't Mix Contexts
+
+When capturing data from Slack, DMs, or meetings:
+- **Project evidence** (PRs, technical decisions, delivery) -- goes to the relevant `work/` note
+- **Review prep** (peer selection, manager strategy, brag framing) -- goes to review-related notes in `perf/` or `work/`
+- **People dynamics** (feedback, relationships, career) -- goes to `org/people/` notes
+- **Personal conversations** -- only capture if review-relevant; otherwise skip
 
 ## Rules
 
 - Never modify `.obsidian/` config files unless explicitly asked.
 - Preserve existing frontmatter when editing notes.
-- Don't configure git hooks or auto-commit unless the user asks. Sync is handled outside Claude.
+- Git sync is handled by `obsidian-git` -- don't configure git hooks or auto-commit.
 - When asked to "remember" something, write to the relevant memory topic note (not `Memories.md` itself) with a link to context.
 - Prefer Obsidian CLI over filesystem when Obsidian is running.
-- **Always invoke Obsidian skills via the Skill tool** before doing vault work. Load `obsidian-markdown` when creating/editing `.md` files. Load `obsidian-cli` when running vault commands. Load `obsidian-bases` or `json-canvas` when working with those file types. Skills provide conventions and reference material — don't rely on memory alone.
+- **Always invoke Obsidian skills via the Skill tool** before doing vault work. Load `obsidian-markdown` when creating/editing `.md` files. Load `obsidian-cli` when running vault commands. Load `obsidian-bases` or `json-canvas` when working with those file types.
 - Always check for and suggest connections between notes.
-- Every note must have a `description` field (~150 chars). Claude fills this automatically. Enables scanning without reading full contents.
+- Every note must have a `description` field (~150 chars). Claude fills this automatically.
+- **Zero data loss**: when reorganizing, always use `git mv`. Never delete without explicit user confirmation.
