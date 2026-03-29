@@ -20,7 +20,7 @@ def main():
         sys.exit(0)
     # Normalize path separators for cross-platform matching (Windows uses backslashes)
     normalized = file_path.replace("\\", "/")
-    if any(skip in normalized for skip in [".claude/", ".obsidian/", "templates/"]):
+    if any(skip in normalized for skip in [".claude/", ".obsidian/", "templates/", "thinking/"]):
         sys.exit(0)
 
     warnings = []
