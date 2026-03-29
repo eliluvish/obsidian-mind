@@ -20,7 +20,7 @@ def classify(prompt: str) -> list[str]:
     if _any_word_match(["decided", "decision", "we chose", "agreed to", "let's go with", "the call is", "we're going with"], p):
         signals.append("DECISION detected — consider creating a Decision Record in work/active/ and logging in work/Index.md Decisions Log")
 
-    if _any_word_match(["incident", "outage", "pagerduty", "severity", "p0", "p1", "p2", "sev1", "sev2", "postmortem", "rca"], p):
+    if _any_word_match(["incident", "outage", "down", "pagerduty", "severity", "p0", "p1", "p2", "sev1", "sev2", "postmortem", "rca"], p):
         signals.append("INCIDENT detected — consider using /incident-capture or creating an incident note in work/incidents/")
 
     if _any_word_match(["1:1", "1-on-1", "one on one", "1on1", "catch up with", "sync with"], p):

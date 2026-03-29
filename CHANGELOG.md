@@ -6,7 +6,7 @@
 - `find-python.sh`: detect Windows via `uname -s` and skip `python3` entirely (Windows Store stub is unreliable — can hang, consume stdin, or cause hook timeouts)
 - `find-python.sh`: use `command -v` instead of `python3 --version` on macOS/Linux (faster, no side effects)
 - `classify-message.py`: replace substring matching (`in`) with word-boundary regex (`\b`) — fixes false positives where "markdown", "wonder", "download", etc. triggered signals
-- `classify-message.py`: remove unused `import re` (now actually used), add `sys.stdout.flush()` before exit
+- `classify-message.py`: add `sys.stdout.flush()` before exit to prevent buffered output loss on Windows
 - `validate-write.py`: remove unused `import re` and dead `body` variable, add `sys.stdout.flush()` before exit
 - `pre-compact.sh`: use `find-python.sh` instead of hardcoded `python3` (was bypassing the cross-platform resolver), merge two Python calls into one
 - `session-start.sh`: quote `$CLAUDE_PROJECT_DIR` in exported value (paths with spaces broke the export)
