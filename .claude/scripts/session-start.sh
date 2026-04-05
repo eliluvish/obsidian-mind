@@ -50,8 +50,18 @@ else
 fi
 echo ""
 
-echo "### Active Work"
-ls work/active/*.md 2>/dev/null | sed 's|work/active/||;s|\.md$||' | head -10 || echo "(none)"
+echo "### Active Projects"
+if [ -d work/projects ]; then
+  for proj in work/projects/*/; do
+    [ -d "$proj" ] || continue
+    name=$(basename "$proj")
+    [ "$name" = "*" ] && continue
+    echo "- $name"
+  done
+  [ "$(ls -d work/projects/*/ 2>/dev/null)" ] || echo "(none)"
+else
+  echo "(none)"
+fi
 echo ""
 
 echo "### Vault File Listing"

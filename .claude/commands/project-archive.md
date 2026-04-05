@@ -1,6 +1,6 @@
 # Project Archive
 
-Move a completed project from `work/active/` to `work/archive/YYYY/` and update all indexes.
+Move a completed project from `work/projects/` to `work/archive/` and update all indexes.
 
 ## Usage
 
@@ -10,38 +10,37 @@ Move a completed project from `work/active/` to `work/archive/YYYY/` and update 
 
 ## Workflow
 
-### 1. Find the Note
+### 1. Find the Project
 
-Search `work/active/` for the project name. Confirm with the user before proceeding.
+Search `work/projects/` for the project name. Confirm with the user before proceeding.
 
 ### 2. Update Frontmatter
 
-- Set `status: completed`
-- Verify `quarter` property is set correctly
+- Set `status: completed` on the project's `README.md`
 - Verify `description` reflects the final state
+- Update status on any remaining active work notes and decisions
 
-### 3. Move the File
+### 3. Move the Project
 
 ```bash
-git mv "work/active/<Note>.md" "work/archive/YYYY/"
+git mv "work/projects/<project-name>" "work/archive/<project-name>"
 ```
-
-Use the year from the note's `date` field.
 
 ### 4. Update Indexes
 
-- **`work/Index.md`**: Move from Active Projects to the appropriate Completed quarter section
+- **`work/Index.md`**: Move from Active Projects to Archive section
 - **`brain/North Star.md`**: Mark as completed in Current Focus if listed there
-- **`perf/Brag Doc.md`**: Verify the project is captured in the relevant quarter's highlights
-- **`brain/Memories.md`**: Update Recent Context if the project is mentioned as "in progress"
+- **`perf/Brag Doc.md`**: Verify the project's key accomplishments are captured
+- **`brain/Memories.md`**: Update if the project is mentioned as "in progress"
 
 ### 5. Verify
 
 - Run a quick check that no wikilinks are broken (Obsidian resolves by name, so moves shouldn't break links)
-- Confirm the Work Dashboard Base shows the note in "Completed" view, not "Active Work"
+- Confirm the Projects Base shows the project with `status: completed`
+- Confirm the Work Dashboard Base no longer shows the project's notes in "Active Work"
 
 ## Important
 
 - Always use `git mv` — never copy+delete
 - Don't archive without user confirmation
-- If the project has sub-notes (like incidents have RCA + deep dive), ask if those should move too
+- The entire project folder moves together (README, decisions, notes)

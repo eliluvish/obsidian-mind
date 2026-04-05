@@ -16,7 +16,7 @@ Edit a note to match your writing voice. This is voice calibration, not pattern 
 
 Read 2-3 recent notes you actually wrote or heavily edited to calibrate voice:
 - `brain/North Star.md` — how you write about yourself
-- The most recent `work/1-1/*.md` note — natural conversational voice
+- The most recent work note in `work/projects/*/notes/` — natural working voice
 - Any brain note with your authentic writing style
 
 Extract voice fingerprint: sentence length, punctuation habits, how you open sections, how you qualify statements, ratio of direct-to-hedged language, use of dashes and fragments.
@@ -26,9 +26,9 @@ Extract voice fingerprint: sentence length, punctuation habits, how you open sec
 Read the note specified in $ARGUMENTS (resolve as wikilink name or file path).
 
 Detect context from frontmatter and folder:
-- **`work/1-1/`** → conversational, direct, uses "I", okay to be informal
-- **`perf/` review content** → corporate-confident but human, evidence-based, respect charcount
-- **`work/incidents/`** → precise, factual, timeline-oriented, no filler
+- **`work/projects/*/notes/`** → conversational, direct, uses "I", okay to be informal
+- **`work/projects/*/decisions/`** → precise, evidence-based, structured
+- **`reference/compliance/`** → precise, factual, no filler
 - **`brain/`** → terse shorthand, fragments okay
 - **Default** → colleague-to-colleague, like explaining something in a 1:1
 

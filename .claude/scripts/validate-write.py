@@ -54,6 +54,12 @@ def main():
                 if "date:" not in fm and "date :" not in fm:
                     warnings.append("Missing `date` in frontmatter")
 
+        # Check for project property on work notes
+        if "/work/projects/" in normalized and parts and len(parts) >= 3:
+            fm = parts[1]
+            if "project:" not in fm and "project :" not in fm:
+                warnings.append("Missing `project` in frontmatter — work notes under work/projects/ must specify their project")
+
         # Check for wikilinks (skip very short notes)
         if len(content) > 300 and "[[" not in content:
             warnings.append("No [[wikilinks]] found — every note must link to at least one other note (vault convention)")

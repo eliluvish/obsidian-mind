@@ -41,7 +41,7 @@ Import and migrate content from an existing Obsidian vault into this obsidian-mi
    - **Daily Notes**: `daily/` or `journal/` folder with date-named files
    - **Flat**: 80%+ of files in vault root
    - **MOC-based**: files named `MOC - *.md` or `Index - *.md`
-6. Report detection result to the user: "Detected obsidian-mind v2" or "This looks like a PARA-organized Obsidian vault — I'll map Projects → work/active, Resources → reference, etc." or "This is a flat vault with no folder structure — I'll classify each note by its content."
+6. Report detection result to the user: "Detected obsidian-mind v2" or "This looks like a PARA-organized Obsidian vault — I'll map Projects → work/projects/, Resources → reference, etc." or "This is a flat vault with no folder structure — I'll classify each note by its content."
 
 ### 2. Inventory & Classify
 
@@ -74,7 +74,7 @@ Detect scaffold "real content" by checking if the file has more than 5 lines of 
 2. Also glob binary files (images: `*.png`, `*.jpg`, `*.svg`, `*.gif`; documents: `*.pdf`; other: `*.canvas`, `*.base`) — these are attachments that may be embedded in notes
 3. Run Tier 0 (vault shape detection) to understand the organizational pattern
 4. Attempt Tier 1 (structural) and Tier 2 (metadata — both YAML frontmatter and inline tags/Dataview fields) classification locally
-5. For files that remain unclassified, launch the **vault-migrator** agent in **classification mode** — it reads content and applies Tier 3/4 heuristics. The agent classifies notes into work categories (work, person, incident, 1:1, decision, competency, reference) but also recognizes non-work content (personal, learning, journal) and routes it to appropriate locations (`reference/personal/`, `reference/learning/`)
+5. For files that remain unclassified, launch the **vault-migrator** agent in **classification mode** — it reads content and applies Tier 3/4 heuristics. The agent classifies notes into work categories (work, person, decision, compliance, reference) but also recognizes non-work content (personal, learning, journal) and routes it to appropriate locations (`reference/personal/`, `reference/learning/`)
 6. Incorporate the agent's classification map into the inventory
 7. Notes with no YAML frontmatter will have frontmatter generated during execution (date, description, tags derived from content and inline signals)
 
@@ -117,7 +117,7 @@ Transformations:
 |---|--------|--------|--------|------------|
 | 1 | org/people/Jane.md | org/people/Jane.md | COPY | +description |
 | 2 | brain/Memories.md | brain/Memories.md | REPLACE | — |
-| 3 | daily/2026-03-15.md | work/1-1/... | CLASSIFY+COPY | +quarter, +tags |
+| 3 | daily/2026-03-15.md | thinking/migrate-review/... | CLASSIFY+COPY | +project, +tags |
 ```
 
 **Conflict section** (if any):

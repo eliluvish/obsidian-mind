@@ -2,6 +2,7 @@
 date: "{{date}}"
 description:
 project:
+github_issue:
 status: active
 tags:
   - work-note

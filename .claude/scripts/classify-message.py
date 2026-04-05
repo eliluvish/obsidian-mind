@@ -22,7 +22,7 @@ import re
 SIGNALS = [
     {
         "name": "DECISION",
-        "message": "DECISION detected — consider creating a Decision Record in work/active/ and logging in work/Index.md Decisions Log",
+        "message": "DECISION detected — consider using /decision to create an ADR in the project's decisions/ folder",
         "patterns": [
             # English
             "decided", "deciding", "decision", "we chose", "agreed to",
@@ -36,38 +36,8 @@ SIGNALS = [
         ],
     },
     {
-        "name": "INCIDENT",
-        "message": "INCIDENT detected — consider using /incident-capture or creating an incident note in work/incidents/",
-        "patterns": [
-            # English
-            "incident", "outage", "pagerduty", "severity",
-            "p0", "p1", "p2", "sev1", "sev2", "postmortem", "rca",
-            # Japanese
-            "インシデント", "障害",
-            # Korean
-            "인시던트", "장애",
-            # Chinese
-            "事件", "故障", "事后分析",
-        ],
-    },
-    {
-        "name": "1:1 CONTENT",
-        "message": "1:1 CONTENT detected — consider creating a 1-on-1 note in work/1-1/ and updating the person note in org/people/",
-        "patterns": [
-            # English
-            "1:1", "1-1", "1-on-1", "one on one", "1on1",
-            "catch up with", "sync with",
-            # Japanese
-            "ワンオンワン",
-            # Korean
-            "원온원",
-            # Chinese
-            "一对一", "单独面谈",
-        ],
-    },
-    {
         "name": "WIN",
-        "message": "WIN detected — consider adding to perf/Brag Doc.md with a link to the evidence note",
+        "message": "WIN detected — consider adding to perf/Brag Doc.md with a link to the work note",
         "patterns": [
             # Delivery — English (shared with PROJECT UPDATE)
             "shipped", "shipping", "ships",
@@ -103,7 +73,7 @@ SIGNALS = [
     },
     {
         "name": "PERSON CONTEXT",
-        "message": "PERSON CONTEXT detected — consider updating the relevant person note in org/people/ and linking from the conversation note",
+        "message": "PERSON CONTEXT detected — consider updating the relevant person note in org/people/",
         "patterns": [
             # English
             "told me", "said that", "feedback from", "met with",
@@ -119,7 +89,7 @@ SIGNALS = [
     },
     {
         "name": "PROJECT UPDATE",
-        "message": "PROJECT UPDATE detected — consider updating the active work note in work/active/ and checking if wins should go to brag doc",
+        "message": "PROJECT UPDATE detected — consider updating the work note in work/projects/<name>/notes/ and checking if wins should go to brag doc",
         "patterns": [
             # English
             "project update", "sprint", "milestone",
@@ -139,6 +109,53 @@ SIGNALS = [
             "스프린트", "마일스톤", "배포", "릴리스", "병합",
             # Chinese (发布了, 上线 shared with WIN)
             "迭代", "里程碑", "发布了", "上线", "合并了",
+        ],
+    },
+    {
+        "name": "PROJECT SWITCH",
+        "message": "PROJECT SWITCH detected — consider using /context-switch to reload project context",
+        "patterns": [
+            # English
+            "switching to", "context switch", "jumping to", "moving to",
+            "working on", "back to", "picking up",
+            # Japanese
+            "切り替え", "に移る",
+            # Korean
+            "전환", "으로 이동",
+            # Chinese
+            "切换到", "转到",
+        ],
+    },
+    {
+        "name": "DEPLOY",
+        "message": "DEPLOY detected — consider using /deploy-checklist for the target project",
+        "patterns": [
+            # English
+            "deploy", "deploying", "deployment",
+            "release", "releasing", "production",
+            "staging", "capistrano", "going live",
+            # Japanese
+            "デプロイ", "リリース", "本番",
+            # Korean
+            "배포", "릴리스", "프로덕션",
+            # Chinese
+            "部署", "发布", "上线", "生产环境",
+        ],
+    },
+    {
+        "name": "COMPLIANCE",
+        "message": "COMPLIANCE detected — consider checking reference/compliance/ and noting in the project's compliance section",
+        "patterns": [
+            # English
+            "hipaa", "irb", "phi", "audit log", "de-identify",
+            "de-identification", "compliance", "ferpa", "pii",
+            "data use agreement", "dua",
+            # Japanese
+            "コンプライアンス", "個人情報",
+            # Korean
+            "컴플라이언스", "개인정보",
+            # Chinese
+            "合规", "个人信息", "审计",
         ],
     },
 ]

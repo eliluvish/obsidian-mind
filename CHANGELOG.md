@@ -1,5 +1,43 @@
 # Changelog
 
+## v4.0 — 2026-04-05
+
+### Changed — Persona Shift
+Restructured vault from engineering manager to solo Rails developer at a research hospital managing 5-7 concurrent projects. The organizing principle shifts from "tracking team performance" to "maintaining deep context across multiple Rails apps."
+
+### Added
+- **Project-centric work structure**: `work/projects/<name>/` with README.md, decisions/, notes/ per project
+- **6 new slash commands**: `/project-status`, `/context-switch`, `/issue-capture`, `/decision`, `/deploy-checklist`, `/weekly-review`
+- **Projects base**: `bases/Projects.base` — lists all projects with status, Rails version, last updated
+- **Project README template**: `templates/Project README.md` — repo URL, deploy info, tech stack, stakeholders, compliance notes
+- **Reference subfolders**: `reference/compliance/`, `reference/ops/`, `reference/infrastructure/`
+- **3 new classifier signals**: PROJECT_SWITCH, DEPLOY, COMPLIANCE in classify-message.py
+- **Project frontmatter validation**: validate-write.py checks for `project:` in work/projects/ notes
+- **New frontmatter properties**: `project`, `github_issue`, `rails_version`, `ruby_version`
+- **v4.0 version fingerprint** in vault-manifest.json
+
+### Removed
+- **7 manager-oriented commands**: `/peer-scan`, `/slack-scan`, `/capture-1on1`, `/review-brief`, `/self-review`, `/review-peer`, `/incident-capture`
+- **5 manager-oriented agents**: `brag-spotter`, `people-profiler`, `review-prep`, `slack-archaeologist`, `review-fact-checker`
+- **4 bases**: `Competency Map`, `Review Evidence`, `1-1 History`, `Incidents`
+- **2 templates**: `Review Template`, `Competency Note`
+- **Folders**: `work/active/`, `work/1-1/`, `work/incidents/`, `perf/brag/`, `perf/evidence/`, `perf/competencies/`
+- **2 classifier signals**: INCIDENT, 1:1 CONTENT
+- **Frontmatter properties**: `cycle`, `quarter`, `ticket`, `severity`, `role`
+- `charcount.sh` script (only used by removed review commands)
+
+### Changed
+- `work/archive/` now stores project folders by name (not by year)
+- `perf/Brag Doc.md` simplified to flat running log (no quarterly sub-notes)
+- `org/People & Context.md` reframed for stakeholders/contacts (PIs, IT, collaborators)
+- All kept commands, agents, and scripts updated for new folder paths
+- Work Dashboard base groups by project instead of quarter
+- session-start.sh shows project list instead of work/active/ files
+- Stop hook checklist references new paths
+- CLAUDE.md fully rewritten for project-centric workflow
+- vault-manifest.json bumped to 4.0.0 with updated schemas and content roots
+- All brain notes, indexes, and Home.md updated for new structure
+
 ## v3.4 — 2026-04-05
 
 ### Added

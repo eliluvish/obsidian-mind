@@ -7,13 +7,13 @@
 [![Python](https://img.shields.io/badge/python-3.8%2B-3776AB)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> **An Obsidian vault that makes Claude Code remember everything.** Start a session, talk about your day, and Claude handles the rest — notes, links, indexes, performance tracking. Every conversation builds on the last.
+> **An Obsidian vault that makes Claude Code remember everything.** Start a session, talk about your day, and Claude handles the rest — notes, links, indexes, project context. Every conversation builds on the last.
 
 ---
 
 ## 🔴 The Problem
 
-Claude Code is powerful, but it forgets. Every session starts from zero — no context on your goals, your team, your patterns, your wins. You re-explain the same things. You lose decisions made three conversations ago. The knowledge never compounds.
+Claude Code is powerful, but it forgets. Every session starts from zero — no context on your goals, your projects, your patterns, your wins. You re-explain the same things. You lose decisions made three conversations ago. The knowledge never compounds.
 
 ## 🟢 The Solution
 
@@ -22,9 +22,9 @@ Give Claude a brain.
 ```
 You: "start session"
 Claude: *reads North Star, checks active projects, scans recent memories*
-Claude: "You're working on Project Alpha, blocked on the BE contract.
-         Last session you decided to split the coordinator. Your 1:1
-         with your manager is tomorrow — review brief is ready."
+Claude: "You have 5 active projects. patient-registry has a pending ADR
+         on Stimulus migration. lab-inventory hasn't had activity in 12 days.
+         Your deploy runbook for sample-tracker needs updating."
 ```
 
 ---
@@ -36,34 +36,43 @@ Claude: "You're working on Project Alpha, blocked on the BE contract.
 ```bash
 /standup
 # → loads North Star, active projects, open tasks, recent git changes
-# → "You have 2 active projects. The auth refactor is blocked on API contract.
-#    Your 1:1 with Sarah is at 2pm — last time she flagged observability."
+# → "You have 5 active projects. patient-registry had 3 commits yesterday.
+#    lab-inventory has a stale work note from 2 weeks ago."
+```
+
+**Context switch between projects:**
+
+```bash
+/context-switch patient-registry
+# → reads project README (Rails 7.1, deploys to research-app01, PI is Dr. Smith)
+# → loads last 3 work notes and open decisions
+# → "You left off on the bulk CSV import timeout fix. There's a pending
+#    decision on whether to switch to Stimulus for the form validation."
+```
+
+**Capture a GitHub issue as a work note:**
+
+```bash
+/issue-capture https://github.com/hospital/patient-registry/issues/47
+# → fetches issue via gh CLI
+# → creates work/projects/patient-registry/notes/2026-04-05-bulk-import-timeout.md
+# → pre-fills frontmatter with project, github_issue, description
 ```
 
 **Brain dump after a meeting:**
 
 ```bash
-/dump Just had a 1:1 with Sarah. She's happy with the auth work but wants
-us to add error monitoring before release. Also, Tom mentioned the cache
-migration is deferred to Q2 — we decided to focus on the API contract first.
-Decision: defer Redis migration. Win: Sarah praised the auth architecture.
+/dump Met with Dr. Smith about the patient registry. She wants bulk import
+to handle 50k rows by end of month. Also, IT security said we need to add
+audit logging for all PHI access — that's a HIPAA requirement. Decision:
+use Active Job for the import instead of inline processing.
 ```
 
 ```
-→ Updated org/people/Sarah Chen.md with meeting context
-→ Created work/1-1/Sarah 2026-03-26.md with key takeaways
-→ Created Decision Record: "Defer Redis migration to Q2"
-→ Added to perf/Brag Doc.md: "Auth architecture praised by manager"
-→ Updated work/active/Auth Refactor.md with error monitoring task
-```
-
-**Incident response:**
-
-```bash
-/incident-capture https://slack.com/archives/C0INCIDENT/p123456
-# → slack-archaeologist reads every message, thread, and profile
-# → people-profiler creates notes for new people involved
-# → Full timeline, root cause analysis, brag doc entry
+→ Created work/projects/patient-registry/notes/2026-04-05-bulk-import-requirements.md
+→ Created decision record: "Use Active Job for bulk imports"
+→ Updated reference/compliance/hipaa-audit-logging.md with PHI access requirement
+→ Updated org/people/Dr Smith.md with meeting context
 ```
 
 **End of day:**
@@ -72,7 +81,6 @@ Decision: defer Redis migration. Win: Sarah praised the auth architecture.
 You: "wrap up"
 # → verifies all notes have links
 # → updates indexes
-# → brag-spotter finds uncaptured wins
 # → suggests improvements
 ```
 
@@ -80,11 +88,13 @@ You: "wrap up"
 
 ## ⚙️ How It Works
 
-**Folders group by purpose. Links group by meaning.** A note lives in one folder (its home) but links to many notes (its context). Claude maintains this graph — linking work notes to people, decisions, and competencies automatically. When review season arrives, the backlinks on each competency note are already the evidence trail. A note without links is a bug.
+**Folders group by purpose. Links group by meaning.** A note lives in one folder (its home) but links to many notes (its context). Claude maintains this graph — linking work notes to projects, decisions, and people automatically. A note without links is a bug.
+
+**Project-centric organization.** Each of your Rails apps gets its own folder under `work/projects/` with a README (repo URL, deploy target, stakeholders, compliance notes), a `decisions/` folder for ADRs, and a `notes/` folder for work notes. When you `/context-switch`, Claude reads the whole project folder to reload context.
 
 **Vault-first memory** keeps context across sessions and machines. All durable knowledge lives in `brain/` topic notes (git-tracked, Obsidian-browsable, linked). Claude Code's `MEMORY.md` (`~/.claude/`) is an auto-loaded index that points to vault locations — never the storage itself. This means memories survive machine changes and are part of the graph.
 
-**Sessions have a designed lifecycle.** The `SessionStart` hook auto-injects your North Star goals, active projects, recent changes, open tasks, and the full vault file listing — Claude starts every session with context, not a blank slate. At the end, say "wrap up" and Claude runs `/wrap-up` — verifying notes, updating indexes, and spotting uncaptured wins. The 285-line `CLAUDE.md` governs everything in between: where to file things, how to link, when to split a note, what to do with decisions and incidents.
+**Sessions have a designed lifecycle.** The `SessionStart` hook auto-injects your North Star goals, active projects, recent changes, open tasks, and the full vault file listing — Claude starts every session with context, not a blank slate. At the end, say "wrap up" and Claude runs `/wrap-up` — verifying notes, updating indexes, and spotting gaps. The `CLAUDE.md` governs everything in between: where to file things, how to link, when to split a note, what to do with decisions and deploys.
 
 ### Hooks
 
@@ -92,8 +102,8 @@ Five lifecycle hooks handle routing automatically:
 
 | Hook | When | What |
 |------|------|------|
-| 🚀 SessionStart | On startup/resume | QMD re-index, inject North Star, active work, recent changes, tasks, file listing |
-| 💬 UserPromptSubmit | Every message | Classifies content (decision, incident, win, 1:1, architecture, person) and injects routing hints |
+| 🚀 SessionStart | On startup/resume | QMD re-index, inject North Star, projects, recent changes, tasks, file listing |
+| 💬 UserPromptSubmit | Every message | Classifies content (decision, win, architecture, person, project, deploy, compliance) and injects routing hints |
 | ✍️ PostToolUse | After writing `.md` | Validates frontmatter, checks for wikilinks, verifies folder placement |
 | 💾 PreCompact | Before context compaction | Backs up session transcript to `thinking/session-logs/` |
 | 🏁 Stop | End of session | Checklist: archive completed projects, update indexes, check orphans |
@@ -107,13 +117,13 @@ Five lifecycle hooks handle routing automatically:
 
 **Morning**: Run `/standup`. Claude loads your North Star, active projects, open tasks, and recent changes. You get a structured summary and suggested priorities.
 
-**Throughout the day**: Talk naturally. Mention a decision you made, an incident that happened, a 1:1 you just had, a win you want to remember. The classification hook nudges Claude to file each piece correctly. For bigger brain dumps, use `/dump` and narrate everything at once.
+**Switching projects**: Run `/context-switch <project>`. Claude reads the project README, recent notes, open decisions, and related reference material. This is the most important command for managing multiple projects.
 
-**End of day**: Say "wrap up" and Claude invokes `/wrap-up` — verifies notes, updates indexes, checks links, spots uncaptured wins.
+**Throughout the day**: Talk naturally. Mention a decision you made, a deploy you're doing, a compliance issue. The classification hook nudges Claude to file each piece correctly. For bigger brain dumps, use `/dump` and narrate everything at once.
 
-**Weekly**: Run `/weekly` for cross-session synthesis — North Star alignment, patterns, uncaptured wins, and next-week priorities. Run `/vault-audit` to catch orphan notes, broken links, and stale content.
+**End of day**: Say "wrap up" and Claude invokes `/wrap-up` — verifies notes, updates indexes, checks links.
 
-**Review season**: Run `/review-brief manager` and get a structured review prep document with all the evidence already linked.
+**Weekly**: Run `/weekly` for cross-project synthesis — North Star alignment, patterns, uncaptured wins, and next-week priorities. Run `/vault-audit` to catch orphan notes, broken links, and stale content.
 
 ---
 
@@ -127,17 +137,16 @@ Defined in `.claude/commands/`. Run them in any Claude Code session.
 | `/dump` | Freeform capture — talk naturally about anything, Claude routes it all to the right notes |
 | `/wrap-up` | Full session review — verify notes, indexes, links, suggest improvements |
 | `/humanize` | Voice-calibrated editing — makes Claude-drafted text sound like you wrote it |
-| `/weekly` | Weekly synthesis — cross-session patterns, North Star alignment, uncaptured wins |
-| `/capture-1on1` | Capture a 1:1 meeting transcript into a structured vault note |
-| `/incident-capture` | Capture an incident from Slack/channels into structured notes |
-| `/slack-scan` | Deep scan Slack channels/DMs for evidence |
-| `/peer-scan` | Deep scan a peer's GitHub PRs for review prep |
-| `/review-brief` | Generate a review brief (manager or peer version) |
-| `/self-review` | Write your self-assessment for review season — projects, competencies, principles |
-| `/review-peer` | Write a peer review — projects, principles, performance summary |
+| `/weekly` | Weekly synthesis — cross-project patterns, North Star alignment, uncaptured wins |
+| `/weekly-review` | Lighter cross-project review — what shipped, what's stuck, update Index.md |
+| `/context-switch` | Reload context for a project — README, recent notes, open decisions |
+| `/project-status` | Deep status check on a single project — notes, decisions, stale items, GitHub issues |
+| `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
+| `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
+| `/deploy-checklist` | Pull up deploy runbook, walk through pre/post-deploy checks |
+| `/project-archive` | Move a completed project from `work/projects/` to `work/archive/`, update indexes |
 | `/vault-audit` | Audit indexes, links, orphans, stale context |
 | `/vault-upgrade` | Import content from an existing vault — version detection, classification, migration |
-| `/project-archive` | Move a completed project from active/ to archive/, update indexes |
 
 ---
 
@@ -147,34 +156,13 @@ Specialized agents that run in isolated context windows. They handle heavy opera
 
 | Agent | Purpose | Invoked by |
 |-------|---------|------------|
-| `brag-spotter` | Finds uncaptured wins and competency gaps | `/wrap-up`, `/weekly` |
 | `context-loader` | Loads all vault context about a person, project, or concept | Direct |
 | `cross-linker` | Finds missing wikilinks, orphans, broken backlinks | `/vault-audit` |
-| `people-profiler` | Bulk creates/updates person notes from Slack profiles | `/incident-capture` |
-| `review-prep` | Aggregates all performance evidence for a review period | `/review-brief` |
-| `slack-archaeologist` | Full Slack reconstruction — every message, thread, profile | `/incident-capture` |
 | `vault-librarian` | Deep vault maintenance — orphans, broken links, stale notes | `/vault-audit` |
-| `review-fact-checker` | Verify every claim in a review draft against vault sources | `/self-review`, `/review-peer` |
 | `vault-migrator` | Classify, transform, and migrate content from a source vault | `/vault-upgrade` |
 
 > [!NOTE]
 > Subagents are defined in `.claude/agents/`. You can add your own for domain-specific workflows.
-
----
-
-## 📊 Performance Graph
-
-The vault doubles as a performance tracking system:
-
-1. **Competency notes** in `perf/competencies/` define your org's competency framework — one note per competency
-2. **Work notes** link to competencies in their `## Related` section, annotated with what was demonstrated
-3. **Backlinks accumulate automatically** — review prep becomes reading the backlinks panel on each competency note
-4. **Brag Doc** aggregates wins per quarter with links to evidence notes
-5. **`/peer-scan`** deep-scans a colleague's GitHub PRs and writes structured evidence to `perf/evidence/`
-6. **`/review-brief`** generates a full review brief by aggregating everything: brag entries, decisions, incidents, competency evidence, and 1:1 feedback
-
-> [!TIP]
-> To get started: create competency notes from the template, then link your work notes to them as you go. The graph does the rest.
 
 ---
 
@@ -184,12 +172,9 @@ The `bases/` folder contains database views that query your notes' frontmatter p
 
 | Base | Shows |
 |------|-------|
-| Work Dashboard | Active projects filtered by quarter, grouped by status |
-| Incidents | All incidents sorted by severity and date |
+| Projects | All project READMEs with status, Rails version, last updated |
+| Work Dashboard | Active work notes grouped by project |
 | People Directory | Everyone in `org/people/` with role, team |
-| 1:1 History | All 1:1 notes sortable by person and date |
-| Review Evidence | PR scans and evidence grouped by person and cycle |
-| Competency Map | Competencies with evidence counts from backlinks |
 | Templates | Quick access to all templates |
 
 `Home.md` embeds these views, making it the vault's dashboard.
@@ -212,7 +197,7 @@ cd ~/new-vault && claude
 ```
 
 Claude will:
-1. **Detect** your vault version (v1–v3.2, or identify it as a non-obsidian-mind vault)
+1. **Detect** your vault version (v1–v3.3, or identify it as a non-obsidian-mind vault)
 2. **Inventory** every file — classify as user content, scaffold, infrastructure, or uncategorized
 3. **Present a migration plan** — you see exactly what will be copied, transformed, and skipped
 4. **Execute** after your approval — transforms frontmatter, fixes wikilinks, rebuilds indexes
@@ -221,7 +206,7 @@ Claude will:
 Your old vault is **never modified**. Use `--dry-run` to preview the plan without executing.
 
 > [!NOTE]
-> Works with any Obsidian vault, not just obsidian-mind. For non-obsidian-mind vaults, Claude reads each note and classifies it semantically — routing work notes, people, incidents, 1:1s, and decisions to the right folders.
+> Works with any Obsidian vault, not just obsidian-mind. For non-obsidian-mind vaults, Claude reads each note and classifies it semantically — routing work notes, people, decisions, and reference material to the right folders.
 
 ---
 
@@ -232,7 +217,8 @@ Your old vault is **never modified**. Use `--dry-run` to preview the plan withou
 3. Enable the **Obsidian CLI** in Settings → General (requires Obsidian 1.12+)
 4. Run **`claude`** in the vault directory
 5. Fill in **`brain/North Star.md`** with your goals — this grounds every session
-6. Start talking about work
+6. Create your first project folder in `work/projects/` using the Project README template
+7. Start talking about work
 
 ### Optional: QMD Semantic Search
 
@@ -241,7 +227,7 @@ For semantic search across the vault (find "what did we decide about caching" ev
 ```bash
 npm install -g @tobilu/qmd
 qmd collection add . --name vault --mask "**/*.md"
-qmd context add qmd://vault "Engineer's work vault: projects, decisions, incidents, people, reviews, architecture"
+qmd context add qmd://vault "Developer's work vault: projects, decisions, deploys, compliance, people"
 qmd update && qmd embed
 ```
 
@@ -261,26 +247,24 @@ CONTRIBUTING.md         Template development checklist
 README.md               Product documentation
 LICENSE                 MIT license
 
-bases/                  Dynamic database views (Work Dashboard, Incidents, People, etc.)
+bases/                  Dynamic database views (Projects, Work Dashboard, People, Templates)
 
 work/
-  active/               Current projects (1–3 files at a time)
-  archive/YYYY/         Completed work, organized by year
-  incidents/            Incident docs (main note + RCA + deep dive)
-  1-1/                  1:1 meeting notes — named <Person> YYYY-MM-DD.md
+  projects/
+    <project-name>/     One folder per Rails app
+      README.md         Project context: repo, deploy, tech stack, stakeholders, compliance
+      decisions/        ADRs scoped to this project
+      notes/            Dated work notes for this project
+  archive/<name>/       Completed/sunset project folders
   Index.md              Map of Content for all work
 
 org/
-  people/               One note per person — role, team, relationship, key moments
-  teams/                One note per team — members, scope, interactions
+  people/               One note per person — PIs, IT contacts, collaborators
+  teams/                One note per team — members, scope
   People & Context.md   MOC for organizational knowledge
 
 perf/
-  Brag Doc.md           Running log of wins, linked to evidence
-  brag/                 Quarterly brag notes (one per quarter)
-  competencies/         One note per competency (link targets)
-  evidence/             PR deep scans, data extracts for reviews
-  <cycle>/              Review cycle briefs and artifacts
+  Brag Doc.md           Flat running log of wins, linked to work notes
 
 brain/
   North Star.md         Goals and focus areas — read every session
@@ -290,14 +274,17 @@ brain/
   Gotchas.md            Things that have gone wrong and why
   Skills.md             Custom workflows and slash commands
 
-reference/              Codebase knowledge, architecture maps, flow docs
+reference/
+  compliance/           HIPAA, IRB, and regulatory notes
+  ops/                  Deploy runbooks and operational procedures
+  infrastructure/       Network, server, and environment notes
 thinking/               Scratchpad for drafts — promote findings, then delete
 templates/              Obsidian templates with YAML frontmatter
 
 .claude/
-  commands/             15 slash commands
-  agents/               9 subagents
-  scripts/              Hook scripts + charcount.sh utility
+  commands/             14 slash commands
+  agents/               4 subagents
+  scripts/              Hook scripts
   skills/               Obsidian + QMD skills
   settings.json         5 hooks configuration
 ```
@@ -308,12 +295,10 @@ templates/              Obsidian templates with YAML frontmatter
 
 Templates with YAML frontmatter, each including a `description` field for progressive disclosure:
 
-- **Work Note** — date, description, project, status, quarter, tags
-- **Decision Record** — date, description, status (proposed/accepted/deprecated), owner, context
+- **Work Note** — date, description, project, github_issue, status, tags
+- **Decision Record** — date, description, project, status (proposed/accepted/deprecated), context
 - **Thinking Note** — date, description, context, tags (scratchpad — delete after promoting)
-- **Competency Note** — date, description, current-level, target-level, proficiency table
-- **1:1 Note** — date, person, key takeaways, action items, quotes
-- **Incident Note** — date, ticket, severity, role, timeline, root cause, impact
+- **Project README** — date, description, project, status, rails_version, ruby_version, stakeholders, compliance
 
 ---
 
@@ -342,9 +327,11 @@ This is a starting point. Adapt it to how you work:
 | What | Where |
 |------|-------|
 | Your goals | `brain/North Star.md` — grounds every session |
-| Your org | `org/` — add your manager, team, key collaborators |
-| Your competencies | `perf/competencies/` — match your org's framework |
-| Your tools | `.claude/commands/` — edit for your GitHub org, Slack workspace |
+| Your projects | `work/projects/` — one folder per app with README |
+| Your contacts | `org/` — add PIs, IT contacts, collaborators |
+| Your compliance | `reference/compliance/` — HIPAA, IRB, audit requirements |
+| Your runbooks | `reference/ops/` — deploy procedures per project |
+| Your tools | `.claude/commands/` — edit for your GitHub org |
 | Your conventions | `CLAUDE.md` — the operating manual, evolve it as you go |
 | Your domain | Add folders, subagents in `.claude/agents/`, or classification rules in `.claude/scripts/` |
 

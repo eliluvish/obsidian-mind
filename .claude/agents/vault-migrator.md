@@ -58,27 +58,27 @@ Report the detected shape to the parent command so it can include it in the plan
 |--------|---------------|--------|
 | File in folder named `people/`, `contacts/`, `team-members/` | Person | `org/people/` |
 | File in folder named `teams/`, `squads/`, `groups/` | Team | `org/teams/` |
-| File in folder named `incidents/`, `postmortems/`, `outages/` | Incident | `work/incidents/` |
-| File in folder named `1-1/`, `one-on-ones/`, `meetings/` | 1:1 | `work/1-1/` |
-| File in folder named `archive/`, `completed/`, `done/` | Archived work | `work/archive/YYYY/` |
-| File in folder named `projects/`, `active/`, `wip/` | Active work | `work/active/` |
-| File in folder named `brag/`, `wins/`, `achievements/` | Brag | `perf/brag/` |
-| File in folder named `evidence/`, `pr-scans/` | Evidence | `perf/evidence/` |
+| File in folder named `archive/`, `completed/`, `done/` | Archived work | `work/archive/<project>/` |
+| File in folder named `projects/`, `active/`, `wip/` | Active work | `work/projects/<project>/notes/` |
+| File in folder named `decisions/`, `adrs/` | Decision | `work/projects/<project>/decisions/` |
+| File in folder named `brag/`, `wins/`, `achievements/` | Brag | Append to `perf/Brag Doc.md` |
 | File in folder named `reference/`, `docs/`, `architecture/` | Reference | `reference/` |
+| File in folder named `compliance/`, `hipaa/`, `irb/` | Compliance | `reference/compliance/` |
+| File in folder named `deploy/`, `ops/`, `runbooks/` | Operations | `reference/ops/` |
 | File in folder named `templates/` | Template | SKIP (target has its own) |
 
 **Common Obsidian vault patterns:**
 
 | Signal | Classification | Target |
 |--------|---------------|--------|
-| PARA: `Projects/` | Active work | `work/active/` |
-| PARA: `Areas/` | Ongoing responsibilities — classify by content | Varies (work/active/, org/, brain/) |
+| PARA: `Projects/` | Active work | `work/projects/<project>/notes/` |
+| PARA: `Areas/` | Ongoing responsibilities — classify by content | Varies (work/projects/, org/, brain/) |
 | PARA: `Resources/` | Reference material | `reference/` |
-| PARA: `Archive/` | Completed or inactive | `work/archive/YYYY/` |
+| PARA: `Archive/` | Completed or inactive | `work/archive/<project>/` |
 | Zettelkasten: `Permanent/` or `Evergreen/` | Mature notes — classify by content | Varies |
 | Zettelkasten: `Fleeting/` or `Scratch/` | Scratchpad | SKIP or `thinking/` |
 | Zettelkasten: `Literature/` or `Sources/` | Reference | `reference/` |
-| Daily notes: `daily/`, `journal/`, `Daily Notes/` | Journal entries — classify by content | Varies (work/1-1/, thinking/) |
+| Daily notes: `daily/`, `journal/`, `Daily Notes/` | Journal entries — classify by content | Varies (thinking/, reference/) |
 | Inbox: `Inbox/`, `Unsorted/`, `_inbox/` | Unprocessed | `thinking/migrate-review/` |
 | Attachments: `attachments/`, `assets/`, `images/`, `files/` | Binary assets | Same relative path in target vault (preserve folder structure) |
 | MOC files: `MOC - *.md`, `Index - *.md`, `Map of *.md` | Index / navigation | Evaluate as scaffold replacements |
@@ -87,10 +87,8 @@ Report the detected shape to the parent command so it can include it in the plan
 
 | Signal | Classification | Target |
 |--------|---------------|--------|
-| `<Name> YYYY-MM-DD.md` | 1:1 meeting note | `work/1-1/` |
 | `YYYY-MM-DD.md` (date only) | Daily note — classify by content | Varies |
-| `Q[1-4] YYYY.md` in brag-like folder | Brag | `perf/brag/` |
-| `<Person> PRs - *.md` | PR evidence | `perf/evidence/` |
+| `YYYY-MM-DD-*.md` in notes-like folder | Work note — assign to project | `work/projects/<project>/notes/` |
 | Numeric ID filename (`202603291200.md`) | Zettelkasten — classify by content | Varies |
 
 ### Tier 2 — Metadata (frontmatter + inline signals)
@@ -103,23 +101,18 @@ Parse YAML frontmatter first. If no frontmatter exists, scan the first 20 lines 
 |--------|---------------|
 | `tags` contains `person` or `people` | Person → `org/people/` |
 | `tags` contains `team` | Team → `org/teams/` |
-| `tags` contains `incident` or has `severity`/`ticket` field | Incident → `work/incidents/` |
-| `tags` contains `work-note` or `project` and `status: active` | Active work → `work/active/` |
-| `tags` contains `work-note` or `project` and `status: completed`/`done` | Archived work → `work/archive/YYYY/` |
-| `tags` contains `competency` or `skill` | Competency → `perf/competencies/` |
+| `tags` contains `work-note` or `project` and `status: active` | Active work → `work/projects/<project>/notes/` |
+| `tags` contains `work-note` or `project` and `status: completed`/`done` | Archived work → `work/archive/<project>/notes/` |
 | `tags` contains `brain` or `north-star` or `goals` | Brain note → `brain/` |
-| `tags` contains `decision` or `adr` | Decision → `work/active/` or `work/archive/YYYY/` |
-| `tags` contains `meeting` or `1-on-1` or `1:1` | 1:1 → `work/1-1/` |
-| `tags` contains `review` or has `cycle` field | Review artifact → `perf/<cycle>/` |
-| Has `person` field (not tag) pointing to a name | Evidence → `perf/evidence/` |
+| `tags` contains `decision` or `adr` | Decision → `work/projects/<project>/decisions/` |
+| `tags` contains `compliance` or `hipaa` or `irb` | Compliance → `reference/compliance/` |
+| `tags` contains `deploy` or `ops` or `runbook` | Operations → `reference/ops/` |
 
 **Inline signals (for vaults with no YAML frontmatter):**
 
 | Signal | Classification |
 |--------|---------------|
-| Inline tags `#meeting`, `#1on1`, `#standup` in first 10 lines | 1:1 → `work/1-1/` |
-| Inline tags `#incident`, `#postmortem`, `#outage` | Incident → `work/incidents/` |
-| Inline tags `#project`, `#feature`, `#epic`, `#sprint` | Work note → `work/active/` |
+| Inline tags `#project`, `#feature`, `#epic`, `#sprint` | Work note → `work/projects/<project>/notes/` |
 | Inline tags `#person`, `#teammate`, `#colleague` | Person → `org/people/` |
 | Inline tags `#decision`, `#adr` | Decision → work note |
 | Inline tags `#reference`, `#architecture`, `#docs` | Reference → `reference/` |
@@ -135,12 +128,10 @@ This tier requires the vault-migrator agent. Claude reads the actual content and
 
 | Signal | Classification |
 |--------|---------------|
-| Contains `## Root Cause` or `## Timeline` or `## Impact` or `## Post-Mortem` | Incident |
 | Contains `## Role & Team` or `## Relationship` or `## Key Moments` | Person |
-| Contains `## Key Takeaways` and `## Action Items` | 1:1 |
-| Contains `## Options Considered` and `## Decision` | Decision / work note |
-| Contains `## Definition` and `## Proficiency Levels` | Competency |
+| Contains `## Options Considered` and `## Decision` | Decision |
 | Contains `## Context` and (`## What` or `## Why`) | Work note |
+| Contains `## Repository` or `## Tech Stack` or `## Deploy` | Project README |
 | Contains `## Goals` or `## Current Focus` or `## OKRs` | Brain / North Star |
 | Contains `## Members` and `## Scope` | Team |
 
@@ -149,10 +140,10 @@ This tier requires the vault-migrator agent. Claude reads the actual content and
 | Signal | Classification |
 |--------|---------------|
 | Discusses a specific person's role, working style, or interactions | Person → `org/people/` |
-| Describes a project, feature, or technical work with deliverables | Work note → `work/active/` or `work/archive/YYYY/` |
-| Contains meeting notes with attendees, discussion points, action items | 1:1 → `work/1-1/` |
-| References an incident, outage, or production issue with investigation | Incident → `work/incidents/` |
+| Describes a project, feature, or technical work with deliverables | Work note → `work/projects/<project>/notes/` |
 | Contains architectural diagrams, API docs, flow descriptions | Reference → `reference/` |
+| Discusses compliance, HIPAA, IRB, audit requirements | Compliance → `reference/compliance/` |
+| Contains deploy procedures, runbooks, server configs | Operations → `reference/ops/` |
 | Discusses goals, career plans, or focus areas | Brain → `brain/` |
 | Personal journal, reflections, non-work content | Personal → `reference/personal/` |
 | Book notes, course notes, learning material | Learning → `reference/learning/` |
@@ -190,9 +181,9 @@ For each file in the approved plan:
    - Add missing required fields per the manifest's `frontmatter_required`:
      - `description`: generate from first 2 sentences of body, cap at 150 chars
      - `date`: use frontmatter `date` if present, else Dataview `date::`, else parse from filename if date-named, else git log last-modified from source, else file mtime, else today
-     - `quarter`: derive from date (month 1-3 = Q1, 4-6 = Q2, 7-9 = Q3, 10-12 = Q4, format `Q1-YYYY`)
+     - `project`: infer from the target project folder name
      - `tags`: infer from classification + folder placement if missing. Merge with any inline tags extracted.
-     - `status`: `active` if going to `work/active/`, `completed` if going to `work/archive/`
+     - `status`: `active` if going to `work/projects/`, `completed` if going to `work/archive/`
    - Normalize field aliases non-destructively: if the note has an alias field (e.g., `incident-id:`) and no `ticket:`, copy the value into `ticket:` while preserving the original field (per manifest `field_aliases`). Do not remove alias fields — this preserves zero data loss guarantees.
    - Convert tags from string to YAML array if needed
    - Deduplicate tags
@@ -235,10 +226,10 @@ For each file in the approved plan:
 
 For each index file, read the source version (which has user curation — ordering, section descriptions, groupings), then verify all links resolve and append any notes that exist but are missing from the index:
 
-- `work/Index.md`: verify work note links, add missing ones grouped by status
+- `work/Index.md`: verify project links, add missing ones grouped by status
 - `brain/Memories.md`: verify topic note links, add any new brain/ notes
 - `org/People & Context.md`: verify people and team links, add missing ones
-- `perf/Brag Doc.md`: verify quarter note links and evidence links
+- `perf/Brag Doc.md`: verify brag entries have work note links
 
 ### Step 5: Write Migration Log
 
@@ -273,7 +264,7 @@ When the source vault is a known obsidian-mind version, apply these transformati
 
 - Move `claude/` contents to `brain/` (rename `claude/Memories.md` → `brain/Memories.md`, etc.)
 - If `claude/Memories.md` is a monolith (single file with multiple topic sections), split into separate topic files (`brain/Key Decisions.md`, `brain/Patterns.md`, `brain/Gotchas.md`)
-- Move flat `work/*.md` notes into `work/active/` or `work/archive/YYYY/` based on status
+- Move flat `work/*.md` notes into `work/projects/<project>/notes/` or `work/archive/<project>/notes/` based on status. Group by `project` frontmatter field if available, otherwise create an `uncategorized` project.
 - Strip full-path wikilinks (`[[claude/Memories]]` → `[[Memories]]`)
 
 ### v2 → current

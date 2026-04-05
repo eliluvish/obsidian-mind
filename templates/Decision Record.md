@@ -1,6 +1,7 @@
 ---
 date: "{{date}}"
 description:
+project:
 status: proposed
 tags:
   - decision
@@ -10,6 +11,9 @@ tags:
 
 ## Context
 What is the situation that requires a decision?
+
+## Triggering Issue
+Link to the GitHub Issue or work note that prompted this decision.
 
 ## Options Considered
 1.

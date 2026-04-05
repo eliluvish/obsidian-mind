@@ -9,16 +9,15 @@ skills:
   - qmd
 ---
 
-You are the context loader for an obsidian-mind vault. Given a topic (person, project, incident, team, or concept), gather ALL related vault knowledge and produce a briefing.
+You are the context loader for an obsidian-mind vault. Given a topic (person, project, team, or concept), gather ALL related vault knowledge and produce a briefing.
 
 ## Input
 
 A topic to load context for:
-- Person: "Alice Chen", "Bob Martinez"
-- Project: "Auth Refactor", "Project Alpha"
-- Incident: "Login Screen Outage", "INC-1234"
-- Team: "Platform Team", "Growth Team"
-- Concept: "ReactiveSwift error handling", "performance reviews"
+- Person: "Dr. Smith", "Bob Martinez"
+- Project: "patient-registry", "lab-inventory"
+- Team: "IT Security", "Research Computing"
+- Concept: "HIPAA audit logging", "Stimulus patterns"
 
 ## Process
 
@@ -36,8 +35,7 @@ If QMD unavailable:
 
 Check if the topic has a primary note:
 - Person → `org/people/<Name>.md`
-- Project → `work/active/<Name>.md` or `work/archive/**/<Name>.md`
-- Incident → `work/incidents/<Name>.md`
+- Project → `work/projects/<Name>/README.md` or `work/archive/<Name>/README.md`
 - Team → `org/teams/<Name>.md`
 - Concept → search `brain/`, `reference/`
 
@@ -53,9 +51,9 @@ For the primary note:
 ### 4. Gather Mentions
 
 Search for the topic name (not just wikilinks) across:
-- `work/` — project context, incident timelines
-- `work/1-1/` — meeting discussions about this topic
-- `perf/` — brag entries, evidence, review briefs
+- `work/projects/` — project notes and decisions
+- `reference/` — compliance, ops, infrastructure notes
+- `perf/` — brag entries
 - `brain/` — memories, patterns, decisions, gotchas
 
 ### 5. Build Timeline
@@ -80,8 +78,7 @@ Present directly to the parent conversation (don't write a file):
 - **Timeline**: key events in chronological order
 - **Connected notes**: list with one-line description of the connection
 - **People involved**: names with roles (link to person notes)
-- **Key quotes**: important verbatim quotes from 1:1s or Slack
 - **Open items**: any pending tasks, questions, or unresolved issues
-- **Competencies demonstrated**: if applicable (for review prep)
+- **Compliance notes**: if applicable (HIPAA, IRB, deploy constraints)
 
 Keep it concise — this is a briefing, not a dump. The user can ask to drill into any section.

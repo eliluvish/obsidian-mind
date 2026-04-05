@@ -1,5 +1,5 @@
 ---
-description: "Central map of all work notes — active projects, completed work by quarter, decisions log"
+description: "Central map of all projects, work notes, and decisions"
 tags:
   - index
   - moc
@@ -9,48 +9,28 @@ tags:
 
 Central map of content. All work notes and decisions link back here. For quick navigation, use [[Home]] or open `bases/Work Dashboard.base`.
 
-**Folder structure**: `active/` = current projects, `archive/` = completed (by year), `incidents/` = incident docs, `1-1/` = meetings.
-
-## Incidents
-
-Incident docs live in `work/incidents/`. See `Incidents.base` for overview.
-
--
+**Folder structure**: `projects/<name>/` = one folder per Rails app with README, decisions, and notes. `archive/` = completed/sunset projects.
 
 ## Active Projects
 
--
-
-## Review Prep
-
--
-
-## Recently Completed
-
--
-
-## Completed
-
-### Current Quarter
--
-
-### Previous Quarters
--
-
-## Reference
+Each project has its own folder in `work/projects/` with a README, decisions, and work notes.
 
 -
 
 ## Decisions Log
 
-| Date | Decision | Status | Link |
-|------|----------|--------|------|
-|      |          |        |      |
+Cross-project decisions. Project-specific ADRs live in each project's `decisions/` folder.
+
+| Date | Decision | Project | Status | Link |
+|------|----------|---------|--------|------|
+|      |          |         |        |      |
 
 ## Open Questions
 
 -
 
 ## Archive
+
+Completed or sunset projects moved from `work/projects/` to `work/archive/`.
 
 -

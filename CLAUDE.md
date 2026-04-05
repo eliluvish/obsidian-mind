@@ -1,6 +1,6 @@
 # Obsidian Mind
 
-Personal Obsidian vault -- an external brain for work notes, decisions, performance tracking, and Claude context.
+Personal Obsidian vault -- an external brain for a solo Rails developer at a research hospital. Tracks 5-7 concurrent projects, technical decisions, deploy runbooks, compliance notes, and Claude context.
 
 ## Skills & Capabilities
 
@@ -23,17 +23,16 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `/dump` | Freeform capture -- dump anything, gets routed to the right notes |
 | `/wrap-up` | Full session review -- verify notes, indexes, links, suggest improvements |
 | `/humanize` | Voice-calibrated editing -- make notes sound like you, not AI |
-| `/weekly` | Weekly synthesis -- cross-session patterns, North Star alignment, uncaptured wins |
-| `/capture-1on1` | Capture 1:1 meeting transcript into structured vault note |
-| `/incident-capture` | Capture incident from Slack channels/DMs into structured vault notes |
-| `/slack-scan` | Deep scan Slack channels/DMs for evidence |
-| `/peer-scan` | Deep scan a peer's GitHub PRs for review prep |
-| `/review-brief` | Generate review brief (manager or peer version) |
-| `/self-review` | Write self-assessment for review tool -- projects, competencies, principles |
-| `/review-peer` | Write peer review -- projects, principles, performance summary |
+| `/weekly` | Weekly synthesis -- cross-project patterns, North Star alignment, uncaptured wins |
+| `/project-status` | Scan a project folder, summarize active work and open decisions, flag stale items |
+| `/context-switch` | Reload context for a project -- README, recent notes, open decisions, rapid re-entry |
+| `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
+| `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
+| `/deploy-checklist` | Pull up deploy runbook for a project, walk through pre/post-deploy checks |
+| `/weekly-review` | Cross-project review -- what shipped, what's stuck, pending decisions |
 | `/vault-audit` | Audit indexes, links, orphans, stale context |
 | `/vault-upgrade` | Import content from an existing vault into this obsidian-mind instance |
-| `/project-archive` | Move completed project from active/ to archive/, update indexes |
+| `/project-archive` | Move completed project from `work/projects/` to `work/archive/`, update indexes |
 
 ## Vault Structure
 
@@ -41,27 +40,24 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 |--------|---------|-----------|
 | `Home.md` | **Vault entry point** -- embedded Base views, quick links | Open this first |
 | `vault-manifest.json` | **Template metadata** -- version, infrastructure vs user content boundaries, frontmatter schemas, version fingerprints | Used by `/vault-upgrade` for migration |
-| `CHANGELOG.md` | **Version history** -- tracks template releases (v1--v3.3) with what changed | Reference for upgrade paths |
-| `bases/` | **All Bases centralized** -- dynamic views for navigation | `Work Dashboard`, `Incidents`, `People Directory`, `1-1 History`, `Review Evidence`, `Competency Map`, `Templates` |
+| `CHANGELOG.md` | **Version history** -- tracks template releases with what changed | Reference for upgrade paths |
+| `bases/` | **All Bases centralized** -- dynamic views for navigation | `Work Dashboard`, `Projects`, `People Directory`, `Templates` |
 | `work/` | Work notes index | `Index.md` (detailed MOC) |
-| `work/active/` | **Current projects only** (1-3 files) | Move here when starting, move to archive when done |
-| `work/archive/YYYY/` | Completed work organized by year | Grows over time |
-| `work/incidents/` | Incident docs (main note + RCA + deep dive + drafts) | Per-incident grouping |
-| `work/1-1/` | 1:1 meeting notes (accumulate weekly) | Named `<Person> YYYY-MM-DD.md` |
-| `perf/` | Performance framework, brag doc | `Brag Doc.md` (index) |
-| `perf/brag/` | Quarterly brag notes | One per quarter, e.g. `Q1 2025.md` |
-| `perf/competencies/` | Atomic competency notes (link targets) | One note per competency |
-| `perf/evidence/` | PR deep scans, data extracts for reviews | Named `<Person> PRs - <Period>.md` |
-| `perf/<cycle>/` | Review cycle briefs + artifacts | Review briefs (private, manager, peer) |
+| `work/projects/<name>/` | **One folder per active project** -- self-contained with README, decisions, notes | `README.md`, `decisions/`, `notes/` |
+| `work/archive/<name>/` | Completed project folders | Moved here via `/project-archive` |
+| `perf/` | Performance tracking | `Brag Doc.md` (flat running log) |
 | `brain/` | Claude's operational knowledge | `Memories.md`, `Key Decisions.md`, `Patterns.md`, `Gotchas.md`, `Skills.md`, `North Star.md` |
 | `org/` | Organizational knowledge index | `People & Context.md` (MOC) |
-| `org/people/` | Atomic person notes | One note per person |
+| `org/people/` | Person notes -- PIs, IT contacts, collaborators | One note per person |
 | `org/teams/` | Team notes as graph nodes | One note per team |
-| `reference/` | Codebase knowledge, architecture maps | Flow docs, architecture docs |
+| `reference/` | Technical reference material | Architecture docs, flow docs |
+| `reference/compliance/` | HIPAA, IRB, and regulatory notes | Compliance checklists, policies |
+| `reference/ops/` | Deploy runbooks and operational procedures | Per-project or shared runbooks |
+| `reference/infrastructure/` | Network, server, and environment notes | Server inventory, network maps |
 | `thinking/` | Scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
 | `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, etc. |
-| `.claude/commands/` | 15 slash commands | See command table above |
-| `.claude/agents/` | 9 subagents | See subagents table below |
+| `.claude/commands/` | 14 slash commands | See command table above |
+| `.claude/agents/` | 4 subagents | See subagents table below |
 | `.claude/scripts/` | Hook scripts | `session-start.sh`, `classify-message.py`, `validate-write.py`, `pre-compact.sh` |
 | `.claude/skills/` | Obsidian + QMD skills | Loaded automatically via Skill tool |
 
@@ -88,7 +84,7 @@ obsidian orphans                                   # Unlinked notes
 
 ### Starting a Substantial Session
 
-The `SessionStart` hook automatically injects rich context: vault file listing, North Star goals, active work, recent git changes, open tasks, and triggers a QMD re-index. Most context is already loaded -- you don't need to manually read files.
+The `SessionStart` hook automatically injects rich context: vault file listing, North Star goals, project list, recent git changes, open tasks, and triggers a QMD re-index. Most context is already loaded -- you don't need to manually read files.
 
 **Shortcut**: Run `/standup` for a structured morning kickoff that reads everything and presents a summary with suggested priorities.
 
@@ -100,21 +96,24 @@ If doing it manually:
 4. Scan `brain/Memories.md` -- index of memory topics, then read relevant topic notes
 5. `obsidian tasks daily todo` -- see pending items
 
+### Context Switching
+
+**`/context-switch` is the most important command.** When jumping between projects, it reloads all relevant context: the project README, recent notes, open decisions, and any linked reference material. Use it every time you switch projects mid-session.
+
 ### Ending a Substantial Session
 
 **When the user says "wrap up", "let's wrap", "wrapping up", or similar -- invoke `/wrap-up` automatically.** This runs a full review of the session.
 
 If `/wrap-up` is not invoked, at minimum do these before wrapping up:
 
-1. **Archive completed projects**: `git mv` from `work/active/` to `work/archive/YYYY/`, update `status: completed` (or use `/project-archive`)
+1. **Archive completed projects**: `git mv` from `work/projects/<name>/` to `work/archive/<name>/`, update `status: completed` (or use `/project-archive`)
 2. Update `work/Index.md` if new notes or decisions were created
 3. Update the relevant brain topic note (`brain/Key Decisions.md`, `brain/Patterns.md`, `brain/Gotchas.md`) with key learnings
 4. Update `org/People & Context.md` if org knowledge changed
 5. Update `perf/Brag Doc.md` if wins or impact were achieved
 6. Offer to update `brain/North Star.md` if goals shifted or new focus emerged
 7. Verify all new notes link to at least one existing note (orphans are bugs)
-8. If work demonstrates competencies, add competency links to the work note's `## Related`
-9. Run `/vault-audit` if the session created many notes
+8. Run `/vault-audit` if the session created many notes
 
 Skip steps that don't apply. The goal is transferring durable knowledge from conversation to vault state.
 
@@ -131,21 +130,21 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
 
 ### Creating Notes
 
-1. **Always use YAML frontmatter** with at minimum `date`, `description` (~150 chars), `tags`, and type-specific fields. Work notes and incidents also need `quarter` (e.g., `Q1-2026`). Incidents need `ticket`, `severity`, `role`.
+1. **Always use YAML frontmatter** with at minimum `date`, `description` (~150 chars), `tags`, and type-specific fields. Work notes also need `project` and optionally `github_issue`. Deploy notes need `project`. Reference notes may include `rails_version` or `ruby_version`.
 2. **Use templates** from `templates/`. Fill `{{placeholders}}` with real values.
 3. **Place files correctly**:
-   - **Active** work notes, decisions, peer review prep -- `work/active/`
-   - **Completed** work notes -- `work/archive/YYYY/` (by year)
-   - Incident docs -- `work/incidents/`
-   - 1:1 meeting notes -- `work/1-1/`
-   - Performance content -- `perf/` (cycle subfolder for review briefs)
-   - PR evidence -- `perf/evidence/`
-   - Competency definitions -- `perf/competencies/`
-   - People -- `org/people/`
-   - Teams -- `org/teams/`
-   - Claude operational context -- `brain/`
-   - Codebase knowledge -- `reference/`
-   - Drafts -- `thinking/`
+   - **Project work notes** -- `work/projects/<name>/notes/`
+   - **Project decisions** -- `work/projects/<name>/decisions/`
+   - **Project README** -- `work/projects/<name>/README.md`
+   - **Completed projects** -- `work/archive/<name>/` (entire folder)
+   - **Performance / brag entries** -- `perf/Brag Doc.md` (append to running log)
+   - **People** -- `org/people/`
+   - **Teams** -- `org/teams/`
+   - **Claude operational context** -- `brain/`
+   - **Compliance reference** -- `reference/compliance/`
+   - **Deploy runbooks** -- `reference/ops/`
+   - **Infrastructure notes** -- `reference/infrastructure/`
+   - **Drafts** -- `thinking/`
    - Vault root: `Home.md`, `CLAUDE.md`, `vault-manifest.json`, `CHANGELOG.md`, `CONTRIBUTING.md`, `README.md`, `LICENSE`, `.gitignore`. No user notes at root.
 4. **Name files descriptively.** Use the note title as filename.
 
@@ -153,14 +152,14 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
 
 | Type | Location | Naming | Key Sections |
 |------|----------|--------|--------------|
-| Work note | `work/active/` (then `archive/YYYY/` when done) | Descriptive title | Context, What/Why, Links, Related |
-| Incident | `work/incidents/` | Ticket number or descriptive title | Context, Root Cause, Timeline, Impact, Analysis, Related |
-| 1:1 note | `work/1-1/` | `<Person> YYYY-MM-DD.md` | Key Takeaways, Action Items, Quotes, What to Watch, Related |
-| PR analysis | `perf/evidence/` | `<Person> PRs - <Period>.md` | PR Count, Projects, Quality, Growth, Full Table |
-| Review brief | `perf/<cycle>/` | `<Cycle> Review Brief.md` | Arc, Impact, Competencies, Documentation Trail |
+| Project README | `work/projects/<name>/README.md` | `README.md` | Overview, Stack, Status, Links, Key Decisions |
+| Work note | `work/projects/<name>/notes/` | Descriptive title | Context, What/Why, Links, Related |
+| Decision record | `work/projects/<name>/decisions/` | `NNN-descriptive-title.md` (auto-numbered) | Context, Decision, Consequences, Related |
+| Deploy note | `work/projects/<name>/notes/` or `reference/ops/` | Descriptive title | Pre-deploy, Steps, Post-deploy, Rollback |
 | Person note | `org/people/` | Full name | Role & Team, Relationship, Key Moments, Notes |
 | Team note | `org/teams/` | Team name | Members, Scope, Interactions |
-| Competency | `perf/competencies/` | Competency name | Definition, level criteria, Evidence (via backlinks) |
+| Compliance note | `reference/compliance/` | Descriptive title | Requirements, Implementation, Audit Trail |
+| Infrastructure note | `reference/infrastructure/` | Descriptive title | Specs, Access, Maintenance, Related |
 | Brain note | `brain/` | Topic name | Topic-specific content |
 
 ### Linking -- This Is Critical
@@ -172,10 +171,11 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
 **Atomicity rule**: Before writing or appending to any note, ask: "Does this cover multiple distinct concepts that could be separate nodes?" If a note has or would have 3+ independent sections that don't need each other to make sense, split into atomic notes that link to each other.
 
 Note types have graph roles:
-- **Evidence nodes** (work notes, 1:1s, PR analyses): add outbound links to concepts they demonstrate
-- **Concept nodes** (competencies, patterns): stay definitional -- evidence arrives via backlinks
+- **Evidence nodes** (work notes, deploy notes): add outbound links to concepts they relate to
+- **Concept nodes** (patterns, compliance rules): stay definitional -- evidence arrives via backlinks
 - **Index nodes** (Index, Brag Doc, Memories, People & Context): actively curate links -- they're navigational
-- **Person nodes** (org/people/): link to projects, teams, evidence. Receive backlinks from work notes.
+- **Person nodes** (org/people/): link to projects, teams. Receive backlinks from work notes.
+- **Project READMEs**: hub nodes -- link to all decisions, key notes, people, and reference material for that project
 
 Link syntax:
 - `[[Note Title]]` -- standard wikilink
@@ -187,14 +187,14 @@ Link syntax:
 #### When to Link
 
 - **Work note <-> Decision**: bidirectional links
-- **Work note -> Competency**: in `## Related`, link to competencies demonstrated
+- **Work note -> Project README**: every work note links back to its project README
 - **Work note -> Team**: in `## Related`, link to team(s) involved
-- **Work note -> Person**: link people involved (especially in 1:1 notes)
-- **Person -> PR analysis**: link to their evidence file if one exists
+- **Work note -> Person**: link people involved (PIs, collaborators, IT contacts)
+- **Project README -> Reference**: link to relevant compliance, ops, or infrastructure notes
 - **Brag Doc -> Work note**: every entry links to evidence
 - **Memories -> Source**: every memory links to where it was learned
-- **Index -> Everything**: `work/Index.md` links to all work notes
-- **North Star -> Projects**: active focus areas link to project work notes
+- **Index -> Everything**: `work/Index.md` links to all project READMEs
+- **North Star -> Projects**: active focus areas link to project READMEs
 
 ### Maintaining Indexes
 
@@ -204,18 +204,19 @@ Update these when creating or archiving notes:
 - **`brain/Memories.md`** -- index of memory topics. Add new memories to the relevant topic note, not here.
 - **`brain/Skills.md`** -- register vault-specific workflows and slash commands
 - **`org/People & Context.md`** -- update when people, teams, or org structure changes
-- **`perf/Brag Doc.md`** -- log wins with links to evidence, add new quarters as needed
+- **`perf/Brag Doc.md`** -- append wins with links to evidence (flat running log, no sub-notes)
 
 ### Decision Records
 
-1. Create in `work/` using the Decision Record template
+1. Create in `work/projects/<name>/decisions/` using the Decision Record template (use `/decision` for auto-numbering)
 2. Link from the work note(s) that led to the decision
-3. Add to the Decisions Log table in `work/Index.md`
-4. If significant, note in `brain/Key Decisions.md`
+3. Link from the project README
+4. Add to the Decisions Log table in `work/Index.md`
+5. If significant, note in `brain/Key Decisions.md`
 
 ### Wins & Achievements
 
-When significant work is completed, add to `perf/Brag Doc.md` with links to the work note(s). Categorize under Impact, Technical Growth, Collaboration, or Feedback.
+When significant work is completed, append to `perf/Brag Doc.md` with links to the work note(s). Keep it a flat running log -- no quarterly sub-notes.
 
 ## North Star
 
@@ -230,26 +231,22 @@ When significant work is completed, add to `perf/Brag Doc.md` with links to the 
 
 Use tags in frontmatter (not inline):
 
-- **Type**: `work-note`, `decision`, `perf`, `thinking`, `north-star`, `competency`, `person`, `team`, `brain`
+- **Type**: `work-note`, `decision`, `project`, `deploy`, `compliance`, `thinking`, `brain`, `reference`, `person`, `team`
 - **Index**: `index`, `moc`
 - **Status** (frontmatter field): `active`, `completed`, `archived`, `proposed`, `accepted`, `deprecated`
-- **Team** (frontmatter field on people + work notes): your team names, e.g. `Backend`, `Platform`, `Mobile`
-- **Cycle** (frontmatter field on review-related notes): `h2-2024`, `h1-2025`, etc.
-- **Person** (frontmatter field on evidence notes): full name of the person
-- **Project**: as needed, e.g. `project/auth-refactor`
+- **Team** (frontmatter field on people + work notes): your team names, e.g. `Research IT`, `Lab Systems`
+- **Project** (frontmatter field): project name, matching the folder name in `work/projects/`
 
 ## Properties for Querying
 
 Beyond tags, use these frontmatter properties to enable search and Bases views:
 
-- `cycle: h2-2024` -- find all review material for a cycle
-- `person: "Jane Smith"` -- find all evidence related to a person
-- `team: Backend` -- find all notes related to a team
-- `status: active` -- find active projects
-- `quarter: Q1-2026` -- find all work for a quarter (used by Work Dashboard Base)
-- `ticket: TICKET-123` -- find incident by ticket number
-- `severity: high` -- incident severity
-- `role: incident-lead` -- your role in an incident
+- `project: "my-project"` -- find all notes for a project (matches folder name in `work/projects/`)
+- `github_issue: 123` -- link vault note to a GitHub issue number. Not every issue needs a note -- only significant ones.
+- `status: active` -- find active projects and notes
+- `team: "Research IT"` -- find all notes related to a team
+- `rails_version: "8.0"` -- Rails version relevant to a note or project
+- `ruby_version: "3.3"` -- Ruby version relevant to a note or project
 
 ## Memory System
 
@@ -276,26 +273,49 @@ When asked to "remember" something:
 - Before creating a new subfolder, ask: "Can I solve this with a tag, a property, or a link instead?" Folders are for browsing convenience, not for categorization.
 - After every substantial session, verify new notes have at least one inbound link.
 
+### Project-Centric Organization
+
+Everything revolves around `work/projects/<name>/`. Each project is a self-contained folder:
+
+```
+work/projects/my-app/
+  README.md          # Project overview, stack, status, links
+  decisions/         # ADRs: 001-choice.md, 002-choice.md, ...
+  notes/             # Work notes, deploy notes, issue captures
+```
+
+When starting a new project, create the folder structure and README first. The README is the hub node -- it links to everything related to the project.
+
 ### Where to Put Things
 
-- **Writing about a person?** -- `org/people/`
+- **Writing about a person?** -- `org/people/` (PIs, IT contacts, collaborators -- not direct reports)
 - **Writing about a team?** -- `org/teams/`
 - **Writing about how the codebase works?** -- `brain/` (Patterns, Gotchas, Key Decisions)
 - **Writing about what Claude should remember?** -- `brain/Memories.md` topic notes
-- **Capturing a 1:1 meeting?** -- `work/1-1/`
-- **Deep scanning PRs for review?** -- `perf/evidence/`
-- **Creating review briefs?** -- `perf/<cycle>/`
-- **Tracking active project work?** -- `work/active/`
-- **Capturing an incident?** -- `work/incidents/` (use `/incident-capture`)
+- **Tracking active project work?** -- `work/projects/<name>/notes/`
+- **Recording a technical decision?** -- `work/projects/<name>/decisions/` (use `/decision`)
+- **Capturing a GitHub issue?** -- `work/projects/<name>/notes/` (use `/issue-capture`)
+- **Writing deploy procedures?** -- `reference/ops/` for shared runbooks, project `notes/` for project-specific
+- **Writing compliance notes?** -- `reference/compliance/` (HIPAA, IRB, regulatory)
+- **Writing infrastructure notes?** -- `reference/infrastructure/` (servers, networks, environments)
 - **Dumping unstructured info?** -- use `/dump` to auto-classify and route everything
 
 ### Don't Mix Contexts
 
-When capturing data from Slack, DMs, or meetings:
-- **Project evidence** (PRs, technical decisions, delivery) -- goes to the relevant `work/` note
-- **Review prep** (peer selection, manager strategy, brag framing) -- goes to review-related notes in `perf/` or `work/`
-- **People dynamics** (feedback, relationships, career) -- goes to `org/people/` notes
-- **Personal conversations** -- only capture if review-relevant; otherwise skip
+When capturing information from different sources:
+- **Project work** (code decisions, deploys, issue resolution) -- goes to the relevant `work/projects/<name>/` folder
+- **Compliance and regulatory** (HIPAA, IRB, audit requirements) -- goes to `reference/compliance/`
+- **Operational knowledge** (deploy steps, server access, environment setup) -- goes to `reference/ops/` or `reference/infrastructure/`
+- **People and stakeholders** (PI preferences, IT contacts, collaborator notes) -- goes to `org/people/`
+- **Cross-project patterns** (recurring technical decisions, gotchas) -- goes to `brain/`
+
+### GitHub Issues Integration
+
+The `github_issue` frontmatter property links vault notes to GitHub issues. Guidelines:
+
+- **Not every issue needs a vault note.** Only create notes for significant issues -- ones involving design decisions, compliance implications, or multi-session work.
+- Use `/issue-capture` to scaffold a note from a GitHub Issue URL with pre-filled frontmatter.
+- The `github_issue` property stores the issue number (not the full URL) for Bases queries.
 
 ## Subagents
 
@@ -303,14 +323,9 @@ Specialized agents in `.claude/agents/` for heavy operations. They run in isolat
 
 | Agent | Purpose | Invoked by |
 |-------|---------|------------|
-| `brag-spotter` | Finds uncaptured wins and competency gaps | `/wrap-up`, `/weekly` |
-| `context-loader` | Loads all vault context about a person, project, or concept | Direct |
+| `context-loader` | Loads all vault context about a person, project, or concept | `/context-switch`, Direct |
 | `cross-linker` | Finds missing wikilinks, orphans, broken backlinks | `/vault-audit` |
-| `people-profiler` | Bulk creates/updates person notes from Slack profiles | `/incident-capture` |
-| `review-prep` | Aggregates all performance evidence for a review period | `/review-brief` |
-| `slack-archaeologist` | Full Slack reconstruction -- every message, thread, profile | `/incident-capture` |
 | `vault-librarian` | Deep vault maintenance -- orphans, broken links, stale notes | `/vault-audit` |
-| `review-fact-checker` | Verifies every claim in a review draft against vault sources | `/self-review`, `/review-peer` |
 | `vault-migrator` | Classifies, transforms, and migrates content from a source vault | `/vault-upgrade` |
 
 ## Hooks
@@ -319,9 +334,9 @@ Five lifecycle hooks in `.claude/settings.json`:
 
 | Hook | When | What |
 |------|------|------|
-| SessionStart | On startup/resume | QMD re-index, inject North Star, active work, recent changes, tasks, file listing |
-| UserPromptSubmit | Every message | Classifies content (decision, incident, win, 1:1, architecture, person) and injects routing hints |
-| PostToolUse | After writing `.md` | Validates frontmatter, checks for wikilinks, verifies folder placement |
+| SessionStart | On startup/resume | QMD re-index, inject North Star, project list, recent changes, tasks, file listing |
+| UserPromptSubmit | Every message | Classifies content (decision, win, architecture, person context, project update, project switch, deploy, compliance) and injects routing hints |
+| PostToolUse | After writing `.md` | Validates frontmatter, checks for wikilinks, verifies folder placement, validates `project:` in frontmatter for `work/projects/` notes |
 | PreCompact | Before context compaction | Backs up session transcript to `thinking/session-logs/` |
 | Stop | End of every session | Lightweight checklist reminder: archive, update indexes, check orphans. For thorough review, use `/wrap-up` instead. |
 

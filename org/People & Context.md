@@ -1,5 +1,5 @@
 ---
-description: "Org context, teams, stakeholders, review history, and dynamics"
+description: "Stakeholders, contacts, and collaborators — PIs, IT, vendors, department contacts"
 tags:
   - org
   - index
@@ -7,23 +7,15 @@ tags:
 
 # People & Context
 
-Key context about teams, stakeholders, or collaborators. See also [[Memories]] for session context and [[Skills]] for workflows.
+Key contacts and stakeholders across projects. See also [[Memories]] for session context and [[Skills]] for workflows.
 
-## Role & Org
+## Role
 
 -
 
-## Teams
+## Teams & Departments
 
 Team notes in `org/teams/`:
-
--
-
-## Performance Reviews
-
--
-
-## Manager Timeline
 
 -
 
@@ -33,10 +25,13 @@ Individual notes in `org/people/`:
 
 -
 
-## Review Goals
+## Key Contacts
 
--
+Quick reference for common needs:
 
-## Recurring Growth Themes
-
--
+| Need | Contact | Notes |
+|------|---------|-------|
+| IT Security | | |
+| Network/VPN | | |
+| Database admin | | |
+| SSO/Auth | | |

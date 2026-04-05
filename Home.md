@@ -10,22 +10,18 @@ tags:
 
 ![[North Star#Current Focus]]
 
+## Projects
+
+![[Projects.base#Active Projects]]
+
 ## Active Work
 
 ![[Work Dashboard.base#Active Work]]
-
-## Incidents
-
-![[Incidents.base#All Incidents]]
 
 ## Quick Links
 
 - [[Index|Work Notes]] | [[People & Context]] | [[Brag Doc]]
 - [[Memories]] | [[North Star]] | [[Skills]]
-
-## Recent 1:1s
-
-![[1-1 History.base#All 1:1s]]
 
 ## People
 

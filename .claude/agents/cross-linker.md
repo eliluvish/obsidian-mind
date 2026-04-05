@@ -25,9 +25,9 @@ Either:
 Glob all linkable notes and build a lookup:
 - `org/people/*.md` — every person name (including aliases from frontmatter)
 - `org/teams/*.md` — every team name
-- `perf/competencies/*.md` — every competency name
-- `work/active/*.md`, `work/archive/**/*.md` — every project name
-- `work/incidents/*.md` — every incident name
+- `work/projects/*/README.md` — every project name
+- `work/projects/*/notes/*.md`, `work/archive/**/notes/*.md` — every work note
+- `work/projects/*/decisions/*.md` — every decision record
 
 ### 2. Scan for Missing Links
 
@@ -53,11 +53,10 @@ Find notes with ZERO incoming links:
 
 ### 5. Check Related Sections
 
-For work notes and incident notes:
+For work notes and decision records:
 - Does `## Related` exist?
-- Does it link to at least one person?
-- Does it link to at least one competency?
-- Does it link to `[[Index]]`?
+- Does it link to the project README?
+- Does it link to at least one other note?
 
 ## Output
 

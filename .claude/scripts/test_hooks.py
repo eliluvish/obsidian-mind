@@ -99,15 +99,6 @@ class TestClassifyEnglish(unittest.TestCase):
     def test_decision(self):
         self.assertIn("DECISION", get_signal_names("we decided to use Redis"))
 
-    def test_incident(self):
-        self.assertIn("INCIDENT", get_signal_names("there was an outage in prod"))
-
-    def test_1on1(self):
-        self.assertIn("1:1 CONTENT", get_signal_names("had a 1:1 with my manager"))
-
-    def test_1on1_hyphen(self):
-        self.assertIn("1:1 CONTENT", get_signal_names("1-1 with Sarah today"))
-
     def test_win(self):
         self.assertIn("WIN", get_signal_names("got kudos from the team"))
 
@@ -120,6 +111,27 @@ class TestClassifyEnglish(unittest.TestCase):
     def test_project_update(self):
         self.assertIn("PROJECT UPDATE", get_signal_names("sprint planning for next week"))
 
+    def test_project_switch(self):
+        self.assertIn("PROJECT SWITCH", get_signal_names("switching to patient-registry"))
+
+    def test_project_switch_back_to(self):
+        self.assertIn("PROJECT SWITCH", get_signal_names("back to the lab-inventory app"))
+
+    def test_deploy(self):
+        self.assertIn("DEPLOY", get_signal_names("deploying to production today"))
+
+    def test_deploy_staging(self):
+        self.assertIn("DEPLOY", get_signal_names("pushed to staging for testing"))
+
+    def test_compliance(self):
+        self.assertIn("COMPLIANCE", get_signal_names("need to check HIPAA requirements"))
+
+    def test_compliance_irb(self):
+        self.assertIn("COMPLIANCE", get_signal_names("IRB number for this study"))
+
+    def test_compliance_phi(self):
+        self.assertIn("COMPLIANCE", get_signal_names("we need to de-identify the PHI"))
+
     def test_overlap_shipped(self):
         names = get_signal_names("we shipped the feature")
         self.assertIn("WIN", names)
@@ -129,11 +141,7 @@ class TestClassifyEnglish(unittest.TestCase):
         names = get_signal_names("deployed to production")
         self.assertIn("WIN", names)
         self.assertIn("PROJECT UPDATE", names)
-
-    def test_multi_signal(self):
-        names = get_signal_names("we decided to fix the incident")
-        self.assertIn("DECISION", names)
-        self.assertIn("INCIDENT", names)
+        self.assertIn("DEPLOY", names)
 
     def test_case_insensitivity(self):
         self.assertIn("DECISION", get_signal_names("DECIDED to go with option A"))
@@ -229,16 +237,6 @@ class TestClassifyCJK(unittest.TestCase):
             "ko": ("결정했습니다", "결정했습니다"),
             "zh": ("我们决定了这个方案", "决定了"),
         },
-        "INCIDENT": {
-            "ja": ("インシデントが発生しました", "インシデント"),
-            "ko": ("장애가 발생했습니다", "장애"),
-            "zh": ("发生了故障需要处理", "故障"),
-        },
-        "1:1 CONTENT": {
-            "ja": ("マネージャーとワンオンワンした", "ワンオンワン"),
-            "ko": ("원온원 미팅을 했습니다", "원온원"),
-            "zh": ("今天有一对一会议", "一对一"),
-        },
         "WIN": {
             "ja": ("新機能をリリースした", "リリースした"),
             "ko": ("서비스를 출시했어", "출시했어"),
@@ -258,6 +256,21 @@ class TestClassifyCJK(unittest.TestCase):
             "ja": ("今週のスプリントで完了する", "スプリント"),
             "ko": ("이번 스프린트에서 완료", "스프린트"),
             "zh": ("这个迭代的进展报告", "迭代"),
+        },
+        "PROJECT SWITCH": {
+            "ja": ("プロジェクトを切り替えします", "切り替え"),
+            "ko": ("프로젝트 전환합니다", "전환"),
+            "zh": ("切换到另一个项目", "切换到"),
+        },
+        "DEPLOY": {
+            "ja": ("本番にデプロイします", "デプロイ"),
+            "ko": ("프로덕션에 배포합니다", "배포"),
+            "zh": ("准备部署到生产环境", "部署"),
+        },
+        "COMPLIANCE": {
+            "ja": ("コンプライアンス確認が必要", "コンプライアンス"),
+            "ko": ("컴플라이언스 검토 필요", "컴플라이언스"),
+            "zh": ("需要合规审查", "合规"),
         },
     }
 
@@ -289,7 +302,7 @@ class TestClassifyCJK(unittest.TestCase):
         self.assertIn("DECISION", get_signal_names("我们decided了"))
 
     def test_mixed_cjk_english_korean(self):
-        self.assertIn("1:1 CONTENT", get_signal_names("오늘 1:1 미팅"))
+        self.assertIn("DEPLOY", get_signal_names("오늘 deploy 합니다"))
 
     def test_cjk_overlap(self):
         """Chinese delivery word triggers both WIN and PROJECT UPDATE."""

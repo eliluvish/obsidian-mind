@@ -10,34 +10,30 @@ Full session review before ending. Review context, ways of working, files modifi
 
 Triggered when the user says "wrap up", "let's wrap", "wrapping up", or similar. Claude should invoke this automatically.
 
-## Subagent
-
-- **`brag-spotter`** — run at the end to find uncaptured wins and competency gaps from the session
-
 ## Workflow
 
 ### 1. Review What Was Done
 
 Scan the conversation for:
 - Notes created or modified (list them all with paths)
-- People notes created or updated
 - Indexes updated
 - Brag doc entries added
 - Brain notes updated (Patterns, Gotchas, Key Decisions, Memories)
+- Project READMEs updated
 
 ### 2. Verify Note Quality
 
 For each note created or modified this session:
-- Frontmatter complete? (`date`, `quarter`, `description`, `tags`, type-specific fields)
+- Frontmatter complete? (`date`, `description`, `tags`, `project`, type-specific fields)
 - At least one wikilink to another note?
-- In the correct folder? (`work/active/` vs `work/archive/` vs `work/incidents/` etc.)
+- In the correct folder? (`work/projects/<name>/notes/` vs `work/projects/<name>/decisions/` etc.)
 - Description accurate and ~150 chars?
 - Status field correct?
 
 ### 3. Check Index Consistency
 
 - `work/Index.md` — are new notes linked? Are completed projects in the right section?
-- `brain/Memories.md` — does Recent Context reflect what happened this session?
+- `brain/Memories.md` — does it reflect what happened this session?
 - `org/People & Context.md` — any new people or relationship changes to capture?
 - `perf/Brag Doc.md` — any wins or achievements from this session?
 - `Home.md` — are embedded Bases still valid?
@@ -45,12 +41,11 @@ For each note created or modified this session:
 ### 4. Check for Orphans
 
 - Any new notes not linked from at least one other note?
-- Any new people not added to People & Context?
 - Any thinking notes that should be promoted or deleted?
 
 ### 5. Archive Check
 
-- Are there notes in `work/active/` that should be moved to `work/archive/YYYY/`?
+- Are there projects in `work/projects/` that should be moved to `work/archive/`?
 - Any status fields still `active` that should be `completed`?
 
 ### 6. Ways of Working Review

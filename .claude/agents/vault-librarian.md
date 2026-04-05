@@ -22,13 +22,13 @@ You are the vault librarian for an obsidian-mind vault. Run a full health check 
    - `tags` (non-empty)
    - `date`
    - `description` (~150 chars)
-   - Type-specific required fields (incidents need `ticket`, `severity`, `role`; work notes in recent quarters need `quarter`)
+   - Type-specific required fields (project READMEs need `project`, `rails_version`; work notes need `project`)
 
-4. **Stale Active Notes**: Check `work/active/` for notes with `status: completed` or not modified in 60+ days. These should be archived to `work/archive/YYYY/`.
+4. **Stale Active Notes**: Check `work/projects/*/notes/` for notes with `status: active` not modified in 60+ days. Flag for review.
 
-5. **Index Consistency**: Read `work/Index.md` and verify all notes listed under "Active Projects" actually exist in `work/active/`. Flag any that are missing or archived.
+5. **Index Consistency**: Read `work/Index.md` and verify all projects listed under "Active Projects" actually exist in `work/projects/`. Flag any that are missing or archived.
 
-6. **Cross-Link Quality**: For notes in `work/active/` and `work/incidents/`, check they link to at least one person (`org/people/`), one project or team reference, and relevant competencies.
+6. **Cross-Link Quality**: For work notes in `work/projects/`, check they link to at least their project README and one other note.
 
 ## Output
 

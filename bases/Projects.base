@@ -1,0 +1,38 @@
+filters:
+  and:
+    - file.hasTag("project")
+    - file.ext == "md"
+properties:
+  file.name:
+    displayName: Project
+  status:
+    displayName: Status
+  rails_version:
+    displayName: Rails
+  ruby_version:
+    displayName: Ruby
+  date:
+    displayName: Last Updated
+  description:
+    displayName: Summary
+views:
+  - type: table
+    name: Active Projects
+    filters:
+      and:
+        - status == "active"
+    order:
+      - file.name
+      - status
+      - rails_version
+      - date
+      - description
+  - type: table
+    name: All Projects
+    order:
+      - file.name
+      - status
+      - rails_version
+      - ruby_version
+      - date
+      - description

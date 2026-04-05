@@ -1,7 +1,7 @@
 {
   "template": "obsidian-mind",
-  "version": "3.3.0",
-  "released": "2026-03-29",
+  "version": "4.0.0",
+  "released": "2026-04-05",
   "infrastructure": [
     "CLAUDE.md",
     "Home.md",
@@ -15,8 +15,6 @@
     "templates/**",
     "bases/**",
     "vault-manifest.json",
-    "brain/Skills.md",
-    "perf/competencies/README.md",
     "thinking/README.md"
   ],
   "scaffold": {
@@ -27,21 +25,18 @@
     "brain/Gotchas.md": "Known gotchas — replace if non-empty",
     "work/Index.md": "Work notes MOC — replace if has real entries",
     "org/People & Context.md": "People MOC — replace if has real entries",
-    "perf/Brag Doc.md": "Brag doc index — replace if has entries"
+    "perf/Brag Doc.md": "Brag doc — replace if has entries"
   },
   "user_content_roots": [
-    "work/active/",
+    "work/projects/",
     "work/archive/",
-    "work/incidents/",
-    "work/1-1/",
     "org/people/",
     "org/teams/",
-    "perf/brag/",
-    "perf/evidence/",
-    "perf/h*-*/",
-    "perf/competencies/*.md",
+    "reference/compliance/",
+    "reference/ops/",
+    "reference/infrastructure/",
     "brain/*.md",
-    "reference/"
+    "perf/"
   ],
   "version_fingerprints": {
     "v1": {
@@ -65,15 +60,20 @@
       "missing": ["vault-manifest.json"]
     },
     "v3.3": {
-      "exists": ["vault-manifest.json"]
+      "exists": ["vault-manifest.json"],
+      "missing": ["work/projects/"]
+    },
+    "v4.0": {
+      "exists": ["work/projects/", "bases/Projects.base", ".claude/commands/context-switch.md"],
+      "missing": ["work/active/", "work/incidents/", "work/1-1/"]
     }
   },
   "frontmatter_required": {
     "global": ["date", "description", "tags"],
-    "work-note": ["date", "status", "quarter"],
-    "incident": ["date", "status", "quarter", "ticket", "severity", "role"],
+    "work-note": ["date", "status", "project"],
+    "project-readme": ["date", "status", "project", "rails_version"],
+    "decision": ["date", "status", "project"],
     "person": ["date", "title"],
-    "team": ["date"],
-    "1-1": ["date", "quarter"]
+    "team": ["date"]
   }
 }

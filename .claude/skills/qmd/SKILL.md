@@ -29,8 +29,8 @@ Before reading vault files directly, search with QMD first. It returns relevant 
 - User mentions a person by name → `qmd search "<name>"`
 - Before creating a new note → `qmd vsearch "<topic>"` to check for existing content
 - After creating a note → `qmd vsearch "<note title>"` to find notes that should link to it
-- Loading context for review prep → `qmd multi-get "perf/evidence/*.md"`
-- Loading 1-on-1 context → `qmd search "<person name> 1-1"`
+- Loading project context → `qmd multi-get "work/projects/<name>/**/*.md"`
+- Loading person context → `qmd search "<person name>"`
 
 ## After Bulk Changes
 Run `qmd update && qmd embed` to keep the index fresh. The SessionStart hook does `qmd update` automatically, but `qmd embed` should be run explicitly after sessions that create many notes.
