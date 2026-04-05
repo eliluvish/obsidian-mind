@@ -32,8 +32,8 @@ Allows staff at a research hospital to request permission for a minor to be on c
 
 ## Stakeholders
 
-- **Kele Piper**
-- **Mirabella Daguerre**
+- [[Kele Piper]] — Chief Research Compliance Officer
+- [[Mirabella Daguerre]] — Research Integrity Program Manager
 
 ## Compliance Notes
 
@@ -46,3 +46,5 @@ Shared codebase with other projects in lab_archives. Minr-specific work is scope
 
 - [[Index]]
 - [[CADE]] — also in the lab_archives repo
+- [[People|people]] — also in the lab_archives repo
+- [[Research Intake Survey|ris]] — also in the lab_archives repo

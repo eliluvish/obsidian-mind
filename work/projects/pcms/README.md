@@ -29,10 +29,10 @@ Research Core Management System. Manages core facility operations, billing, and 
 
 ## Stakeholders
 - **Department**: [[Research Core Facilities]]
-- **Manager**: Andy Chitty
-- **Tera Morse**: stakeholder
-- **Jessica Cho**: stakeholder
-- **Yovani Edwards**: stakeholder
+- [[Andy Chitty]] — Director
+- [[Tera Morse]] — Finance Specialist
+- [[Jessica Cho]] — Finance Specialist
+- [[Yovani Edwards]] — Finance Specialist
 
 ## Compliance Notes
 None currently.

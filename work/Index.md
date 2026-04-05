@@ -20,6 +20,10 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[PCMS]] — Research Core Management System, core facility billing and operations
 - [[CADE]] — Center for Academic Development and Enrichment (lab_archives repo, CADE label)
 - [[Minor Intake Form|minr]] — Minor campus access requests with approval workflow (lab_archives repo, Minor intake form label)
+- [[Research Participant Remuneration|rpr]] — Study participant payment tracking (study_pay repo), HIPAA-protected PII
+- [[BioLift|biolift]] — Biological sample transport between facilities, bills of lading for couriers
+- [[People|people]] — Employee data aggregation for deductions (lab_archives repo, excludes CADE/minr labels)
+- [[Research Intake Survey|ris]] — Onboarding survey for new research hires (lab_archives repo, Research Intake Survey label)
 
 ## Decisions Log
 

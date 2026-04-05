@@ -17,6 +17,8 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
+- **HIGH PRIORITY**: [[Prawn UTF-8 Encoding Bug in Invoice PDFs|PCMS #2271]] — Prawn encoding crash silently breaking invoice PDF generation
+- **HIGH PRIORITY**: [[Minor Intake Form|minr]] updates — expand to all MGB hospitals, form updates (#1162–#1166)
 - AzureVm importer
 - iLog accountability logbook
 
@@ -54,3 +56,4 @@ Record when focus changes, with date and reason.
 | Date | Shift | Reason |
 |------|-------|--------|
 |      | Created North Star | Initial setup |
+| 2026-04-05 | Initial vault population | Scaffolded 4 new projects (rpr, biolift, people, ris), 25 people, 1 team, 10 work notes across 7 projects. Added PCMS #2271 and minr updates as high priority. |

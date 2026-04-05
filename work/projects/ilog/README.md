@@ -29,8 +29,9 @@ DEA controlled substances compliance application. Handles inventory tracking, ac
 
 ## Stakeholders
 - **Department**: [[Compliance, Audit & Business Integrity]]
-- **Kele Piper**: stakeholder
-- **Mirabella Daguerre**: stakeholder
+- [[Kele Piper]] — Chief Research Compliance Officer
+- [[Mirabella Daguerre]] — Research Integrity Program Manager
+- [[Kathryn Holthaus]] — Director of Lab Safety and Research Subject Protection, BWH
 
 ## Compliance Notes
 DEA-regulated application. Handles controlled substance inventory and accountability records.

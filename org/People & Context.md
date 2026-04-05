@@ -17,13 +17,51 @@ Key contacts and stakeholders across projects. See also [[Memories]] for session
 
 Team notes in `org/teams/`:
 
--
+- [[Digital Cloud Engineering]] — Cloud infrastructure team under MGB Digital
 
 ## People
 
 Individual notes in `org/people/`:
 
--
+### Human Research Affairs
+- [[Martha Jones]] — VP, Human Research Affairs
+- [[Melissa Tsvirko]] — EA to Martha Jones
+- [[Gala Laffey]] — Director of Administration
+
+### Research Compliance
+- [[Kele Piper]] — Chief Research Compliance Officer
+- [[Mirabella Daguerre]] — Research Integrity Program Manager
+- [[Kathryn Holthaus]] — Director of Lab Safety & Research Subject Protection, BWH
+
+### CADE
+- [[Matthew Crowson]] — Director
+- [[Karan Patel]] — Director of Administration
+- [[Rowan Potter]] — Senior Data Analyst
+
+### Core Facility Finance
+- [[Andy Chitty]] — Director
+- [[Tera Morse]] — Finance Specialist
+- [[Jessica Cho]] — Finance Specialist
+- [[Yovani Edwards]] — Finance Specialist
+
+### Research Computing
+- [[Michael Oates]] — Director
+- [[Alissa Scharf]] — Manager, Research Computing Core
+- [[Laura Brown]] — Analyst
+
+### Research Informatics Core (Eli's Team)
+- [[Daniel Guettler]] — Manager (Eli's direct manager, reports to [[Lynn Simpson]])
+
+### MGB Digital
+- [[Lynn Simpson]] — Director Research Applications (skip-level)
+- [[Chris Mow]] — Systems Engineer (storage billing pipeline handoff)
+
+### [[Digital Cloud Engineering]] (MGB Digital)
+- [[Henry Ed Austin]] — Senior Manager
+- [[Pervinder Sudan]] — Non Managing EW
+- [[Layne Conley]] — Principal Architect (reports to [[Rakesh Jain]])
+- [[Derek Fuller]] — Technical Architect
+- [[Jonathan Adamson]] — Systems Engineer II (AWS)
 
 ## Key Contacts
 

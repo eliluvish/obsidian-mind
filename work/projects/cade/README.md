@@ -33,9 +33,9 @@ CADE is one of several projects served by the lab_archives application. Work is 
 
 ## Stakeholders
 
-- **Karan Patel**
-- **Rowan Potter**
-- **Matthew Crowson**
+- [[Karan Patel]] — Director of Administration
+- [[Rowan Potter]] — Senior Data Analyst
+- [[Matthew Crowson]] — Director
 
 ## Architecture Notes
 
@@ -45,3 +45,5 @@ Shared codebase with other projects in lab_archives. CADE-specific work is scope
 
 - [[Index]]
 - [[Minor Intake Form|minr]] — also in the lab_archives repo
+- [[People|people]] — also in the lab_archives repo
+- [[Research Intake Survey|ris]] — also in the lab_archives repo

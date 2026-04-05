@@ -29,9 +29,9 @@ Software reselling to the research hospital community and pass-through billing f
 
 ## Stakeholders
 - **Department**: [[Research Computing Core]]
-- **Alissa Scharf**: stakeholder
-- **Laura Brown**: stakeholder
-- **Michael Oates**: stakeholder
+- [[Alissa Scharf]] — Manager, Research Computing Core
+- [[Laura Brown]] — Analyst
+- [[Michael Oates]] — Director, Research Computing
 
 ## Compliance Notes
 None currently.

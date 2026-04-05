@@ -5,25 +5,19 @@ import sys
 import os
 from pathlib import Path
 
-def log(msg):
-    print(f"[validate-write] {msg}", file=sys.stderr)
-
 
 def main():
     try:
         input_data = json.load(sys.stdin)
     except (json.JSONDecodeError, ValueError, EOFError) as e:
-        log(f"stdin parse error: {e}")
         sys.exit(0)
 
     tool_input = input_data.get("tool_input")
     if not isinstance(tool_input, dict):
-        log(f"tool_input not dict: {type(tool_input)}")
         sys.exit(0)
 
     file_path = tool_input.get("file_path", "")
     if not isinstance(file_path, str) or not file_path:
-        log(f"file_path missing or invalid: {file_path!r}")
         sys.exit(0)
 
     # Only validate markdown files in the vault, skip dotfiles and templates
@@ -33,7 +27,7 @@ def main():
     normalized = file_path.replace("\\", "/")
     # Skip dotfiles, templates, thinking, and root template files (not vault notes)
     basename = os.path.basename(normalized)
-    root_files = {"README.md", "CHANGELOG.md", "CONTRIBUTING.md", "CLAUDE.md"}
+    root_files = {"CHANGELOG.md", "CONTRIBUTING.md", "CLAUDE.md"}
     if basename in root_files:
         sys.exit(0)
     # Also skip translated READMEs (README.ja.md, README.zh-CN.md, etc.)
@@ -58,7 +52,8 @@ def main():
                     warnings.append("Missing `tags` in frontmatter")
                 if "description:" not in fm and "description :" not in fm:
                     warnings.append("Missing `description` in frontmatter (~150 chars required by vault convention)")
-                if "date:" not in fm and "date :" not in fm:
+                is_index = "  - index" in fm or "  - moc" in fm
+                if not is_index and "date:" not in fm and "date :" not in fm:
                     warnings.append("Missing `date` in frontmatter")
 
         # Check for project property on work notes
@@ -72,7 +67,6 @@ def main():
             warnings.append("No [[wikilinks]] found — every note must link to at least one other note (vault convention)")
 
     except Exception as e:
-        log(f"validation error for {file_path}: {type(e).__name__}: {e}")
         sys.exit(0)
 
     if warnings:
@@ -88,8 +82,4 @@ def main():
     sys.exit(0)
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        print(f"[validate-write] unhandled: {type(e).__name__}: {e}", file=sys.stderr)
-        sys.exit(0)
+    main()
