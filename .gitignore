@@ -1,12 +1,15 @@
-# Obsidian (runtime state, not vault config)
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/plugins/*/data.json
-.obsidian/graph.json
+# Obsidian
+.obsidian/
+
+# IDE
+.idea/
 
 # OS
 .DS_Store
 .Trash/
+
+# Python
+__pycache__/
 
 # Claude Code (local settings are personal)
 .claude/settings.local.json

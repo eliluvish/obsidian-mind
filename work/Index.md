@@ -15,7 +15,11 @@ Central map of content. All work notes and decisions link back here. For quick n
 
 Each project has its own folder in `work/projects/` with a README, decisions, and work notes.
 
--
+- [[RC Services (Eris)|rcservices]] — Software reselling and pass-through billing for the research hospital community
+- [[iLog]] — DEA controlled substances compliance, inventory, logbooks, Form 41 generation
+- [[PCMS]] — Research Core Management System, core facility billing and operations
+- [[CADE]] — Center for Academic Development and Enrichment (lab_archives repo, CADE label)
+- [[Minor Intake Form|minr]] — Minor campus access requests with approval workflow (lab_archives repo, Minor intake form label)
 
 ## Decisions Log
 
