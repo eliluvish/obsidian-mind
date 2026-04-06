@@ -47,13 +47,15 @@ Individual notes in `org/people/`:
 ### Research Computing
 - [[Michael Oates]] — Director
 - [[Alissa Scharf]] — Manager, Research Computing Core
+- [[Michael Rogal]] — Senior Project Specialist
 - [[Laura Brown]] — Analyst
 
 ### Research Informatics Core (Eli's Team)
 - [[Daniel Guettler]] — Manager (Eli's direct manager, reports to [[Lynn Simpson]])
 
-### MGB Digital
-- [[Lynn Simpson]] — Director Research Applications (skip-level)
+### Digital Research Applications (MGB Digital)
+- [[Lynn Simpson]] — Director (skip-level)
+- [[Svetlana Rojevsky]] — Senior Applications Analyst
 - [[Chris Mow]] — Systems Engineer (storage billing pipeline handoff)
 
 ### [[Digital Cloud Engineering]] (MGB Digital)

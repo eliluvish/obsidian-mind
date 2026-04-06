@@ -17,10 +17,8 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- **HIGH PRIORITY**: [[Prawn UTF-8 Encoding Bug in Invoice PDFs|PCMS #2271]] — Prawn encoding crash silently breaking invoice PDF generation
-- **HIGH PRIORITY**: [[Minor Intake Form|minr]] updates — expand to all MGB hospitals, form updates (#1162–#1166)
-- AzureVm importer
-- iLog accountability logbook
+- [[AzureVM Import via Azure Export API|RCservices #1913]] — code complete, blocked on meter category filtering decision from Rakesh/Ed Austin
+- iLog accountability logbook issues
 
 ## Goals
 
@@ -36,6 +34,7 @@ _What am I working toward right now?_
 ### Long-term (This Year+)
 
 - Create a better autonomous workflow as a solo Ruby on Rails developer
+- PCMS: do cached charges work?
 
 ## Aspirations
 

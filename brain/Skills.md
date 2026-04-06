@@ -17,7 +17,8 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 |---------|---------|
 | `/standup` | Morning kickoff — load context, review yesterday, surface tasks, identify priorities |
 | `/dump` | Freeform capture — dump anything, gets routed to the right notes automatically |
-| `/wrap-up` | Full session review — verify notes, indexes, links, suggest improvements. Auto-triggered on "wrap up". |
+| `/wrap-up` | Full session review — verify notes, indexes, links, suggest improvements. Auto-triggered on "wrap up". Offers to record time via `/recording-time`. |
+| `/recording-time` | Record work hours to RCMS calendar API — parse project, date, times, description, submit entries |
 
 ### Editing & Synthesis
 

@@ -9,12 +9,12 @@ tags:
 
 ## Role & Team
 
-- **Title**: Director Research Applications
-- **Department**: MGB Digital
+- **Title**: Director, Digital Research Applications
+- **Department**: Digital Research Applications
 
 ## Relationship
 
-Stakeholder on [[Research Participant Remuneration|rpr]]. Eli's boss's boss (skip-level).
+Stakeholder on [[Research Participant Remuneration|rpr]] and FreezerPro integration for [[RC Services (Eris)|rcservices]]. Eli's boss's boss (skip-level). Manages [[Svetlana Rojevsky]].
 
 ## Key Moments
 

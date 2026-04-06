@@ -1,6 +1,7 @@
 ---
 date: "2026-04-05"
-description: "HIGH PRIORITY — Prawn IncompatibleStringEncoding crash on invoice PDF generation, needs external fonts for UTF-8 — GitHub #2271"
+description: "RESOLVED — Prawn IncompatibleStringEncoding crash on invoice PDF generation, switched to external fonts for UTF-8 — GitHub #2271"
+status: completed
 project: "pcms"
 github_issue: 2271
 tags:

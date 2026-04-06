@@ -67,7 +67,11 @@ Based on how the session went:
 - Are there Bases that should be created or updated?
 - Any frontmatter properties that would help future queries?
 
-### 8. Report
+### 8. Offer to Record Time
+
+Review the session's completed work across all projects — issues closed, PRs merged, notes written, decisions made, meetings captured — and offer to record time entries via the `recording-time` skill. Present a proposed breakdown by project with descriptions and let the user confirm or adjust before submitting.
+
+### 9. Report
 
 Present a concise summary:
 - **Done**: what was captured this session
