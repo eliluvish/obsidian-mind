@@ -27,6 +27,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, meeting 2026-04-14 re: API access and billing handoff
 - [[AzureVM Import via Azure Export API]] — rcservices #1913, code complete, blocked on meter category filtering
 - [[FreezerPro RedCap Integration]] — rcservices PR #1854, on hold pending REDCap schema
 

@@ -69,7 +69,7 @@ Based on how the session went:
 
 ### 8. Offer to Record Time
 
-Review the session's completed work across all projects — issues closed, PRs merged, notes written, decisions made, meetings captured — and offer to record time entries via the `recording-time` skill. Present a proposed breakdown by project with descriptions and let the user confirm or adjust before submitting.
+Review the session's completed work across all projects — issues closed, PRs merged, notes written, decisions made, meetings captured — and offer to record time entries. Use the `/time-entry-writing` skill to generate administrator-friendly descriptions from the session's git activity and conversation context, then present the proposed entries via the `recording-time` skill for confirmation and submission.
 
 ### 9. Report
 

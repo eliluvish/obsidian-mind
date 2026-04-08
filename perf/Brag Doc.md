@@ -11,7 +11,7 @@ A running log of impact, wins, and growth. Each entry links to the work note or 
 
 ## Shipped
 
--
+- **2026-04-07**: Merged DEA Form 41 PDF generation (iLog PR #637) — pdftk-based form filling, destruction event workflow. Also fixed AU inventory bug (#667) and addressed code review items (#679). [[Destruction Workflow and DEA Form 41 Process]]
 
 ## Technical Growth
 

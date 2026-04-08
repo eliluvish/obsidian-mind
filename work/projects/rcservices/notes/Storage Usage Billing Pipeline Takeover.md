@@ -33,8 +33,9 @@ No movement since November 2025. Last communication was between Richard Kenny (r
 ## Key People
 
 - [[Chris Mow]] — current owner, handing off to Eli
-- Richard Kenny (rkenny@mgb.org) — implemented the backup cron job
+- [[Richard Kenny]] (rkenny@mgb.org) — implemented the backup cron job
 - [[Alissa Scharf]] — CC'd on the thread
+- [[RFA Billing Takeover and Powerscale Migration]] — related RFA billing handoff
 - Edmund Ng (edng@mgb.org) — CC'd on the thread
 
 ## Open Questions

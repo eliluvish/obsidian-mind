@@ -53,6 +53,9 @@ Individual notes in `org/people/`:
 ### Research Informatics Core (Eli's Team)
 - [[Daniel Guettler]] — Manager (Eli's direct manager, reports to [[Lynn Simpson]])
 
+### Digital Scientific Apps
+- [[Richard Kenny]] — Senior Systems Engineer (storage billing, Powerscale/RFA migration)
+
 ### Digital Research Applications (MGB Digital)
 - [[Lynn Simpson]] — Director (skip-level)
 - [[Svetlana Rojevsky]] — Senior Applications Analyst
