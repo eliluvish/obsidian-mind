@@ -23,3 +23,4 @@ Works with Eli on storage and billing infrastructure for [[RC Services (Eris)|rc
 - [[Storage Usage Billing Pipeline Takeover]]
 - [[RFA Billing Takeover and Powerscale Migration]]
 - [[Chris Mow]]
+- [[People & Context]]

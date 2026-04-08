@@ -24,3 +24,7 @@ Eli's direct manager. Fellow developer on [[PCMS]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

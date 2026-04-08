@@ -17,7 +17,7 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- [[AzureVM Import via Azure Export API|RCservices #1913]] — code complete, blocked on meter category filtering decision from Rakesh/Ed Austin
+- [[AzureVM Import via Azure Export API|RCservices #1913]] — code complete, unblocked — meter category exclusions confirmed by Rakesh (2026-04-08), ready to implement filtering and merge
 - iLog accountability logbook issues
 
 ## Goals

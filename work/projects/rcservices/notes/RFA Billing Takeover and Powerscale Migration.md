@@ -31,6 +31,7 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 ## Action Items
 
 - [ ] Attend meeting 2026-04-14
+- [ ] Determine RFA billing requirements with [[Alissa Scharf]] (see [[RFA ServiceNow Provisioning Pipeline]])
 
 ## Related
 
@@ -40,3 +41,6 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - [[Chris Mow]]
 - [[Michael Oates]]
 - [[Richard Kenny]]
+- [[Nicholas Yale]]
+- [[Peter Gray]]
+- [[RFA ServiceNow Provisioning Pipeline]]

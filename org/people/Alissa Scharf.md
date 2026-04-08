@@ -24,3 +24,7 @@ Stakeholder on [[RC Services (Eris)|rcservices]]. Manages [[Laura Brown]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

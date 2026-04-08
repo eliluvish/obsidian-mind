@@ -24,3 +24,7 @@ Executive Assistant to [[Martha Jones]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

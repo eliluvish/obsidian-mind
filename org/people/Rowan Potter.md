@@ -23,3 +23,7 @@ Stakeholder on [[CADE]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

@@ -27,8 +27,12 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[Secondary Container Expiration Rules]] — ilog, SOP-based expiration rules for secondary containers in accountability logbook
+- [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
+- [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
+- [[RFA ServiceNow Provisioning Pipeline]] — rcservices, SN pipeline for RFA service, pending billing requirements from Alissa
 - [[RFA Billing Takeover and Powerscale Migration]] — rcservices, meeting 2026-04-14 re: API access and billing handoff
-- [[AzureVM Import via Azure Export API]] — rcservices #1913, code complete, blocked on meter category filtering
+- [[AzureVM Import via Azure Export API]] — rcservices #1913, code complete, unblocked — meter categories confirmed
 - [[FreezerPro RedCap Integration]] — rcservices PR #1854, on hold pending REDCap schema
 
 ## Decisions Log

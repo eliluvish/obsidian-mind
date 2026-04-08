@@ -23,3 +23,7 @@ Stakeholder on [[iLog]], [[Minor Intake Form|minr]], [[BioLift|biolift]], and [[
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

@@ -26,3 +26,7 @@ Stakeholder on [[BioLift|biolift]] and [[iLog]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

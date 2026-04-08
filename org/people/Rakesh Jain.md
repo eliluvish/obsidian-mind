@@ -24,3 +24,7 @@ Leads [[Digital Cloud Engineering]] through [[Henry Ed Austin]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

@@ -38,6 +38,14 @@ Individual notes in `org/people/`:
 - [[Karan Patel]] — Director of Administration
 - [[Rowan Potter]] — Senior Data Analyst
 
+### Insight
+- [[David Gerrard]] — Manager
+- [[Kathleen McGroggan]] — Business Analyst
+- [[Andrew Plummer]] — Business Analyst
+
+### Management & Research Finance
+- [[Andrew Chase]] — Vice President (sponsor for CADE Insight data request)
+
 ### Core Facility Finance
 - [[Andy Chitty]] — Director
 - [[Tera Morse]] — Finance Specialist
@@ -55,6 +63,11 @@ Individual notes in `org/people/`:
 
 ### Digital Scientific Apps
 - [[Richard Kenny]] — Senior Systems Engineer (storage billing, Powerscale/RFA migration)
+
+### Digital Research Operations
+- [[Nicholas Yale]] — Manager of User Services (reports to [[Michael Oates]])
+- [[Peter Gray]] — ServiceNow developer (reports to Megan Horne, Director)
+- [[Thomas McShane]] — Systems Engineer II, Digital RPDR Ops
 
 ### Digital Research Applications (MGB Digital)
 - [[Lynn Simpson]] — Director (skip-level)

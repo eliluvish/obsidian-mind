@@ -24,3 +24,7 @@ Stakeholder on [[Research Participant Remuneration|rpr]].
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]

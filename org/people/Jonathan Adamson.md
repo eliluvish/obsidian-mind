@@ -24,3 +24,7 @@ tags:
 ## Notes
 
 -
+
+## Related
+
+- [[People & Context]]
