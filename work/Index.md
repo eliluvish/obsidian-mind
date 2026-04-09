@@ -27,6 +27,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[ARC Group iLog Demo]] — ilog, grapevine intel that Kele is demoing at ARC 2026-04-30, unconfirmed, Eli needs to reach out
 - [[2026-04-09 Meeting — pcms]] — pcms weekly sync, Insight/Workday scoping accepted, general upload behavior confirmed
 - [[General Upload Template Service Request Sync]] — pcms, uploads will mutate service requests, percentage-based split funding, retraining needed
 - [[Secondary Container Expiration Rules]] — ilog, SOP-based expiration rules for secondary containers in accountability logbook

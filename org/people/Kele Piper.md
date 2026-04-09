@@ -18,11 +18,11 @@ Stakeholder on [[iLog]], [[Minor Intake Form|minr]], and [[BioLift|biolift]].
 
 ## Key Moments
 
--
+- **2026-04-30** (unconfirmed) — Reportedly demoing updated [[iLog]] system at the ARC (Animal Research Community Group) presentation. Eli heard via grapevine, not from Kele directly. See [[ARC Group iLog Demo]].
 
 ## Notes
 
--
+- Does not always loop Eli in on iLog-related events or announcements — Eli has learned about at least one planned demo (ARC 2026-04-30) via the grapevine rather than directly. Proactively confirm plans with Kele rather than waiting to be told.
 
 ## Related
 

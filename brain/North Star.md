@@ -18,6 +18,7 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 _What am I working toward right now?_
 
 - [[AzureVM Import via Azure Export API|RCservices #1913]] — code complete, unblocked — meter category exclusions confirmed by Rakesh (2026-04-08), ready to implement filtering and merge
+- **[[ARC Group iLog Demo|iLog ARC demo 2026-04-30]]** — Kele demoing updated iLog at ARC (grapevine intel, unconfirmed — not surfacing with Kele). Soft deadline for in-flight iLog work. Prep quietly and be ready.
 - iLog accountability logbook issues
 
 ## Goals
@@ -56,3 +57,4 @@ Record when focus changes, with date and reason.
 |------|-------|--------|
 |      | Created North Star | Initial setup |
 | 2026-04-05 | Initial vault population | Scaffolded 4 new projects (rpr, biolift, people, ris), 25 people, 1 team, 10 work notes across 7 projects. Added PCMS #2271 and minr updates as high priority. |
+| 2026-04-09 | Added ARC iLog demo to Current Focus | Grapevine intel that [[Kele Piper]] is demoing iLog at ARC on 2026-04-30. Unconfirmed; tracking quietly. Creates a soft deadline for in-flight iLog features. |
