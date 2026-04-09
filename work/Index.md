@@ -27,6 +27,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[2026-04-09 Meeting — pcms]] — pcms weekly sync, Insight/Workday scoping accepted, general upload behavior confirmed
+- [[General Upload Template Service Request Sync]] — pcms, uploads will mutate service requests, percentage-based split funding, retraining needed
 - [[Secondary Container Expiration Rules]] — ilog, SOP-based expiration rules for secondary containers in accountability logbook
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
@@ -41,6 +43,7 @@ Cross-project decisions. Project-specific ADRs live in each project's `decisions
 
 | Date | Decision | Project | Status | Link |
 |------|----------|---------|--------|------|
+| 2026-04-09 | Insight vs Workday data source scoping | pcms | accepted | [[001-Insight vs Workday Data Source Scoping]] |
 | 2026-04-06 | FreezerPro REDCap integration model | rcservices | accepted | [[001-FreezerPro REDCap Integration Model]] |
 
 ## Open Questions

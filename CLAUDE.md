@@ -26,6 +26,7 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `/weekly` | Weekly synthesis -- cross-project patterns, North Star alignment, uncaptured wins |
 | `/project-status` | Scan a project folder, summarize active work and open decisions, flag stale items |
 | `/context-switch` | Reload context for a project -- README, recent notes, open decisions, rapid re-entry |
+| `/meeting-prep` | Prep for a recurring client meeting -- shipped work, open issues, stale PRs, unresolved questions |
 | `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
 | `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
 | `/deploy-checklist` | Pull up deploy runbook for a project, walk through pre/post-deploy checks |

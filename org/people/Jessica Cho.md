@@ -1,6 +1,7 @@
 ---
 date: "2026-04-05"
 description: "Finance Specialist supporting research cores — stakeholder on pcms"
+github_handle: jcho11mgborg
 tags:
   - person
 ---

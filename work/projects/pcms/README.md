@@ -5,6 +5,19 @@ project: pcms
 status: active
 rails_version: "7.2"
 ruby_version: "3.4.4"
+meetings:
+  - name: "PCMS Weekly Sync"
+    cadence: weekly
+    day: thursday
+    attendees:
+      - name: Jessica Cho
+        frequency: always
+      - name: Tera Morse
+        frequency: always
+      - name: Daniel Guettler
+        frequency: always
+      - name: Yovani Edwards
+        frequency: sometimes
 tags:
   - project
 ---

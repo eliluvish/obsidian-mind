@@ -27,6 +27,8 @@ Getting these requires direct Workday API access.
 
 This aligns with the [[Proposed Feature Prioritization from Finance|PCMS Insight Integration]] effort — [[Daniel Guettler]] flagged Workday API access as the biggest challenge there too. May be able to share the access request.
 
+**Update 2026-04-09**: PCMS scoped its Insight Integration in [[001-Insight vs Workday Data Source Scoping]]. PCMS's Workday need is now optional (internal funding backfill only) — CADE's three-field ask is still the stronger case for pushing the access request forward.
+
 ## Related
 
 - [[CADE]]

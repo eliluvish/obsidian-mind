@@ -32,6 +32,8 @@ tags:
 ## Related
 
 - [[PCMS]]
+- [[001-Insight vs Workday Data Source Scoping]] — the Insight Integration line item was split 2026-04-09 into Insight (expenses/revenue) and Workday (optional internal funding)
+- [[General Upload Template Service Request Sync]] — related behavior decisions for the upload template
 - [[Jessica Cho]]
 - [[Daniel Guettler]]
 - [[Andy Chitty]]

@@ -1,6 +1,7 @@
 ---
 date: "2026-04-05"
 description: "Eli's direct manager and fellow developer on PCMS"
+github_handle: dguettler
 tags:
   - person
 ---
