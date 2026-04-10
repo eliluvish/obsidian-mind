@@ -33,6 +33,8 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 | Command | Purpose |
 |---------|---------|
 | `/context-switch` | Reload context for a project — README, recent notes, open decisions. Key command for multi-project work. |
+| `/meeting-prep` | Prep for a recurring client meeting — gather shipped work, open issues, stale PRs, unresolved questions, create a pre-filled meeting note |
+| `/meeting-recap` | Capture a meeting transcript — parse speakers, decisions, action items into a meeting note with optional ADR/work note extraction |
 | `/project-status` | Deep status check on a single project — notes, decisions, stale items, GitHub issues |
 | `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
 | `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
@@ -59,6 +61,8 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 - `/weekly-review` is the lighter version — focused on per-project status and updating Index.md.
 
 **Project Management:**
+- `/meeting-prep` prepares for recurring client meetings. Projects define `meetings:` in their README frontmatter with attendee names and frequency. Person notes carry `github_handle` for GitHub queries. Currently configured for PCMS Weekly Sync.
+- `/meeting-recap` is the companion — paste a transcript after the meeting and it produces a structured meeting note. If `/meeting-prep` already created a note for today, `/meeting-recap` merges into it instead of duplicating. Offers to promote significant decisions into ADRs and new topics into work notes.
 - `/context-switch` is the most important command for multi-project work. Run it before starting work on a different project.
 - `/issue-capture` only creates notes for significant issues — bug investigations, architectural decisions, not routine fixes.
 - `/decision` auto-numbers ADRs within each project's `decisions/` folder.
