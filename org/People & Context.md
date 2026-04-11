@@ -33,6 +33,9 @@ Individual notes in `org/people/`:
 - [[Mirabella Daguerre]] — Research Integrity Program Manager
 - [[Kathryn Holthaus]] — Director of Lab Safety & Research Subject Protection, BWH
 
+### Martinos Center (Radiology)
+- [[Stacey Ladieu]] — Project Manager, Athinoula A. Martinos Center for Biomedical Imaging
+
 ### CADE
 - [[Matthew Crowson]] — Director
 - [[Karan Patel]] — Director of Administration

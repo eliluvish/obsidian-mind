@@ -32,7 +32,7 @@ Aggregates employee information from various data sources to make deductions.
 
 ## Stakeholders
 
-None currently.
+- [[Stacey Ladieu]] — Project Manager, Martinos Center (badge swipe access logs)
 
 ## Compliance Notes
 

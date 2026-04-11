@@ -3,7 +3,7 @@ date: "2026-04-06"
 description: "Automate AzureVM usage import via Azure Export API — build import, send sample CSV to stakeholders for review"
 project: "rcservices"
 github_issue: 1913
-status: active
+status: completed
 tags:
   - work-note
 ---
@@ -16,7 +16,7 @@ Automating the import of AzureVM usage data into [[RC Services (Eris)|rcservices
 
 ## Status
 
-Code complete. **Unblocked as of 2026-04-08** — Rakesh confirmed meter category exclusions. Ready to implement filtering and merge.
+**Completed 2026-04-10.** Meter category filtering implemented and merged.
 
 ## Meter Category Exclusions (2026-04-08)
 

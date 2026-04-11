@@ -17,7 +17,6 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- [[AzureVM Import via Azure Export API|RCservices #1913]] — code complete, unblocked — meter category exclusions confirmed by Rakesh (2026-04-08), ready to implement filtering and merge
 - **[[ARC Group iLog Demo|iLog ARC demo 2026-04-30]]** — Kele demoing updated iLog at ARC (grapevine intel, unconfirmed — not surfacing with Kele). Soft deadline for in-flight iLog work. Prep quietly and be ready.
 - iLog accountability logbook issues
 
