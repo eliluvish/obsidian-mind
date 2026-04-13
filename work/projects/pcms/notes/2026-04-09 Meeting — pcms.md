@@ -86,7 +86,7 @@ From [[External Fund PI Field Issues]] (#2273, only partially fixed):
 - [ ] [[Daniel Guettler]] files the column request with the Insight team
 - [ ] Eli compares Savient → Insight output against Workday to quantify the missing-fund gap
 - [ ] Eli: revisit Workday internal-funding pull once the comparison is done
-- [ ] Resolve open UX questions on [[External Fund PI Field Issues]] (#2273) — bring back next week
+- [x] Resolve open UX questions on [[External Fund PI Field Issues]] (#2273) — resolved 2026-04-10
 - [ ] Ask Finance about testing help for stale PR #2234
 - [ ] Decide whether future focus groups are recorded or scribed
 

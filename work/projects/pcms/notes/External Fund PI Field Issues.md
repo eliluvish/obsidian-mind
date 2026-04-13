@@ -1,13 +1,18 @@
 ---
 date: "2026-04-05"
-description: "External fund PI field is locked after creation, unclear input format, missing PI on some funds — GitHub #2273"
+description: "RESOLVED — External fund PI field UX fixes shipped: unlock/edit, input format, missing PI backfill — GitHub #2273"
 project: "pcms"
 github_issue: 2273
+status: completed
 tags:
   - work-note
 ---
 
 # External Fund PI Field Issues
+
+## Status
+
+**Completed 2026-04-10.**
 
 ## Context
 
