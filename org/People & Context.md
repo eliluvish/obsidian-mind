@@ -67,6 +67,9 @@ Individual notes in `org/people/`:
 ### Digital Scientific Apps
 - [[Richard Kenny]] — Senior Systems Engineer (storage billing, Powerscale/RFA migration)
 
+### Digital Storage Operations
+- [[Naresh Mallidi]] — Contractor (Powerscale admin, API access for RFA billing)
+
 ### Digital Research Operations
 - [[Nicholas Yale]] — Manager of User Services (reports to [[Michael Oates]])
 - [[Peter Gray]] — ServiceNow developer (reports to Megan Horne, Director)
