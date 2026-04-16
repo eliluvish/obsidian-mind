@@ -1,6 +1,6 @@
 ---
 date: "2026-04-09"
-description: "Grapevine intel — Kele Piper reportedly demoing iLog at ARC (Animal Research Community Group) on 2026-04-30. Unconfirmed by Kele directly. Eli needs to reach out."
+description: "Grapevine intel — Kele Piper reportedly demoing iLog at ARC (Animal Research Community Group) on 2026-04-30. Unconfirmed. Tracking quietly, prepping in the background."
 project: ilog
 status: active
 event_date: "2026-04-30"

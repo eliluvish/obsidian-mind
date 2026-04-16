@@ -28,15 +28,15 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 ## Recent Notes
 
 - [[Radiology Badge Swipe Population Fix]] — people #1180, Access Logs showing 23 instead of 400+ for Radiology/Martinos, department mapping fix needed
-- [[ARC Group iLog Demo]] — ilog, grapevine intel that Kele is demoing at ARC 2026-04-30, unconfirmed, Eli needs to reach out
+- [[ARC Group iLog Demo]] — ilog, grapevine intel that Kele is demoing at ARC 2026-04-30, unconfirmed, tracking quietly
 - [[2026-04-09 Meeting — pcms]] — pcms weekly sync, Insight/Workday scoping accepted, general upload behavior confirmed
 - [[General Upload Template Service Request Sync]] — pcms, uploads will mutate service requests, percentage-based split funding, retraining needed
 - [[Secondary Container Expiration Rules]] — ilog, SOP-based expiration rules for secondary containers in accountability logbook
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
-- [[RFA ServiceNow Provisioning Pipeline]] — rcservices, SN pipeline for RFA service, pending billing requirements from Alissa
-- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, meeting 2026-04-14 re: API access and billing handoff
-- [[AzureVM Import via Azure Export API]] — rcservices #1913, code complete, unblocked — meter categories confirmed
+- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, Powerscale outstanding — API approach confirmed 2026-04-14, billing handoff in progress
+- [[RFA ServiceNow Provisioning Pipeline]] — rcservices, ✅ complete, live in production 2026-04-16
+- [[AzureVM Import via Azure Export API]] — rcservices #1913, ✅ complete, live in production 2026-04-10
 - [[FreezerPro RedCap Integration]] — rcservices PR #1854, on hold pending REDCap schema
 
 ## Decisions Log

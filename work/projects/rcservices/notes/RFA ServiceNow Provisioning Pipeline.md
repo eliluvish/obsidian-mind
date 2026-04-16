@@ -1,8 +1,8 @@
 ---
 date: "2026-04-07"
-description: "ServiceNow provisioning pipeline for RFA service — Nick Yale and Peter Gray requesting staging setup, pending billing requirements from Alissa"
+description: "ServiceNow provisioning pipeline for RFA service — completed and live in production 2026-04-16, enables automated RFA subscription provisioning"
 project: "rcservices"
-status: active
+status: completed
 tags:
   - work-note
 ---
@@ -29,12 +29,16 @@ Before adding the service to staging, Eli emailed [[Alissa Scharf]] to:
 - Peter needs: RC Services API details for the new RFA subscription
 - Open question: does RFA billing require a custom API or can it use the existing subscription API?
 
-## Action Items
+## Status
 
-- [ ] Get billing requirements from [[Alissa Scharf]]
-- [ ] Determine if RFA needs a new API or can reuse existing
-- [ ] Provide API details to [[Peter Gray]] once requirements are clear
-- [ ] Add RFA service to RCS staging
+**Completed 2026-04-16. Live in production.**
+
+## Action Items (Resolved)
+
+- [x] Get billing requirements from [[Alissa Scharf]]
+- [x] Determine if RFA needs a new API or can reuse existing
+- [x] Provide API details to [[Peter Gray]] once requirements are clear
+- [x] Add RFA service to RCS staging
 
 ## Related
 
