@@ -48,3 +48,7 @@ Tracks and manages remuneration (payments) to research study participants. Conta
 ## Related
 
 - [[work/Index|Work Index]]
+
+## Active Notes
+
+- [[Order Limit Raised to 1500 Deploy Hold]] — PRs #190/#191, production deploy held until 2026-04-24

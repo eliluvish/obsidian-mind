@@ -27,6 +27,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[Order Limit Raised to 1500 Deploy Hold]] — rpr PR #190, order cap raised to $1500, merged to master, **production deploy held until 2026-04-24** per Gala
 - [[Radiology Badge Swipe Population Fix]] — people #1180, Access Logs showing 23 instead of 400+ for Radiology/Martinos, department mapping fix needed
 - [[ARC Group iLog Demo]] — ilog, grapevine intel that Kele is demoing at ARC 2026-04-30, unconfirmed, tracking quietly
 - [[2026-04-09 Meeting — pcms]] — pcms weekly sync, Insight/Workday scoping accepted, general upload behavior confirmed

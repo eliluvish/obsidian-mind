@@ -20,6 +20,8 @@ Scan the conversation for:
 - Brag doc entries added
 - Brain notes updated (Patterns, Gotchas, Key Decisions, Memories)
 - Project READMEs updated
+- PRs merged today completed today across all projects
+- Github issues completed today across all projects
 
 ### 2. Verify Note Quality
 

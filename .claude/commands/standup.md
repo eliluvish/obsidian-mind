@@ -12,6 +12,8 @@ Run the morning standup:
 6. List open tasks: `obsidian tasks daily todo`
 7. Check recent git activity: `git log --oneline --since="24 hours ago" --no-merges`
 8. Check for any unlinked notes or inbox items needing processing
+9. Check open pull requests across all projects
+10. Check issues created in the last 36 hours
 
 Present a structured standup summary:
 - **Yesterday**: What got done (from git log and daily note)

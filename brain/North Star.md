@@ -18,6 +18,7 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 _What am I working toward right now?_
 
 - **[[ARC Group iLog Demo|iLog ARC demo 2026-04-30]]** — Kele demoing updated iLog at ARC (grapevine intel, unconfirmed — not surfacing with Kele). Soft deadline for in-flight iLog work. Prep quietly and be ready.
+- **[[Order Limit Raised to 1500 Deploy Hold|rpr deploy hold until 2026-04-24]]** — $1500 order cap merged to master; production ship blocked until Gala informs the community.
 - iLog accountability logbook issues
 
 ## Goals
@@ -57,3 +58,4 @@ Record when focus changes, with date and reason.
 |      | Created North Star | Initial setup |
 | 2026-04-05 | Initial vault population | Scaffolded 4 new projects (rpr, biolift, people, ris), 25 people, 1 team, 10 work notes across 7 projects. Added PCMS #2271 and minr updates as high priority. |
 | 2026-04-09 | Added ARC iLog demo to Current Focus | Grapevine intel that [[Kele Piper]] is demoing iLog at ARC on 2026-04-30. Unconfirmed; tracking quietly. Creates a soft deadline for in-flight iLog features. |
+| 2026-04-17 | Added rpr deploy hold to Current Focus | rpr PR #190 ($1500 order cap) merged to master but production deploy held until 2026-04-24 per [[Gala Laffey]]. Remove once deployed. |
