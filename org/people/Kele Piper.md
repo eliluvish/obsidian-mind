@@ -18,6 +18,7 @@ Stakeholder on [[iLog]], [[Minor Intake Form|minr]], and [[BioLift|biolift]].
 
 ## Key Moments
 
+- **2026-04-21** — Approved via email that iLog secondary containers can be disassociated from their primary containers. See [[001-Secondary Container Disassociation from Primary]].
 - **2026-04-30** (unconfirmed) — Reportedly demoing updated [[iLog]] system at the ARC (Animal Research Community Group) presentation. Eli heard via grapevine, not from Kele directly. See [[ARC Group iLog Demo]].
 
 ## Notes

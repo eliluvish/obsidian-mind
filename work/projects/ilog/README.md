@@ -38,5 +38,16 @@ DEA-regulated application. Handles controlled substance inventory and accountabi
 
 ## Architecture Notes
 
+## Active Notes
+
+- [[ARC Group iLog Demo]] — 2026-04-30 (unconfirmed, grapevine)
+- [[Registration Onboarding Workflow Redesign]] — mock-up on hold
+- [[Authorized User Log Rules and Training Changes]]
+- [[Destruction Workflow and DEA Form 41 Process]]
+
+## Decisions
+
+- [[001-Secondary Container Disassociation from Primary]] — 2026-04-21, Kele approved; DEA reporting cost noted
+
 ## Related
 - [[Index]]
