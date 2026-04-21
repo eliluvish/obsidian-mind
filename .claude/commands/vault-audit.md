@@ -41,7 +41,6 @@ Read and verify each index file:
 - `work/Index.md` — are active projects listed? Are archived projects in the right section? Any missing notes?
 - `brain/Memories.md` — any stale claims?
 - `org/People & Context.md` — are roles and contacts current?
-- `perf/Brag Doc.md` — do entries match reality?
 - `brain/Skills.md` — are all slash commands registered? Workflows still valid?
 
 ### 3. Check Frontmatter Completeness

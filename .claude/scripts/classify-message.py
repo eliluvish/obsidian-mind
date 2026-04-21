@@ -36,27 +36,6 @@ SIGNALS = [
         ],
     },
     {
-        "name": "WIN",
-        "message": "WIN detected — consider adding to perf/Brag Doc.md with a link to the work note",
-        "patterns": [
-            # Delivery — English (shared with PROJECT UPDATE)
-            "shipped", "shipping", "ships",
-            "launched", "launching", "launches",
-            "completed", "completing", "completes",
-            "released", "releasing", "releases",
-            "deployed", "deploying", "deploys",
-            # Achievement — English
-            "achieved", "achieving", "won", "promoted", "praised", "win",
-            "kudos", "shoutout", "great feedback", "recognized",
-            # Japanese
-            "出荷した", "リリースした", "達成した", "褒められた",
-            # Korean
-            "배포했어", "출시했어", "달성했어", "칭찬받았어",
-            # Chinese
-            "发布了", "上线了", "完成了", "表扬", "认可",
-        ],
-    },
-    {
         "name": "ARCHITECTURE",
         "message": "ARCHITECTURE discussion — consider creating a reference note in reference/ or a decision record",
         "patterns": [
@@ -89,7 +68,7 @@ SIGNALS = [
     },
     {
         "name": "PROJECT UPDATE",
-        "message": "PROJECT UPDATE detected — consider updating the work note in work/projects/<name>/notes/ and checking if wins should go to brag doc",
+        "message": "PROJECT UPDATE detected — consider updating the work note in work/projects/<name>/notes/",
         "patterns": [
             # English
             "project update", "sprint", "milestone",

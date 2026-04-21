@@ -14,11 +14,11 @@ You are the vault librarian for an obsidian-mind vault. Run a full health check 
 
 ## Checks to Run
 
-1. **Orphan Detection**: Run `obsidian orphans` (or `grep -rL '\[\[' work/ org/ perf/ brain/ reference/` as fallback). List notes with zero incoming links. For each, suggest which existing notes should link to them.
+1. **Orphan Detection**: Run `obsidian orphans` (or `grep -rL '\[\[' work/ org/ brain/ reference/` as fallback). List notes with zero incoming links. For each, suggest which existing notes should link to them.
 
 2. **Broken Wikilinks**: Run `obsidian unresolved` (or grep for `\[\[.*\]\]` patterns and check if targets exist). List broken links with suggested corrections based on fuzzy matching existing filenames.
 
-3. **Frontmatter Validation**: Glob all `.md` files in `work/`, `org/`, `perf/`, `brain/`, `reference/`. Check each has:
+3. **Frontmatter Validation**: Glob all `.md` files in `work/`, `org/`, `brain/`, `reference/`. Check each has:
    - `tags` (non-empty)
    - `date`
    - `description` (~150 chars)

@@ -34,11 +34,19 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - **Architecture decision**: query Powerscale API daily to capture point-in-time usage snapshots; store locally; aggregation approach TBD
 - Powerscale API only provides usage at a point in time (no historical rollup), so daily polling is required
 
+## API Access — 2026-04-21
+
+- Service account: **`cri6`** — set up by [[Naresh Mallidi]]
+- API client: **[isilon_sdk_python](https://github.com/Isilon/isilon_sdk_python)** (official Isilon Python SDK, in lieu of formal docs)
+- Parent issue: [eris#1918](https://github.com/csb-ric/eris/issues/1918) — Add powerscale importing (has sample CLI output)
+- Next step: scoped prerequisite issue to prove connection and pull a sample response before building the import
+
 ## Action Items
 
 - [x] Attend meeting 2026-04-14
-- [ ] Receive Powerscale API documentation from [[Naresh Mallidi]]
-- [ ] Decide on aggregation strategy once API docs arrive
+- [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
+- [ ] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921)
+- [ ] Decide on aggregation strategy once connection is proven
 - [ ] Determine RFA billing requirements with [[Alissa Scharf]] (see [[RFA ServiceNow Provisioning Pipeline]])
 
 ## Related

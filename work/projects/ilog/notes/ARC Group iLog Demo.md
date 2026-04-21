@@ -27,8 +27,9 @@ If true, this is a soft deadline on in-progress iLog workstreams — anything in
 
 - Confirmation that the demo is happening
 - **Which features** she plans to show — any of these could be in scope:
-  - [[Registration Onboarding Workflow Redesign]] — mock-up pending
-  - [[Secondary Container Expiration Rules]] — SOP-based rules, design stage
+  - [[Registration Onboarding Workflow Redesign]] — mock-up on hold
+  - [[Secondary Container Expiration Rules]] — ✅ shipped 2026-04-21
+  - [[001-Secondary Container Disassociation from Primary]] — ✅ shipped 2026-04-21
   - [[Authorized User Log Rules and Training Changes]]
   - [[Destruction Workflow and DEA Form 41 Process]]
 - Whether Eli should attend, support prep, or just stay out of the way

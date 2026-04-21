@@ -21,7 +21,6 @@ All project memories live in the vault (git-tracked). This file is a lightweight
 | Slash commands and skills | `brain/Skills.md` |
 | People and org context | `org/People & Context.md` |
 | Active work and projects | `work/Index.md` |
-| Performance evidence | `perf/Brag Doc.md` |
 
 ## Setup
 

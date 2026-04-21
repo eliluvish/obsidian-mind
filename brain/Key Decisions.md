@@ -10,6 +10,7 @@ Architectural or workflow decisions worth recalling. Link to the full [[Decision
 
 ## Accepted
 
+- **iLog secondary containers disassociated from primaries 2026-04-21** — [[Kele Piper]] approved allowing secondaries to exist without a primary link. Implemented. Known cost: DEA chain-of-custody reporting must reconstruct the relationship from history/audit records rather than a live association. See [[001-Secondary Container Disassociation from Primary]].
 - **PCMS Insight Integration scoped 2026-04-09** — Insight for expenses/revenue, Workday optional for internal funding backfill. Workday is source-of-truth in principle but Insight is the practical primary. Jessica sends columns to Daniel; Eli compares Savient→Insight against Workday to quantify gaps. See [[001-Insight vs Workday Data Source Scoping]].
 
 ## Pending

@@ -17,7 +17,6 @@ Triggered when the user says "wrap up", "let's wrap", "wrapping up", or similar.
 Scan the conversation for:
 - Notes created or modified (list them all with paths)
 - Indexes updated
-- Brag doc entries added
 - Brain notes updated (Patterns, Gotchas, Key Decisions, Memories)
 - Project READMEs updated
 - PRs merged today completed today across all projects
@@ -37,7 +36,6 @@ For each note created or modified this session:
 - `work/Index.md` — are new notes linked? Are completed projects in the right section?
 - `brain/Memories.md` — does it reflect what happened this session?
 - `org/People & Context.md` — any new people or relationship changes to capture?
-- `perf/Brag Doc.md` — any wins or achievements from this session?
 - `Home.md` — are embedded Bases still valid?
 
 ### 4. Check for Orphans

@@ -41,21 +41,14 @@ For each active project in `work/projects/`:
 - Any pending decisions?
 - Any compliance or deploy concerns flagged?
 
-### 5. Uncaptured Win Detection
-
-Check:
-- Were completed items logged in `perf/Brag Doc.md`?
-- Any significant bug fixes, feature deliveries, or firefighting not captured?
-- Any wins from git log that don't have corresponding work notes?
-
-### 6. Forward Look
+### 5. Forward Look
 
 - Blocked items or upcoming deadlines from active work notes
 - North Star goals that need attention next week
 - Suggested priority ordering for next week based on goals + momentum + gaps
 - Any projects that have been quiet and may need attention
 
-### 7. Present Synthesis
+### 6. Present Synthesis
 
 Structure the output as:
 
@@ -63,11 +56,9 @@ Structure the output as:
 - **North Star Check**: alignment status — what's on track, what drifted, what's silent
 - **Per Project**: compact status for each active project
 - **Patterns**: cross-project themes worth noting
-- **Uncaptured Wins**: anything that should be in the brag doc
 - **Next Week**: suggested priorities and attention areas
 
 After presenting, offer:
-- "Want me to add any of these wins to the brag doc?"
 - "Should I update North Star with any focus shifts?"
 - "Want me to update `work/Index.md`?"
 - "Want me to save this as `thinking/weekly-YYYY-MM-DD.md`?"

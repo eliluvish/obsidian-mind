@@ -61,7 +61,6 @@ Report the detected shape to the parent command so it can include it in the plan
 | File in folder named `archive/`, `completed/`, `done/` | Archived work | `work/archive/<project>/` |
 | File in folder named `projects/`, `active/`, `wip/` | Active work | `work/projects/<project>/notes/` |
 | File in folder named `decisions/`, `adrs/` | Decision | `work/projects/<project>/decisions/` |
-| File in folder named `brag/`, `wins/`, `achievements/` | Brag | Append to `perf/Brag Doc.md` |
 | File in folder named `reference/`, `docs/`, `architecture/` | Reference | `reference/` |
 | File in folder named `compliance/`, `hipaa/`, `irb/` | Compliance | `reference/compliance/` |
 | File in folder named `deploy/`, `ops/`, `runbooks/` | Operations | `reference/ops/` |
@@ -229,7 +228,6 @@ For each index file, read the source version (which has user curation — orderi
 - `work/Index.md`: verify project links, add missing ones grouped by status
 - `brain/Memories.md`: verify topic note links, add any new brain/ notes
 - `org/People & Context.md`: verify people and team links, add missing ones
-- `perf/Brag Doc.md`: verify brag entries have work note links
 
 ### Step 5: Write Migration Log
 

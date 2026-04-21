@@ -53,7 +53,6 @@ For the primary note:
 Search for the topic name (not just wikilinks) across:
 - `work/projects/` — project notes and decisions
 - `reference/` — compliance, ops, infrastructure notes
-- `perf/` — brag entries
 - `brain/` — memories, patterns, decisions, gotchas
 
 ### 5. Build Timeline

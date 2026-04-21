@@ -158,7 +158,7 @@ Migration complete.
   ✓ 52 files migrated
   ✓ 6 scaffold files replaced
   ✓ 2 custom commands merged
-  ✓ Indexes rebuilt (work/Index.md, People & Context, Brag Doc, Memories)
+  ✓ Indexes rebuilt (work/Index.md, People & Context, Memories)
   ✓ .obsidian/ config copied
 
   ⚠ 3 orphan notes (no inbound links) — run /vault-audit to fix

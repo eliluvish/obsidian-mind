@@ -47,7 +47,6 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `work/` | Work notes index | `Index.md` (detailed MOC) |
 | `work/projects/<name>/` | **One folder per active project** -- self-contained with README, decisions, notes | `README.md`, `decisions/`, `notes/` |
 | `work/archive/<name>/` | Completed project folders | Moved here via `/project-archive` |
-| `perf/` | Performance tracking | `Brag Doc.md` (flat running log) |
 | `brain/` | Claude's operational knowledge | `Memories.md`, `Key Decisions.md`, `Patterns.md`, `Gotchas.md`, `Skills.md`, `North Star.md` |
 | `org/` | Organizational knowledge index | `People & Context.md` (MOC) |
 | `org/people/` | Person notes -- PIs, IT contacts, collaborators | One note per person |
@@ -112,10 +111,9 @@ If `/wrap-up` is not invoked, at minimum do these before wrapping up:
 2. Update `work/Index.md` if new notes or decisions were created
 3. Update the relevant brain topic note (`brain/Key Decisions.md`, `brain/Patterns.md`, `brain/Gotchas.md`) with key learnings
 4. Update `org/People & Context.md` if org knowledge changed
-5. Update `perf/Brag Doc.md` if wins or impact were achieved
-6. Offer to update `brain/North Star.md` if goals shifted or new focus emerged
-7. Verify all new notes link to at least one existing note (orphans are bugs)
-8. Run `/vault-audit` if the session created many notes
+5. Offer to update `brain/North Star.md` if goals shifted or new focus emerged
+6. Verify all new notes link to at least one existing note (orphans are bugs)
+7. Run `/vault-audit` if the session created many notes
 
 Skip steps that don't apply. The goal is transferring durable knowledge from conversation to vault state.
 
@@ -139,7 +137,6 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
    - **Project decisions** -- `work/projects/<name>/decisions/`
    - **Project README** -- `work/projects/<name>/README.md`
    - **Completed projects** -- `work/archive/<name>/` (entire folder)
-   - **Performance / brag entries** -- `perf/Brag Doc.md` (append to running log)
    - **People** -- `org/people/`
    - **Teams** -- `org/teams/`
    - **Claude operational context** -- `brain/`
@@ -175,7 +172,7 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
 Note types have graph roles:
 - **Evidence nodes** (work notes, deploy notes): add outbound links to concepts they relate to
 - **Concept nodes** (patterns, compliance rules): stay definitional -- evidence arrives via backlinks
-- **Index nodes** (Index, Brag Doc, Memories, People & Context): actively curate links -- they're navigational
+- **Index nodes** (Index, Memories, People & Context): actively curate links -- they're navigational
 - **Person nodes** (org/people/): link to projects, teams. Receive backlinks from work notes.
 - **Project READMEs**: hub nodes -- link to all decisions, key notes, people, and reference material for that project
 
@@ -193,7 +190,6 @@ Link syntax:
 - **Work note -> Team**: in `## Related`, link to team(s) involved
 - **Work note -> Person**: link people involved (PIs, collaborators, IT contacts)
 - **Project README -> Reference**: link to relevant compliance, ops, or infrastructure notes
-- **Brag Doc -> Work note**: every entry links to evidence
 - **Memories -> Source**: every memory links to where it was learned
 - **Index -> Everything**: `work/Index.md` links to all project READMEs
 - **North Star -> Projects**: active focus areas link to project READMEs
@@ -206,7 +202,6 @@ Update these when creating or archiving notes:
 - **`brain/Memories.md`** -- index of memory topics. Add new memories to the relevant topic note, not here.
 - **`brain/Skills.md`** -- register vault-specific workflows and slash commands
 - **`org/People & Context.md`** -- update when people, teams, or org structure changes
-- **`perf/Brag Doc.md`** -- append wins with links to evidence (flat running log, no sub-notes)
 
 ### Decision Records
 
@@ -215,10 +210,6 @@ Update these when creating or archiving notes:
 3. Link from the project README
 4. Add to the Decisions Log table in `work/Index.md`
 5. If significant, note in `brain/Key Decisions.md`
-
-### Wins & Achievements
-
-When significant work is completed, append to `perf/Brag Doc.md` with links to the work note(s). Keep it a flat running log -- no quarterly sub-notes.
 
 ## North Star
 

@@ -30,7 +30,6 @@ git mv "work/projects/<project-name>" "work/archive/<project-name>"
 
 - **`work/Index.md`**: Move from Active Projects to Archive section
 - **`brain/North Star.md`**: Mark as completed in Current Focus if listed there
-- **`perf/Brag Doc.md`**: Verify the project's key accomplishments are captured
 - **`brain/Memories.md`**: Update if the project is mentioned as "in progress"
 
 ### 5. Verify

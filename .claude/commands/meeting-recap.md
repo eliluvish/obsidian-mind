@@ -80,7 +80,6 @@ If a new feature or task was discussed that doesn't already have a work note:
 - Add any new ADRs to `work/Index.md` Decisions Log
 - Update existing notes if new information emerged (e.g., status changes, new context)
 - Update person notes in `org/people/` if new Key Moments or relationship context surfaced
-- Add wins to `perf/Brag Doc.md` if applicable
 
 ### 9. Cross-Link
 

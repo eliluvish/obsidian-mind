@@ -107,9 +107,8 @@ SessionStart hook runs `qmd update` automatically. See `.claude/skills/qmd/SKILL
 ## Workflow: Weekly Review
 
 1. **`/weekly`** — synthesize the week's activity, check alignment, find patterns
-2. Promote any uncaptured wins to brag doc
-3. Update North Star if focus shifted
-4. **`/wrap-up`** — close the session cleanly
+2. Update North Star if focus shifted
+3. **`/wrap-up`** — close the session cleanly
 
 ## Workflow: Project Ramp-Up
 

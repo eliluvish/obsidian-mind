@@ -20,7 +20,7 @@ tags:
 
 ## Quick Links
 
-- [[Index|Work Notes]] | [[People & Context]] | [[Brag Doc]]
+- [[Index|Work Notes]] | [[People & Context]]
 - [[Memories]] | [[North Star]] | [[Skills]]
 
 ## People

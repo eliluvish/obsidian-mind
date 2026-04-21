@@ -32,7 +32,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[ARC Group iLog Demo]] — ilog, grapevine intel that Kele is demoing at ARC 2026-04-30, unconfirmed, tracking quietly
 - [[2026-04-09 Meeting — pcms]] — pcms weekly sync, Insight/Workday scoping accepted, general upload behavior confirmed
 - [[General Upload Template Service Request Sync]] — pcms, uploads will mutate service requests, percentage-based split funding, retraining needed
-- [[Secondary Container Expiration Rules]] — ilog, SOP-based expiration rules for secondary containers in accountability logbook
+- [[Secondary Container Expiration Rules]] — ilog, ✅ shipped 2026-04-21, SOP-based expiration rules for secondary containers
+- [[001-Secondary Container Disassociation from Primary]] — ilog, ADR 2026-04-21, Kele approved disassociation, known DEA reporting tradeoff
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
 - [[RFA Billing Takeover and Powerscale Migration]] — rcservices, Powerscale outstanding — API approach confirmed 2026-04-14, billing handoff in progress
@@ -46,6 +47,7 @@ Cross-project decisions. Project-specific ADRs live in each project's `decisions
 
 | Date | Decision | Project | Status | Link |
 |------|----------|---------|--------|------|
+| 2026-04-21 | Secondary container disassociation from primary | ilog | accepted | [[001-Secondary Container Disassociation from Primary]] |
 | 2026-04-09 | Insight vs Workday data source scoping | pcms | accepted | [[001-Insight vs Workday Data Source Scoping]] |
 | 2026-04-06 | FreezerPro REDCap integration model | rcservices | accepted | [[001-FreezerPro REDCap Integration Model]] |
 

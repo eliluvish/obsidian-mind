@@ -1,14 +1,18 @@
 ---
 date: "2026-04-08"
-description: "Accountability logbook secondary containers — expiration rules from Controlled Substances SOP, open text field for dates"
+description: "Accountability logbook secondary containers — expiration rules from Controlled Substances SOP, open text field for dates. Shipped 2026-04-21."
 project: "ilog"
 github_issue: 684
-status: active
+status: completed
+completed_date: "2026-04-21"
 tags:
   - work-note
 ---
 
 # Secondary Container Expiration Rules
+
+> [!success] Shipped 2026-04-21
+> Expiration-rules work is complete. Kele also approved [[001-Secondary Container Disassociation from Primary|disassociating secondaries from primaries]] the same day.
 
 ## Context
 
@@ -39,4 +43,6 @@ tags:
 
 - [[iLog]]
 - [[Mirabella Daguerre]]
+- [[Kele Piper]]
+- [[001-Secondary Container Disassociation from Primary]]
 - [[Destruction Workflow and DEA Form 41 Process]]

@@ -16,7 +16,7 @@ Process the following freeform dump. For each distinct piece of information:
      - Cross-project brain knowledge → `brain/`
    - Full YAML frontmatter with date, description, tags, project, and type-specific fields
    - All relevant [[wikilinks]] to people, projects, other notes
-5. **Update indexes** as needed (work/Index.md, perf/Brag Doc.md, org/People & Context.md)
+5. **Update indexes** as needed (work/Index.md, org/People & Context.md)
 6. **Cross-link**: Ensure every new note links to at least one existing note and is linked FROM at least one existing note.
 
 After processing everything, provide a summary:
