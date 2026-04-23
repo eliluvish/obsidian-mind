@@ -40,6 +40,10 @@ None currently.
 
 ## Architecture Notes
 
+## Active Notes
+
+- [biolift#20](https://github.com/csb-ric/biolift/issues/20) — Refactor away from `.js.erb` files and into Turbo — **priority, target by ~2026-05-07**
+
 ## Related
 
 - [[work/Index|Work Index]]

@@ -52,5 +52,11 @@ None currently.
 
 ## Architecture Notes
 
+## Active Notes
+
+- Ragon equipment chatbot — ongoing initiative to build a chatbot that can answer questions about Ragon Institute equipment. No GitHub issue yet.
+- [pcms#2280](https://github.com/csb-ric/pcms/issues/2280) — Investigate whether cached charges are keeping up.
+- **Ask at next weekly sync**: do we still need [pcms#2080](https://github.com/csb-ric/pcms/issues/2080)?
+
 ## Related
 - [[Index]]

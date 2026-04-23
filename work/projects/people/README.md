@@ -42,6 +42,10 @@ None currently.
 
 Shared codebase with [[CADE]] and [[Minor Intake Form|minr]] in the lab_archives repo. Each project is scoped by GitHub issue labels.
 
+## Active Notes
+
+- **Week of 2026-04-28**: investigate why Active Directory sync is slow — benchmark it.
+
 ## Related
 
 - [[work/Index|Work Index]]

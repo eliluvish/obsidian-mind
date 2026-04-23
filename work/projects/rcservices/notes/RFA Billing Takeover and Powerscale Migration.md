@@ -45,7 +45,8 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 
 - [x] Attend meeting 2026-04-14
 - [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
-- [ ] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921)
+- [x] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921) _(closed 2026-04-22)_
+- [ ] Merge Powerscale importing PR — [eris#1918](https://github.com/csb-ric/eris/issues/1918) _(open PR — waiting on feedback, decide 2026-04-24)_
 - [ ] Decide on aggregation strategy once connection is proven
 - [ ] Determine RFA billing requirements with [[Alissa Scharf]] (see [[RFA ServiceNow Provisioning Pipeline]])
 
