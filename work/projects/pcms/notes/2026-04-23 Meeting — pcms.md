@@ -62,6 +62,9 @@ _Auto-filled by `/meeting-prep`. Window: 2026-04-16 → 2026-04-23._
 - [#1936](https://github.com/csb-ric/pcms/issues/1936) — Import Core with all settings, users and services _(2025, very stale)_
 - [#1935](https://github.com/csb-ric/pcms/issues/1935) — Export Core with all settings, users and services _(2025, very stale)_
 
+**Client (MOGI)**
+- [#2306](https://github.com/csb-ric/pcms/issues/2306) — [Feature] Editable Document Page Core — waiting on client to decide whether they want a document model (vs. static content/about-page approach)
+
 ### Stale PRs
 
 _No open PRs in the queue._
@@ -109,3 +112,4 @@ This week we shipped three updates:
 - [[General Upload Template Service Request Sync]]
 - [[External Fund PI Field Issues]]
 - [[Proposed Feature Prioritization from Finance]]
+- [[Equipment and Services Tag Taxonomy]]

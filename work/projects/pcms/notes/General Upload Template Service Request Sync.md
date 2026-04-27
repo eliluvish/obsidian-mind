@@ -2,7 +2,7 @@
 date: "2026-04-09"
 description: "Planned behavior for the general upload template — uploads will update service requests with a change message; split funding uses percentage format; existing users need retraining"
 project: pcms
-status: active
+status: backburner
 tags:
   - work-note
 ---

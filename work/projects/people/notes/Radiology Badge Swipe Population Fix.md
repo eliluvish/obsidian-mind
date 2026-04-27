@@ -3,7 +3,7 @@ date: "2026-04-10"
 description: "Fix Access Logs to show full Radiology/Martinos population — add missing department mappings for badge swipe reporting"
 project: "people"
 github_issue: 1180
-status: active
+status: in-progress
 tags:
   - work-note
 ---
@@ -27,11 +27,19 @@ From the issue, the departments to include:
 - Rad Rsch ResAdm
 - Rad Rsch Mart
 
+## Status
+
+✅ Shipped. Department mapping fix deployed to production.
+
+## Follow-on: PIs Missing from Report
+
+Stacey (or the team) now asking why PIs aren't appearing on the report. New open question — unclear if this is a separate mapping gap, a role/type filter, or a different data source issue.
+
 ## Next Steps
 
-- [ ] Investigate how department mappings currently work in the People app
-- [ ] Determine if the four departments above fully cover the ~405 population Stacey expects
-- [ ] Implement the fix per #1180
+- [ ] Investigate why PIs are excluded from the badge swipe report
+- [ ] Determine if it's a department mapping issue, a role-based filter, or something else
+- [ ] Fix and ship
 
 ## Related
 

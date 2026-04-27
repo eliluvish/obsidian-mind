@@ -38,11 +38,9 @@ No movement since November 2025. Last communication was between Richard Kenny (r
 - [[RFA Billing Takeover and Powerscale Migration]] — related RFA billing handoff
 - Edmund Ng (edng@mgb.org) — CC'd on the thread
 
-## Open Questions
+## Status
 
-- Did Chris ever validate the `test-*` prefixed report files?
-- Is eris1pm01 still running or has it died?
-- What does Eli need to take over the pipeline? Access, code, cron config?
+Addressed in [eris#1918](https://github.com/csb-ric/eris/issues/1918) — not yet merged. [[Alissa Scharf]] is OOO 2026-04-24; find time with her 2026-04-27 to get a decision.
 
 ## Related
 

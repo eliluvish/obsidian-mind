@@ -23,6 +23,15 @@ Reported plan: [[Kele Piper]] demos the updated [[iLog]] system at the **ARC (An
 
 If true, this is a soft deadline on in-progress iLog workstreams — anything intended to be shown needs to be demo-ready by the 30th. But scope is unknown until Kele confirms what she plans to show.
 
+## Meeting: 2026-04-27 with Kele and Mirabella
+
+Meeting scheduled Monday 2026-04-27 at 3pm with [[Kele Piper]] and [[Mirabella Daguerre]].
+
+**Primary goal: gather their feedback** on the accountability logbook. Let them drive the conversation.
+
+> [!todo] Demo reminder
+> Show [[Registration Onboarding Workflow Redesign]] — keep it brief, then hand back to them for feedback.
+
 ## What Eli Needs From Kele
 
 - Confirmation that the demo is happening
@@ -45,6 +54,7 @@ If true, this is a soft deadline on in-progress iLog workstreams — anything in
 
 - [[iLog]]
 - [[Kele Piper]]
+- [[Mirabella Daguerre]]
 - [[Registration Onboarding Workflow Redesign]]
 - [[Secondary Container Expiration Rules]]
 - [[Authorized User Log Rules and Training Changes]]
