@@ -27,6 +27,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[Ragon Equipment Chatbot]] — pcms, in-progress chatbot for Ragon core, feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes)
+- [[2026-04-27 Meeting — ilog]] — ilog stakeholder sync, ARC demo postponed by Kele, schedule logic clarified, chatbot interest opened
 - [[Equipment and Services Tag Taxonomy]] — pcms, define tags for equipment and services, Eli owns the list
 - [[Order Limit Raised to 1500 Deploy Hold]] — rpr PR #190, order cap raised to $1500, ✅ deployed to production 2026-04-24
 - [[Radiology Badge Swipe Population Fix]] — people #1180, Access Logs showing 23 instead of 400+ for Radiology/Martinos, department mapping fix needed

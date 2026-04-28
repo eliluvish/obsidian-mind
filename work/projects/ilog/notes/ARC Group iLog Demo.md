@@ -1,8 +1,8 @@
 ---
 date: "2026-04-09"
-description: "Grapevine intel — Kele Piper reportedly demoing iLog at ARC (Animal Research Community Group) on 2026-04-30. Unconfirmed. Tracking quietly, prepping in the background."
+description: "ARC iLog demo originally scheduled 2026-04-30 — postponed by Kele on 2026-04-27. No deploy freeze needed. Resolved."
 project: ilog
-status: active
+status: completed
 event_date: "2026-04-30"
 confirmed: false
 tags:
@@ -11,11 +11,11 @@ tags:
 
 # ARC Group iLog Demo
 
-> [!warning] Unconfirmed — heard through the grapevine
-> Eli heard that [[Kele Piper]] plans to demo the updated [[iLog]] system at the ARC presentation on 2026-04-30, but Kele has not communicated this to Eli directly. All details below are unverified until confirmed with Kele.
+> [!success] Resolved 2026-04-27 — demo postponed
+> In the 2026-04-27 meeting, [[Kele Piper]] said she postponed the ARC demo on her own. Told the ARC group "we're not ready" and that they had a full agenda anyway. She'd rather demo the whole thing once key pieces are in place than rush it. **No deploy freeze needed for 2026-04-30.** See [[2026-04-27 Meeting — ilog]].
 
-> [!danger] Deploy freeze: 2026-04-30
-> **Do not deploy iLog on 2026-04-30.** Demo is running that day (per grapevine). Any deploy that day risks breaking the demo or introducing unseen changes. Schedule any iLog deploys for before or after.
+> [!warning] Original (unconfirmed) intel
+> Eli originally heard via the grapevine that Kele planned to demo the updated [[iLog]] system at ARC on 2026-04-30. Kele never confirmed directly, and on 2026-04-27 she postponed the demo herself — never needed to surface the grapevine source.
 
 ## Context
 

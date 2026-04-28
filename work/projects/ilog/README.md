@@ -40,10 +40,11 @@ DEA-regulated application. Handles controlled substance inventory and accountabi
 
 ## Active Notes
 
-- [[ARC Group iLog Demo]] — 2026-04-30 (unconfirmed, grapevine)
-- [[Registration Onboarding Workflow Redesign]] — mock-up on hold
+- [[2026-04-27 Meeting — ilog]] — stakeholder sync: ARC demo postponed, schedule logic clarified, chatbot interest opened
+- [[Registration Onboarding Workflow Redesign]] — wireframes in progress; IND clarified as only human-specific field
 - [[Authorized User Log Rules and Training Changes]]
 - [[Destruction Workflow and DEA Form 41 Process]]
+- [[ARC Group iLog Demo]] — ✅ resolved 2026-04-27 (Kele postponed)
 
 ## Decisions
 

@@ -20,6 +20,8 @@ Stakeholder on [[iLog]], [[Minor Intake Form|minr]], and [[BioLift|biolift]].
 
 - **2026-04-21** — Approved via email that iLog secondary containers can be disassociated from their primary containers. See [[001-Secondary Container Disassociation from Primary]].
 - **2026-04-30** (unconfirmed) — Reportedly demoing updated [[iLog]] system at the ARC (Animal Research Community Group) presentation. Eli heard via grapevine, not from Kele directly. See [[ARC Group iLog Demo]].
+- **2026-04-27** — Postponed the ARC demo on her own ("we're not ready, no point rushing"). Resolved the deploy-freeze concern without Eli having to surface the grapevine intel. See [[2026-04-27 Meeting — ilog]].
+- **2026-04-27** — Clarified that IND is the only registration field specific to human research; everything else is universal. Pushed back on Eli's "no chatbot for iLog" — sees value for DEA 41 form help and FAQ deflection.
 
 ## Notes
 

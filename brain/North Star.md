@@ -17,14 +17,14 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- **[[ARC Group iLog Demo|iLog ARC demo 2026-04-30]]** — Kele demoing updated iLog at ARC (grapevine intel, unconfirmed — not surfacing with Kele). Soft deadline for in-flight iLog work. Prep quietly and be ready. Meeting with Kele + Mirabella 2026-04-27 at 3pm.
-- iLog accountability logbook issues
+- iLog accountability logbook — wireframes in progress, beta testing path through Controlled Substance Work Group → pilot lab(s)
 
 ## Goals
 
 ### Short-term (This Quarter)
 
 - finish iLog accountability logbook
+- complete all accountability logbook tickets (the set Kele/Mirabella added — see [[2026-04-27 Meeting — ilog]])
 - upgrade PCMS to Rails 8.1
 
 ### Medium-term (This Half)
@@ -59,3 +59,4 @@ Record when focus changes, with date and reason.
 | 2026-04-09 | Added ARC iLog demo to Current Focus | Grapevine intel that [[Kele Piper]] is demoing iLog at ARC on 2026-04-30. Unconfirmed; tracking quietly. Creates a soft deadline for in-flight iLog features. |
 | 2026-04-17 | Added rpr deploy hold to Current Focus | rpr PR #190 ($1500 order cap) merged to master but production deploy held until 2026-04-24 per [[Gala Laffey]]. Remove once deployed. |
 | 2026-04-24 | Removed rpr deploy hold | ✅ Deployed to production 2026-04-24. |
+| 2026-04-27 | Removed ARC iLog demo from Current Focus | Kele postponed the ARC demo on her own ("we're not ready, no point rushing"). Deploy freeze 2026-04-30 no longer needed. See [[2026-04-27 Meeting — ilog]]. |

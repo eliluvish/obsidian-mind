@@ -36,6 +36,9 @@ Chat with [[Mirabella Daguerre]] on 2026-04-08. Investigators are confused by th
 - Splitting the registration into tabs creates an opportunity to ask upfront: **human subject research or animal research?**
 - This answer determines which schedules and license types are available
 
+> [!note] Clarification 2026-04-27 (Kele)
+> Per [[2026-04-27 Meeting — ilog]]: **IND is the only field specific to human research.** Schedules and other license types are universal across animal and human registrations. The human/animal split only needs to gate the IND question — not the rest of the form. Significantly simplifies the gatekeeping logic.
+
 ## Proposed Solution: Onboarding Workflow
 
 A step-by-step "smart form" approach (similar to how [[Research Intake Survey|ris]] works — the form cuts off when the user doesn't need to complete further sections).
@@ -48,6 +51,9 @@ A step-by-step "smart form" approach (similar to how [[Research Intake Survey|ri
 
 - [ ] Eli to write up detailed table explaining the logic for each registration type and send to [[Mirabella Daguerre]]
 - [ ] Eli to mock up the onboarding workflow
+- [ ] Eli to send screenshots + video walkthrough of current wireframes to Kele + Mirabella (committed 2026-04-27)
+- [ ] Eli to try pushing wireframes into the test environment for in-context feedback
+- [ ] [[Mirabella Daguerre]] to provide decision-tree logic in text/if-then format (not Excel)
 
 ## Related
 
