@@ -117,7 +117,7 @@ Brief tangent on Mandarin/Cantonese support given the lab demographics. Kele par
 
 ## Action Items
 
-- [ ] [[Eli Luvish|Eli]] — Go through all the tickets Kele/Mirabella added (specifics not in transcript — check GitHub)
+- [ ] [[Eli Luvish|Eli]] — Go through all the tickets Kele/Mirabella added: #721 (destruction modal bug), #720 (DEA 41 text cut off), #719 (language: Adjustment → Bottle Variance), #718 (secondary container modal: add Substance Name field, rename "mixed with" → "formulary")
 - [ ] [[Eli Luvish|Eli]] — Take screenshots and a video walkthrough of the wireframes; send to Kele + Mirabella
 - [ ] [[Eli Luvish|Eli]] — Try to push the wireframes into the test environment so the group can give in-context feedback on wording / step order / layout
 - [ ] [[Mirabella Daguerre]] — Think about "the tree" (decision logic for registration onboarding). Yes/no is fine; **keep it out of Excel** — text/if-then format works for programmatic processing
@@ -125,7 +125,7 @@ Brief tangent on Mandarin/Cantonese support given the lab demographics. Kele par
 
 ## Open Questions
 
-- Which specific tickets did Kele/Mirabella add? Need to check GitHub before working through them.
+- ~~Which specific tickets did Kele/Mirabella add?~~ Resolved 2026-04-29: #718, #719, #720, #721 (all opened 2026-04-27).
 - Should videos for the chatbot live in the new SharePoint repository the team created? File-type constraints unclear (Mirabella asked about MP4).
 
 ## Wins

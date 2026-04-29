@@ -67,6 +67,12 @@ If the chatbot pattern works for Ragon, two projects already want to inherit it:
 
 Worth designing the chatbot's tool layer with reuse in mind from the start.
 
+## Talking Points for Weekly Sync
+
+- [ ] **Equipment information is scattered across cores** — some cores have a PDF flyer as the primary source, others (e.g. CCP core) have more detail on their website than anywhere else in PCMS. The chatbot needs to account for this; tool responses will only be as good as what's in the system. Worth flagging to stakeholders so they understand the data quality dependency.
+- [ ] **CCMPC core has no findable location** — Eli spent significant time trying to locate it and couldn't. Their equipment will return no useful location data to the chatbot.
+- [ ] **Catalog categorization is inconsistent** — some trainings are entered as equipment, and some equipment should be services. The chatbot will surface these mismatches to users. Worth aligning on whether to fix the data before a wider rollout, or accept that the chatbot handles the ambiguity.
+
 ## Open Questions
 
 - Where does the chatbot UI live in PCMS? Per-page contextual widget, global modal, dedicated page?
