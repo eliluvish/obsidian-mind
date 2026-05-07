@@ -27,6 +27,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[2026-04-30 Meeting — pcms]] — pcms weekly sync prep, chatbot questions, stakeholder focus group follow-up, stale PR flagged
+- [[Core Browse UI Design]] — pcms, filterable card grid to replace the flat 130-core list; design ready for schema feasibility review
 - [[Ragon Equipment Chatbot]] — pcms, in-progress chatbot for Ragon core, feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes)
 - [[2026-04-27 Meeting — ilog]] — ilog stakeholder sync, ARC demo postponed by Kele, schedule logic clarified, chatbot interest opened
 - [[Equipment and Services Tag Taxonomy]] — pcms, define tags for equipment and services, Eli owns the list
