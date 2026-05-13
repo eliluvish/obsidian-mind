@@ -41,12 +41,18 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - Parent issue: [eris#1918](https://github.com/csb-ric/eris/issues/1918) — Add powerscale importing (has sample CLI output)
 - Next step: scoped prerequisite issue to prove connection and pull a sample response before building the import
 
+## Isilon Meeting — 2026-05-11
+
+- Outcome: Eli will attempt to match the Powerscale shares/quotas to known billing customers; anything that can't be matched gets sent to [[Rolf Fabre]] (MGB Digital Storage) for resolution
+- Tracking: [eris#1939](https://github.com/csb-ric/eris/issues/1939)
+
 ## Action Items
 
 - [x] Attend meeting 2026-04-14
 - [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
 - [x] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921) _(closed 2026-04-22)_
 - [ ] Merge Powerscale importing PR — [eris#1918](https://github.com/csb-ric/eris/issues/1918) _(also covers storage billing pipeline takeover; [[Alissa Scharf]] OOO 2026-04-24 — find time with her 2026-04-27)_
+- [ ] Match Powerscale shares/quotas to billing customers; escalate unmatched to [[Rolf Fabre]] — [eris#1939](https://github.com/csb-ric/eris/issues/1939)
 - [ ] Decide on aggregation strategy once connection is proven
 - [ ] Determine RFA billing requirements with [[Alissa Scharf]] (see [[RFA ServiceNow Provisioning Pipeline]])
 
@@ -61,4 +67,5 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - [[Nicholas Yale]]
 - [[Peter Gray]]
 - [[Naresh Mallidi]]
+- [[Rolf Fabre]]
 - [[RFA ServiceNow Provisioning Pipeline]]

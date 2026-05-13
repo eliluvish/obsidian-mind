@@ -17,24 +17,24 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- iLog accountability logbook — wireframes in progress, beta testing path through Controlled Substance Work Group → pilot lab(s)
+- iLog accountability logbook — wireframes complete (implementation deferred until after logbook ships); beta testing path through Controlled Substance Work Group → pilot lab(s)
 
 ## Goals
 
 ### Short-term (This Quarter)
 
-- finish iLog accountability logbook
 - complete all accountability logbook tickets (the set Kele/Mirabella added — see [[2026-04-27 Meeting — ilog]])
 - upgrade PCMS to Rails 8.1
+- PCMS: do cached charges work?
 
 ### Medium-term (This Half)
 
 - Create a help chatboat for PCMS for the Ragon core
+- finish iLog accountability logbook
 
 ### Long-term (This Year+)
 
 - Create a better autonomous workflow as a solo Ruby on Rails developer
-- PCMS: do cached charges work?
 
 ## Aspirations
 

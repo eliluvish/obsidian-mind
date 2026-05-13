@@ -69,6 +69,7 @@ Individual notes in `org/people/`:
 
 ### Digital Storage Operations
 - [[Naresh Mallidi]] — Contractor (Powerscale admin, API access for RFA billing)
+- [[Rolf Fabre]] — MGB Digital Storage contact (triage for unmatched Powerscale shares/quotas)
 
 ### Digital Research Operations
 - [[Nicholas Yale]] — Manager of User Services (reports to [[Michael Oates]])
