@@ -1,6 +1,6 @@
 ---
 date: "2026-04-07"
-description: "Core facility finance team running user focus groups for general PCMS feedback — two sessions held, developer search/discovery signals captured"
+description: "Three stakeholder focus groups on PCMS — researcher-user signals (discoverability, browse, chatbot) + operator-side signals (external front ends, About page architecture)"
 project: "pcms"
 status: active
 tags:
@@ -19,6 +19,7 @@ tags:
 |------|------|-------|
 | 2026-04-08 (Wed) | 11:00am | First session — strong positive reception, users "gung ho", lots of actionable feedback captured live. Not transcribed. |
 | 2026-04-30 (Thu) | 9:30am | Second session — full transcript (0:00–1:33:38). Developer signals below. |
+| 2026-05-08 (Fri) | 2:30pm | Third / final session — full transcript (1h 17m). Core-operator perspective. Developer signals below. |
 
 ## Takeaways from 2026-04-08
 
@@ -136,6 +137,107 @@ Dakin (1:24:24) made a sharp point: when the chatbot or search returns nothing, 
 
 **Developer lens**: Log zero-result queries to the same `SearchEvent` model proposed above. A dashboard showing top zero-result queries tells you exactly what services to add or how to improve metadata. This also answers "what do users want that we don't offer?"
 
+## Developer Signals from 2026-05-08 (Workflow & Architecture)
+
+> [!info] Full transcript — 1h 17m
+> Final session. Audience shift: this group was **core operators**, not researcher-users. Attendees: [[Andy Chitty]] (chair), [[Tera Morse]] (co-moderator), [[Yovani Edwards]] (co-moderator), Teresa "Terry" Bowman (specialized histopathology core, BWH, 18yr), Linda Nieman (Tumor Cartography Core, MGH→Jackson), Domenic Minicucci (Martinos Center / CTRU IT), David Drew (Dept of Medicine core, MGH — *not yet in RCMS*), Lynelle Cortellini (TCRC admin director; Harvard Catalyst grant POC), Meini "Amy" Shin (Exec Director, Personalized Medicine & GCTI — manages biobank, LMM, RNA therapeutic core, gene editing core), Jessica Gerber (Ops Director, CTRU), [[Daniel Guettler]], Eli.
+
+### The dominant new theme: cores have built their own front ends
+
+Multiple cores have stood up external intake/scheduling systems outside RCMS and only feed RCMS at billing time. The pattern is consistent across at least three cores:
+
+- **CTRU / Martinos** (Gerber + Minicucci): users fill a REDCap form to scope a project, then book individual events (nurse practitioner, blood draw, room) in **EMS** — the MGB-wide scheduling system. Trevor manually re-enters the resulting orders into RCMS. Gerber: *"we don't direct our users there right now."*
+- **GCTI / biobank / LMM cores** (Shin): users never touch RCMS. The core handles order entry internally; RCMS is the billing back end. *"Once you're in, if it's MGB, it's all automatic journal and everything, which is like amazing."*
+- **Dept of Medicine core** (Drew): not yet on RCMS but plans to be. Uses REDCap as a triage form before consult. Concerned about activation energy if users have to create RCMS accounts: *"the perceived activation energy to use the core may be higher."*
+
+**Why they did this**:
+- Gerber: RCMS "screams outdated" and ordering complex clinical services isn't like ordering a pizza. They also want **gatekeeping** — *"we don't want people just going into the core and signing up for an account and all of a sudden ordering like neuropsychological testing."*
+- Drew: REDCap is familiar to investigators and nimble for the core to modify. *"It's easy enough for us and nimble enough for us to make changes."*
+- Cortellini: their own intake "is super complicated, it's a whole other thing developed that, ironically, Daniel is now managing as well."
+
+Eli's response on the call: *"I'm not thrilled that our functionality is insufficient that you've built another front end."* But also opened the door: *"if EMS can expose an API to us, we can integrate with that."* Past attempt with "Misha" stalled (Gerber/Minicucci recall it was a phone-number-digits issue).
+
+Daniel reinforced that RCMS already supports per-service intake surveys on the service request form, and admins can edit submitted requests before activating them — addressing the gatekeeping concern.
+
+**Developer lens**: Three architectural options surface:
+
+1. **Build the workflows inside RCMS** — service-request intake surveys + admin review queues (Daniel's framing). Already supported but underused; opportunity to document and evangelize.
+2. **Integrate with external front ends** — REDCap data pull (already supported but Eli flagged the data-shape risk: REDCap is unstructured), EMS API (worth resurrecting the Misha thread).
+3. **Cortellini's pragmatic reframing** — *"should the focus then be more of building some sort of API to just have a more streamlined transfer of that data from everyone else's front door into the system?"* Treat RCMS as a billing/data sink; let cores keep their bespoke front ends. Lower scope, accepts current reality.
+
+This is significant enough to be its own decision — see Open Questions for ADR promotion.
+
+### About page vs services page — architectural debate (extensive)
+
+Triggered by Shin reporting that her core director (GCTI / circular RNA) finds the About page editor painful but considers it critical for marketing the core's differentiation. Eli pushed back hard on the About page as architecture:
+
+- *"The landing page and its existence is the biggest problem in RCMS because it has no structured data. You can put whatever you want and then it's completely not searchable."*
+- *"The About page is up to the administrator to keep current. Whereas the services page is what people actually order. The source of truth is the services page."*
+- *"The About page was a crutch that prevented people from using good descriptions for their services and equipment."*
+- *"We're talking about 15-year-old technology because it's used in so many different ways in our CMS that we can't update it."*
+
+Eli's proposal (already pitched to Andy & team): **standardized About pages auto-populated from underlying structured data** (services, equipment, location, contacts). Cores can still upload an image and a short narrative, but service/equipment lists, location, contacts come from the structured fields automatically.
+
+Shin's concern: her director uses the About page for scientific marketing — graphs comparing circular RNA vs mRNA, demonstrating the core's differentiation. *"He believe all the scientists understand that... that's like how we can attract our client to use our service."*
+
+Eli's concession: *"I'm not saying we're going to take it away. You can still put an image up. You can still put whatever text you want up. You just have to remember that you can make that page as nice as possible, and if no one finds it, it's meaningless."*
+
+Daniel reinforced from history: *"The About page was never meant to list your services. People just ended up doing it because it was possible... It's really meant for description, not meant for okay, this is the list of services that I'm providing."*
+
+**Developer lens**: This is the same data-quality theme from 2026-04-30 surfaced through a different lens. The About page as it exists today is the **anti-pattern** that absorbs effort that should be going into structured service/equipment metadata. The proposed direction — auto-populated standardized template — is a clear architectural decision worth promoting to an ADR. Crucially: it does *not* remove free narrative/imagery; it changes the boundary between "structured data the system uses" and "narrative the admin curates."
+
+### External discoverability — the Harvard Catalyst use case
+
+Cortellini opened with a problem we hadn't heard framed this way before: she's been trying for **two years** to give Harvard Catalyst a comprehensive, accurate list of MGB cores for their resource compendium. Cores not on RCMS are invisible; cores on RCMS have inconsistent external presentation; URLs go stale; one core's page still had a "work temporarily paused due to COVID" notice (Andy confirmed he'd seen it too). *"Our marketing of the cores is basically a detriment just in terms of how many more people we could get using them if it was easier to figure out what we had."*
+
+**Developer lens**: Reinforces the discoverability theme from 2026-04-30 but extends it to **outside MGB entirely**. The audience isn't just MGB investigators — it's Harvard-wide researchers using Catalyst. The standardized About page proposal addresses this directly: consistent external-facing presentation, machine-readable structured fields, ability to flag stale content.
+
+### The required-fields-per-core ask (reinforcement)
+
+Nieman, when asked what works well: scheduler/calendar/auto-bill flow is great *for equipment cores after user training* — minimal friction once users are in. But for the *finding* step she echoed Cortellini: *"having a form that all core directors fill out that have things like the key services that are offered, who are their service communities, where they're located."* Her four user questions: **"Where's the core? What does it do? Can I use it? And who do I contact?"**
+
+**Developer lens**: This is exactly the shape of the [[Core Browse UI Design]] proposal — `building` / `institution` / `street_address` / `city` on the core model, modality tags, contacts. Multiple sessions now converge on the same fields. Strengthens the case for shipping browse + the supporting schema changes.
+
+### Service catalog structure — packages, billable_name, budget tie-in
+
+Gerber and Cortellini both thought menu items had to match the budget exactly. Daniel/Eli clarified: the **billable_name** must match the budget (for audit/compliance), but the **display name** in RCMS is flexible. Shin had built a workflow assuming the catalog had to be at the lowest-billable level — leading CTRU to list 5 sub-services where it could have been one "CTRU Resources Fee" package.
+
+Daniel surfaced **service packages** — a service can appear in multiple packages, packages can mix and match. Shin didn't know this existed. Tera confirmed: as long as the sub-service rates tie to the approved budget, audit-compliant.
+
+**Developer lens**: A real **discoverability-of-features** problem inside RCMS itself. Multiple admins have built workarounds because they didn't know existing functionality. Gerber explicitly asked: *"I think there's like opportunity to learn the functionality more, maybe even have some sort of like crash course in what it does offer."* Worth: short feature documentation, admin onboarding, or an in-app callout for underused features. Likely the cheapest single improvement on the table.
+
+### Bill splitting — feature gap
+
+Cortellini surfaced a concrete unsupported case: a research visit has 5 services billed together. Current behavior: you can split the invoice by **percentage** across grants, but you can't allocate **specific services** to **specific grants** (e.g., "the extra blood draw goes on grant B, the other four services go on grant A"). They do manual math on the side as a workaround.
+
+**Developer lens**: This is a real feature gap, not a workflow misunderstanding. The data model already has per-service line items on invoices; the splitting UI just doesn't expose per-line allocation. Worth a GitHub issue. Adjacent users: Shin confirmed her core hits the same workaround.
+
+### Invoice reply-to routing — operational pain + unsolved mystery
+
+Cortellini in the admin-group session (Tuesday) raised that Tera fields a huge volume of invoice reply emails she has to forward to the right core. Suggestion: when an invoice email goes out, include the **core's billing contact** as a CC/Reply-To so users' replies land directly at the core.
+
+But Gerber and Shin both report that **their** cores already receive replies directly — and neither knows how that was configured. Tera's hypothesis: the billing contact is BCC'd on send; if the user hits "Reply All" it goes to everyone, if they hit "Reply" it goes only to the sender (Tera).
+
+**Developer lens**: Worth verifying the actual SMTP/header behavior. If billing contact is BCC'd, a quick fix is to put them in `Reply-To` so plain `Reply` lands at the core, not Tera. Low-effort if true.
+
+### Branding / "outdated" feel
+
+Gerber: *"the first word that comes to mind is just outdated when I look at it."* *"It does not scream to me 'we do cutting edge research here.' I think it is a total disservice to the cutting edge research that we're actually doing."* She'd welcome a quarterly mandatory update cadence and help with searchable keywords.
+
+Shin reinforced: *"It would be amazing if our website also can help us with basically market all of our service."*
+
+**Developer lens**: The look-and-feel point matters but is downstream of structural decisions (standardized About template, browse UI, data freshness display). Once those land, the visual refresh has real surfaces to apply to. Don't lead with skinning; lead with the structured templates.
+
+### Data quality = search quality (Eli reinforcing)
+
+Eli returned to his consistent position: *"We can only do as good as the data you give us. And it has to be current."* Mentioned the new **capabilities** and **modalities** tags on equipment ([[Equipment and Services Tag Taxonomy]], [pcms#2314](https://github.com/csb-ric/pcms/pull/2314)) and plans to extend the same to services. Also flagged he's been using AI to fill equipment descriptions himself for cores that haven't.
+
+Stated the enforcement model bluntly: *"I'm going to be the bad guy and say that the cores that don't provide it, they're not going to appear in the search."*
+
+Andy proposed templates / outreach to cores in a uniform way. Eli's counter: *"It's in the system, right? It's tagging. So everything is done in the system. I don't want to send you all an Excel file to fill out."*
+
+**Developer lens**: Consistent with prior sessions. The enforcement model ("if you don't tag, you don't surface") is the right stance, but needs to be paired with **(a)** clear admin UX for adding tags, **(b)** outreach explaining the consequence, and **(c)** ideally a visible "completeness score" so admins can see what they're missing before users notice it. The AI-assisted backfill Eli mentioned could become a tool exposed to admins ("suggest tags for this equipment based on its description") rather than something only Eli runs.
+
 ## Action Items
 
 - [x] ~~Get transcription of 2026-04-08 focus group~~ (not transcribed)
@@ -146,6 +248,17 @@ Dakin (1:24:24) made a sharp point: when the chatbot or search returns nothing, 
 - [ ] Audit service content richness — services need descriptions good enough for a chatbot to match on (data quality problem, not a search index problem)
 - [ ] Open GitHub issue for turnaround time on services — Daniel said it's easy, `expected_turnaround` field + measure actuals
 - [ ] Explore `content_updated_at` timestamp on core pages + stale content nudge
+
+### From 2026-05-08
+
+- [x] ~~Promote About-page architectural decision to ADR~~ → [[002-About Page as Auto-Populated Standardized Template]] (proposed, 2026-05-08)
+- [ ] **Promote to ADR or work note**: External front-end integration pattern (REDCap intake, EMS scheduling) — when to integrate vs. when to build inside RCMS. Resurrect Misha-era EMS API thread.
+- [x] ~~Open GitHub issue: bill splitting by specific service → specific grant~~ → [pcms#2336](https://github.com/csb-ric/pcms/issues/2336)
+- [ ] Investigate invoice reply-to routing — why does CTRU/GCTI receive user replies directly while Tera fields most? Likely Reply-All vs Reply-To behavior; consider setting `Reply-To: <billing contact>` so plain Reply lands at the core.
+- [ ] Document underused features (service packages, quote tool, intake surveys on service requests) — multiple admins built workarounds because they didn't know these existed. Form: short "what RCMS already does" doc + admin onboarding callouts.
+- [ ] Roll out capabilities/modalities tags from equipment to services (already planned per [pcms#2314](https://github.com/csb-ric/pcms/pull/2314)).
+- [ ] Consider an admin-facing "AI suggest tags" tool — currently Eli runs this manually for cores that haven't tagged.
+- [ ] [[Andy Chitty]] / Eli: Meini offered to swap her seat for a GCTI/RTC director who has strong opinions on About page UX — willing to introduce him to Eli for a direct conversation.
 
 ## Related
 

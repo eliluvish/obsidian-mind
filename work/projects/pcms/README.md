@@ -56,6 +56,8 @@ None currently.
 
 - [[Core Browse UI Design]] — design spec for filterable card grid browse UI; ready for agent feasibility review against schema
 - [[Ragon Equipment Chatbot]] — in progress. Equipment-search chatbot for Ragon core; feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes).
+- [[002-About Page as Auto-Populated Standardized Template]] — **proposed** ADR (2026-05-08). Replace free-text About page with structured template; services/equipment are source of truth. Depends on [[Core Browse UI Design]] schema.
+- [[Stakeholder Focus Groups for User Feedback]] — three sessions captured (2026-04-08, 2026-04-30, 2026-05-08). Final session: cores building external front ends, About-page architectural debate.
 - [pcms#2280](https://github.com/csb-ric/pcms/issues/2280) — Investigate whether cached charges are keeping up.
 - **Ask at next weekly sync**: do we still need [pcms#2080](https://github.com/csb-ric/pcms/issues/2080)?
 

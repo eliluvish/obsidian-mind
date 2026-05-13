@@ -27,6 +27,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[002-About Page as Auto-Populated Standardized Template]] — pcms, ADR 2026-05-08 **proposed**, replace free-text core About page with standardized template; services/equipment are source of truth
+- [[Stakeholder Focus Groups for User Feedback]] — pcms, third / final focus group captured (2026-05-08); cores building external front ends, About-page architecture debate
 - [[2026-04-30 Meeting — pcms]] — pcms weekly sync prep, chatbot questions, stakeholder focus group follow-up, stale PR flagged
 - [[Core Browse UI Design]] — pcms, filterable card grid to replace the flat 130-core list; design ready for schema feasibility review
 - [[Ragon Equipment Chatbot]] — pcms, in-progress chatbot for Ragon core, feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes)
@@ -53,6 +55,7 @@ Cross-project decisions. Project-specific ADRs live in each project's `decisions
 
 | Date | Decision | Project | Status | Link |
 |------|----------|---------|--------|------|
+| 2026-05-08 | About page as auto-populated standardized template | pcms | proposed | [[002-About Page as Auto-Populated Standardized Template]] |
 | 2026-04-21 | Secondary container disassociation from primary | ilog | accepted | [[001-Secondary Container Disassociation from Primary]] |
 | 2026-04-09 | Insight vs Workday data source scoping | pcms | accepted | [[001-Insight vs Workday Data Source Scoping]] |
 | 2026-04-06 | FreezerPro REDCap integration model | rcservices | accepted | [[001-FreezerPro REDCap Integration Model]] |

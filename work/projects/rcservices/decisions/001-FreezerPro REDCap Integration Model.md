@@ -17,7 +17,12 @@ FreezerPro is being onboarded as a service in [[RC Services (Eris)|rcservices]].
 
 1. **System Roles**: REDCap manages all lab data, validations, history, renewals, and approvals. RC Services ingests only approved, clean data and handles billing. A single identifier (REDCap record ID or UUID) links records across systems.
 2. **Validation**: Fund numbers validated via Insight (expiration + title). MGB ID validated in REDCap. REDCap stores full history but passes only current required fields (tier, fund, owner) to RC Services.
-3. **Billing**: Once per year after onboarding. Invoices one month in arrears, posted on the 3rd. Annual renewal is the only opportunity to update funding.
+3. **Billing**: Once per year after onboarding. Invoices one month in arrears, posted on the 3rd. Annual renewal is the only opportunity to update funding. First invoice sent after successful onboarding becomes the subscription effective date; yearly invoices thereafter on that anniversary. Tiers (confirmed 2026-05-13 via Finance/[[Alissa Scharf]]):
+   - Tier 1 (1–5 users) — $2,200
+   - Tier 2 (6–10 users) — $3,300
+   - Tier 3 (11+ users) — $4,400
+
+   Tier passed as line item (not multiplier). RCS owns cost-per-unit definitions for recalculation and audit; REDCap does not pipe subscription cost.
 4. **UX**: Users don't manage FreezerPro directly in RC Services. It appears as a service with an order button linking to REDCap. Users see invoices but not the subscription.
 
 ## Consequences
