@@ -29,7 +29,7 @@ _What am I working toward right now?_
 
 ### Medium-term (This Half)
 
-- Create a help chatboat for PCMS for the Ragon core
+- RCservices Freezerpro integration
 - finish iLog accountability logbook
 
 ### Long-term (This Year+)

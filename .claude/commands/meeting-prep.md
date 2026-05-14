@@ -1,10 +1,10 @@
 ---
-description: "Prep for a recurring client meeting — gather shipped work, open issues, stale PRs, and unresolved questions since the last meeting, then create a pre-filled meeting note."
+description: "Prep for a recurring client meeting — gather shipped work, resolved items, and open issues since the last meeting in a client-facing four-bucket recap, then create a pre-filled meeting note."
 ---
 
 # Meeting Prep
 
-Prepare for a recurring client meeting by gathering activity since the last meeting window and creating a meeting note you can annotate live.
+Prepare for a recurring client meeting by gathering activity since the last meeting window and creating a meeting note you can annotate live. The recap is structured to mirror what Eli typically sends the client ahead of the meeting.
 
 ## Usage
 
@@ -28,7 +28,7 @@ Check `work/projects/<project>/` exists. If not, list available projects in `wor
 
 - Default: `7d`
 - Accepted: `Nd` (days), `Nw` (weeks), `Nm` (months) — e.g. `14d`, `2w`, `1m`
-- Convert to ISO date (`YYYY-MM-DD`) for the `since` cutoff used in `gh` queries and git log
+- Convert to ISO date (`YYYY-MM-DD`) for the `since` cutoff used in `gh` queries
 
 ### 3. Load Meeting Metadata
 
@@ -47,11 +47,9 @@ Check `work/projects/<project>/` exists. If not, list available projects in `wor
 
 Use the repo URL from the project README. Run these `gh` queries in parallel:
 
-- **Merged PRs**: `gh pr list --repo <repo> --state merged --search "merged:>=<since>" --limit 30 --json number,title,mergedAt,author`
-- **Closed issues**: `gh issue list --repo <repo> --state closed --search "closed:>=<since>" --limit 30 --json number,title,closedAt,author`
-- **New open issues**: `gh issue list --repo <repo> --state open --search "created:>=<since>" --limit 30 --json number,title,createdAt,author,labels`
-- **Open issues assigned to stakeholders**: for each `github_handle`, `gh issue list --repo <repo> --state open --assignee <handle> --json number,title,createdAt,assignees`
-- **Stale PRs**: `gh pr list --repo <repo> --state open --json number,title,createdAt,updatedAt,author`, then filter client-side to PRs with `updatedAt` older than 14 days
+- **Shipped this week** (merged PRs): `gh pr list --repo <repo> --state merged --search "merged:>=<since>" --limit 30 --json number,title,mergedAt,author`
+- **Resolved this week** (closed issues): `gh issue list --repo <repo> --state closed --search "closed:>=<since>" --limit 30 --json number,title,closedAt,author`
+- **Requires resolution** (all open issues created before window start): `gh issue list --repo <repo> --state open --search "created:<<since>" --limit 50 --json number,title,createdAt,author,labels`
 
 For shared-repo projects (e.g. lab_archives-hosted projects), scope issue queries with the project's GitHub label from the README.
 
@@ -67,20 +65,24 @@ For shared-repo projects (e.g. lab_archives-hosted projects), scope issue querie
 - Path: `work/projects/<project>/notes/YYYY-MM-DD Meeting — <project>.md`
 - Copy from `templates/Meeting Note.md`
 - Fill placeholders: `{{date}}`, `{{project}}`, `{{meeting_name}}`, `{{date_range}}`, `{{name}}` for each attendee
-- Pre-fill the `## Since Last Meeting` subsections with the data gathered in steps 4 and 5
+- Pre-fill the `## Recap` subsections (Shipped this week / Resolved this week / Requires resolution) with the data from step 4
+- Pre-fill `## Unresolved Questions from Vault Notes` with the data from step 5
+- For **PCMS only**, insert a `### Waiting for RFCO review (work already in production for some time)` subsection between "Resolved this week" and "Requires resolution", linking to https://github.com/orgs/csb-ric/projects/7/views/1
 - Leave `## Discussion`, `## Decisions`, and `## Action Items` empty for live annotation during the meeting
 - Link to each attendee's person note and to the project README in `## Related`
 
 ### 7. Present the Briefing
 
-Print a scannable summary to chat in the style of `/standup`:
+Print a scannable summary to chat using the same four-bucket structure as the meeting note's `## Recap` section. This is the format Eli typically sends to the client:
 
-- **Shipped This Week** — merged PRs table with "For" column attributing each to the reporter when known
-- **Closed Without Code** — issues closed without a linked PR
-- **New on the Plate** — newly opened issues, flag ones assigned to Eli
-- **Waiting on Stakeholders** — open issues grouped by attendee
-- **Stale PRs** — open PRs older than 14 days, sorted by age
-- **Unresolved Questions** — from vault notes, grouped by source note
+- **Shipped this week** — merged PRs as a bulleted list, each linking to its PR and noting the issue it resolves when known
+- **Resolved this week** — issues closed in the window (with or without a linked PR), noting who closed each
+- **Waiting for RFCO review** (PCMS only) — link to the RFCO review board: https://github.com/orgs/csb-ric/projects/7/views/1
+- **Requires resolution / finalization / clarification or closing** — open issues created before the window start, sorted by issue number, each as `[#N](url) — title`. This is the prunable list Eli edits before sending.
+
+After the recap, surface internal context Eli may want before walking into the room (not part of the client-facing recap):
+
+- **Unresolved Questions from Vault Notes** — from step 5, grouped by source note
 - **Suggested Meeting Flow** — a numbered agenda Eli can skim into the meeting
 
 End with the path to the created meeting note so Eli can open it and annotate live.
@@ -89,6 +91,6 @@ End with the path to the created meeting note so Eli can open it and annotate li
 
 - **This creates a file.** Always include the created note path in your output.
 - If `github_handle` is missing from any attendee's person note, **surface a warning** in the briefing — don't silently skip that person.
-- If no stakeholders have `github_handles` at all, still generate the note but omit the "Waiting on Stakeholders" section and note why.
 - Never modify existing notes during prep — only read and create the new meeting note.
 - If a meeting note already exists for today, append ` (2)` to the filename rather than overwriting.
+- The four-bucket recap is the source of truth for what gets sent to the client. The "Requires resolution" bucket will often be long — print it in full and let Eli prune before sending.

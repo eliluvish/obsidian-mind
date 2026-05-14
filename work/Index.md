@@ -27,6 +27,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[2026-05-14 Meeting — pcms]] — pcms weekly sync, four-bucket client recap sent (1 PR shipped, 2 issues closed, 8 RFCO-pending, 8 requiring resolution)
 - [[002-About Page as Auto-Populated Standardized Template]] — pcms, ADR 2026-05-08 **proposed**, replace free-text core About page with standardized template; services/equipment are source of truth
 - [[Stakeholder Focus Groups for User Feedback]] — pcms, third / final focus group captured (2026-05-08); cores building external front ends, About-page architecture debate
 - [[2026-04-30 Meeting — pcms]] — pcms weekly sync prep, chatbot questions, stakeholder focus group follow-up, stale PR flagged

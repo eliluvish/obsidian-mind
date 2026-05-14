@@ -54,6 +54,7 @@ None currently.
 
 ## Active Notes
 
+- [[2026-05-14 Meeting — pcms]] — weekly sync; four-bucket client recap sent; commit `60b8ae3` broke the calendar events API for cross-core SRs (see [[Gotchas#PCMS calendar_events API now scoped by core (commit 60b8ae3)]])
 - [[Core Browse UI Design]] — design spec for filterable card grid browse UI; ready for agent feasibility review against schema
 - [[Ragon Equipment Chatbot]] — in progress. Equipment-search chatbot for Ragon core; feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes).
 - [[002-About Page as Auto-Populated Standardized Template]] — **proposed** ADR (2026-05-08). Replace free-text About page with structured template; services/equipment are source of truth. Depends on [[Core Browse UI Design]] schema.

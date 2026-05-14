@@ -16,33 +16,23 @@ tags:
 
 - [[{{name}}]]
 
-## Since Last Meeting
+## Recap
 
-_Auto-filled by `/meeting-prep`. Window: {{date_range}}._
+_Window: {{date_range}}._
 
-### Shipped
-
-| # | Title | For |
-|---|-------|-----|
-| — | —     | —   |
-
-### Closed Without Code
+### Shipped this week
 
 -
 
-### New Bugs / Issues
+### Resolved this week
 
 -
 
-### Open Items Waiting on Stakeholders
+### Requires resolution / finalization / clarification or closing
 
 -
 
-### Stale PRs
-
--
-
-### Unresolved Questions from Vault Notes
+## Unresolved Questions from Vault Notes
 
 -
 
