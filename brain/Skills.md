@@ -40,6 +40,7 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 | `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
 | `/deploy-checklist` | Pull up the deploy runbook for a project, walk through pre/post-deploy checks |
 | `/project-archive` | Move completed project from `work/projects/` to `work/archive/`, update all indexes |
+| `/repo-sync` | Scan an external code repo's git history over a window, summarize accomplishments, tie back to the matching vault project |
 
 ### Vault Maintenance
 
@@ -67,6 +68,7 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 - `/issue-capture` only creates notes for significant issues — bug investigations, architectural decisions, not routine fixes.
 - `/decision` auto-numbers ADRs within each project's `decisions/` folder.
 - `/deploy-checklist` loads or creates a deploy runbook from `reference/ops/`.
+- `/repo-sync <repo> [since <date|commit|last-sync>]` scans an external repo (e.g. `~/dev/eris`) via the `repo-scanner` subagent and ties accomplishments back to the mapped vault project. Read-only on the repo; vault writes happen only after you confirm. The repo→project map is defined once, in `.claude/agents/repo-scanner.md`.
 
 **Maintenance:**
 - `/vault-audit` should be run at the end of substantial sessions
@@ -80,6 +82,7 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 | `cross-linker` | Finds missing wikilinks, orphans, broken backlinks across the vault | `/vault-audit` |
 | `vault-librarian` | Deep vault maintenance — orphan detection, broken links, frontmatter validation, stale notes | `/vault-audit` |
 | `vault-migrator` | Classify, transform, and migrate content from a source vault | `/vault-upgrade` |
+| `repo-scanner` | Scan an external code repo's git history, summarize accomplishments, map to a vault project | `/repo-sync`, Direct — "what's been done in eris" |
 
 Subagents run in isolated context windows via `.claude/agents/`. They don't pollute the main conversation.
 

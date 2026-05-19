@@ -35,6 +35,7 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `/vault-audit` | Audit indexes, links, orphans, stale context |
 | `/vault-upgrade` | Import content from an existing vault into this obsidian-mind instance |
 | `/project-archive` | Move completed project from `work/projects/` to `work/archive/`, update indexes |
+| `/repo-sync` | Scan an external code repo's git history over a window, summarize accomplishments, tie back to the matching vault project |
 
 ## Vault Structure
 
@@ -57,8 +58,8 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `reference/infrastructure/` | Network, server, and environment notes | Server inventory, network maps |
 | `thinking/` | Scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
 | `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, etc. |
-| `.claude/commands/` | 14 slash commands | See command table above |
-| `.claude/agents/` | 4 subagents | See subagents table below |
+| `.claude/commands/` | Custom slash commands | See command table above |
+| `.claude/agents/` | Subagents | See subagents table below |
 | `.claude/scripts/` | Hook scripts | `session-start.sh`, `classify-message.py`, `validate-write.py`, `pre-compact.sh` |
 | `.claude/skills/` | Obsidian + QMD skills | Loaded automatically via Skill tool |
 
@@ -100,6 +101,16 @@ If doing it manually:
 ### Context Switching
 
 **`/context-switch` is the most important command.** When jumping between projects, it reloads all relevant context: the project README, recent notes, open decisions, and any linked reference material. Use it every time you switch projects mid-session.
+
+### Capturing Code Work from External Repos
+
+**The vault git history is not the work history.** The actual engineering happens in code repos under `~/dev/` (eris, pcms, biolift, …), which this agent does not see by default. Treat that as a standing gap to close, not a thing to wait to be asked about:
+
+- `/standup` sweeps the mapped repos and flags code shipped since the last vault sync. When it flags meaningful uncaptured work, proactively offer `/repo-sync <repo> since last-sync` — don't move on as if the vault is the full picture.
+- When the user discusses code work (a feature, a fix, a refactor, a deploy) that clearly happened in a mapped repo and isn't reflected in that project's notes/README, say so and offer to run `/repo-sync` to synthesize and tie it in. The repo→project map lives in `.claude/agents/repo-scanner.md` — that table is the single source of truth; don't restate the mappings elsewhere.
+- `/repo-sync` and `repo-scanner` are read-only on the code repo and write nothing. Vault notes are written only here, in the main context, after the user confirms — following normal note conventions.
+
+The incoming side is just as invisible: **new GitHub issues are not in the vault until captured.** `/standup` checks for new issues in the mapped project repos over a weekday-sensitive window (Monday → 72h, Sunday → 48h, Tue–Sat → 24h) so the weekend gap is covered. When it surfaces a significant new issue (design decision, compliance implication, multi-session work — not a routine fix), proactively offer `/issue-capture <url>` to scaffold a work note; don't let significant incoming work sit only in GitHub.
 
 ### Ending a Substantial Session
 
@@ -320,6 +331,7 @@ Specialized agents in `.claude/agents/` for heavy operations. They run in isolat
 | `cross-linker` | Finds missing wikilinks, orphans, broken backlinks | `/vault-audit` |
 | `vault-librarian` | Deep vault maintenance -- orphans, broken links, stale notes | `/vault-audit` |
 | `vault-migrator` | Classifies, transforms, and migrates content from a source vault | `/vault-upgrade` |
+| `repo-scanner` | Scans an external code repo's git history, summarizes accomplishments, maps to a vault project | `/repo-sync`, Direct |
 
 ## Hooks
 
