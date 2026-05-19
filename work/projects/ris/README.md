@@ -3,8 +3,11 @@ date: "2026-04-05"
 description: "Research Intake Survey — onboarding survey for new research hires at MGB"
 project: "ris"
 status: active
-rails_version: "8.1"
+rails_version: "8.0"
 ruby_version: "3.4.4"
+aliases:
+  - Research Intake Survey
+  - ris
 tags:
   - project
 ---
@@ -25,7 +28,7 @@ Onboarding survey for new research hires at MGB.
 
 ## Tech Stack
 
-- **Rails**: 8.1
+- **Rails**: 8.0 (upgrade to 8.1 pending — see [[lab_archives Rails 8.1 Upgrade]])
 - **Ruby**: 3.4.4
 - **Database**: mySQL 8.0
 

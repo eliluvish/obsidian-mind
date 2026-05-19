@@ -5,6 +5,9 @@ project: ilog
 status: active
 rails_version: "8.1"
 ruby_version: "3.4.4"
+aliases:
+  - iLog
+  - ilog
 tags:
   - project
 ---
@@ -40,8 +43,9 @@ DEA-regulated application. Handles controlled substance inventory and accountabi
 
 ## Active Notes
 
+- [[Accountability Logbook Testing Feedback]] — **active**. Open testing-feedback tickets (compliance #718–724); the Kele/Mirabella set, current North Star goal. Beta path unchanged (no movement).
 - [[2026-04-27 Meeting — ilog]] — stakeholder sync: ARC demo postponed, schedule logic clarified, chatbot interest opened
-- [[Registration Onboarding Workflow Redesign]] — wireframes in progress; IND clarified as only human-specific field
+- [[Registration Onboarding Workflow Redesign]] — wireframes **complete**; implementation deferred until after the logbook ships
 - [[Authorized User Log Rules and Training Changes]]
 - [[Destruction Workflow and DEA Form 41 Process]]
 - [[ARC Group iLog Demo]] — ✅ resolved 2026-04-27 (Kele postponed)

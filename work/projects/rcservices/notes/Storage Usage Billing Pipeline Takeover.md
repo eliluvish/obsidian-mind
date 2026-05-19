@@ -1,7 +1,8 @@
 ---
 date: "2026-04-05"
-description: "Taking over storage usage billing from Chris Mow — stalled since Nov 2025, legacy VM instability risk"
+description: "Taking over MAD3 storage usage billing from Chris Mow — restarted; Isilon API path in production, switching off the eris usage DB. July cutover target."
 project: "rcservices"
+status: active
 tags:
   - work-note
 ---
@@ -10,19 +11,35 @@ tags:
 
 ## Context
 
-Eli is taking over the storage usage billing pipeline from [[Chris Mow]]. The pipeline generates daily storage reports that feed into RC billing via [[RC Services (Eris)|rcservices]].
+Eli is taking over the **MAD3** storage usage billing pipeline from [[Chris Mow]]. The new approach **skips the eris usage database** entirely — usage is pulled directly from the Isilon API into RC Services. The legacy report-parsing pipeline is being retired.
 
-## Current State (stalled since 2025-11-07)
+## Current State (2026-05-18) — restarted, in production
 
-No movement since November 2025. Last communication was between Richard Kenny (rkenny@mgb.org) and Chris Mow.
+Work resumed after the Nov 2025 stall and is now largely in production. The plan is a phased cutover: run alongside Chris's existing billing for June, validate, then switch fully to the new implementation for July.
 
-## How It Works
+### Completed (in production)
+
+- Isilon API access
+- Confirmed the relationships between active MAD3 subscriptions in RCS and their quotas in Isilon
+- Daily job imports usage into RCS
+- New billing process code — uses our internal import data instead of the eris usage DB
+
+### Cutover Plan
+
+- **June billing**: rely on existing billing (Chris's scripts), then compare against the new implementation; make changes as needed
+- **July billing**: switch to the new implementation for good (target)
+
+## Superseded — Legacy Pipeline (historical)
+
+The notes below describe the old report-parsing pipeline being replaced. Kept for context; not the path forward.
+
+### How It Worked (legacy)
 
 1. Daily cron job generates storage reports to `/apps/cluster/system/var/YYYY-MM-DD_storage_report.txt`
 2. Chris's code parses/processes the reports
 3. Data is handed over to RC billing
 
-## Infrastructure Risk
+### Infrastructure Risk (legacy pipeline)
 
 - The cron job runs on **eris1pm01**, a legacy VM (old erisone infra) that has become increasingly unstable
 - Instability may relate to network upgrades for the **eristwo → eristwo-nucleus migration**
@@ -38,9 +55,14 @@ No movement since November 2025. Last communication was between Richard Kenny (r
 - [[RFA Billing Takeover and Powerscale Migration]] — related RFA billing handoff
 - Edmund Ng (edng@mgb.org) — CC'd on the thread
 
-## Status
+## Action Items
 
-Addressed in [eris#1918](https://github.com/csb-ric/eris/issues/1918) — not yet merged. [[Alissa Scharf]] is OOO 2026-04-24; find time with her 2026-04-27 to get a decision.
+- [x] Isilon API access
+- [x] Confirm relationships between active MAD3 subscriptions in RCS and Isilon quotas
+- [x] Daily job imports usage into RCS
+- [x] New billing process code using internal import data (not eris usage DB)
+- [ ] June: run new implementation alongside Chris's existing billing; compare results
+- [ ] July: cut over fully to the new implementation
 
 ## Related
 

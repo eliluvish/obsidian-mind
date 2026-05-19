@@ -23,7 +23,7 @@ _What am I working toward right now?_
 
 ### Short-term (This Quarter)
 
-- complete all accountability logbook tickets (the set Kele/Mirabella added — see [[2026-04-27 Meeting — ilog]])
+- complete all accountability logbook tickets (the set Kele/Mirabella added — tracked in [[Accountability Logbook Testing Feedback]]; origin [[2026-04-27 Meeting — ilog]])
 - upgrade PCMS to Rails 8.1
 - PCMS: do cached charges work?
 

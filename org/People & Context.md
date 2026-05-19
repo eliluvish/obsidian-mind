@@ -48,6 +48,7 @@ Individual notes in `org/people/`:
 
 ### Management & Research Finance
 - [[Andrew Chase]] — Vice President (sponsor for CADE Insight data request)
+- [[Allison Moriarty]] — Senior Vice President, Research Operations ([[Andy Chitty]]'s boss; senior CADE Insight sponsor, escalation point for roadblocks)
 
 ### Core Facility Finance
 - [[Andy Chitty]] — Director
@@ -72,6 +73,7 @@ Individual notes in `org/people/`:
 - [[Rolf Fabre]] — MGB Digital Storage contact (triage for unmatched Powerscale shares/quotas)
 
 ### Digital Research Operations
+- [[Jane Murray]] — Vice President, Digital Research Operations (top of Eli's reporting chain: Eli → [[Daniel Guettler]] → [[Lynn Simpson]] → Jane; owns/prioritizes the new Insight API)
 - [[Nicholas Yale]] — Manager of User Services (reports to [[Michael Oates]])
 - [[Peter Gray]] — ServiceNow developer (reports to Megan Horne, Director)
 - [[Thomas McShane]] — Systems Engineer II, Digital RPDR Ops

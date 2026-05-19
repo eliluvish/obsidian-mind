@@ -3,8 +3,11 @@ date: "2026-04-05"
 description: "Employee data aggregation from multiple sources for deductions processing"
 project: "people"
 status: active
-rails_version: "8.1"
+rails_version: "8.0"
 ruby_version: "3.4.4"
+aliases:
+  - People
+  - people
 tags:
   - project
 ---
@@ -25,7 +28,7 @@ Aggregates employee information from various data sources to make deductions.
 
 ## Tech Stack
 
-- **Rails**: 8.1
+- **Rails**: 8.0 (upgrade to 8.1 pending — see [[lab_archives Rails 8.1 Upgrade]])
 - **Ruby**: 3.4.4
 - **Database**:
 - **Key gems**:
@@ -44,7 +47,8 @@ Shared codebase with [[CADE]] and [[Minor Intake Form|minr]] in the lab_archives
 
 ## Active Notes
 
-- **Week of 2026-04-28**: investigate why Active Directory sync is slow — benchmark it.
+- [[lab_archives Rails 8.1 Upgrade]] — **active**. Upgrade the shared lab_archives app (people/cade/minr/ris) from Rails 8.0 → 8.1.
+- **Week of 2026-04-28**: investigate why Active Directory sync is slow — benchmark it. _(still open)_
 
 ## Related
 

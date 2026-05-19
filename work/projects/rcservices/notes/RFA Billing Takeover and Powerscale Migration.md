@@ -46,8 +46,13 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - Outcome: Eli will attempt to match the Powerscale shares/quotas to known billing customers; anything that can't be matched gets sent to [[Rolf Fabre]] (MGB Digital Storage) for resolution
 - Tracking: [eris#1939](https://github.com/csb-ric/eris/issues/1939)
 
+## Production Deploy — 2026-05-18
+
+RFA billing code is **deployed to production**, but billing data is **not yet being populated**. A method to pull RFA usage exists, but the usage importer has not been written yet. Tracked in [eris#1962](https://github.com/csb-ric/eris/issues/1962) — Write RFA usage importer.
+
 ## Action Items
 
+- [ ] Write the RFA usage importer — [eris#1962](https://github.com/csb-ric/eris/issues/1962) **(next step to start populating production billing)**
 - [x] Attend meeting 2026-04-14
 - [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
 - [x] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921) _(closed 2026-04-22)_

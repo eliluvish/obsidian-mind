@@ -10,6 +10,9 @@ tags:
 
 # Registration Onboarding Workflow Redesign
 
+> [!info] Status (2026-05-18)
+> Wireframes **complete**. Implementation **deferred** until after the accountability logbook ships — see [[Accountability Logbook Testing Feedback]]. Tracked in [compliance#683](https://github.com/csb-ric/compliance/issues/683).
+
 ## Context
 
 Chat with [[Mirabella Daguerre]] on 2026-04-08. Investigators are confused by the current registration flow — gatekeeping mechanisms aren't clear enough, leading to errors. Eli and Mirabella agreed to redesign the onboarding experience. [[Kele Piper]] has been thinking along the same lines — a "smart form" that guides users to the right form and eliminates irrelevant questions.

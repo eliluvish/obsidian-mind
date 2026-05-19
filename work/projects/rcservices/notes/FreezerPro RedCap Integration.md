@@ -13,6 +13,10 @@ tags:
 
 PR [#1854](https://github.com/csb-ric/eris/pull/1854) open on branch `1844-add-freezerproservice-service`. On hold — waiting on REDCap team to finalize schema before building the importer.
 
+### 2026-05-18 — Billing model decided, pending Finance go-ahead
+
+The billing model is **decided** (cost tiers + cadence per [[001-FreezerPro REDCap Integration Model]]). [[Alissa Scharf]] is confirming with **Research Finance** that we are clear to proceed. Still effectively on-hold until that confirmation lands and the REDCap schema is finalized.
+
 ## Integration Model
 
 REDCap is the system of record for all FreezerPro data. RC Services consumes only a minimal, validated dataset to perform billing after explicit approval. See [[001-FreezerPro REDCap Integration Model]] for the full decision record.

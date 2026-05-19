@@ -5,6 +5,9 @@ project: "rpr"
 status: active
 rails_version: "8.1"
 ruby_version: "3.4.4"
+aliases:
+  - Research Participant Remuneration
+  - rpr
 tags:
   - project
 ---
@@ -51,4 +54,5 @@ Tracks and manages remuneration (payments) to research study participants. Conta
 
 ## Active Notes
 
-- [[Order Limit Raised to 1500 Deploy Hold]] — PRs #190/#191, production deploy held until 2026-04-24
+- [[Cross-Study Email Mutation Incident]] — **active, unresolved**. Shared participant email across studies caused a misrouted gift card on #2022P000780. No PII exposed. Proposed fix: email per study (awaiting [[Gala Laffey]] decision).
+- [[Order Limit Raised to 1500 Deploy Hold]] — ✅ completed; PRs #190/#191, deployed to production 2026-04-24

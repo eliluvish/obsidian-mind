@@ -11,6 +11,7 @@ tags:
 
 - **Title**: Director, Digital Research Applications
 - **Department**: Digital Research Applications
+- **Reports to**: [[Jane Murray]]
 
 ## Relationship
 

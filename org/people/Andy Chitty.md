@@ -11,6 +11,7 @@ tags:
 
 - **Title**: Director
 - **Department**: Core Facility Finance
+- **Reports to**: [[Allison Moriarty]]
 
 ## Relationship
 

@@ -1,5 +1,8 @@
 ---
 description: "Central map of all projects, work notes, and decisions"
+aliases:
+  - Index
+  - Work Index
 tags:
   - index
   - moc
@@ -27,6 +30,13 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[lab_archives Rails 8.1 Upgrade]] — people/cade/minr/ris, shared lab_archives app on Rails 8.0 → upgrade to 8.1; not started
+- [[Cross-Study Email Mutation Incident]] — rpr, shared participant email across studies misrouted a gift card (#2022P000780); no PII exposed; proposed fix email-per-study, awaiting [[Gala Laffey]]
+- [[Approvals by Institution]] — minr #1187, Kele wants approvals routed by institution; blocked waiting on [[Kele Piper]] for the institution → approver mapping
+- [[Refactor js.erb to Turbo]] — biolift #20, priority/not started; remove legacy `.js.erb` → Turbo (Rails 8.1 tech debt); ~May 7 target slipped
+- [[Insight Fund Fields Request from CADE]] — cade, Rowan Potter requested fund/grant fields from Insight; blocked on new Insight API build; near-term CSV→people; escalate Allison → [[Jane Murray]]
+- [[Accountability Logbook Testing Feedback]] — ilog, open testing-feedback tickets (compliance #718–724); the Kele/Mirabella set, in progress, current North Star goal
+- [[Calendar Refactor and Drag-Drop Proposal]] — pcms, cross-core SR scoping bug fixed & deployed; PR #2338 opened; Daniel proposed a larger calendar refactor (drag/drop), scope TBD
 - [[2026-05-14 Meeting — pcms]] — pcms weekly sync, four-bucket client recap sent (1 PR shipped, 2 issues closed, 8 RFCO-pending, 8 requiring resolution)
 - [[002-About Page as Auto-Populated Standardized Template]] — pcms, ADR 2026-05-08 **proposed**, replace free-text core About page with standardized template; services/equipment are source of truth
 - [[Stakeholder Focus Groups for User Feedback]] — pcms, third / final focus group captured (2026-05-08); cores building external front ends, About-page architecture debate
@@ -45,10 +55,11 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[001-Secondary Container Disassociation from Primary]] — ilog, ADR 2026-04-21, Kele approved disassociation, known DEA reporting tradeoff
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
-- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, Powerscale outstanding — API approach confirmed 2026-04-14, billing handoff in progress
+- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962))
+- [[Storage Usage Billing Pipeline Takeover]] — rcservices, MAD3 takeover from Chris Mow restarted; Isilon API path in production; June parallel-run, July full cutover
 - [[RFA ServiceNow Provisioning Pipeline]] — rcservices, ✅ complete, live in production 2026-04-16
 - [[AzureVM Import via Azure Export API]] — rcservices #1913, ✅ complete, live in production 2026-04-10
-- [[FreezerPro RedCap Integration]] — rcservices PR #1854, on hold pending REDCap schema
+- [[FreezerPro RedCap Integration]] — rcservices PR #1854, on-hold; billing model decided, Alissa confirming with Research Finance
 
 ## Decisions Log
 

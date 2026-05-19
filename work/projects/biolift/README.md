@@ -5,6 +5,9 @@ project: "biolift"
 status: active
 rails_version: "8.1"
 ruby_version: "3.4.4"
+aliases:
+  - BioLift
+  - biolift
 tags:
   - project
 ---
@@ -42,7 +45,7 @@ None currently.
 
 ## Active Notes
 
-- [biolift#20](https://github.com/csb-ric/biolift/issues/20) — Refactor away from `.js.erb` files and into Turbo — **priority, target by ~2026-05-07**
+- [[Refactor js.erb to Turbo]] — **priority, not started** ([biolift#20](https://github.com/csb-ric/biolift/issues/20)). Remove legacy `.js.erb` → Turbo; Rails 8.1 tech debt. Original ~2026-05-07 target slipped.
 
 ## Related
 
