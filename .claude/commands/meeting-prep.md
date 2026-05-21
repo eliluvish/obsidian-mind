@@ -73,7 +73,11 @@ For shared-repo projects (e.g. lab_archives-hosted projects), scope issue querie
 
 ### 7. Present the Briefing
 
-Print a scannable summary to chat using the same four-bucket structure as the meeting note's `## Recap` section. This is the format Eli typically sends to the client:
+Print a scannable summary to chat using the same four-bucket structure as the meeting note's `## Recap` section. 
+If there are merged PRs that are a refactor, a test update or some other internal improvement, summarize all of these in one section.
+The focus here is on items we can present to the client.
+
+This is the format Eli typically sends to the client:
 
 - **Shipped this week** — merged PRs as a bulleted list, each linking to its PR and noting the issue it resolves when known
 - **Resolved this week** — issues closed in the window (with or without a linked PR), noting who closed each
