@@ -30,6 +30,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[PRISM-48686 Expired Fund Order Investigation]] — rcservices [eris#1963](https://github.com/csb-ric/eris/issues/1963), investigate how an order was placed against an expired fund — guardrail bypass or fund-state ambiguity
+- [[Cached Total Resync on SR Cancel-Uncancel]] — pcms PR #2337, after_commit + RecalculateServiceRequestTrackingsJob closes the cancel/uncancel staleness vector; auditor PR #2307 is the audit companion (deferred to next week)
 - [[lab_archives Rails 8.1 Upgrade]] — people/cade/minr/ris, shared lab_archives app on Rails 8.0 → upgrade to 8.1; not started
 - [[Cross-Study Email Mutation Incident]] — rpr, shared participant email across studies misrouted a gift card (#2022P000780); no PII exposed; proposed fix email-per-study, awaiting [[Gala Laffey]]
 - [[Approvals by Institution]] — minr #1187, Kele wants approvals routed by institution; blocked waiting on [[Kele Piper]] for the institution → approver mapping
@@ -42,7 +44,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[Stakeholder Focus Groups for User Feedback]] — pcms, third / final focus group captured (2026-05-08); cores building external front ends, About-page architecture debate
 - [[2026-04-30 Meeting — pcms]] — pcms weekly sync prep, chatbot questions, stakeholder focus group follow-up, stale PR flagged
 - [[Core Browse UI Design]] — pcms, filterable card grid to replace the flat 130-core list; design ready for schema feasibility review
-- [[Ragon Equipment Chatbot]] — pcms, in-progress chatbot for Ragon core, feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes)
+- [[PCMS Chatbot]] — pcms, general chatbot initiative (formerly Ragon-only), SOW being drafted; feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes, core-matching)
 - [[2026-04-27 Meeting — ilog]] — ilog stakeholder sync, ARC demo postponed by Kele, schedule logic clarified, chatbot interest opened
 - [[Equipment and Services Tag Taxonomy]] — pcms, define tags for equipment and services, Eli owns the list
 - [[Order Limit Raised to 1500 Deploy Hold]] — rpr PR #190, order cap raised to $1500, ✅ deployed to production 2026-04-24

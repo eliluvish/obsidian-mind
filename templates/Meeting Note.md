@@ -20,7 +20,11 @@ tags:
 
 _Window: {{date_range}}._
 
-### Shipped this week
+### New features
+
+-
+
+### Bug fixes & improvements
 
 -
 
@@ -29,6 +33,12 @@ _Window: {{date_range}}._
 -
 
 ### Requires resolution / finalization / clarification or closing
+
+-
+
+### Behind-the-scenes work
+
+_Internal improvements with no user-visible change. Kept high-level on purpose._
 
 -
 

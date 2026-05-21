@@ -1,19 +1,26 @@
 ---
 date: "2026-04-27"
-description: "PCMS equipment chatbot for the Ragon core — answer researcher questions about what's available, where, when, and whether they can use it"
+description: "PCMS chatbot — researcher-facing natural-language tool for equipment/core discovery. Originally scoped to Ragon; broadened to a general PCMS-wide initiative. SOW being drafted."
 project: pcms
 status: active
 tags:
   - work-note
 ---
 
-# Ragon Equipment Chatbot
+# PCMS Chatbot
 
 ## Context
 
-In-progress chatbot for [[PCMS]] aimed at the Ragon core. Goal: let researchers ask natural-language questions about equipment instead of clicking through PCMS or asking core staff. Listed as a medium-term goal in [[North Star]]. Same toolset Eli mentioned to [[Kele Piper]] in [[2026-04-27 Meeting — ilog]] — Kele expressed interest in eventually applying it to iLog (DEA 41 form help, FAQ deflection).
+Ongoing PCMS initiative: a natural-language chatbot to let researchers ask questions about equipment, services, and cores instead of clicking through PCMS or asking core staff. Original framing was Ragon-specific (equipment chatbot for the Ragon core). It's now a general PCMS chatbot — Ragon is just the first surface, with the same toolset reusable across cores and adjacent projects (e.g. iLog FAQ deflection, see [[2026-04-27 Meeting — ilog]]).
 
-Current tool surface returns equipment basics: `name`, `description`, `training_required`, `pre_requisites`, `status`, address fields. Searches across `street_address`, `city`, `building`, `floor`, `room`.
+Listed as a medium-term goal in [[North Star]]. Aligns with the strategic ask [[Allison Moriarty]] raised in the stakeholder focus group ([[Stakeholder Focus Groups for User Feedback#AI-assisted core matching / chatbot]]): an AI surface where investigators describe a project and the system routes them to the right cores.
+
+## Status
+
+- **SOW in progress** — being drafted, not yet sent to client. Once sent and accepted, it becomes the active scoping document and the feature backlog below gets reconciled against it.
+- Branch `rubyllm-v2` in `pcms` has 67 commits ahead of master: streaming chunks over Turbo, autoscroll, `SearchEquipment` capability filtering, composer textarea clear on send, i18n dedup, Turbo form wiring. Active dev, not near merge.
+- Current tool surface returns equipment basics — `name`, `description`, `training_required`, `pre_requisites`, `status`, address fields — and searches across `street_address`, `city`, `building`, `floor`, `room`.
+- Groundwork PRs shipped: tag system (#2314), multi-modality (#2312), support fields on equipment (#2311) — see [[2026-04-30 Meeting — pcms]].
 
 ## Feature Backlog — Questions the Chatbot Should Answer
 
@@ -59,13 +66,17 @@ Tracking records exist (billable activity), but the model can't see usage volume
 
 - Flag only — not a build target. Common follow-up question to keep in mind.
 
+### 7. "I have a project, who should I talk to?" — Core matching
+
+Moriarty's blue-sky ask from the focus group: investigator describes project → system routes to the right cores. Requires structured `use_cases` / `example_projects` content on core pages so the model has prose to match against. Depends on the [[002-About Page as Auto-Populated Standardized Template]] ADR landing.
+
 ## Cross-Project Implications
 
-If the chatbot pattern works for Ragon, two projects already want to inherit it:
-- **iLog** — DEA 41 form help, FAQ deflection (Kele 2026-04-27, see [[2026-04-27 Meeting — ilog]])
+If the chatbot pattern works for the first PCMS surface, two projects already want to inherit it:
+- **iLog** — DEA 41 form help, FAQ deflection ([[Kele Piper]], 2026-04-27, see [[2026-04-27 Meeting — ilog]])
 - **Possibly anything else with documentation-heavy user friction**
 
-Worth designing the chatbot's tool layer with reuse in mind from the start.
+Design the chatbot's tool layer with reuse in mind from the start.
 
 ## Talking Points for Weekly Sync
 
@@ -78,10 +89,13 @@ Worth designing the chatbot's tool layer with reuse in mind from the start.
 - Where does the chatbot UI live in PCMS? Per-page contextual widget, global modal, dedicated page?
 - Where do `current_user` and authorization context flow through to tool calls?
 - Does spec/capability structure need its own data modeling pass, or can it ride on the equipment/services tag taxonomy work?
+- Once the SOW is signed, which surface ships first — Ragon (the original scope) or a broader equipment-search across cores?
 
 ## Related
 
 - [[PCMS]]
 - [[North Star]]
 - [[Equipment and Services Tag Taxonomy]] — spec/tag taxonomy work that feeds into capabilities querying
+- [[002-About Page as Auto-Populated Standardized Template]] — structured About content unlocks core-matching queries (#7 above)
+- [[Stakeholder Focus Groups for User Feedback]] — focus-group signal from Moriarty/Jennings/Andy on chatbot direction
 - [[2026-04-27 Meeting — ilog]] — Kele's interest in chatbot for iLog

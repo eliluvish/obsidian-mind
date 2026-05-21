@@ -22,6 +22,12 @@ Off the back of that work, [[Daniel Guettler]] asked whether Eli would be intere
 - Daniel's ask is currently a verbal proposal, not a scoped ticket. Drag/drop event editing is the headline feature; full scope (recurring events, resource views, multi-core visibility) not yet defined.
 - Decision point: treat as incremental improvement on PR #2338, or scope a dedicated calendar-refactor initiative with its own backlog.
 
+### Shipped (2026-05-14)
+
+- **PR [#2291](https://github.com/csb-ric/pcms/issues/2291)** — `feat(calendar): add equipment section to schedule filter` (`cc4482ce`). New Equipment section in the week-view filter sidebar; selecting equipment toggles its associated services via a Stimulus `EquipmentServicesController`. Backed by a new `Service#equipment_entity?` predicate.
+- Same-day scoping fix (`018f67c6`) — initial implementation emitted `data-equipment-id` on every service, so a Labor service with `entity_id == 7` was incorrectly toggled by an unrelated Equipment with `id == 7`. Now gated to `Core::Equipment`-backed services only. Also introduced an `AjaxSpinnerController` as a side effect.
+- API cross-core bug `faec2627` — calendar event creation intermittently raised `DelegationError: composed_service_request is nil` because `current_core` thread-local leaked between Puma requests. Fix: `before_action :current_core` before any scoped query, plus a regression spec that pre-poisons the thread-local. Worth pinning in [[Gotchas]] alongside the existing `60b8ae3` entry.
+
 ## Action Items
 - [ ] Confirm exact scope of PR #2338 (fix-only vs. refactor start)
 - [ ] Scope Daniel's refactor ask — what "more usable" means concretely beyond drag/drop

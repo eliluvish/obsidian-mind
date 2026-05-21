@@ -54,7 +54,7 @@ This decision is **proposed**, not yet accepted. It requires:
 
 ## Consequences
 
-- **Unlocks search and browse over core descriptions.** The [[Core Browse UI Design]] cards, the [[Ragon Equipment Chatbot]], and any future Insight/CTO touchpoint can rely on structured data being present and current.
+- **Unlocks search and browse over core descriptions.** The [[Core Browse UI Design]] cards, the [[PCMS Chatbot]], and any future Insight/CTO touchpoint can rely on structured data being present and current.
 - **Removes the crutch.** Once the structured sections are mandatory and visible, cores can't hide thin service/equipment data behind a rich About page.
 - **Migration cost.** Long-tail About pages mix narrative and structured data. Extracting the structured parts (services, equipment, location) into the canonical records is per-core manual work — or an AI-assisted backfill, which Eli has already been doing informally for equipment.
 - **Some admins will resist.** [[Meini Shin]] flagged that her director invested heavily in the current About page as marketing. The narrative region preserves that use case, but the editing UX needs to be meaningfully better than today's 15-year-old editor or the change feels like a downgrade.
@@ -74,6 +74,6 @@ This decision is **proposed**, not yet accepted. It requires:
 - [[Stakeholder Focus Groups for User Feedback]] — the focus-group note where this surfaced (2026-04-30 + 2026-05-08)
 - [[Core Browse UI Design]] — provides the structured location/modality/freshness fields this decision depends on
 - [[Equipment and Services Tag Taxonomy]] — tag vocabulary that powers structured search
-- [[Ragon Equipment Chatbot]] — downstream consumer of the structured data this unlocks
+- [[PCMS Chatbot]] — downstream consumer of the structured data this unlocks
 - [[Andy Chitty]]
 - [[Daniel Guettler]]

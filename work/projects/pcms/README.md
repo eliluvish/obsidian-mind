@@ -60,7 +60,7 @@ None currently.
 - [[Calendar Refactor and Drag-Drop Proposal]] — **active**. Cross-core SR scoping bug **fixed & deployed**; PR [#2338](https://github.com/csb-ric/pcms/issues/2338) opened. Daniel proposed a larger calendar refactor (drag/drop events) — scope TBD.
 - [[2026-05-14 Meeting — pcms]] — weekly sync; four-bucket client recap sent
 - [[Core Browse UI Design]] — design spec for filterable card grid browse UI; ready for agent feasibility review against schema
-- [[Ragon Equipment Chatbot]] — in progress. Equipment-search chatbot for Ragon core; feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes).
+- [[PCMS Chatbot]] — in progress. General PCMS chatbot initiative (formerly scoped to Ragon only); SOW being drafted. Feature backlog: availability, user-gating, capabilities, location, track record, substitutes, core-matching.
 - [[002-About Page as Auto-Populated Standardized Template]] — **proposed** ADR (2026-05-08). Replace free-text About page with structured template; services/equipment are source of truth. Depends on [[Core Browse UI Design]] schema.
 - [[Stakeholder Focus Groups for User Feedback]] — three sessions captured (2026-04-08, 2026-04-30, 2026-05-08). Final session: cores building external front ends, About-page architectural debate.
 - [pcms#2280](https://github.com/csb-ric/pcms/issues/2280) — Cached charges accuracy. Root cause found: commit `9c29f4f` was the missing link. Fix in PR [#2307](https://github.com/csb-ric/pcms/pull/2307) (awaiting merge). **Next**: merge #2307, then add a daily job monitoring that `cached_charges` for the last 6–12 months are accurate.

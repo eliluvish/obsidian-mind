@@ -33,9 +33,9 @@ _Auto-filled by `/meeting-prep`. Window: 2026-04-23 → 2026-04-30._
 | [#2322](https://github.com/csb-ric/pcms/pull/2322) | fix(admin/invoices): surface validation errors on bulk update | Eli / closes #2309 |
 | [#2319](https://github.com/csb-ric/pcms/pull/2319) | fix(billing): surface validation errors on invoice update | [[Tera Morse]] / [[Jessica Cho]] / closes #2316 |
 | [#2318](https://github.com/csb-ric/pcms/pull/2318) | Fix BPC External Payments fund_number corruption | [[Tera Morse]] / closes #2313 |
-| [#2314](https://github.com/csb-ric/pcms/pull/2314) | feat(equipment): add capabilities tag system | Ragon chatbot groundwork |
-| [#2312](https://github.com/csb-ric/pcms/pull/2312) | Add multi modality | Ragon chatbot groundwork |
-| [#2311](https://github.com/csb-ric/pcms/pull/2311) | Add support fields to equipment | Ragon chatbot groundwork |
+| [#2314](https://github.com/csb-ric/pcms/pull/2314) | feat(equipment): add capabilities tag system | Chatbot groundwork |
+| [#2312](https://github.com/csb-ric/pcms/pull/2312) | Add multi modality | Chatbot groundwork |
+| [#2311](https://github.com/csb-ric/pcms/pull/2311) | Add support fields to equipment | Chatbot groundwork |
 | [#2310](https://github.com/csb-ric/pcms/pull/2310) | build(docker): upgrade MySQL to 8.0.44 | Infra |
 
 ### Closed Without Code
@@ -82,7 +82,7 @@ _Auto-filled by `/meeting-prep`. Window: 2026-04-23 → 2026-04-30._
 > [!todo] From [[Equipment and Services Tag Taxonomy]] — **ask today**
 > Some equipment entries appear to actually be services (e.g., "Proposal Assistance / Proposal Development — Consultant", "Post-Award Management — Consultant"). How should the tag taxonomy handle these? Are they mislabeled in the source, or do we need a tag/flag to distinguish service-type entries living in the equipment model?
 
-From [[Ragon Equipment Chatbot]]:
+From [[PCMS Chatbot]]:
 - Where does the chatbot UI live in PCMS? Per-page widget, global modal, or dedicated page?
 - How does `current_user` and authorization context flow through to tool calls?
 - Does spec/capability structure need its own data modeling pass, or can it ride on the tag taxonomy work?
@@ -113,5 +113,5 @@ Also: Is [#2080](https://github.com/csb-ric/pcms/issues/2080) still needed?
 - [[Tera Morse]]
 - [[Daniel Guettler]]
 - [[Yovani Edwards]]
-- [[Ragon Equipment Chatbot]]
+- [[PCMS Chatbot]]
 - [[Equipment and Services Tag Taxonomy]]

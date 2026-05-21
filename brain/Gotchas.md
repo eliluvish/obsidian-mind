@@ -24,6 +24,17 @@ Things that have bitten before and will bite again.
 - When reviewing diffs that add `.find` calls on `CoreScopable` models, ask: is this lookup expected to cross core boundaries? If yes, `.unscoped`.
 - The RCMS calendar API will return a bare `{}` with status 404 when the SR isn't visible — not 422 — so a 404 from `/api/bic/calendar_events` POST is most likely an SR-scope mismatch, not a route/auth issue.
 
+### PCMS API: `Thread.current[:current_core]` leaks between Puma requests
+
+`ServiceRequest` (and other `CoreScopable` models) keys its default scope off `Thread.current[:current_core]`. In API controllers that delegate through associations (e.g. `@service_request.account` → re-queries `ServiceRequest`), if `before_action :current_core` hasn't run, the lookup uses **whatever core the previous request on that Puma thread set** — silently scoping to the wrong core and returning nil. Symptom in production: `DelegationError: composed_service_request is nil` on valid SubServiceRequest IDs, intermittent (depends on thread reuse).
+
+**Why**: Fixed 2026-05-14 (pcms commit `faec2627`) for calendar event creation by adding `before_action :current_core` before any scoped query, plus a regression spec that pre-poisons the thread-local with a wrong core to prove the fix. The bug class is the same family as the `60b8ae3` calendar gotcha above — both are about `CoreScopable` queries running with an unexpected `current_core`, just from opposite directions (one missing the scope unset, one missing the scope set).
+
+**How to apply**:
+- In any PCMS API controller that touches `CoreScopable` models, set `current_core` in a `before_action` **before** any code that might trigger a scoped query, including association delegations.
+- When chasing intermittent "nil where there should be a record" failures in PCMS API logs, suspect thread-local leak before suspecting data. Reproduce by pre-setting `Thread.current[:current_core]` to a wrong core in a spec.
+- Any new `Thread.current[:...]` state in PCMS needs an explicit reset path between requests; don't assume Puma resets it.
+
 ## RPR
 
 ### Participant email is shared across all of a participant's studies

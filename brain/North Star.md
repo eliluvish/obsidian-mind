@@ -25,7 +25,7 @@ _What am I working toward right now?_
 
 - complete all accountability logbook tickets (the set Kele/Mirabella added — tracked in [[Accountability Logbook Testing Feedback]]; origin [[2026-04-27 Meeting — ilog]])
 - upgrade PCMS to Rails 8.1
-- PCMS: do cached charges work?
+- PCMS: do cached charges work? — cancel/uncancel staleness vector closed by [[Cached Total Resync on SR Cancel-Uncancel|#2337]] (2026-05-14); remaining piece is auditing for pre-existing drift via PR #2307 / CachedTotalAuditor
 
 ### Medium-term (This Half)
 

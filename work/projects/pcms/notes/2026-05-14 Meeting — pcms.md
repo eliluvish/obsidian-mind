@@ -54,7 +54,7 @@ _Sent 2026-05-14 ahead of the sync. Window: 2026-05-07 → 2026-05-14._
 
 - **[[Equipment and Services Tag Taxonomy]]** — Some equipment entries appear to be services (Proposal Assistance, Post-Award Management, Financial Analysis, Overall Project Management, Clinical Trial Invoicing — all "Consultant"). Mislabeled in source, or need a tag/flag to distinguish service-type entries living in the equipment model?
 - **[[General Upload Template Service Request Sync]]** _(backburner)_ — What does the "change message" look like on the SR (banner / event log / email)? Is retraining owned by Finance or Eli? New issue or rolls under #2225?
-- **[[Ragon Equipment Chatbot]]** — Where does the chatbot UI live (per-page widget / global modal / dedicated page)? How does `current_user` flow through to tool calls? Does spec/capability structure need its own modeling pass or can it ride on the tag taxonomy work?
+- **[[PCMS Chatbot]]** — Where does the chatbot UI live (per-page widget / global modal / dedicated page)? How does `current_user` flow through to tool calls? Does spec/capability structure need its own modeling pass or can it ride on the tag taxonomy work?
 
 ## Discussion
 

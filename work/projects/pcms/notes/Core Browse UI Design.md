@@ -123,6 +123,6 @@ Before implementing, verify the following. If any assumption is wrong, the desig
 ## Related
 
 - [[PCMS]]
-- [[Ragon Equipment Chatbot]]
+- [[PCMS Chatbot]]
 - [[Equipment and Services Tag Taxonomy]]
 - [[Stakeholder Focus Groups for User Feedback]]
