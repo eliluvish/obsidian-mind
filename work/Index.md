@@ -55,6 +55,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[001-Secondary Container Disassociation from Primary]] — ilog, ADR 2026-04-21, Kele approved disassociation, known DEA reporting tradeoff
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
+- [[Briefcase Billing Takeover]] — rcservices, third leg of the Chris Mow billing handoff; two-hop SSH pull verified from EC2 ([eris#1969](https://github.com/csb-ric/eris/issues/1969) parent + 4 children); blocked on legacy ruby parser source from Richard
 - [[RFA Billing Takeover and Powerscale Migration]] — rcservices, billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962))
 - [[Storage Usage Billing Pipeline Takeover]] — rcservices, MAD3 takeover from Chris Mow restarted; Isilon API path in production; June parallel-run, July full cutover
 - [[RFA ServiceNow Provisioning Pipeline]] — rcservices, ✅ complete, live in production 2026-04-16

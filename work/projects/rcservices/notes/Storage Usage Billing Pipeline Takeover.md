@@ -53,6 +53,7 @@ The notes below describe the old report-parsing pipeline being replaced. Kept fo
 - [[Richard Kenny]] (rkenny@mgb.org) — implemented the backup cron job
 - [[Alissa Scharf]] — CC'd on the thread
 - [[RFA Billing Takeover and Powerscale Migration]] — related RFA billing handoff
+- [[Briefcase Billing Takeover]] — third leg of the Chris Mow billing handoff (started 2026-05-20)
 - Edmund Ng (edng@mgb.org) — CC'd on the thread
 
 ## Action Items

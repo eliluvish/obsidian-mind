@@ -15,7 +15,7 @@ tags:
 
 ## Relationship
 
-Colleague. Currently owns the storage usage billing pipeline (briefcase data → RC billing) that Eli is taking over for [[RC Services (Eris)|rcservices]].
+Colleague. Currently owns the RC billing upload pipelines (MAD3 storage usage, BriefCase, RFA) that Eli is taking over for [[RC Services (Eris)|rcservices]].
 
 ## Key Moments
 
@@ -27,4 +27,8 @@ Colleague. Currently owns the storage usage billing pipeline (briefcase data →
 
 ## Related
 
+- [[RC Services (Eris)|rcservices]]
+- [[Storage Usage Billing Pipeline Takeover]]
+- [[RFA Billing Takeover and Powerscale Migration]]
+- [[Briefcase Billing Takeover]]
 - [[People & Context]]

@@ -15,12 +15,13 @@ tags:
 
 ## Relationship
 
-Works with Eli on storage and billing infrastructure for [[RC Services (Eris)|rcservices]]. Set up backup cron on eristwo for storage reports. Key contact for Powerscale API access.
+Works with Eli on storage and billing infrastructure for [[RC Services (Eris)|rcservices]]. Set up backup cron on eristwo for storage reports. Key contact for Powerscale API access. Provided the `sa4613` service account and pasxml pull path for the [[Briefcase Billing Takeover]] on 2026-05-20.
 
 ## Related
 
 - [[RC Services (Eris)|rcservices]]
 - [[Storage Usage Billing Pipeline Takeover]]
 - [[RFA Billing Takeover and Powerscale Migration]]
+- [[Briefcase Billing Takeover]]
 - [[Chris Mow]]
 - [[People & Context]]

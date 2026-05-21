@@ -27,6 +27,7 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 - Outcome: can we pull via API?
 - If no API, need to hand off responsibility of billing script from [[Chris Mow]] to [[Richard Kenny]]
 - Update how billing is aggregated
+- **Resolved 2026-05-20**: pull path exists via `pasxml volumes` on the pan01 storage director nodes — see [[Briefcase Billing Takeover]].
 
 ## Meeting Outcomes — 2026-04-14
 
