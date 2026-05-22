@@ -76,10 +76,17 @@ Bring BriefCase into the same shape as the MAD3 takeover: daily import directly 
 Parent + children tracking the implementation:
 
 - [eris#1969](https://github.com/csb-ric/eris/issues/1969) — **parent**: Add BriefCase usage importing
-- [eris#1970](https://github.com/csb-ric/eris/issues/1970) — pasxml XML parser for BriefCase (blocked on legacy ruby source from Richard)
-- [eris#1971](https://github.com/csb-ric/eris/issues/1971) — BriefCase usage importer (`import_briefcase_storage`) — depends on #1970
+- [eris#1970](https://github.com/csb-ric/eris/issues/1970) — pasxml XML parser for BriefCase
+- [eris#1971](https://github.com/csb-ric/eris/issues/1971) — BriefCase usage importer (`import_briefcase_storage`)
 - [eris#1972](https://github.com/csb-ric/eris/issues/1972) — Match BriefCase volumes to RC Services subscriptions
 - [eris#1973](https://github.com/csb-ric/eris/issues/1973) — Shadow run + cutover from legacy CentOS 6 pipeline
+- [eris#1974](https://github.com/csb-ric/eris/issues/1974) — BriefCase monthly billing aggregator
+
+## Status (2026-05-22)
+
+Importer code is **complete on branch `1971-briefcase-usage-importer`** (20 commits ahead of master), awaiting merge. The parser, SSH fetcher, daily `LogStorageUsageJob` (with error bucketing), volume-matching logic, and daily-enqueue scheduling are all in. Only `share_path` migration + README have landed on master so far. Next gates: merge → shadow run (#1973) → monthly aggregator (#1974).
+
+The legacy ruby parser source from Richard never arrived, but it stopped being a blocker — the pasxml schema was clear enough to build a parser fresh. See [[BriefCase Volume Matching Logic]] for the matching iterations.
 
 ## Action Items
 
@@ -91,20 +98,25 @@ Parent + children tracking the implementation:
 - [x] Pull a sample `BriefCASE_data.xml` end-to-end from EC2 _(2026-05-20)_
 - [x] Document operational primitive in `eris/README.md` (BriefCase Storage Usage section) _(2026-05-20)_
 - [x] Scaffold GitHub issues for the remaining work _(2026-05-20)_
+- [x] pasxml XML parser with contract specs (#1970) _(2026-05-21)_
+- [x] pasxml SSH fetcher with isilon director fallback _(2026-05-21)_
+- [x] `LogStorageUsageJob` happy path + error buckets (unmatched, missing-name, missing-usage, duplicate `lun_name`, active-no-volume, ended-sub) (#1971) _(2026-05-21–22)_
+- [x] Schedule `LogStorageUsageJob` in the daily enqueue _(2026-05-22)_
+- [x] Add `share_path` column to `hpc_meta` via migration (on master) _(2026-05-22)_
+- [x] SSH `BatchMode` + `ConnectTimeout` hardening to prevent hangs _(2026-05-22)_
 
-**Next (verification — not issue-tracked)**
+**Next**
 
+- [ ] Merge `1971-briefcase-usage-importer` → master
 - [ ] Diff EC2 pull against Richard's sample `BriefCASE_data.xml` — schema (root element, per-volume fields), not values
 - [ ] Test all three pan01 nodes return the same volume count; document failover order
 - [ ] Time 3–5 pulls; record baseline runtime + variance
-
-**Next (blockers — emails out)**
-
-- [ ] Request legacy ruby parser source from [[Richard Kenny]] (XML → `storage_report.txt` mapping) — gates [eris#1970](https://github.com/csb-ric/eris/issues/1970)
-- [ ] Request Chris's uploader source from [[Chris Mow]] (`storage_report.txt` → MySQL billing tables)
+- [ ] Shadow run alongside legacy CentOS 6 pipeline (#1973)
+- [ ] Build monthly billing aggregator (#1974)
+- [ ] Request Chris's uploader source from [[Chris Mow]] (`storage_report.txt` → MySQL billing tables) — for cutover validation only
 - [ ] Confirm with Richard: can prod RC Services host reach `10.129.84.0/24` directly? If yes, drop the sa4613 hop entirely
 
-**Open prod-deploy decisions** (resolve before [eris#1971](https://github.com/csb-ric/eris/issues/1971) ships)
+**Open prod-deploy decisions** (resolve before merging #1971)
 
 - [ ] Decide where the importer runs in prod (RC Services host vs. dedicated job runner) and which OS user owns the keypair
 - [ ] Determine prod outbound IP stability and whether it needs to be allowlisted by the research network

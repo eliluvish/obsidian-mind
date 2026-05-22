@@ -30,6 +30,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[BriefCase Unbilled Volume Triage]] — rcservices, first triage list sent to [[Rolf Fabre]] (2026-05-22) — Group A ended subs + Group B unmatched (internal/template paths, pcpgm outlier); awaiting response
+- [[BriefCase Volume Matching Logic]] — rcservices [eris#1972](https://github.com/csb-ric/eris/issues/1972), four-iteration design path for matching pasxml volumes to subscriptions; importer's bucket taxonomy
 - [[PRISM-48686 Expired Fund Order Investigation]] — rcservices [eris#1963](https://github.com/csb-ric/eris/issues/1963), investigate how an order was placed against an expired fund — guardrail bypass or fund-state ambiguity
 - [[Cached Total Resync on SR Cancel-Uncancel]] — pcms PR #2337, after_commit + RecalculateServiceRequestTrackingsJob closes the cancel/uncancel staleness vector; auditor PR #2307 is the audit companion (deferred to next week)
 - [[lab_archives Rails 8.1 Upgrade]] — people/cade/minr/ris, shared lab_archives app on Rails 8.0 → upgrade to 8.1; not started

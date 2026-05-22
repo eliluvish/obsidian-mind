@@ -45,7 +45,7 @@ None currently.
 
 - [[RFA Billing Takeover and Powerscale Migration]] — **active**. Billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962)).
 - [[Storage Usage Billing Pipeline Takeover]] — **active**. MAD3 takeover from Chris Mow restarted; Isilon API path in production. June: run alongside Chris's scripts; July: full cutover.
-- [[Briefcase Billing Takeover]] — **active** (started 2026-05-20). Third leg of the Chris Mow billing handoff. Access provided via `sa4613` on eris2-nucleus; pull pasxml from pan01 storage director nodes; retire CentOS 6 legacy ruby script.
+- [[Briefcase Billing Takeover]] — **active**. Third leg of the Chris Mow billing handoff. Importer complete on branch `1971-briefcase-usage-importer` (20 commits ahead of master), awaiting merge; shadow run ([eris#1973](https://github.com/csb-ric/eris/issues/1973)) and monthly aggregator ([eris#1974](https://github.com/csb-ric/eris/issues/1974)) next. See [[BriefCase Volume Matching Logic]] for the matching iterations.
 - [[FreezerPro RedCap Integration]] — **on-hold**. Billing model decided ([[001-FreezerPro REDCap Integration Model]]); [[Alissa Scharf]] confirming with Research Finance. PR [#1854](https://github.com/csb-ric/eris/pull/1854) waiting on REDCap schema.
 - [[RFA ServiceNow Provisioning Pipeline]] — **completed** (live in production 2026-04-16).
 - [[AzureVM Import via Azure Export API]] — **completed** ([eris#1913](https://github.com/csb-ric/eris/issues/1913)).
