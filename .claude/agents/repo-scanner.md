@@ -30,6 +30,7 @@ Look up the repo here. Match by directory name first, then by `git remote get-ur
 | `pcms-api` / `csb-ric/pcms-api` | `pcms` | confirmed |
 | `pcms-islands` / `csb-ric/pcms-islands` | `pcms` | confirmed |
 | `eris` / `csb-ric/eris` | `rcservices` | confirmed — RCC billing / ServiceCharge / trackings / isilon storage |
+| `compliance` / `csb-ric/compliance` | `ilog` | confirmed — iLog Rails app, DEA controlled substances / logbook / Form 41 |
 | `pi_app` / `csb-ric/lab_archives` | `minr` | inferred — minr is being extracted from lab_archives |
 
 If the repo is **not in the table**: do not guess silently. Report the repo's remote, recent commit scopes, and the candidate vault projects (list from `work/projects/*/`), and explicitly ask the parent to confirm the mapping. Mapping intelligence beyond this table lives in the parent's full vault context, not here.

@@ -88,6 +88,18 @@ Importer code is **complete on branch `1971-briefcase-usage-importer`** (20 comm
 
 The legacy ruby parser source from Richard never arrived, but it stopped being a blocker — the pasxml schema was clear enough to build a parser fresh. See [[BriefCase Volume Matching Logic]] for the matching iterations.
 
+## Next: Rerun checklist (2026-05-26)
+
+Holding the merge of `1971-briefcase-usage-importer` until a fresh run confirms Rolf's promised deletions landed (see [[BriefCase Unbilled Volume Triage]] Group A — 11 directories he said he'd remove "next week" from 5/22). A clean rerun validates the importer on real recent pasxml and shrinks the ended-sub bucket without any code change.
+
+- [ ] Pull fresh `BriefCASE_data.xml` via the two-hop one-liner — confirms the operational primitive still works
+- [ ] Run `LogStorageUsageJob` against the fresh XML on the branch
+- [ ] Diff buckets vs. the 5/22 run:
+  - Ended-sub: expect **11 → fewer** (Rolf's deletions)
+  - Unmatched: Group B paths still present (opt-out filter not yet added) — confirms nothing new appeared
+- [ ] Spot-check for any **new** unmatched paths not on the 5/22 list — those are the interesting signal
+- [ ] If clean: proceed with merge + opt-out filter follow-ups below
+
 ## Action Items
 
 **Done**
