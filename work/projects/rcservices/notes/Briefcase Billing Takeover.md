@@ -82,23 +82,29 @@ Parent + children tracking the implementation:
 - [eris#1973](https://github.com/csb-ric/eris/issues/1973) — Shadow run + cutover from legacy CentOS 6 pipeline
 - [eris#1974](https://github.com/csb-ric/eris/issues/1974) — BriefCase monthly billing aggregator
 
-## Status (2026-05-22)
+## Status (2026-05-26)
 
-Importer code is **complete on branch `1971-briefcase-usage-importer`** (20 commits ahead of master), awaiting merge. The parser, SSH fetcher, daily `LogStorageUsageJob` (with error bucketing), volume-matching logic, and daily-enqueue scheduling are all in. Only `share_path` migration + README have landed on master so far. Next gates: merge → shadow run (#1973) → monthly aggregator (#1974).
+**Importer shipped to master** via PR #1976 (commit `31fd2476`) — 855 LOC, daily `LogStorageUsageJob` with 5-bucket Honeybadger alerting, idempotent per-day, SSH chain to pan01, all-or-nothing persistence, polynomial backoff on `Pasxml::Error`. Scheduled from `rake enqueue:daily` and runs parallel to the existing Isilon pipeline.
+
+Branch `origin/1970-pasxml-xml-parser-for-briefcase` (5 commits) is now obsolete — that parser work landed inside #1976 rather than as its own merge.
+
+`origin/briefcase-create-cancellation-ticket` — 1-commit stub for automated cancellation ticket creation on BriefCase subscription end. Not addressed yet.
+
+Next gates: validation rerun on real pasxml → shadow run (#1973) → monthly aggregator (#1974).
 
 The legacy ruby parser source from Richard never arrived, but it stopped being a blocker — the pasxml schema was clear enough to build a parser fresh. See [[BriefCase Volume Matching Logic]] for the matching iterations.
 
-## Next: Rerun checklist (2026-05-26)
+## Post-merge validation rerun (2026-05-26)
 
-Holding the merge of `1971-briefcase-usage-importer` until a fresh run confirms Rolf's promised deletions landed (see [[BriefCase Unbilled Volume Triage]] Group A — 11 directories he said he'd remove "next week" from 5/22). A clean rerun validates the importer on real recent pasxml and shrinks the ended-sub bucket without any code change.
+Now that #1976 is on master, the next run on production-equivalent pasxml is the first real-world validation. Rolf promised on 5/22 to delete 11 ended-sub directories "next week" (see [[BriefCase Unbilled Volume Triage]] Group A); the rerun should also show the ended-sub bucket shrinking as those deletions land.
 
-- [ ] Pull fresh `BriefCASE_data.xml` via the two-hop one-liner — confirms the operational primitive still works
-- [ ] Run `LogStorageUsageJob` against the fresh XML on the branch
+- [ ] Pull fresh `BriefCASE_data.xml` via the two-hop one-liner — confirms the operational primitive still works post-merge
+- [ ] Run `LogStorageUsageJob` against the fresh XML on master
 - [ ] Diff buckets vs. the 5/22 run:
   - Ended-sub: expect **11 → fewer** (Rolf's deletions)
   - Unmatched: Group B paths still present (opt-out filter not yet added) — confirms nothing new appeared
 - [ ] Spot-check for any **new** unmatched paths not on the 5/22 list — those are the interesting signal
-- [ ] If clean: proceed with merge + opt-out filter follow-ups below
+- [ ] If clean: queue the opt-out filter follow-ups + shadow run (#1973)
 
 ## Action Items
 
@@ -119,7 +125,7 @@ Holding the merge of `1971-briefcase-usage-importer` until a fresh run confirms 
 
 **Next**
 
-- [ ] Merge `1971-briefcase-usage-importer` → master
+- [x] Merge `1971-briefcase-usage-importer` → master _(2026-05-26, PR #1976)_
 - [ ] Diff EC2 pull against Richard's sample `BriefCASE_data.xml` — schema (root element, per-volume fields), not values
 - [ ] Test all three pan01 nodes return the same volume count; document failover order
 - [ ] Time 3–5 pulls; record baseline runtime + variance
