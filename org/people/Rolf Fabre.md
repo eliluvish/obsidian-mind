@@ -21,7 +21,7 @@ Introduced at the 2026-05-11 Isilon meeting. Eli will attempt to match Powerscal
 ## Key Moments
 
 - **2026-05-11** — Isilon meeting: agreed that Eli matches what he can, sends unmatched shares/quotas to Rolf
-- **2026-05-22** — First BriefCase triage email sent: Group A (ended subs, directory still on pan01) and Group B (no subscription history, includes internal/template paths). See [[BriefCase Unbilled Volume Triage]]. Awaiting response.
+- **2026-05-22** — First BriefCase triage email sent and **replied same day** with per-row dispositions. Group A: `miket` is a bind mount artifact (cancelled 2019), `awad1` deleted today, remaining 11 to be deleted next week. Group B: cluster-internal paths confirmed (filter), `ccr`/`cctm` are prepaid (pattern TBD), `bwh-comppath-img3` is mid-migration, `rftest` deleted, `whaas` unknown. `/hpc/scratch/{a..z}` + home confirmed never billable. See [[BriefCase Unbilled Volume Triage]].
 
 ## Notes
 

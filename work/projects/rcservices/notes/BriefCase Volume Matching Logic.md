@@ -52,6 +52,21 @@ Plus one related fix outside the matching ladder:
 - **psn-only matches are a leading indicator**, not a failure. Persistent psn-only matches mean either a real rename (good — update the subscription) or two volumes that share a psn (bad — duplicate-lun bucket should already catch it). Don't squelch the flag.
 - **Unmatched is never silent.** Every unmatched volume escalates to Rolf via Honeybadger. If billing comes up short, search the unmatched-bucket history before assuming a code bug.
 - The pasxml parser tolerates malformed and missing-field input (`f7bbc578`, `6e6aa9f3`, `c08a92a5`) — empty numeric elements return `nil` rather than raising. Don't reintroduce strict parsing without re-pinning those contracts.
+- **Pasxml presence ≠ billable share.** `/hpc/groups/miket` continues to appear in pasxml as a bind mount of `/data/talkowski` even though the subscription ended in 2019. Don't assume an unmatched path is a missing subscription; it may be a mount artifact. See [[BriefCase Unbilled Volume Triage]] for the case that surfaced this.
+
+## Opt-out filter contents (per Rolf, 2026-05-22)
+
+Paths confirmed never billable — should never reach the unmatched bucket:
+
+- `/hpc/scratch/{a..z}` (single-letter scratch volumes)
+- `/hpc/scratch/home`
+- Cluster-internal `/hpc/groups/` paths: `appstest`, `buildtree`, `erisxdl`, `released`, `slurm-warewulf{,1,2,3}`, `testsuite`, `virt4eris2`
+
+Filter as **exact paths**, not by prefix — too few entries to justify `slurm-*`-style rules, and a prefix would mask the day a real lab subscription with a matching prefix appears.
+
+**Transitional, leave in matching for now**: `/hpc/scratch/pcpgm` (BriefCASE-2994) — Rolf plans to convert it to `/hpc/groups/pcpgm`; update the subscription's `share_path` when that happens.
+
+Source: [[BriefCase Unbilled Volume Triage]].
 
 ## Related
 
