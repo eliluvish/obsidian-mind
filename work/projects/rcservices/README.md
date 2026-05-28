@@ -54,6 +54,7 @@ None currently.
 
 - [[001-FreezerPro REDCap Integration Model]] — REDCap is system of record; RC Services consumes a minimal validated dataset for billing only.
 - [[002-Fluent 2 Modal Design System]] — modal UI in eris adopts Microsoft's Fluent 2 as the visual / interaction baseline; mirrors in-repo `.claude/DECISION_LOG.md`.
+- [[003-BriefCase Usage Billing Statistic]] — **proposed**. Which statistic to bill BriefCase usage on (avg vs 75th percentile); leaning p75 to match Chris's legacy scripts.
 
 ## Related
 - [[Index]]

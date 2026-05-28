@@ -106,6 +106,26 @@ Now that #1976 is on master, the next run on production-equivalent pasxml is the
 - [ ] Spot-check for any **new** unmatched paths not on the 5/22 list — those are the interesting signal
 - [ ] If clean: queue the opt-out filter follow-ups + shadow run (#1973)
 
+## Status update — RCS stakeholders (2026-05-27)
+
+Progress summary sent on the BriefCase/HPC billing takeover.
+
+**Now done**
+
+- Missing internal subscriptions added to RCS with [[Rolf Fabre]] as owner — for active volumes that had usage but no RCS subscription.
+
+**Open billing-methodology decision — which usage number to bill on**
+
+The daily importer records one usage sample per day; monthly billing needs a single number from those samples. Open question: **average vs. 75th percentile**. Chris's legacy scripts bill on the **75th percentile**. Leaning p75 to match Chris keeps the parallel-run diffs clean (differences then reflect real matching/scope bugs, not a statistic change); revisit only if it over/under-bills. Candidate ADR once decided.
+
+**Cutover timeline (refined — two parallel cycles, not one)**
+
+- **June billing (covers May)** — Chris's scripts authoritative; compare against the RCS implementation.
+- **July billing (covers June)** — same parallel run; reconcile differences.
+- **August billing (covers July)** — target full cutover to the RCS implementation.
+
+Still-open reconciliation items (remote volumes without a settled RCS sub) tracked in [[BriefCase Unbilled Volume Triage]]: `bwh-comppath-img3` (migrating img→img3), `ccr` / `cctm` (prepaid), `whaas` (unknown).
+
 ## Action Items
 
 **Done**
@@ -125,6 +145,7 @@ Now that #1976 is on master, the next run on production-equivalent pasxml is the
 
 **Next**
 
+- [ ] Decide billing statistic — average vs 75th percentile (Chris uses p75); leaning p75 for clean parallel-run diffs. Tracked in [[003-BriefCase Usage Billing Statistic]] (proposed).
 - [x] Merge `1971-briefcase-usage-importer` → master _(2026-05-26, PR #1976)_
 - [ ] Diff EC2 pull against Richard's sample `BriefCASE_data.xml` — schema (root element, per-volume fields), not values
 - [ ] Test all three pan01 nodes return the same volume count; document failover order

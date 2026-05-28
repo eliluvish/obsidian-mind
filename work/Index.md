@@ -72,6 +72,7 @@ Cross-project decisions. Project-specific ADRs live in each project's `decisions
 
 | Date | Decision | Project | Status | Link |
 |------|----------|---------|--------|------|
+| 2026-05-27 | BriefCase usage billing statistic (avg vs p75) | rcservices | proposed | [[003-BriefCase Usage Billing Statistic]] |
 | 2026-05-25 | Fluent 2 as modal design system | rcservices | accepted | [[002-Fluent 2 Modal Design System]] |
 | 2026-05-08 | About page as auto-populated standardized template | pcms | proposed | [[002-About Page as Auto-Populated Standardized Template]] |
 | 2026-04-21 | Secondary container disassociation from primary | ilog | accepted | [[001-Secondary Container Disassociation from Primary]] |
