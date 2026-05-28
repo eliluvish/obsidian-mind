@@ -30,6 +30,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[2026-05-28 Meeting — pcms]] — pcms weekly sync, quiet shipping week (no merged PRs), 1 issue closed (#2267), 31 requiring resolution; no outcomes from the meeting itself
 - [[BriefCase Unbilled Volume Triage]] — rcservices, first triage list sent to [[Rolf Fabre]] (2026-05-22) — Group A ended subs + Group B unmatched (internal/template paths, pcpgm outlier); awaiting response
 - [[BriefCase Volume Matching Logic]] — rcservices [eris#1972](https://github.com/csb-ric/eris/issues/1972), four-iteration design path for matching pasxml volumes to subscriptions; importer's bucket taxonomy
 - [[PRISM-48686 Expired Fund Order Investigation]] — rcservices [eris#1963](https://github.com/csb-ric/eris/issues/1963), investigate how an order was placed against an expired fund — guardrail bypass or fund-state ambiguity
@@ -41,12 +42,13 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[Insight Fund Fields Request from CADE]] — cade, Rowan Potter requested fund/grant fields from Insight; blocked on new Insight API build; near-term CSV→people; escalate Allison → [[Jane Murray]]
 - [[Accountability Logbook Testing Feedback]] — ilog, open testing-feedback tickets (compliance #718–724); the Kele/Mirabella set, in progress, current North Star goal
 - [[Calendar Refactor and Drag-Drop Proposal]] — pcms, cross-core SR scoping bug fixed & deployed; PR #2338 opened; Daniel proposed a larger calendar refactor (drag/drop), scope TBD
+- [[2026-05-21 Meeting — pcms]] — pcms weekly sync, three shipped items (equipment schedule filter #2291, FundPricingTier rename #2339, cached_total cancel/uncancel #2337), 3 issues closed
 - [[2026-05-14 Meeting — pcms]] — pcms weekly sync, four-bucket client recap sent (1 PR shipped, 2 issues closed, 8 RFCO-pending, 8 requiring resolution)
 - [[002-About Page as Auto-Populated Standardized Template]] — pcms, ADR 2026-05-08 **proposed**, replace free-text core About page with standardized template; services/equipment are source of truth
 - [[Stakeholder Focus Groups for User Feedback]] — pcms, third / final focus group captured (2026-05-08); cores building external front ends, About-page architecture debate
 - [[2026-04-30 Meeting — pcms]] — pcms weekly sync prep, chatbot questions, stakeholder focus group follow-up, stale PR flagged
 - [[Core Browse UI Design]] — pcms, filterable card grid to replace the flat 130-core list; design ready for schema feasibility review
-- [[PCMS Chatbot]] — pcms, general chatbot initiative (formerly Ragon-only), SOW being drafted; feature backlog captured (availability, user-gating, capabilities, location, track record, substitutes, core-matching)
+- [[PCMS Chatbot]] — pcms, general chatbot initiative (formerly Ragon-only); **SOW sent to client 2026-05-28** by [[Daniel Guettler]] to Andy/Jessica/Yovani/Tera, awaiting acceptance
 - [[2026-04-27 Meeting — ilog]] — ilog stakeholder sync, ARC demo postponed by Kele, schedule logic clarified, chatbot interest opened
 - [[Equipment and Services Tag Taxonomy]] — pcms, define tags for equipment and services, Eli owns the list
 - [[Order Limit Raised to 1500 Deploy Hold]] — rpr PR #190, order cap raised to $1500, ✅ deployed to production 2026-04-24

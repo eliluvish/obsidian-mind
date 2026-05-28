@@ -17,7 +17,7 @@ Listed as a medium-term goal in [[North Star]]. Aligns with the strategic ask [[
 
 ## Status
 
-- **SOW in progress** — being drafted, not yet sent to client. Once sent and accepted, it becomes the active scoping document and the feature backlog below gets reconciled against it.
+- **SOW sent to client (2026-05-28)** — [[Daniel Guettler]] sent the chatbot SOW to [[Andy Chitty]], [[Jessica Cho]], [[Yovani Edwards]], and [[Tera Morse]]. Awaiting client review/acceptance. Once accepted, the SOW becomes the active scoping document and the feature backlog below gets reconciled against it.
 - Branch `rubyllm-v2` in `pcms` has 67 commits ahead of master: streaming chunks over Turbo, autoscroll, `SearchEquipment` capability filtering, composer textarea clear on send, i18n dedup, Turbo form wiring. Active dev, not near merge.
 - Current tool surface returns equipment basics — `name`, `description`, `training_required`, `pre_requisites`, `status`, address fields — and searches across `street_address`, `city`, `building`, `floor`, `room`.
 - Groundwork PRs shipped: tag system (#2314), multi-modality (#2312), support fields on equipment (#2311) — see [[2026-04-30 Meeting — pcms]].
