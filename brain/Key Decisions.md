@@ -12,6 +12,7 @@ Architectural or workflow decisions worth recalling. Link to the full [[Decision
 
 - **iLog secondary containers disassociated from primaries 2026-04-21** — [[Kele Piper]] approved allowing secondaries to exist without a primary link. Implemented. Known cost: DEA chain-of-custody reporting must reconstruct the relationship from history/audit records rather than a live association. See [[001-Secondary Container Disassociation from Primary]].
 - **PCMS Insight Integration scoped 2026-04-09** — Insight for expenses/revenue, Workday optional for internal funding backfill. Workday is source-of-truth in principle but Insight is the practical primary. Jessica sends columns to Daniel; Eli compares Savient→Insight against Workday to quantify gaps. See [[001-Insight vs Workday Data Source Scoping]].
+- **eris funds: strict expiry, no grace 2026-05-27** — a fund is unusable the day its `end_date` passes; the prior 6-month internal-fund grace period (`Fund#ineligible?`) was removed across every fund-attach path. Behavioral change, confirmed with the product owner (#1981). Enforced defense-in-depth (model + form guards + scoped selects + UI) because two forms write `subscription_funds` directly and bypass model validation. See [[Fund Expiry Enforcement]].
 
 ## Pending
 

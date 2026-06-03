@@ -47,6 +47,7 @@ None currently.
 - [[Storage Usage Billing Pipeline Takeover]] — **active**. MAD3 takeover from Chris Mow restarted; Isilon API path in production. June: run alongside Chris's scripts; July: full cutover.
 - [[Briefcase Billing Takeover]] — **active**. Third leg of the Chris Mow billing handoff. Importer ✅ merged to master 2026-05-26 (PR #1976); post-merge validation rerun + shadow run ([eris#1973](https://github.com/csb-ric/eris/issues/1973)) and monthly aggregator ([eris#1974](https://github.com/csb-ric/eris/issues/1974)) next. See [[BriefCase Volume Matching Logic]] for the matching iterations.
 - [[FreezerPro RedCap Integration]] — **on-hold**. Billing model decided ([[001-FreezerPro REDCap Integration Model]]); [[Alissa Scharf]] confirming with Research Finance. PR [#1854](https://github.com/csb-ric/eris/pull/1854) waiting on REDCap schema.
+- [[Fund Expiry Enforcement]] — **completed** (master 2026-05-27, #1983). Strict `Fund#expired?` across every fund-attach path; removed the 6-month internal-fund grace. See [[Key Decisions]].
 - [[RFA ServiceNow Provisioning Pipeline]] — **completed** (live in production 2026-04-16).
 - [[AzureVM Import via Azure Export API]] — **completed** ([eris#1913](https://github.com/csb-ric/eris/issues/1913)).
 
