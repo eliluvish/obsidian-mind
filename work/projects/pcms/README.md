@@ -63,7 +63,7 @@ None currently.
 - [[PCMS Chatbot]] — in progress. General PCMS chatbot initiative (formerly scoped to Ragon only); **SOW sent to client 2026-05-28** by [[Daniel Guettler]] (to Andy/Jessica/Yovani/Tera), awaiting acceptance. Feature backlog: availability, user-gating, capabilities, location, track record, substitutes, core-matching.
 - [[002-About Page as Auto-Populated Standardized Template]] — **proposed** ADR (2026-05-08). Replace free-text About page with structured template; services/equipment are source of truth. Depends on [[Core Browse UI Design]] schema.
 - [[Stakeholder Focus Groups for User Feedback]] — three sessions captured (2026-04-08, 2026-04-30, 2026-05-08). Final session: cores building external front ends, About-page architectural debate.
-- [pcms#2280](https://github.com/csb-ric/pcms/issues/2280) — Cached charges accuracy. Root cause found: commit `9c29f4f` was the missing link. Fix in PR [#2307](https://github.com/csb-ric/pcms/pull/2307) (awaiting merge). **Next**: merge #2307, then add a daily job monitoring that `cached_charges` for the last 6–12 months are accurate.
+- [[CachedTotalAuditor — Cache Drift Audit System]] — **✅ resolved (2026-06).** [pcms#2280](https://github.com/csb-ric/pcms/issues/2280) closed by PR [#2307](https://github.com/csb-ric/pcms/pull/2307): `Trackings::CachedTotalAuditor` + `audit:cached_totals` cron (3 tiers, Honeybadger on drift) now monitors cache accuracy continuously. Second root cause fixed too — recalc jobs switched `update_column` → `update_columns` so cache writes stamp `updated_at`. Pairs with [[Cached Total Resync on SR Cancel-Uncancel|#2337]].
 - **Ask at next weekly sync**: do we still need [pcms#2080](https://github.com/csb-ric/pcms/issues/2080)?
 
 ## Related

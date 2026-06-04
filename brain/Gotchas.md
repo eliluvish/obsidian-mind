@@ -35,6 +35,17 @@ Things that have bitten before and will bite again.
 - When chasing intermittent "nil where there should be a record" failures in PCMS API logs, suspect thread-local leak before suspecting data. Reproduce by pre-setting `Thread.current[:current_core]` to a wrong core in a spec.
 - Any new `Thread.current[:...]` state in PCMS needs an explicit reset path between requests; don't assume Puma resets it.
 
+### `update_column` skips `updated_at` — use `update_columns` for cache writes
+
+When a job or method writes a cached value (e.g. `Tracking#cached_total`) with `update_column(:cached_total, ...)`, the row's `updated_at` is **not** touched. The cache silently updates with no freshness signal, so anything monitoring "when did this last refresh" sees a stale timestamp and staleness goes undetected.
+
+**Why**: This was a second, independent root cause in the PCMS cached-charges drift saga (the first being `update_all` skipping callbacks on cancel/uncancel — see [[Cached Total Resync on SR Cancel-Uncancel]]). All eight PCMS `recalculate-*` jobs used `update_column`; fixed in [pcms#2307](https://github.com/csb-ric/pcms/pull/2307) (2026-06) by switching to `update_columns(cached_total: ..., updated_at: ...)`-style writes that stamp the timestamp. See [[CachedTotalAuditor — Cache Drift Audit System]].
+
+**How to apply**:
+- For any cache-mirror column write, prefer `update_columns` (plural) so `updated_at` is stamped, unless you have a deliberate reason to leave the timestamp frozen. `update_column` (singular) is fine only when you explicitly do *not* want to signal a change.
+- When a freshness/monitoring layer (like a drift auditor) reports "this looks stale but the value is actually right," suspect a write path that skipped `updated_at` before suspecting the data.
+- Both PCMS drift vectors share a theme: a write path that bypasses normal ActiveRecord bookkeeping (`update_all` skips callbacks; `update_column` skips timestamps). When auditing cache integrity, enumerate every write path, not just the obvious one.
+
 ## RPR
 
 ### Participant email is shared across all of a participant's studies

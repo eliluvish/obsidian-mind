@@ -23,17 +23,20 @@ Trackings store a `cached_total` that mirrors `charges` so billing reads don't r
 
 ### Relationship to PR #2307 (CachedTotalAuditor)
 
-This fix closes the cancel/uncancel **source** of drift. It does not address rows that may already be stale from prior cancel/uncancel cycles or any other vector that hasn't surfaced yet. That sweep is the job of [PR #2307](https://github.com/csb-ric/pcms/issues/2307) — `feat(trackings): add CachedTotalAuditor` — sitting open since 2026-04-24 on branch `2280-investigate-if-cached-charges-are-keeping-up`. The auditor walks trackings with tolerance-based matching and reports mismatches sorted by absolute delta. It is the diagnostic companion to this fix.
+This fix closes the cancel/uncancel **source** of drift. It does not address rows that may already be stale from prior cancel/uncancel cycles or any other vector that hasn't surfaced yet. That sweep is the job of [PR #2307](https://github.com/csb-ric/pcms/issues/2307) — `feat(trackings): add CachedTotalAuditor` — **merged 2026-06, closing [#2280](https://github.com/csb-ric/pcms/issues/2280).** The auditor walks trackings with tolerance-based matching and reports mismatches sorted by absolute delta, and now runs continuously via the `audit:cached_totals` cron. See [[CachedTotalAuditor — Cache Drift Audit System]] for the full system.
 
 Treat the two together: **#2337 stops the bleeding; #2307 reports the existing wound.**
 
+**Second root cause found during #2307:** beyond the cancel/uncancel `update_all` vector this note covers, the eight `recalculate-*` jobs were using `update_column`, which skips `updated_at`. Cache writes left no freshness signal, masking staleness. Fixed by switching to `update_columns`. See [[Gotchas#`update_column` skips `updated_at` — use `update_columns` for cache writes]].
+
 ## Action Items
-- [ ] Revisit PR #2307 next week — rebase against current master (now that #2337 is in), get it reviewed and merged. Deferred from this week.
-- [ ] Once #2307 is merged, run the auditor in production and triage any reported mismatches
+- [x] Revisit PR #2307 — rebased against master (post-#2337), reviewed and **merged 2026-06**, closing #2280.
+- [ ] Run the auditor in production (or via the `audit:cached_totals` cron) and triage any reported mismatches
 - [ ] Decide whether other `update_all` callsites on trackings need the same after_commit treatment
 
 ## Related
 - [[PCMS]]
+- [[CachedTotalAuditor — Cache Drift Audit System]] — the diagnostic companion (#2307); closes #2280
 - [[North Star]]
 - [[Calendar Refactor and Drag-Drop Proposal]]
 - [[Index]]
