@@ -31,8 +31,11 @@ Look up the repo here. Match by directory name first, then by `git remote get-ur
 | `pcms-islands` / `csb-ric/pcms-islands` | `pcms` | confirmed |
 | `eris` / `csb-ric/eris` | `rcservices` | confirmed — RCC billing / ServiceCharge / trackings / isilon storage |
 | `compliance` / `csb-ric/compliance` | `ilog` | confirmed — iLog Rails app, DEA controlled substances / logbook / Form 41 |
-| `pi_app` / `csb-ric/lab_archives` | `minr` | inferred — minr is being extracted from lab_archives |
+| `pi_app` / `csb-ric/lab_archives` | `minr`, `cade`, `ris`, `people` | confirmed — one repo, four vault projects scoped by GitHub issue label: "Minor intake form" → `minr`, CADE → `cade`, "Research Intake Survey" → `ris`, everything else → `people` (per each project README) |
+| `study_pay` / `csb-ric/study_pay` | `rpr` | confirmed — participant payments / gift cards (per rpr README) |
 | `cloud_costs` / `csb-ric/rcfinops` | `rcfinops` | confirmed — researcher-facing cloud cost dashboard (Azure usage, FundingSource/Insight, MGB subsidy) |
+
+**Multi-project repos** (`pi_app`): attribute commits to a sub-project when the commit message, branch name, or linked issue carries the project's label or an obvious scope (e.g. `feat(cade): …`, "Minor intake form"); otherwise report under the umbrella project (`people`) and say the attribution is by default, not evidence.
 
 If the repo is **not in the table**: do not guess silently. Report the repo's remote, recent commit scopes, and the candidate vault projects (list from `work/projects/*/`), and explicitly ask the parent to confirm the mapping. Mapping intelligence beyond this table lives in the parent's full vault context, not here.
 

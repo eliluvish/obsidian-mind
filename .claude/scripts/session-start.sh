@@ -9,6 +9,9 @@ fi
 
 # Incremental QMD re-index (fast, non-blocking if qmd not installed)
 qmd update 2>/dev/null || true
+# Refresh embedding vectors in the background so vsearch doesn't go stale
+# (detached — embed can take minutes after bulk changes; don't block the hook)
+( qmd embed >/dev/null 2>&1 & ) || true
 
 # Helper: run a command with a timeout, fall back to alternative
 run_with_timeout() {
@@ -32,9 +35,9 @@ echo ""
 
 echo "### North Star (current goals)"
 if command -v obsidian &>/dev/null; then
-  run_with_timeout 5 'cat brain/North\ Star.md 2>/dev/null | head -30' obsidian read file="North Star" | head -30
+  run_with_timeout 5 'cat brain/North\ Star.md 2>/dev/null | head -60' obsidian read file="North Star" | head -60
 else
-  cat brain/North\ Star.md 2>/dev/null | head -30 || echo "(not found)"
+  cat brain/North\ Star.md 2>/dev/null | head -60 || echo "(not found)"
 fi
 echo ""
 

@@ -32,7 +32,8 @@ Verify the vault matches the expected layout:
 - `reference/compliance/`, `reference/ops/`, `reference/infrastructure/` exist
 - `templates/` contains only template files (with `{{placeholders}}`)
 - `thinking/` is clean (no leftover drafts that should have been promoted)
-- Nothing unexpected at vault root (allowed: `Home.md`, `CLAUDE.md`, `vault-manifest.json`, `CHANGELOG.md`, `CONTRIBUTING.md`, `README.md`, `LICENSE`, `.gitignore` — no user notes)
+- `daily/` contains only daily notes (`YYYY-MM-DD.md`)
+- Nothing unexpected at vault root (allowed: `Home.md`, `CLAUDE.md`, `vault-manifest.json`, `CHANGELOG.md`, `CONTRIBUTING.md`, `README.md`, `LICENSE`, `.gitignore` — no user notes; daily notes belong in `daily/`)
 
 ### 2. Check Indexes
 
@@ -104,11 +105,15 @@ For each `.base` file in `bases/`:
 - Check `brain/Key Decisions.md`, `brain/Patterns.md`, `brain/Gotchas.md` for outdated claims
 - Check `brain/North Star.md` — does Current Focus reflect reality?
 
-### 10. Check Claude Config
+### 10. Check Harness Hygiene (Claude config)
 
-- `.claude/settings.json` — are hooks well-formed and referencing correct paths?
-- `.claude/commands/` — do all commands reference correct folder structure?
-- `CLAUDE.md` — any stale instructions that contradict current vault state?
+The vault's harness drifts the same way notes do — config and docs decay out of sync with reality. Cross-check, don't just lint:
+
+- **Hooks**: every hook documented in CLAUDE.md's Hooks table is registered in `.claude/settings.json`, and vice versa. Hook commands `cd "$CLAUDE_PROJECT_DIR"` first and reference scripts that exist (see `brain/Gotchas.md` § Vault Tooling).
+- **Repo map three-way consistency**: every repo in the `.claude/agents/repo-scanner.md` config table has its local dir in `additionalDirectories` (`.claude/settings.local.json`); every local dir there appears in the map; every project in `work/projects/` is either in the map or knowingly vault-only (flag which).
+- **Stale references**: commands and agents in `.claude/` reference skills, commands, folders, and files that actually exist — no renamed/removed names.
+- **Empty dependencies**: commands that read from a folder (e.g. `/deploy-checklist` → `reference/ops/`) get flagged when that folder is empty.
+- **CLAUDE.md**: any instructions that contradict current vault state (folder layout, command tables, hook tables)?
 
 ### 11. Fix and Report
 
