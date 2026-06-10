@@ -33,7 +33,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 - [[RC FinOps Week-1 Build Log]] — rcfinops, greenfield build arc Jun 4–10 (116 commits): Azure import, RBAC + site admin, FundingSource/Insight scoping, MGB subsidy, faceted browser; `main` 16 ahead of origin
 - [[MGB Subsidy Flagging Business Rule]] — rcfinops, MGB-subsidized line items flagged on import + filtered/tinted across dashboard and index; affects PI vs admin visibility; compliance review TBD
-- [[ServiceNow Ticket Analysis for Alissa]] — rcservices, [[Alissa Scharf]] requested ServiceNow ticket analysis; scope confirmed as [[Laura Brown]]'s invoicing tickets; [[Peter Gray]] showed the report export; next is pulling the report
+- [[ServiceNow Ticket Analysis for Alissa]] — rcservices, ✅ completed 2026-06-10. Analysis delivered to [[Alissa Scharf]].
 - [[2026-05-28 Meeting — pcms]] — pcms weekly sync, quiet shipping week (no merged PRs), 1 issue closed (#2267), 31 requiring resolution; no outcomes from the meeting itself
 - [[BriefCase Unbilled Volume Triage]] — rcservices, first triage list sent to [[Rolf Fabre]] (2026-05-22) — Group A ended subs + Group B unmatched (internal/template paths, pcpgm outlier); awaiting response
 - [[BriefCase Volume Matching Logic]] — rcservices [eris#1972](https://github.com/csb-ric/eris/issues/1972), four-iteration design path for matching pasxml volumes to subscriptions; importer's bucket taxonomy
@@ -66,7 +66,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[Registration Onboarding Workflow Redesign]] — ilog, smart form to reduce registration errors, mock-up pending
 - [[Insight Square Footage Fields for CADE]] — cade, contacting Insight team re: square footage data availability
 - [[Briefcase Billing Takeover]] — rcservices, third leg of the Chris Mow billing handoff; two-hop SSH pull verified from EC2 ([eris#1969](https://github.com/csb-ric/eris/issues/1969) parent + 4 children); blocked on legacy ruby parser source from Richard
-- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962))
+- [[RFA Billing Takeover and Powerscale Migration]] — rcservices, billing code in production; usage importer in progress ([eris#1962](https://github.com/csb-ric/eris/issues/1962), started 2026-06-10)
 - [[Storage Usage Billing Pipeline Takeover]] — rcservices, MAD3 takeover from Chris Mow restarted; Isilon API path in production; June parallel-run, July full cutover
 - [[RFA ServiceNow Provisioning Pipeline]] — rcservices, ✅ complete, live in production 2026-04-16
 - [[AzureVM Import via Azure Export API]] — rcservices #1913, ✅ complete, live in production 2026-04-10

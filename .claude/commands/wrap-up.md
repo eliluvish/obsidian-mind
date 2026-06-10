@@ -42,6 +42,7 @@ For each note created or modified this session:
 
 - Any new notes not linked from at least one other note?
 - Any thinking notes that should be promoted or deleted?
+- **Empty daily notes**: check for empty or near-empty `.md` files in vault root or `daily/` that were auto-created by Obsidian but never filled in. Delete them silently with `rm` — they are ephemeral artifacts, not content.
 
 ### 5. Archive Check
 

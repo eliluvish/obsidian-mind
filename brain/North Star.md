@@ -18,7 +18,7 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 _What am I working toward right now?_
 
 - new app! dashboard for azure usage, maybe include AWS usage as well
-- eris: run analysis on Laura's tickets in ServiceNow, glean insights report to Alissa
+- ✅ eris: run analysis on Laura's tickets in ServiceNow, glean insights report to Alissa — completed 2026-06-10
 
 ## Goals
 

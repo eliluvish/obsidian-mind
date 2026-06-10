@@ -53,7 +53,7 @@ RFA billing code is **deployed to production**, but billing data is **not yet be
 
 ## Action Items
 
-- [ ] Write the RFA usage importer — [eris#1962](https://github.com/csb-ric/eris/issues/1962) **(next step to start populating production billing)**
+- [ ] Write the RFA usage importer — [eris#1962](https://github.com/csb-ric/eris/issues/1962) **(in progress 2026-06-10)**
 - [x] Attend meeting 2026-04-14
 - [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
 - [x] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921) _(closed 2026-04-22)_
