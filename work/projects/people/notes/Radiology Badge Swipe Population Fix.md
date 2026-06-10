@@ -29,7 +29,9 @@ From the issue, the departments to include:
 
 ## Status
 
-✅ Shipped. Department mapping fix deployed to production.
+✅ Shipped. Department mapping fix deployed to production. Issue #1180 closed 2026-04-23.
+
+Landed via **PR #1182** (`2ab24d19`, 2026-04-14): the flat exact-match department hash in `DepartmentMappable` was replaced with a `DeptMapping` lookup supporting ordered fallback rules (String / Regexp / Proc via `===`). The first rule added — `/\ARad Rsch\b/i → "Radiology"` — is what pulls the `Rad Rsch *` departments back into the Radiology population. The pattern-based approach means future department-normalization gaps can be fixed by adding a rule rather than enumerating every variant.
 
 ## Follow-on: PIs Missing from Report
 

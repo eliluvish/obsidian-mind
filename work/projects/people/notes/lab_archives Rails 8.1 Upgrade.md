@@ -19,13 +19,14 @@ The `csb-ric/lab_archives` repo is **one Rails app** that serves four vault proj
 
 ## Status
 
-**Not started.** Repo-wide upgrade — one PR/effort covers all four projects since they share the codebase.
+**In progress (on `development`, not yet on master/deployed).** Discovered via repo-sync 2026-06-10: the `upgrade-rails-8` branch has been merged into `development` — includes an Oracle `DESC` error fix and a webpacker → esbuild swap (`11fda816`). Not yet promoted to master, so nothing has deployed. Repo-wide upgrade — one effort covers all four projects since they share the codebase.
 
 ## Action Items
 
-- [ ] Bump Rails 8.0 → 8.1, update `Gemfile` / dependencies
-- [ ] Run `rails app:update`, reconcile framework defaults
-- [ ] Full test suite green
+- [x] Bump Rails 8.0 → 8.1, update `Gemfile` / dependencies — on `development`
+- [x] Reconcile framework defaults / asset pipeline (webpacker → esbuild) — on `development`
+- [ ] Full test suite green on `development`
+- [ ] Promote `development` → master
 - [ ] Smoke-test each project surface (people, cade, minr, ris) before deploy
 - [ ] Update `rails_version` in cade / minr / ris READMEs once shipped
 
