@@ -57,6 +57,7 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `reference/ops/` | Deploy runbooks and operational procedures | Per-project or shared runbooks |
 | `reference/infrastructure/` | Network, server, and environment notes | Server inventory, network maps |
 | `thinking/` | Scratchpad for drafts and reasoning | Named `YYYY-MM-DD-topic.md` |
+| `daily/` | Daily notes | Named `YYYY-MM-DD.md`, tagged `daily` |
 | `templates/` | Obsidian templates | `Work Note.md`, `Decision Record.md`, etc. |
 | `.claude/commands/` | Custom slash commands | See command table above |
 | `.claude/agents/` | Subagents | See subagents table below |
@@ -155,6 +156,7 @@ Use `thinking/` for drafts, reasoning, and analysis before writing final notes. 
    - **Deploy runbooks** -- `reference/ops/`
    - **Infrastructure notes** -- `reference/infrastructure/`
    - **Drafts** -- `thinking/`
+   - **Daily notes** -- `daily/` (named `YYYY-MM-DD.md`; the Obsidian daily-notes plugin must point here, not vault root)
    - Vault root: `Home.md`, `CLAUDE.md`, `vault-manifest.json`, `CHANGELOG.md`, `CONTRIBUTING.md`, `README.md`, `LICENSE`, `.gitignore`. No user notes at root.
 4. **Name files descriptively.** Use the note title as filename.
 

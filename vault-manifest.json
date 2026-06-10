@@ -34,7 +34,8 @@
     "reference/compliance/",
     "reference/ops/",
     "reference/infrastructure/",
-    "brain/*.md"
+    "brain/*.md",
+    "daily/"
   ],
   "version_fingerprints": {
     "v1": {
