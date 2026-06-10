@@ -27,9 +27,11 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[BioLift|biolift]] — Biological sample transport between facilities, bills of lading for couriers
 - [[People|people]] — Employee data aggregation for deductions (lab_archives repo, excludes CADE/minr labels)
 - [[Research Intake Survey|ris]] — Onboarding survey for new research hires (lab_archives repo, Research Intake Survey label)
+- [[Azure Usage Dashboard|azure-dashboard]] — New standalone Rails app: self-service Azure cloud usage dashboard for researchers (spun out of eris Azure work)
 
 ## Recent Notes
 
+- [[ServiceNow Ticket Analysis for Alissa]] — rcservices, [[Alissa Scharf]] requested ServiceNow ticket analysis; scope confirmed as [[Laura Brown]]'s invoicing tickets; [[Peter Gray]] showed the report export; next is pulling the report
 - [[2026-05-28 Meeting — pcms]] — pcms weekly sync, quiet shipping week (no merged PRs), 1 issue closed (#2267), 31 requiring resolution; no outcomes from the meeting itself
 - [[BriefCase Unbilled Volume Triage]] — rcservices, first triage list sent to [[Rolf Fabre]] (2026-05-22) — Group A ended subs + Group B unmatched (internal/template paths, pcpgm outlier); awaiting response
 - [[BriefCase Volume Matching Logic]] — rcservices [eris#1972](https://github.com/csb-ric/eris/issues/1972), four-iteration design path for matching pasxml volumes to subscriptions; importer's bucket taxonomy
@@ -74,6 +76,7 @@ Cross-project decisions. Project-specific ADRs live in each project's `decisions
 
 | Date | Decision | Project | Status | Link |
 |------|----------|---------|--------|------|
+| 2026-06-03 | Azure usage dashboard as a standalone app | azure-dashboard | accepted | [[001-Standalone Azure Usage Dashboard App]] |
 | 2026-05-27 | BriefCase usage billing statistic (avg vs p75) | rcservices | proposed | [[003-BriefCase Usage Billing Statistic]] |
 | 2026-05-25 | Fluent 2 as modal design system | rcservices | accepted | [[002-Fluent 2 Modal Design System]] |
 | 2026-05-08 | About page as auto-populated standardized template | pcms | proposed | [[002-About Page as Auto-Populated Standardized Template]] |
