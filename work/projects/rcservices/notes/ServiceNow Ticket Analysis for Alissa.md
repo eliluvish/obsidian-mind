@@ -2,7 +2,7 @@
 date: "2026-06-03"
 description: "Alissa asked for analysis on ServiceNow tickets — scope confirmed as Laura Brown's invoicing tickets; Peter Gray showed how to pull the report"
 project: "rcservices"
-status: active
+status: completed
 tags:
   - work-note
 ---
@@ -23,8 +23,8 @@ tags:
 
 ## Action Items
 - [x] Get scope from [[Alissa Scharf]] — confirmed: [[Laura Brown]]'s tickets (invoicing)
-- [ ] Pull the ServiceNow ticket report for [[Laura Brown]] across `Research ERIS - PHS` + `Applications ERIS - PHS` (method from [[Peter Gray]])
-- [ ] Run the analysis
+- [x] Pull the ServiceNow ticket report for [[Laura Brown]] across `Research ERIS - PHS` + `Applications ERIS - PHS` (method from [[Peter Gray]])
+- [x] Run the analysis
 
 ## Related
 - [[RC Services (Eris)|rcservices]]

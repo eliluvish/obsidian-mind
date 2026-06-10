@@ -43,7 +43,7 @@ None currently.
 
 ## Active Notes
 
-- [[ServiceNow Ticket Analysis for Alissa]] — **active**. [[Alissa Scharf]] requested ServiceNow ticket analysis; scope confirmed as [[Laura Brown]]'s invoicing tickets. [[Peter Gray]] showed the report export. Next: pull the report + run the analysis.
+- [[ServiceNow Ticket Analysis for Alissa]] — **completed** (2026-06-10). Analysis delivered to [[Alissa Scharf]].
 - [[RFA Billing Takeover and Powerscale Migration]] — **active**. Billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962)).
 - [[Storage Usage Billing Pipeline Takeover]] — **active**. MAD3 takeover from Chris Mow restarted; Isilon API path in production. June: run alongside Chris's scripts; July: full cutover.
 - [[Briefcase Billing Takeover]] — **active**. Third leg of the Chris Mow billing handoff. Importer ✅ merged to master 2026-05-26 (PR #1976); post-merge validation rerun + shadow run ([eris#1973](https://github.com/csb-ric/eris/issues/1973)) and monthly aggregator ([eris#1974](https://github.com/csb-ric/eris/issues/1974)) next. See [[BriefCase Volume Matching Logic]] for the matching iterations.

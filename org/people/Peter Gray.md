@@ -15,7 +15,7 @@ tags:
 
 ## Relationship
 
-Builds the ServiceNow forms that provision services in RC Services. Built the Azure Cold Storage SN pipeline and is now working on the RFA provisioning pipeline. Achieved a successful SMB request to RC Services.
+Go-to person for anything ServiceNow related. Builds the ServiceNow forms that provision services in RC Services. Built the Azure Cold Storage SN pipeline and is now working on the RFA provisioning pipeline. Achieved a successful SMB request to RC Services.
 
 ## Related
 

@@ -1,10 +1,10 @@
 ---
-date: "2026-04-05"
-description: "Center for Academic Development and Enrichment — multi-project Rails 8.1 app (lab_archives repo, CADE label)"
-project: "cade"
+date: 2026-04-05
+description: Center for Academic Development and Enrichment — multi-project Rails 8.1 app (lab_archives repo, CADE label)
+project: cade
 status: active
-rails_version: "8.0"
-ruby_version: "3.4.4"
+rails_version: "8.1"
+ruby_version: 3.4.4
 aliases:
   - CADE
   - cade
