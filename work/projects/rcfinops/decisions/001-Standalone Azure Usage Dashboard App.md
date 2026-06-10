@@ -1,7 +1,7 @@
 ---
 date: "2026-06-03"
 description: "Build the researcher-facing Azure usage dashboard as a separate Rails app pulling from Azure independently, rather than extending eris"
-project: "azure-dashboard"
+project: "rcfinops"
 status: accepted
 tags:
   - decision

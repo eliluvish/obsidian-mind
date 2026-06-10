@@ -15,7 +15,7 @@ tags:
 
 ## Relationship
 
-Reviewing AzureVM import sample for [[RC Services (Eris)|rcservices]].
+Reviewing AzureVM import sample for [[RC Services (Eris)|rcservices]]. Stakeholder on [[RC FinOps|rcfinops]], the researcher-facing cloud cost dashboard that spun out of that Azure work.
 
 ## Key Moments
 
