@@ -115,7 +115,7 @@ Five lifecycle hooks handle routing automatically:
 
 ## 📅 Daily Workflow
 
-**Morning**: Run `/standup`. Claude loads your North Star, active projects, open tasks, and recent changes. You get a structured summary and suggested priorities.
+**Morning**: Run `/standup`. Claude loads your North Star, active projects, open tasks, and recent changes — and sweeps your mapped code repos for commits and new GitHub issues not yet captured in the vault. You get a structured summary and suggested priorities.
 
 **Switching projects**: Run `/context-switch <project>`. Claude reads the project README, recent notes, open decisions, and related reference material. This is the most important command for managing multiple projects.
 
@@ -141,6 +141,9 @@ Defined in `.claude/commands/`. Run them in any Claude Code session.
 | `/weekly-review` | Lighter cross-project review — what shipped, what's stuck, update Index.md |
 | `/context-switch` | Reload context for a project — README, recent notes, open decisions |
 | `/project-status` | Deep status check on a single project — notes, decisions, stale items, GitHub issues |
+| `/meeting-prep` | Prep for a recurring client meeting — shipped work, open issues, pre-filled meeting note |
+| `/meeting-recap` | Capture a meeting transcript — speakers, decisions, action items into a meeting note |
+| `/repo-sync` | Scan an external code repo's git history, summarize accomplishments, tie back to the matching vault project |
 | `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
 | `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
 | `/deploy-checklist` | Pull up deploy runbook, walk through pre/post-deploy checks |
@@ -160,6 +163,7 @@ Specialized agents that run in isolated context windows. They handle heavy opera
 | `cross-linker` | Finds missing wikilinks, orphans, broken backlinks | `/vault-audit` |
 | `vault-librarian` | Deep vault maintenance — orphans, broken links, stale notes | `/vault-audit` |
 | `vault-migrator` | Classify, transform, and migrate content from a source vault | `/vault-upgrade` |
+| `repo-scanner` | Scan an external code repo's git history, map accomplishments to a vault project | `/repo-sync`, Direct |
 
 > [!NOTE]
 > Subagents are defined in `.claude/agents/`. You can add your own for domain-specific workflows.
@@ -243,7 +247,6 @@ Home.md                 Vault entry point — embedded Base views, quick links
 CLAUDE.md               Operating manual — Claude reads this every session
 vault-manifest.json     Template metadata — version, structure, schemas
 CHANGELOG.md            Version history
-CONTRIBUTING.md         Template development checklist
 README.md               Product documentation
 LICENSE                 MIT license
 
@@ -263,9 +266,6 @@ org/
   teams/                One note per team — members, scope
   People & Context.md   MOC for organizational knowledge
 
-perf/
-  Brag Doc.md           Flat running log of wins, linked to work notes
-
 brain/
   North Star.md         Goals and focus areas — read every session
   Memories.md           Index of memory topics
@@ -279,11 +279,12 @@ reference/
   ops/                  Deploy runbooks and operational procedures
   infrastructure/       Network, server, and environment notes
 thinking/               Scratchpad for drafts — promote findings, then delete
+daily/                  Daily notes (YYYY-MM-DD.md)
 templates/              Obsidian templates with YAML frontmatter
 
 .claude/
-  commands/             14 slash commands
-  agents/               4 subagents
+  commands/             17 slash commands
+  agents/               5 subagents
   scripts/              Hook scripts
   skills/               Obsidian + QMD skills
   settings.json         5 hooks configuration
@@ -297,8 +298,14 @@ Templates with YAML frontmatter, each including a `description` field for progre
 
 - **Work Note** — date, description, project, github_issue, status, tags
 - **Decision Record** — date, description, project, status (proposed/accepted/deprecated), context
+- **Meeting Note** — date, description, project, attendees, decisions, action items
 - **Thinking Note** — date, description, context, tags (scratchpad — delete after promoting)
 - **Project README** — date, description, project, status, rails_version, ruby_version, stakeholders, compliance
+- **Person Note** — date, description, team — role, relationship, key moments
+- **Team Note** — date, description — members, scope, interactions
+- **Compliance Note** — date, description — requirements, implementation, audit trail
+- **Infrastructure Note** — date, description — specs, access, maintenance
+- **Deploy Runbook** — date, description, project — pre-deploy, deploy, post-deploy, rollback
 
 ---
 
