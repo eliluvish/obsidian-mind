@@ -25,7 +25,7 @@ Stakeholder on [[iLog]], [[Minor Intake Form|minr]], and [[BioLift|biolift]].
 
 ## Notes
 
-- Does not always loop Eli in on iLog-related events or announcements — Eli has learned about at least one planned demo (ARC 2026-04-30) via the grapevine rather than directly. Proactively confirm plans with Kele rather than waiting to be told.
+- Does not always loop Eli in on iLog-related events or announcements — Eli has learned about at least one planned demo (ARC 2026-04-30) via the grapevine rather than directly. Track quietly and prep; don't reveal grapevine sources or suggest confronting her. Open-ended asks ("anything coming up for iLog?") are the channel. Full guidance: [[Gotchas#Stakeholder Communication]].
 
 ## Related
 
