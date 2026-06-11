@@ -57,6 +57,7 @@ None currently.
 
 ## Active Notes
 
+- [[PCMS UI Facelift]] — **active** (2026-06-11). MGB-branded UI refresh; dated look flagged across all focus groups. Direction agreed; deciding fresh AI mockups vs. implementing the agency design. Likely supersedes [[Core Browse UI Design]] and the About-page ADR rather than running alongside them.
 - [[Calendar Refactor and Drag-Drop Proposal]] — **active**. Cross-core SR scoping bug **fixed & deployed**; PR [#2338](https://github.com/csb-ric/pcms/issues/2338) opened. Daniel proposed a larger calendar refactor (drag/drop events) — scope TBD.
 - [[2026-05-14 Meeting — pcms]] — weekly sync; four-bucket client recap sent
 - [[Core Browse UI Design]] — design spec for filterable card grid browse UI; ready for agent feasibility review against schema

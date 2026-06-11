@@ -46,6 +46,9 @@ Greenfield app, ~1 week old — went from `initial commit` (2026-06-04) to a mul
 > [!warning] Unpushed work
 > As of 2026-06-10, `main` is **16 commits ahead of `origin/main`** (today's refactor/UX burst) and branch **`add-vm-name`** (resource group in search scope) sits off `main`, ready to merge. Push before treating this as the source of truth.
 
+> [!tip] Traction
+> 2026-06 — [[Michael Oates]] presented the dashboard at his Research Computing team meeting; it got a lot of praise. Director-level visibility for an app that's not yet deployed. The MGB-branded UI also served as the design proof-point that sold a [[PCMS UI Facelift]] — see [[Patterns#A Polished Build Doubles as a Design Proof-Point]].
+
 ## Stakeholders
 - **Department**: [[Research Computing Core]]
 - [[Michael Rogal]] — Senior Project Specialist, Research Computing Core

@@ -11,6 +11,9 @@ tags:
 
 ## Context
 
+> [!info] Part of [[RFA Billing Takeover and Powerscale Migration]]
+> This SN provisioning pipeline is one leg of the larger RFA takeover — it's how new RFA subscriptions get provisioned (the completed piece); the billing/usage-importer side is tracked in the parent note.
+
 [[Nicholas Yale]] and [[Peter Gray]] are requesting the RFA service be added to RC Services staging so they can test the ServiceNow provisioning pipeline. This is the same RFA service from the [[RFA Billing Takeover and Powerscale Migration]] — the SN pipeline is how new RFA subscriptions will be provisioned.
 
 Peter has already achieved a successful SMB request to RC Services. He needs the API details (similar to what Eli provided for Azure Cold Storage) to complete the end-to-end test. NFS testing is also in progress, plus a negative test API call.

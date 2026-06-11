@@ -31,6 +31,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[2026-06-11 Meeting — pcms]] — pcms weekly sync; quiet shipping week. Agreed PCMS needs a UI facelift (Eli demoed rcfinops dashboard as the bar; outdated look confirmed across all focus groups); Eli to mock up MGB-branded options. Cache-drift monitor still clean. Finance to file small focus-group tickets soon.
+- [[PCMS UI Facelift]] — pcms, MGB-branded UI refresh; dated look flagged across all focus groups; AI mockups make redesign cheap. Direction agreed at 6/11 sync; mockups-vs-agency-design path undecided.
 - [[RC FinOps Week-1 Build Log]] — rcfinops, greenfield build arc Jun 4–10 (116 commits): Azure import, RBAC + site admin, FundingSource/Insight scoping, MGB subsidy, faceted browser; `main` 16 ahead of origin
 - [[MGB Subsidy Flagging Business Rule]] — rcfinops, MGB-subsidized line items flagged on import + filtered/tinted across dashboard and index; affects PI vs admin visibility; compliance review TBD
 - [[ServiceNow Ticket Analysis for Alissa]] — rcservices, ✅ completed 2026-06-10. Analysis delivered to [[Alissa Scharf]].
@@ -39,10 +41,10 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[BriefCase Volume Matching Logic]] — rcservices [eris#1972](https://github.com/csb-ric/eris/issues/1972), four-iteration design path for matching pasxml volumes to subscriptions; importer's bucket taxonomy
 - [[PRISM-48686 Expired Fund Order Investigation]] — rcservices [eris#1963](https://github.com/csb-ric/eris/issues/1963), investigate how an order was placed against an expired fund — guardrail bypass or fund-state ambiguity
 - [[Cached Total Resync on SR Cancel-Uncancel]] — pcms PR #2337, after_commit + RecalculateServiceRequestTrackingsJob closes the cancel/uncancel staleness vector; auditor PR #2307 is the audit companion (deferred to next week)
-- [[lab_archives Rails 8.1 Upgrade]] — people/cade/minr/ris, shared lab_archives app on Rails 8.0 → upgrade to 8.1; not started
+- [[lab_archives Rails 8.1 Upgrade]] — people/cade/minr/ris, shared app 8.0.5 → 8.1.3 **merged to master 2026-06-10** (PR #1189, dual-boot validated, `bin/ci` added, cookie serializer →`:json`); deploy + Bootstrap 5 still pending
 - [[Cross-Study Email Mutation Incident]] — rpr, shared participant email across studies misrouted a gift card (#2022P000780); no PII exposed; proposed fix email-per-study, awaiting [[Gala Laffey]]
 - [[Approvals by Institution]] — minr #1187, Kele wants approvals routed by institution; blocked waiting on [[Kele Piper]] for the institution → approver mapping
-- [[Refactor js.erb to Turbo]] — biolift #20, priority/not started; remove legacy `.js.erb` → Turbo (Rails 8.1 tech debt); ~May 7 target slipped
+- [[Refactor js.erb to Turbo]] — biolift #20, **in progress** (2026-06-10); `turbo-rails` installed (Drive off, opt-in per element), specimen transport deletes migrated as PoC; gated on shared Site plugin UJS conversion
 - [[Insight Fund Fields Request from CADE]] — cade, Rowan Potter requested fund/grant fields from Insight; blocked on new Insight API build; near-term CSV→people; escalate Allison → [[Jane Murray]]
 - [[Accountability Logbook Testing Feedback]] — ilog, open testing-feedback tickets (compliance #718–724); the Kele/Mirabella set, in progress, current North Star goal
 - [[Calendar Refactor and Drag-Drop Proposal]] — pcms, cross-core SR scoping bug fixed & deployed; PR #2338 opened; Daniel proposed a larger calendar refactor (drag/drop), scope TBD

@@ -18,6 +18,10 @@ tags:
 
 Coordinates ServiceNow provisioning pipelines for RC Services. Requested RFA service staging setup for SN pipeline testing.
 
+## Key Moments
+
+- **2026-06** — Praised Eli for the [[RFA Billing Takeover and Powerscale Migration|RFA migration]] work.
+
 ## Related
 
 - [[RC Services (Eris)|rcservices]]

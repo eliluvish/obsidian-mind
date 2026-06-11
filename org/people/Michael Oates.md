@@ -18,7 +18,7 @@ Stakeholder on [[RC Services (Eris)|rcservices]]. Overall Research Computing dir
 
 ## Key Moments
 
--
+- **2026-06** — Presented the [[RC FinOps]] Azure cost dashboard at his Research Computing team meeting; it received a lot of praise. Director-level visibility for the dashboard Eli built after the consultancy fell through.
 
 ## Notes
 

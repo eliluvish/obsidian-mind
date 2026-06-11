@@ -45,7 +45,7 @@ None currently.
 
 ## Active Notes
 
-- [[Refactor js.erb to Turbo]] — **priority, not started** ([biolift#20](https://github.com/csb-ric/biolift/issues/20)). Remove legacy `.js.erb` → Turbo; Rails 8.1 tech debt. Original ~2026-05-07 target slipped.
+- [[Refactor js.erb to Turbo]] — **in progress** ([biolift#20](https://github.com/csb-ric/biolift/issues/20)). `turbo-rails` installed (Drive off globally — opt-in per element until the shared Site plugin is off UJS); specimen transport deletes migrated as proof-of-concept (6 commits, 2026-06-10).
 
 ## Related
 
