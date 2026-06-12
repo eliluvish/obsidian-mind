@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BioLift — Status Report — June 12, 2026</title>
+<style>
+  :root {
+    --bg: #faf9f6;
+    --ink: #1c1e1b;
+    --muted: #5c615a;
+    --accent: #3f7d6e;
+    --accent-soft: #e6efeb;
+    --rule: #e2e0d8;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 56px 28px 80px;
+  }
+  header.report {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 22px;
+    margin-bottom: 36px;
+  }
+  .title-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 3px 12px;
+    vertical-align: middle;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin-top: 10px;
+  }
+  section { margin-top: 40px; }
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 4px;
+  }
+  .label + hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 18px;
+  }
+  .glance {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 28px;
+    font-size: 17.5px;
+  }
+  .glance p { margin: 0 0 10px; }
+  .glance p:last-child { margin-bottom: 0; }
+  h2 { font-size: 21px; margin: 0 0 14px; }
+  ul { margin: 0; padding-left: 22px; }
+  li { margin-bottom: 12px; }
+  li:last-child { margin-bottom: 0; }
+  p { margin: 0 0 14px; }
+  .card {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    background: var(--card);
+    margin-bottom: 16px;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card .q {
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  .card .detail {
+    color: var(--muted);
+    font-size: 15.5px;
+    margin: 0;
+  }
+  .quiet { color: var(--muted); }
+  footer.report {
+    margin-top: 56px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  footer.report .stake { margin-bottom: 12px; }
+  footer.report strong { color: var(--ink); }
+  footer.report a { color: var(--accent); }
+  a { color: var(--accent); }
+  @media print {
+    body { background: #fff; font-size: 12pt; }
+    .wrap { padding: 0; max-width: 100%; }
+    .glance, .accent-soft { background: #fff !important; }
+    .glance { border: 1px solid var(--rule); }
+    .card { break-inside: avoid; }
+    section { break-inside: avoid; }
+    @page { margin: 1.6cm; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="report">
+    <div class="title-row">
+      <h1>BioLift</h1>
+      <span class="badge">Active</span>
+    </div>
+    <div class="meta">
+      Status report — June 12, 2026<br>
+      Prepared by Eli Luvish — Research Computing
+    </div>
+  </header>
+
+  <div class="glance">
+    <p>BioLift handles the transport of biological samples between research hospital facilities, producing the bills of lading couriers carry. The system is running steadily in production with no disruptions this period.</p>
+    <p>The main open item is the proposed BWH/Faulkner expansion — adding two daily pickup-and-dropoff routes and rebranding the site from MGH to MGB. The cost estimate is with BWH finance and we're awaiting their go-ahead before any work begins. Alongside that, we've started routine, behind-the-scenes modernization to keep the application healthy for the long term.</p>
+  </div>
+
+  <section>
+    <p class="label">Decisions Needed</p>
+    <hr>
+    <div class="card">
+      <p class="q">Will BWH finance approve the BWH/Faulkner expansion so we can schedule the work?</p>
+      <p class="detail">Kele Piper requested adding two new routes between BWH and Faulkner — one morning, one afternoon pickup and dropoff — plus rebranding the site from MGH to MGB. The estimate is roughly 4–6 hours of work at $150/hour. Kathryn Holthaus is taking the cost to BWH's finance director for approval. We're ready to begin once it's approved.</p>
+    </div>
+    <div class="card">
+      <p class="q">Can we confirm the final route details for the new BWH/Faulkner stops?</p>
+      <p class="detail">A few specifics are still being finalized — the exact pickup and dropoff points, and confirmation that BWH staff will be added to the directory so they can submit requests and record pickups. These can be settled in parallel with the finance approval.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Risks &amp; Blockers</p>
+    <hr>
+    <ul>
+      <li><strong>Expansion is on hold pending approval.</strong> No work can be scheduled on the new routes or the rebrand until BWH finance signs off on the estimate. There is no deadline pressure noted, but the request has been open since mid-March.</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="label">In Progress</p>
+    <hr>
+    <p>Behind-the-scenes, we've begun modernizing parts of the application so it stays reliable and easy to maintain going forward. This is internal upkeep with no change to how the system looks or works for users; it's progressing steadily in the background.</p>
+  </section>
+
+  <section>
+    <p class="label">What's Next</p>
+    <hr>
+    <ul>
+      <li>Once BWH finance approves, schedule and build the two new BWH/Faulkner routes and complete the MGH-to-MGB rebrand.</li>
+      <li>Add BWH staff to the directory as part of that work so they can submit and document transport requests.</li>
+      <li>Continue the routine modernization in the background, with no impact to day-to-day use.</li>
+    </ul>
+  </section>
+
+  <footer class="report">
+    <div class="stake">
+      <strong>Stakeholders</strong><br>
+      Kele Piper — Chief Research Compliance Officer<br>
+      Mirabella Daguerre — Research Integrity Program Manager<br>
+      Kathryn Holthaus — Director of Lab Safety and Research Subject Protection, BWH
+    </div>
+    Questions? <a href="mailto:eluvish@mgb.org">eluvish@mgb.org</a>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -17,21 +17,21 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 
 _What am I working toward right now?_
 
-- new app! dashboard for azure usage, maybe include AWS usage as well
-- ✅ eris: run analysis on Laura's tickets in ServiceNow, glean insights report to Alissa — completed 2026-06-10
+- RCS: compare [[Chris Mow]] billing implementation to my own for HPC briefcase and MAD3
+- Keep PCMS cached charges at top of mind, no reports yet. If good for another month we can fully switch to caching.
+- RCS: determine billing structure for new RFA
 
 ## Goals
 
 ### Short-term (This Quarter)
 
-- complete all accountability logbook tickets (the set Kele/Mirabella added — tracked in [[Accountability Logbook Testing Feedback]]; origin [[2026-04-27 Meeting — ilog]])
-- upgrade PCMS to Rails 8.1
-- ✅ PCMS: do cached charges work? — **resolved (2026-06).** Both staleness vectors closed: cancel/uncancel via [[Cached Total Resync on SR Cancel-Uncancel|#2337]] (2026-05-14), and recalc jobs not stamping `updated_at` via the `update_columns` switch in [[CachedTotalAuditor — Cache Drift Audit System|#2307]]. Pre-existing drift now monitored continuously by the `audit:cached_totals` cron (3 tiers, Honeybadger on drift). Closes #2280.
-- iLog accountability logbook — wireframes complete (implementation deferred until after logbook ships); beta testing path through Controlled Substance Work Group → pilot lab(s)
+- RCservices Freezerpro integration
 
 ### Medium-term (This Half)
 
-- RCservices Freezerpro integration
+- complete all accountability logbook tickets (the set Kele/Mirabella added — tracked in [[Accountability Logbook Testing Feedback]]; origin [[2026-04-27 Meeting — ilog]])
+- upgrade PCMS to Rails 8.1
+- iLog accountability logbook — wireframes complete (implementation deferred until after logbook ships); beta testing path through Controlled Substance Work Group → pilot lab(s)
 - finish iLog accountability logbook
 
 ### Long-term (This Year+)

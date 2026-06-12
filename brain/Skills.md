@@ -36,6 +36,7 @@ Custom slash commands, subagents, and reusable workflows. Defined in `.claude/co
 | `/meeting-prep` | Prep for a recurring client meeting — gather shipped work, open issues, stale PRs, unresolved questions, create a pre-filled meeting note |
 | `/meeting-recap` | Capture a meeting transcript — parse speakers, decisions, action items into a meeting note with optional ADR/work note extraction |
 | `/project-status` | Deep status check on a single project — notes, decisions, stale items, GitHub issues |
+| `/project-presentation` | Generate a self-contained HTML status presentation for stakeholders — saved to the project's `presentations/` folder |
 | `/issue-capture` | Scaffold a work note from a GitHub Issue URL with pre-filled frontmatter |
 | `/decision` | Create an ADR in the right project's `decisions/` folder with auto-numbering |
 | `/deploy-checklist` | Pull up the deploy runbook for a project, walk through pre/post-deploy checks |

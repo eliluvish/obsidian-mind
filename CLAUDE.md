@@ -25,6 +25,7 @@ Defined in `.claude/commands/`. See [[Skills]] for full documentation.
 | `/humanize` | Voice-calibrated editing -- make notes sound like you, not AI |
 | `/weekly` | Weekly synthesis -- cross-project patterns, North Star alignment, uncaptured wins |
 | `/project-status` | Scan a project folder, summarize active work and open decisions, flag stale items |
+| `/project-presentation` | Generate a stakeholder-ready HTML status presentation into the project's `presentations/` folder |
 | `/context-switch` | Reload context for a project -- README, recent notes, open decisions, rapid re-entry |
 | `/meeting-prep` | Prep for a recurring client meeting -- shipped work, open issues, stale PRs, unresolved questions |
 | `/meeting-recap` | Capture a meeting transcript -- parse speakers, decisions, action items into a meeting note |
@@ -288,6 +289,7 @@ work/projects/my-app/
   README.md          # Project overview, stack, status, links
   decisions/         # ADRs: 001-choice.md, 002-choice.md, ...
   notes/             # Work notes, deploy notes, issue captures
+  presentations/     # Generated HTML status reports (via /project-presentation)
 ```
 
 When starting a new project, create the folder structure and README first. The README is the hub node -- it links to everything related to the project.

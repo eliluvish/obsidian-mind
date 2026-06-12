@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCMS — Status Report — June 12, 2026</title>
+<style>
+  :root {
+    --ink: #1d1f21;
+    --ink-soft: #55585c;
+    --paper: #faf9f6;
+    --accent: #2e6e8e;        /* desaturated MGB-ish blue — PCMS report color */
+    --accent-soft: #e7eef2;
+    --rule: #e3e0d8;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 16px; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+  }
+
+  /* ---------- header ---------- */
+  header { margin-bottom: 2.75rem; }
+  .report-meta {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.35rem;
+  }
+  h1 .subtitle {
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    letter-spacing: 0;
+    margin-top: 0.2rem;
+  }
+  .badge {
+    display: inline-block;
+    vertical-align: 0.45em;
+    margin-left: 0.6rem;
+    padding: 0.1rem 0.6rem;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .prepared-by {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0.6rem 0 0;
+  }
+
+  /* ---------- at a glance ---------- */
+  .glance {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    margin: 0 0 3rem;
+  }
+  .glance p { margin: 0; font-size: 1.02rem; }
+
+  /* ---------- sections ---------- */
+  section { margin-bottom: 2.75rem; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.4rem;
+  }
+  .section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 0 0 1.1rem;
+  }
+  ul { margin: 0; padding-left: 1.25rem; }
+  li { margin-bottom: 0.7rem; }
+  li:last-child { margin-bottom: 0; }
+  li strong { font-weight: 600; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(46,110,142,0.35); }
+  a:hover { border-bottom-color: var(--accent); }
+  .issue-ref { font-size: 0.85em; color: var(--ink-soft); white-space: nowrap; }
+  .issue-ref a { color: var(--ink-soft); border-bottom-color: rgba(85,88,92,0.3); }
+  .aside-note {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 1rem 0 0;
+  }
+
+  /* ---------- decision / risk cards ---------- */
+  .card {
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    background: #fff;
+    padding: 0.85rem 1.1rem;
+    margin-bottom: 0.9rem;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card h3 {
+    margin: 0 0 0.3rem;
+    font-size: 0.98rem;
+    font-weight: 650;
+  }
+  .card p { margin: 0; font-size: 0.95rem; }
+  .card .owner {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  footer p { margin: 0 0 0.4rem; }
+  footer .contact { color: var(--ink); }
+
+  /* ---------- print ---------- */
+  @media print {
+    body { background: #fff; }
+    .page { max-width: none; padding: 0.25in 0.4in; }
+    .glance { background: #fff; border-left-color: #888; }
+    .card { break-inside: avoid; }
+    section { margin-bottom: 1.6rem; }
+    a { color: inherit; border-bottom: none; }
+    .badge { border-color: #888; color: #555; }
+    .section-label { color: #555; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <p class="report-meta">Status report &middot; June 12, 2026 &middot; covering roughly the past 30 days</p>
+    <h1>PCMS <span class="badge">Active</span>
+      <span class="subtitle">Research Core Management System &mdash; core facility operations, billing, and services</span>
+    </h1>
+    <p class="prepared-by">Prepared by Eli Luvish &mdash; Research Computing</p>
+  </header>
+
+  <div class="glance">
+    <p><strong>At a glance:</strong> A strong month for billing reliability — the long-standing question of whether displayed billing totals always match the underlying charges is now settled (they do), and an automated daily check keeps verifying them and will alert immediately if anything ever drifts. Several invoice and scheduling fixes also shipped. The biggest conversation right now is a refresh of the PCMS interface, prompted by consistent feedback across all three user focus groups; a chatbot statement of work is also with the team awaiting sign-off.</p>
+  </div>
+
+  <section>
+    <h2 class="section-label">Highlights &mdash; recently shipped</h2>
+    <hr class="section-rule">
+    <ul>
+      <li><strong>Billing totals verified accurate — and now watched automatically.</strong> An automated check now compares every displayed billing total against the underlying charges each day and raises an alert if anything drifts. The two situations that could quietly knock a total out of sync have also been fixed, so totals now stay correct on their own. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2280">#2280</a>]</span></li>
+      <li>People with several overdue invoices now receive <strong>one combined past-due reminder</strong> instead of a separate email for each invoice. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2350">#2350</a>]</span></li>
+      <li>Fixed a case where a <strong>BPC invoice would not regenerate</strong> correctly. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2351">#2351</a>]</span></li>
+      <li>Resolved an error that <strong>blocked a tech from opening the service request page</strong>. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2343">#2343</a>]</span></li>
+      <li>The schedule's week view can now be <strong>filtered to a specific piece of equipment</strong>, the same way it can already be filtered by service. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2291">#2291</a>]</span></li>
+      <li><strong>Renaming a pricing tier</strong> now updates the matching fund-specific pricing automatically, so names no longer fall out of sync. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2339">#2339</a>]</span></li>
+    </ul>
+    <p class="aside-note">Behind the scenes, routine maintenance kept the automated usage-file imports running smoothly, including a catch-up import of files going back to February.</p>
+  </section>
+
+  <section>
+    <h2 class="section-label">In progress</h2>
+    <hr class="section-rule">
+    <ul>
+      <li><strong>Interface refresh.</strong> All three user focus groups flagged PCMS's dated look as a real usability barrier. At the June 11 sync the group agreed PCMS needs a refresh; producing branded design options is now fast and inexpensive, so the next step is simply choosing a direction (see Decisions below).</li>
+      <li><strong>PCMS chatbot.</strong> A natural-language assistant to help researchers find equipment, services, and cores. The statement of work went to the team on May 28; the build is substantially under way and deliberately paused until the SOW is accepted.</li>
+      <li><strong>Calendar improvements.</strong> A scheduling bug affecting cross-core service requests was fixed and deployed. Building on that, there is an open proposal to make the calendar easier to use — including dragging events to reschedule them. Scope is being defined with Daniel Guettler.</li>
+      <li><strong>Focus-group follow-ups.</strong> Finance will be filing a handful of small improvement requests from focus-group feedback over the next couple of weeks; those will be triaged as they arrive.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-label">Decisions needed</h2>
+    <hr class="section-rule">
+    <div class="card">
+      <h3>Which path for the interface refresh?</h3>
+      <p>Option A: produce roughly five MGB-branded design options for the group to choose from (about an hour and a half of work). Option B: implement the agency design already in hand. Recommendation is Option A, given how inexpensive producing options now is.</p>
+      <span class="owner">Decision owner: Jessica Cho</span>
+    </div>
+    <div class="card">
+      <h3>Should core About pages move to a standardized, auto-filled template?</h3>
+      <p>Proposed: each core's About page would share one template whose service list, equipment list, location, and contacts fill in automatically from the core's own records — with an editable narrative area preserved for each core's marketing and scientific positioning. This would make core information searchable and reliable. Note: this may be folded into the broader interface refresh rather than built separately.</p>
+      <span class="owner">Awaiting confirmation from Andy Chitty and core operators</span>
+    </div>
+    <div class="card">
+      <h3>Chatbot statement of work — accept?</h3>
+      <p>With Andy, Jessica, Yovani, and Tera since May 28. Work resumes on acceptance; the group should also confirm which area the chatbot serves first once signed.</p>
+      <span class="owner">Decision owners: Andy Chitty, Jessica Cho, Yovani Edwards, Tera Morse</span>
+    </div>
+    <div class="card">
+      <h3>Is the invoice-regeneration flag still needed?</h3>
+      <p>An older open request — invoices not being flagged for regeneration — may no longer be relevant. Asking the team whether to keep or close it. <span class="issue-ref">[<a href="https://github.com/csb-ric/pcms/issues/2080">#2080</a>]</span></p>
+      <span class="owner">To confirm at the next weekly sync</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-label">Risks &amp; blockers</h2>
+    <hr class="section-rule">
+    <ul>
+      <li><strong>Chatbot work is paused</strong> pending acceptance of the statement of work (with the team since May 28). The pause is intentional, but each week of delay pushes out delivery.</li>
+      <li><strong>Catalog data quality</strong> limits how useful search — and the future chatbot — can be. Some entries are miscategorized (services listed as equipment), and some cores have incomplete location information. A data clean-up pass may be needed before a wider rollout.</li>
+      <li><strong>A sizable backlog of open requests</strong> (roughly 35 items) is waiting on clarification or prioritization from the team. These are reviewed at each weekly sync; a prioritization pass would help the most important ones move faster.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-label">What&rsquo;s next</h2>
+    <hr class="section-rule">
+    <ul>
+      <li>Once a direction is chosen, present MGB-branded interface design options at an upcoming weekly sync.</li>
+      <li>Continue reporting billing-accuracy status at each weekly sync; finalize the related change once enough clean evidence has accumulated.</li>
+      <li>Define the scope of the calendar improvements with Daniel Guettler.</li>
+      <li>Resume chatbot work as soon as the statement of work is accepted.</li>
+      <li>Triage the incoming focus-group improvement requests from Finance.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><strong>Stakeholders:</strong> Andy Chitty (Director, Research Core Facilities) &middot; Jessica Cho, Tera Morse, Yovani Edwards (Finance Specialists)</p>
+    <p>Project repository: <a href="https://github.com/csb-ric/pcms">github.com/csb-ric/pcms</a></p>
+    <p class="contact">Questions? <a href="mailto:eluvish@mgb.org">eluvish@mgb.org</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
