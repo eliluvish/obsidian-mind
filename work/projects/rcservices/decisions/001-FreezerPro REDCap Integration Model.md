@@ -27,9 +27,9 @@ FreezerPro is being onboarded as a service in [[RC Services (Eris)|rcservices]].
 
 ## Consequences
 
-- RC Services importer is blocked until REDCap team finalizes their schema and API
-- Monthly pull cadence (1st–2nd of each month) means billing changes lag up to a month
-- No mid-year fund changes simplifies billing but may frustrate labs needing corrections
+- RC Services importer is blocked until REDCap team finalizes their schema and API — **resolved 2026-06-11**: report schema + report-API delivery agreed (see [[FreezerPro RedCap Integration#2026-06-11 — Schema finalized, delivery mechanism + cadence agreed]])
+- Monthly pull on the **2nd, covering the previous month** (confirmed 2026-06-11), feeds the 3rd-of-month invoice run; billing changes still lag up to a month
+- No mid-year fund changes simplifies billing but may frustrate labs needing corrections; tier/fund updates are caught at renewal by comparing the Initial vs Renewal billing-cycle records
 
 ## Related
 

@@ -72,7 +72,7 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 - [[Storage Usage Billing Pipeline Takeover]] — rcservices, MAD3 takeover from Chris Mow restarted; Isilon API path in production; June parallel-run, July full cutover
 - [[RFA ServiceNow Provisioning Pipeline]] — rcservices, ✅ complete, live in production 2026-04-16
 - [[AzureVM Import via Azure Export API]] — rcservices #1913, ✅ complete, live in production 2026-04-10
-- [[FreezerPro RedCap Integration]] — rcservices PR #1854, on-hold; billing model decided, Alissa confirming with Research Finance
+- [[FreezerPro RedCap Integration]] — rcservices PR #1854, active; schema + report-API delivery agreed 2026-06-11, importer gated on Svetlana's API tokens
 
 ## Decisions Log
 

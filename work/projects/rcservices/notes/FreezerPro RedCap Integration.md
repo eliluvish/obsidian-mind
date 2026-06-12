@@ -1,8 +1,8 @@
 ---
 date: "2026-04-06"
-description: "FreezerPro service with REDCap integration — REDCap is system of record, RC Services handles billing only, PR #1854 on hold"
+description: "FreezerPro service with REDCap integration — REDCap is system of record, RC Services handles billing only. Schema + report delivery agreed 2026-06-11; importer pending API tokens."
 project: "rcservices"
-status: on-hold
+status: active
 tags:
   - work-note
 ---
@@ -11,7 +11,7 @@ tags:
 
 ## Status
 
-PR [#1854](https://github.com/csb-ric/eris/pull/1854) open on branch `1844-add-freezerproservice-service`. On hold — waiting on REDCap team to finalize schema before building the importer.
+PR [#1854](https://github.com/csb-ric/eris/pull/1854) open on branch `1844-add-freezerproservice-service`. **Schema blocker resolved 2026-06-11** — report field set and REDCap report-API delivery agreed (see [[#2026-06-11 — Schema finalized, delivery mechanism + cadence agreed]]). Now active; importer build is gated only on [[Svetlana Rojevsky]] delivering the test + prod API tokens and Report ID. One open decision remains: service cancellation handling.
 
 ### 2026-05-18 — Billing model decided, pending Finance go-ahead
 
@@ -77,13 +77,49 @@ Cost tier is supplied as a line-item identifier, not a multiplier. See [[001-Fre
 - SR asked whether Eli knows of billing scenarios not contemplated in the 2026-02-03 meeting notes. Need to think through edge cases (mid-year user count changes crossing tier boundaries, PI departure mid-cycle, fund expiration before renewal).
 - SR asked whether Eli has worked with REDCap before — pending response.
 
+## 2026-06-11 — Schema finalized, delivery mechanism + cadence agreed
+
+Alignment meeting with [[Svetlana Rojevsky]] and [[Alissa Scharf]]. This **resolves the schema blocker** — the report field set is agreed, and delivery is via a REDCap report API rather than raw instrument fields.
+
+### Delivery mechanism
+
+[[Svetlana Rojevsky]] will provide **REDCap API tokens for both the test and production projects**, plus a **Report ID**. The RCS importer pulls that report via the REDCap API (one token per project) instead of reading individual `rc_services` instrument tokens.
+
+### Agreed report field set (REDCap report → RC Services)
+
+| Field | In report | Notes |
+|-------|-----------|-------|
+| Record ID | yes (default) | Cross-system link key |
+| Renewal date | **yes (new)** | Drives anniversary billing and change detection |
+| Billing cycle type | **yes (new)** | `Initial` or `Renewal` — flags the cycle; enables initial-vs-renewal compare |
+| Account number | yes | |
+| Fund Number | yes | |
+| User ID of a PI | yes | This is the **PI MGB username** Eli requested 2026-05-13 — now confirmed in the report |
+| Units (Tier 1, 2, or 3) | yes | The cost tier line item |
+
+### Pull cadence
+
+- **Eli pulls the report on the 2nd of the month, covering the previous month**, for invoicing on the **3rd**.
+- Consistent with the original "1st–2nd" cadence in [[001-FreezerPro REDCap Integration Model]]. (The recap's "25th" was a mis-remember — corrected by Eli 2026-06-11.)
+
+### Customer info change management
+
+During renewal, customers may change **tier** (unit count up or down, driven by how many lab users they request) or **update the fund number**. Eli detects this by **comparing the Initial billing-cycle record against the Renewal billing-cycle record** (the `Billing cycle type` field is what makes this comparison possible) and applies the update. Low-probability event given the small customer base.
+
+### Open — Service Cancellation
+
+> [!question] Unresolved decision
+> The cancellation handling was decided in an earlier meeting but the recap author blanked on it and asked [[Alissa Scharf]] and Eli to reconstruct it. **Cancellation flow for FreezerPro subscriptions is currently undocumented and needs to be re-pinned down.** Also low-probability.
+
 ## Action Items — RC Services
 
 - [ ] Configure FreezerPro as a non-visible subscription
 - [ ] Ensure invoice visibility in Billing
-- [ ] Build the importer once the REDCap schema is final
-- [ ] Perform monthly pulls of approved records (around the 1st–2nd)
+- [ ] Build the importer against the agreed REDCap report (schema now final) — pending API tokens
+- [ ] Pull the REDCap report on the **2nd** of each month for the previous month (invoice on the 3rd)
+- [ ] Implement initial-vs-renewal compare to catch tier/fund changes at renewal
 - [ ] Handle owner changes if PI MGB ID changes
+- [ ] Reconstruct the agreed **service cancellation** decision with [[Alissa Scharf]]
 - [ ] Reply to SR with billing-scenario edge cases (tier boundary crossings, PI departure, fund expiration mid-cycle)
 
 ## Action Items — REDCap Team
