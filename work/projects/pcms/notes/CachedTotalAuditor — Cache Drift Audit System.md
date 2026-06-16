@@ -31,9 +31,19 @@ Together with #2337 this resolves the cached-charges question end to end:
 
 The [[North Star]] cached-charges goal is marked resolved as of this merge.
 
+## First production run (2026-06-16)
+
+The daily `last_week` cron fired its first drift alert (run 03:30, range `2026-06-08..2026-06-14`). The monitoring layer works end to end — Honeybadger surfaced real drift instead of it landing as a billing surprise.
+
+- **Accuracy 99.92%** — 2 mismatches in 2524 trackings, 0 errors. Net cache overstates charges by `$136.98` (`488233.92` cached vs `488096.94` recomputed).
+- Both mismatches **overstate** (cache > live charges):
+  - `970431` (2026-06-09): cached `100.0` vs recomputed `0.0` — delta `-100.0`
+  - `970869` (2026-06-10): cached `55.5` vs recomputed `18.5` — delta `-37.0`
+- These are either rows left stale from before #2337 shipped or a drift vector not yet found — #2337 was meant to close the cancel/uncancel source. Triage tracked in **[#2360](https://github.com/csb-ric/pcms/issues/2360)**.
+
 ## Follow-ups
 
-- [ ] Run the auditor (or let the cron run) against production and triage any reported mismatches — see [[Cached Total Resync on SR Cancel-Uncancel#Action Items]].
+- [x] Run the auditor (or let the cron run) against production and triage any reported mismatches — first run 2026-06-16 surfaced 2 mismatches; triage tracked in [#2360](https://github.com/csb-ric/pcms/issues/2360). See [[Cached Total Resync on SR Cancel-Uncancel#Action Items]].
 - [ ] Decide whether other `update_all` callsites on trackings need `after_commit` recalc treatment.
 
 ## Related

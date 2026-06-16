@@ -18,7 +18,7 @@ A living document of goals, aspirations, and current focus areas. Both you and C
 _What am I working toward right now?_
 
 - RCS: compare [[Chris Mow]] billing implementation to my own for HPC briefcase and MAD3
-- Keep PCMS cached charges at top of mind, no reports yet. If good for another month we can fully switch to caching.
+- Keep PCMS cached charges at top of mind. First cron report in 2026-06-16: 99.92% accuracy, 2 overstating mismatches under triage in [pcms#2360](https://github.com/csb-ric/pcms/issues/2360). If clean for another month we can fully switch to caching. See [[CachedTotalAuditor — Cache Drift Audit System]].
 - RCS: determine billing structure for new RFA
 
 ## Goals

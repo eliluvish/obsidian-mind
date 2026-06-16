@@ -31,7 +31,7 @@ Treat the two together: **#2337 stops the bleeding; #2307 reports the existing w
 
 ## Action Items
 - [x] Revisit PR #2307 — rebased against master (post-#2337), reviewed and **merged 2026-06**, closing #2280.
-- [ ] Run the auditor in production (or via the `audit:cached_totals` cron) and triage any reported mismatches
+- [x] Run the auditor in production (or via the `audit:cached_totals` cron) and triage any reported mismatches — first cron run 2026-06-16 found 2 overstating mismatches (trackings `970431`, `970869`); triage in [#2360](https://github.com/csb-ric/pcms/issues/2360). See [[CachedTotalAuditor — Cache Drift Audit System#First production run (2026-06-16)]].
 - [ ] Decide whether other `update_all` callsites on trackings need the same after_commit treatment
 
 ## Related
