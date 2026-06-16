@@ -36,6 +36,10 @@ Software reselling to the research hospital community and pass-through billing f
 - [[Laura Brown]] — Analyst
 - [[Michael Oates]] — Director, Research Computing
 
+## Meeting Cadence
+
+- **RC Services biweekly sync** — [[Alissa Scharf]], [[Laura Brown]], and Eli, every two weeks on **Wednesday 9:00–9:30am**. Anchor: Wed 2026-06-17 (next meeting tomorrow).
+
 ## Compliance Notes
 None currently.
 

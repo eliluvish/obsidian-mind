@@ -17,7 +17,6 @@ tags:
 
 - [[Alissa Scharf]]
 - [[Laura Brown]]
-- [[Michael Oates]] — director, occasional
 
 ## Recap
 
@@ -89,5 +88,4 @@ From [[FreezerPro RedCap Integration]] (on-hold):
 - [[RC Services (Eris)|rcservices]]
 - [[Alissa Scharf]]
 - [[Laura Brown]]
-- [[Michael Oates]]
 - [[2026-05-20 Meeting — rcservices]]
