@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RC Services — Status Report — 2026-06-12</title>
+<style>
+  :root {
+    --accent: #3f6b78;
+    --accent-soft: #eaf1f3;
+    --ink: #1d1f21;
+    --muted: #5d6266;
+    --rule: #e3e0d8;
+    --page: #faf9f6;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    font-size: 17px;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 56px 28px 80px; }
+  header { margin-bottom: 36px; }
+  .title-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  h1 { font-size: 30px; margin: 0; letter-spacing: -0.01em; }
+  .badge {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #fff; background: var(--accent); border-radius: 999px; padding: 3px 11px;
+    transform: translateY(-3px);
+  }
+  .meta { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+  .glance {
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 18px 22px; border-radius: 4px; margin: 28px 0 8px;
+    font-size: 16.5px;
+  }
+  .glance strong { color: var(--accent); }
+  section { margin-top: 40px; }
+  .label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .label + .rule { border: 0; border-top: 1px solid var(--rule); margin: 0 0 16px; }
+  h2 { font-size: 21px; margin: 0 0 14px; letter-spacing: -0.01em; }
+  ul { margin: 0; padding-left: 20px; }
+  li { margin: 7px 0; }
+  li .ref { color: var(--muted); font-size: 13.5px; }
+  .cards { display: grid; gap: 14px; }
+  .card {
+    border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px; background: var(--card);
+  }
+  .card .q { font-weight: 600; margin: 0 0 6px; }
+  .card .a { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .card .a strong { color: var(--ink); }
+  /* milestones */
+  .milestones { display: flex; gap: 0; margin: 8px 0 4px; padding: 0; list-style: none; }
+  .ms { flex: 1; text-align: center; position: relative; padding-top: 26px; font-size: 13.5px; color: var(--muted); }
+  .ms::before {
+    content: ""; position: absolute; top: 7px; left: 0; right: 0; height: 2px; background: var(--rule);
+  }
+  .ms:first-child::before { left: 50%; }
+  .ms:last-child::before { right: 50%; }
+  .ms::after {
+    content: ""; position: absolute; top: 2px; left: 50%; transform: translateX(-50%);
+    width: 12px; height: 12px; border-radius: 50%; background: var(--page); border: 2px solid var(--accent);
+  }
+  .ms.done::after { background: var(--accent); }
+  .ms .when { display: block; font-weight: 600; color: var(--ink); font-size: 13px; }
+  footer {
+    margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
+    font-size: 14px; color: var(--muted);
+  }
+  footer .who { margin: 4px 0; }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media print {
+    body { background: #fff; font-size: 12pt; }
+    .wrap { max-width: none; padding: 0; }
+    .glance { background: #f4f4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .badge { background: #555 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { page-break-inside: avoid; }
+    .card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="title-row">
+      <h1>RC Services</h1>
+      <span class="badge">Active</span>
+    </div>
+    <div class="meta">
+      Status report &middot; June 12, 2026 &middot; covering the last 30 days<br>
+      Prepared by Eli Luvish — Research Computing
+    </div>
+  </header>
+
+  <div class="glance">
+    RC Services is steadily bringing storage billing for three services — <strong>MAD3, BriefCase, and RFA</strong> — fully in-house, taking it over from a long-standing manual arrangement and moving it off aging infrastructure. RFA usage is now collected automatically; the BriefCase and MAD3 pipelines are built and entering a careful side-by-side validation period before cutover. Separately, the <strong>FreezerPro</strong> billing integration cleared its main blocker and is ready to build once access is provided. A few decisions need stakeholder input — see below.
+  </div>
+
+  <section>
+    <div class="label">Recently shipped</div>
+    <hr class="rule">
+    <h2>What's new for users</h2>
+    <ul>
+      <li>RC Services now collects RFA storage usage automatically every day, so it can be billed without anyone running the old manual scripts. <span class="ref">[#1994]</span></li>
+      <li>A new <em>My Applications</em> menu gives users one place to launch the services available to them. <span class="ref">[#1992]</span></li>
+      <li>Cancel-and-refund is now available for pre-billed software services, so a service paid for in advance can be cancelled and refunded cleanly. <span class="ref">[#1954]</span></li>
+      <li>Subscriptions can no longer be placed against an expired fund — the system blocks it up front instead of letting a charge land on a closed grant. <span class="ref">[#1983]</span></li>
+      <li>Adding a new fund mid-project is now a cleaner picker and no longer breaks the page. <span class="ref">[#1959, #1953]</span></li>
+      <li>You can now preview the full body of a sent email in a pop-up window, without leaving the page. <span class="ref">[#1956]</span></li>
+      <li>The project edit page is organized into tabs, making fields easier to find. <span class="ref">[#1946]</span></li>
+      <li>The description editor now has a formatting toolbar and shows formatted text consistently. <span class="ref">[#1978]</span></li>
+      <li>Fixed: a project no longer loses its owner when the account field is left blank. <span class="ref">[#1986]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">In progress</div>
+    <hr class="rule">
+    <h2>What's being built</h2>
+    <ul>
+      <li><strong>Storage billing takeover (MAD3, BriefCase, RFA).</strong> The three storage services are being moved onto one modern, automated billing pipeline inside RC Services, replacing scripts that have run for years on aging equipment. RFA collection is live; MAD3 and BriefCase collection are built and being validated against the existing numbers before any switch.</li>
+      <li><strong>FreezerPro billing integration.</strong> The data and billing approach are now agreed with the REDCap team — annual, tier-based billing pulled once a month. Building begins as soon as the REDCap team provides the access credentials. <span class="ref">[#1844]</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Decisions needed</div>
+    <hr class="rule">
+    <h2>Where we'd like your input</h2>
+    <div class="cards">
+      <div class="card">
+        <p class="q">How should monthly storage charges be calculated from daily usage readings?</p>
+        <p class="a">The new system records one usage reading per day; monthly billing needs a single figure. <strong>Recommendation: match the current method (75th percentile) during the transition</strong> so the side-by-side comparison stays clean, and revisit only if it clearly over- or under-bills.</p>
+      </div>
+      <div class="card">
+        <p class="q">How should FreezerPro cancellations be handled?</p>
+        <p class="a">A cancellation approach was agreed in an earlier discussion but never written down. We need to re-confirm what happens when a lab cancels FreezerPro mid-cycle. Low-frequency, but worth pinning down before launch.</p>
+      </div>
+      <div class="card">
+        <p class="q">Should grant financial contacts get self-service visibility into a grant's subscriptions?</p>
+        <p class="a">Financial contacts often reach out after invoices land. Giving them visibility into all of a grant's subscriptions could let them self-serve on invoice questions rather than routing everything through the analyst team. <strong>For Alissa's call.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Risks &amp; blockers</div>
+    <hr class="rule">
+    <h2>What could slow us down</h2>
+    <ul>
+      <li><strong>Aging equipment behind current storage billing.</strong> Today's billing still leans on older equipment that has become less reliable. The takeover removes that dependency — completing the cutover is what fully retires the risk.</li>
+      <li><strong>FreezerPro is waiting on access credentials</strong> from the REDCap team before the integration can be built. Everything else is ready.</li>
+      <li><strong>A handful of storage volumes can't yet be matched to a billing account.</strong> These are being reconciled with MGB Digital Storage so nothing is billed incorrectly or missed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">What's next</div>
+    <hr class="rule">
+    <h2>Near-term plan</h2>
+    <ul>
+      <li>Wire the new RFA usage collection into the monthly billing run.</li>
+      <li>Run the new MAD3 and BriefCase billing side-by-side with the existing numbers through June and July, reconcile any differences, and aim for a full switch-over in August.</li>
+      <li>Build the FreezerPro integration as soon as the REDCap access credentials arrive.</li>
+      <li>Confirm the open decisions above so the billing methodology and cancellation handling are settled before cutover.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Timeline</div>
+    <hr class="rule">
+    <ul class="milestones">
+      <li class="ms done"><span class="when">June</span>RFA collection live; MAD3 &amp; BriefCase side-by-side begins</li>
+      <li class="ms"><span class="when">July</span>Continued side-by-side; reconcile differences</li>
+      <li class="ms"><span class="when">August</span>Target full cutover to RC Services billing</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div><strong>Stakeholders</strong></div>
+    <div class="who">Alissa Scharf — Manager, Research Computing Core</div>
+    <div class="who">Laura Brown — Analyst, Research Computing Core</div>
+    <div class="who">Michael Oates — Director, Research Computing</div>
+    <div style="margin-top:12px;">Questions? <a href="mailto:eluvish@mgb.org">eluvish@mgb.org</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
