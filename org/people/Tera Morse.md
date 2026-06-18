@@ -24,7 +24,7 @@ Stakeholder on [[PCMS]]. Supports a number of cores.
 
 ## Notes
 
--
+- Goes by **Sarah** (middle name) in meetings — colleagues address her as Sarah, not Tera. Noted from the [[2026-06-18 Meeting — pcms|6/18 pcms sync]].
 
 ## Related
 

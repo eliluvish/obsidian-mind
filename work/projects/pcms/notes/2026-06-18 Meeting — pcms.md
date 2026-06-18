@@ -107,15 +107,19 @@ A continuous monitoring check now runs automatically to catch and correct rare b
 
 ## Discussion
 
--
+- **SOW packaging for Finance's feature list.** Eli noted much of Finance's requested list is small (e.g. the email-address change is ~1 hour) and not worth a standalone SOW each. Debated one SOW vs. several — [[Daniel Guettler]] framed it as ~4 SOWs total (one Finance already has + three more). Finance ([[Tera Morse]]) wants the work **grouped** because it reads better for budgeting/approval — one project at, say, $25k is easier to take to [[Allison Moriarty]] than "$1k here, $1k there"; [[Daniel Guettler]] noted smaller amounts can also be easier to get approved individually.
+- **Who decides the grouping.** Eli's position: RIC gives the **cost of every line item**; Finance packages/groups it however best persuades [[Allison Moriarty]], and decides allocation (Finance dept budget vs. digital dept budget). Finance doesn't have to use RIC's document format.
+- **UI facelift — palette + style guide.** The design contact Finance has been emailing will send a **color palette**. Eli asked them to also request a **style guide** (fonts, margins), which may already exist — saves redoing that work. The MGB-blue-banner mockup Eli presented looked similar to the agency design [[Jessica Cho]] showed last meeting. See [[PCMS UI Facelift]].
 
 ## Decisions
 
--
+- **Deliver one costed line-item document, broken into sections.** RIC produces a per-line-item cost breakdown; Finance groups it into project SOWs themselves for [[Allison Moriarty]] budget approval. RIC owns the costing, not the grouping.
 
 ## Action Items
 
-- [ ]
+- [ ] Eli / [[Daniel Guettler]] — produce a per-line-item cost breakdown of Finance's feature list, broken into sections; deliver in a day or two
+- [ ] Finance ([[Yovani Edwards]]) — ask the design contact for a **style guide** (fonts, margins) in addition to the color palette
+- [ ] Finance — group the costed line items into ~4 project SOWs for [[Allison Moriarty]] budget approval
 
 ## Related
 
