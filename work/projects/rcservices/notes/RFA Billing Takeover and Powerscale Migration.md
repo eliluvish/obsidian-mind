@@ -51,9 +51,14 @@ Eli is taking over billing for the new RFA services. Powerscale is a new vendor 
 
 RFA billing code is **deployed to production**, but billing data is **not yet being populated**. A method to pull RFA usage exists, but the usage importer has not been written yet. Tracked in [eris#1962](https://github.com/csb-ric/eris/issues/1962) — Write RFA usage importer.
 
+## Importer Shipped — 2026-06
+
+- RFA daily snapshot **usage importer shipped** ([eris#1994](https://github.com/csb-ric/eris/issues/1994)) — closes [eris#1962](https://github.com/csb-ric/eris/issues/1962).
+- RFA now bills on **logical usage (`fslogical`)** to match the MAD3 treatment, plus an **RFA exclusion list**. Closes the gap where RFA was handled differently from MAD3 — see [[Storage Usage Billing Pipeline Takeover]].
+
 ## Action Items
 
-- [ ] Write the RFA usage importer — [eris#1962](https://github.com/csb-ric/eris/issues/1962) **(in progress 2026-06-10)**
+- [x] Write the RFA usage importer — [eris#1962](https://github.com/csb-ric/eris/issues/1962) _(shipped 2026-06 via snapshot importer #1994; bills `fslogical` + exclusion list)_
 - [x] Attend meeting 2026-04-14
 - [x] Receive Powerscale API access from [[Naresh Mallidi]] — `cri6` service account + isilon_sdk_python
 - [x] Prove connection to Powerscale API — [eris#1921](https://github.com/csb-ric/eris/issues/1921) _(closed 2026-04-22)_

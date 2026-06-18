@@ -29,6 +29,11 @@ Work resumed after the Nov 2025 stall and is now largely in production. The plan
 - **June billing**: rely on existing billing (Chris's scripts), then compare against the new implementation; make changes as needed
 - **July billing**: switch to the new implementation for good (target)
 
+## Update — 2026-06-18 (June parallel run)
+
+- MAD3 now bills **logical usage (`fslogical`)**, not physical on-disk ([eris#2008](https://github.com/csb-ric/eris/issues/2008) / [eris#2009](https://github.com/csb-ric/eris/issues/2009)) — billing-correctness fix landed during the June parallel run. RFA aligned to the same treatment — see [[RFA Billing Takeover and Powerscale Migration]].
+- ⚠️ **Open billing-statistic tension**: [eris#2010](https://github.com/csb-ric/eris/issues/2010) asks to **revert MAD3 monthly import to average billing** (do in July, before August billing). The month-end snapshot is a transitional stand-in while logical history is incomplete; average is the long-term basis. Tracked in [[MAD3 Billing Basis — Average vs Month-End Snapshot]]; mirrors the avg-vs-p75 question in [[003-BriefCase Usage Billing Statistic]].
+
 ## Superseded — Legacy Pipeline (historical)
 
 The notes below describe the old report-parsing pipeline being replaced. Kept for context; not the path forward.

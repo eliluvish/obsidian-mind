@@ -38,7 +38,7 @@ Software reselling to the research hospital community and pass-through billing f
 
 ## Meeting Cadence
 
-- **RC Services biweekly sync** — [[Alissa Scharf]], [[Laura Brown]], and Eli, every two weeks on **Wednesday 9:00–9:30am**. Anchor: Wed 2026-06-17 (next meeting tomorrow).
+- **RC Services sync** — [[Alissa Scharf]], [[Laura Brown]], and Eli. **Moving to weekly** (or a 45-min slot) as of 2026-06-17 — was biweekly Wednesday 9:00–9:30am; agreed too infrequent. To be scheduled before Eli's 1:1 with [[Daniel Guettler]].
 
 ## Compliance Notes
 None currently.
@@ -49,10 +49,12 @@ None currently.
 
 - [[ServiceNow Ticket Analysis for Alissa]] — **completed** (2026-06-10). Analysis delivered to [[Alissa Scharf]].
 - [[RFA Billing Takeover and Powerscale Migration]] — **active**. Billing code deployed to production; usage importer not yet written ([eris#1962](https://github.com/csb-ric/eris/issues/1962)).
-- [[Storage Usage Billing Pipeline Takeover]] — **active**. MAD3 takeover from Chris Mow restarted; Isilon API path in production. June: run alongside Chris's scripts; July: full cutover.
-- [[Briefcase Billing Takeover]] — **active**. Third leg of the Chris Mow billing handoff. Importer ✅ merged to master 2026-05-26 (PR #1976); post-merge validation rerun + shadow run ([eris#1973](https://github.com/csb-ric/eris/issues/1973)) and monthly aggregator ([eris#1974](https://github.com/csb-ric/eris/issues/1974)) next. See [[BriefCase Volume Matching Logic]] for the matching iterations.
+- [[Storage Usage Billing Pipeline Takeover]] — **active**. MAD3 takeover from Chris Mow restarted; Isilon API path in production. June: run alongside Chris's scripts; July: full cutover. MAD3/RFA now bill logical usage (`fslogical`, #2008/#2009).
+- [[MAD3 Billing Basis — Average vs Month-End Snapshot]] — **active**. MAD3 import temporarily bills the month-end snapshot during the logical cutover; revert to monthly average in July before August billing ([eris#2010](https://github.com/csb-ric/eris/issues/2010)).
+- [[Briefcase Billing Takeover]] — **active**. Third leg of the Chris Mow billing handoff. Importer ✅ merged to master 2026-05-26 (PR #1976); post-merge validation rerun + shadow run ([eris#1973](https://github.com/csb-ric/eris/issues/1973)); monthly aggregator **in progress** ([eris#1974](https://github.com/csb-ric/eris/issues/1974), PR #2007). See [[BriefCase Volume Matching Logic]] for the matching iterations.
+- **Self-service funding correction** — newly surfaced (PR [#1996](https://github.com/csb-ric/eris/pull/1996), branch `self-serv-funding`): PI-facing funding change with invoice restatement. No vault note yet — candidate when it merges.
 - [[Prepaid Remaining Balance on Invoices]] — **active**. [[Alissa Scharf]] request (2026-06-16): show prepaid accounts' remaining balance on invoices (Prepaid / Remaining balance / Subtotal), updated monthly. ⛔ **Deploy hold until after July 5** ([eris#1998](https://github.com/csb-ric/eris/issues/1998)).
-- [[SAS Enclave License Type]] — **active**. [[Alissa Scharf]] request (2026-06-16, discuss Wed 6/17): new SAS Enclave license whose ticket routes to the Enclave team. New service vs. SAS platform option TBD ([eris#1997](https://github.com/csb-ric/eris/issues/1997)).
+- [[SAS Enclave License Type]] — **active**. Decided 6/17: build as a **standalone service** (mirrors SAS Citrix, ticket routes to the Enclave team, custom messaging). Alissa to write the service page; Eli to confirm fields + build ([eris#1997](https://github.com/csb-ric/eris/issues/1997)).
 - [[FreezerPro RedCap Integration]] — **active**. Schema blocker resolved 2026-06-11: report field set + REDCap report-API delivery agreed, pull on the 2nd for the prior month. Importer build gated only on [[Svetlana Rojevsky]] delivering test/prod API tokens + Report ID. Open: service cancellation handling. PR [#1854](https://github.com/csb-ric/eris/pull/1854).
 - [[Fund Expiry Enforcement]] — **completed** (master 2026-05-27, #1983). Strict `Fund#expired?` across every fund-attach path; removed the 6-month internal-fund grace. See [[Key Decisions]].
 - [[RFA ServiceNow Provisioning Pipeline]] — **completed** (live in production 2026-04-16).

@@ -31,6 +31,9 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[Fund-Number Change Regeneration Flag]] — pcms [pcms#2356](https://github.com/csb-ric/pcms/issues/2356) (PR #2362); two-color regeneration flag — `total_mismatch` (red, blocks journaling) vs `fund_changed` (yellow, non-blocking)
+- [[MAD3 Billing Basis — Average vs Month-End Snapshot]] — rcservices [eris#2010](https://github.com/csb-ric/eris/issues/2010); MAD3 import temporarily bills the month-end snapshot during the physical→logical cutover; revert to monthly average in July 2026 before August billing
+- [[2026-06-17 Meeting — rcservices]] — rcservices biweekly sync; **SAS Enclave settled as a standalone service** (custom messaging the deciding factor, ticket routes to Enclave team, #1997); **GraphPad Prism to be dropped from the catalog after next year** (~$1M renewal); cadence moving to weekly
 - [[2026-06-11 Meeting — pcms]] — pcms weekly sync; quiet shipping week. Agreed PCMS needs a UI facelift (Eli demoed rcfinops dashboard as the bar; outdated look confirmed across all focus groups); Eli to mock up MGB-branded options. Cache-drift monitor still clean. Finance to file small focus-group tickets soon.
 - [[PCMS UI Facelift]] — pcms, MGB-branded UI refresh; dated look flagged across all focus groups; AI mockups make redesign cheap. Direction agreed at 6/11 sync; mockups-vs-agency-design path undecided.
 - [[RC FinOps Week-1 Build Log]] — rcfinops, greenfield build arc Jun 4–10 (116 commits): Azure import, RBAC + site admin, FundingSource/Insight scoping, MGB subsidy, faceted browser; `main` 16 ahead of origin

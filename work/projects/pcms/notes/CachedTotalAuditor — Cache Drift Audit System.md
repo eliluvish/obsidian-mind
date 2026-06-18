@@ -41,9 +41,15 @@ The daily `last_week` cron fired its first drift alert (run 03:30, range `2026-0
   - `970869` (2026-06-10): cached `55.5` vs recomputed `18.5` — delta `-37.0`
 - These are either rows left stale from before #2337 shipped or a drift vector not yet found — #2337 was meant to close the cancel/uncancel source. Triage tracked in **[#2360](https://github.com/csb-ric/pcms/issues/2360)**.
 
+## Drift root-caused + fixed (2026-06-16)
+
+Both mismatches traced to a single uncaught vector: when a `CalendarEvent` commits, `update_or_create_tracking` only re-caches the event's *own* tracking. A **cancelled reservation whose slot overlapped** the event had its rebooked time — and therefore `accountable_units` / `cached_total` — changed, but no invalidation path re-cached it. This is the "drift vector not yet found" hypothesized above, distinct from the #2337 cancel/uncancel source.
+
+**Fix** ([#2360](https://github.com/csb-ric/pcms/issues/2360) / [#2361](https://github.com/csb-ric/pcms/issues/2361), merged 2026-06-16): `RefreshOverlappingCancelledTrackingsJob` — an `after_commit` on `CalendarEvent` enqueues a job that finds all cancelled reservations overlapping the event's slot and re-caches them off the request cycle (guarded by `no_callbacks`). Both flagged trackings (`970431`, `970869`) resolved.
+
 ## Follow-ups
 
-- [x] Run the auditor (or let the cron run) against production and triage any reported mismatches — first run 2026-06-16 surfaced 2 mismatches; triage tracked in [#2360](https://github.com/csb-ric/pcms/issues/2360). See [[Cached Total Resync on SR Cancel-Uncancel#Action Items]].
+- [x] Run the auditor (or let the cron run) against production and triage any reported mismatches — first run 2026-06-16 surfaced 2 mismatches; **root-caused + fixed** via [#2360](https://github.com/csb-ric/pcms/issues/2360) / [#2361](https://github.com/csb-ric/pcms/issues/2361) (see above). See [[Cached Total Resync on SR Cancel-Uncancel#Action Items]].
 - [ ] Decide whether other `update_all` callsites on trackings need `after_commit` recalc treatment.
 
 ## Related

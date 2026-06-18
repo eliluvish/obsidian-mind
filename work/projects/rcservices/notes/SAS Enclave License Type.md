@@ -26,7 +26,10 @@ The "ticket" is an email that spawns the downstream ServiceNow ticket. `SasSubsc
 
 ## The decision — new service vs. SAS platform option
 
-> [!question] To be determined (Wed 2026-06-17)
+> [!success] Decided 2026-06-17 — Option B (new service)
+> **SAS Enclave will be its own standalone service** mirroring SAS Citrix, with the request ticket routing to the **Enclave team** instead of the RCC software queue. Chosen because Alissa wants **custom messaging**, which a standalone service provides. Same billing terms as SAS Citrix; the only material difference is ticketing. Alissa will write up the service page content; Eli to confirm the fields and build it. See [[2026-06-17 Meeting — rcservices]].
+
+> [!question]- Original framing (superseded)
 > Implement Enclave as **(A)** a third platform option on the existing SAS service, or **(B)** a separate `SasEnclaveService` mirroring the existing `SasDesktopService`.
 
 ### Tradeoffs
@@ -44,11 +47,11 @@ The "ticket" is an email that spawns the downstream ServiceNow ticket. `SasSubsc
 
 Leaning **B (separate service)** — Enclave's whole point is a *different fulfillment team*, which is a service-level distinction, and the codebase already precedents per-fulfillment-path services (Desktop). The one thing that flips it toward A: if Enclave is the **same $300/yr license** with identical billing terms, A's reuse wins. **Settle the billing question first** (below) — it's the deciding input.
 
-### Decision criteria to settle Wed
+### Decision criteria — outcome (2026-06-17)
 
-- Is Enclave the **same license/price** as Citrix/Server ($300/yr, April-renewal proration → favors A) or a distinct offering (favors B)?
-- What is the **Enclave team's ticket destination** (email/queue)?
-- Should Enclave send the user an **instructions email**, or is fulfillment handled entirely by the Enclave team?
+- **Same license/price** as Citrix/Server — Alissa said the only material difference is ticketing, so billing terms carry over. _(Confirm the exact $/term with the field list.)_
+- **Enclave team's ticket destination** — still to confirm with Alissa as part of the field list.
+- **Instructions email** — yes; Enclave gets **custom messaging** (the deciding factor for going standalone).
 
 ## Touchpoints (either approach)
 
