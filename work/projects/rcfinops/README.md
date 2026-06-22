@@ -36,15 +36,15 @@ A standalone Rails application giving researchers a self-service view of their c
 - **Key gems**: rspec, FactoryBot, rubocop, i18n-tasks, simplecov; Tailwind + Turbo Streams for the UI
 
 ## Status
-Greenfield app, ~1 week old — went from `initial commit` (2026-06-04) to a multi-feature Rails app by 2026-06-10. See [[RC FinOps Week-1 Build Log]] for the full arc. Built so far:
+Greenfield app — went from `initial commit` (2026-06-04) to a multi-feature Rails app by 2026-06-10 ([[RC FinOps Week-1 Build Log]]), then added observability + UX through Jun 22 ([[RC FinOps Week-2 Build Log]]). Built so far:
 - Azure cost import pipeline (`AzureCostLineItem`)
 - Role-based access control + site administration (groups, permissions matrix, users)
 - `FundingSource` model enriched from Insight, scoping the dashboard by role — see [[002-FundingSource as Cost-Ownership Authority]]
 - MGB-subsidy flagging + filtering across dashboard and line-item index — see [[MGB Subsidy Flagging Business Rule]]
-- Faceted line-item browser (role-based facets, free-text search, `visible_to` UNION scope)
-
-> [!warning] Unpushed work
-> As of 2026-06-10, `main` is **16 commits ahead of `origin/main`** (today's refactor/UX burst) and branch **`add-vm-name`** (resource group in search scope) sits off `main`, ready to merge. Push before treating this as the source of truth.
+- Faceted line-item browser (role-based facets, free-text search, `visible_to` UNION scope), now with sortable columns + filter-preserving CSV export
+- Engagement telemetry (Ahoy / `UserEngagement`) + daily digest mailer via external cron
+- Honeybadger error reporting
+- **Pending merge** (`add-vm-name` branch): VM-name cost dimension + "Spend by VM" breakdown chart, resource-group free-text search
 
 > [!tip] Traction
 > 2026-06 — [[Michael Oates]] presented the dashboard at his Research Computing team meeting; it got a lot of praise. Director-level visibility for an app that's not yet deployed. The MGB-branded UI also served as the design proof-point that sold a [[PCMS UI Facelift]] — see [[Patterns#A Polished Build Doubles as a Design Proof-Point]].
@@ -65,6 +65,7 @@ Open review: [[RC FinOps Cost Data Visibility Review]] — what data is shown, w
 
 ## Active Notes
 - [[RC FinOps Week-1 Build Log]] — greenfield build arc, Jun 4–10
+- [[RC FinOps Week-2 Build Log]] — observability + line-item UX, Jun 10–22
 - [[MGB Subsidy Flagging Business Rule]] — subsidized line-item flagging + role-scoped filtering
 
 ## Decisions

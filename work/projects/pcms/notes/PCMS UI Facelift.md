@@ -26,12 +26,13 @@ PCMS's interface looks dated, and that came up as feedback **across all three st
 - **Likely supersedes the earlier design proposals.** This is not a parallel track — an AI-driven, whole-app MGB-branded refresh would most likely take the place of [[Core Browse UI Design]] (filterable card-grid browse UI) and the [[002-About Page as Auto-Populated Standardized Template|About-page template ADR]] rather than coexist with them. Those predate the cheap-mockup approach; fold their intent (browsable cores, standardized About content) into the facelift instead of building them separately.
 - Scope is undefined: whole-app reskin vs. high-traffic pages first. To be narrowed once a direction is picked.
 - **Update 2026-06-18** ([[2026-06-18 Meeting — pcms|6/18 sync]]): the design contact Finance has been emailing will send a **color palette**. Eli asked them to also request a **style guide** (fonts, margins) — it may already exist, which would save redoing that work. Eli's MGB-blue-banner mockup looked similar to the agency design [[Jessica Cho]] showed previously.
+- **Update 2026-06-22**: Eli **sent the MGB-branded UI facelift mockups to the client** — path (1) executed. Awaiting client feedback / direction.
 
 ## Action Items
 
 - [ ] Finance ([[Yovani Edwards]]) — ask the design contact for a style guide (fonts, margins) alongside the color palette
 - [ ] [[Jessica Cho]] — decide: fresh AI mockups vs. implement the existing agency design
-- [ ] Eli — if mockups: produce ~5 MGB-branded options and present at a future weekly sync
+- [x] Eli — produce MGB-branded mockups and send to client (sent 2026-06-22)
 - [ ] Fold the intent of [[Core Browse UI Design]] and the About-page template into the facelift; if it supersedes them, mark those notes/ADR superseded
 - [ ] Define scope once a direction is chosen (full reskin vs. priority pages)
 

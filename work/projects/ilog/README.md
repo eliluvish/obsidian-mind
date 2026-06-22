@@ -41,11 +41,15 @@ DEA-regulated application. Handles controlled substance inventory and accountabi
 
 ## Architecture Notes
 
+- Row-level authorization is centralized in shared concerns — `PermissionScopable#permission_scope` (controller) and `Ownable#owned_by` (model), extracted from 21 controllers in `777e6318` (2026-06). `ContainerAuditScopable` intentionally keeps an inline copy due to different tenant semantics. See [[Patterns#Row-Level Authorization as a Shared Concern]].
+- **Unmerged feature work** (as of Jun 2026): `development` branch carries ModalFormComponent conversions (DEA visits, buildings, tenant contacts, missing substances), Bootstrap→esbuild migration, and date-field modernization; `reg-group-ui-fix` carries registration-group UI fixes. Not yet on `master`.
+
 ## Active Notes
 
 - [[Accountability Logbook Testing Feedback]] — **active**. Open testing-feedback tickets (compliance #718–724); the Kele/Mirabella set, current North Star goal. Beta path unchanged (no movement).
+- [[Container Disposition Balance Fix]] — correctness fix shipped on `master` (`fa274dcf`, 2026-06-22): disposition balance now subtracts recorded losses; DEA accountability implication, no historical review needed (feature not yet in production)
 - [[2026-04-27 Meeting — ilog]] — stakeholder sync: ARC demo postponed, schedule logic clarified, chatbot interest opened
-- [[Registration Onboarding Workflow Redesign]] — wireframes **complete**; implementation deferred until after the logbook ships
+- [[Registration Onboarding Workflow Redesign]] — wireframes **complete**; implementation deferred until after the logbook ships (wireframe branch `experiment-1-onboarding-workflow-no-pdf-processing` still seeing iteration as of Jun 2026)
 - [[Authorized User Log Rules and Training Changes]]
 - [[Destruction Workflow and DEA Form 41 Process]]
 - [[ARC Group iLog Demo]] — ✅ resolved 2026-04-27 (Kele postponed)

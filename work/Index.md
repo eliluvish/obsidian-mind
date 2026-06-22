@@ -31,6 +31,8 @@ Each project has its own folder in `work/projects/` with a README, decisions, an
 
 ## Recent Notes
 
+- [[RC FinOps Week-2 Build Log]] — rcfinops, build arc Jun 10–22 (14 commits): Ahoy engagement telemetry, daily digest mailer (external cron), line-item sort + filter-preserving CSV export, Honeybadger; `add-vm-name` (VM cost breakdown) unmerged
+- [[Container Disposition Balance Fix]] — ilog, correctness fix shipped on `master` (`fa274dcf`): disposition balance now subtracts recorded losses (was letting containers with losses over-dispense negative); DEA accountability implication, no historical review needed (not yet in production)
 - [[2026-06-18 Meeting — pcms]] — pcms weekly sync; quiet shipping week (cache-drift self-corrected #2360/#2361). **SOW packaging settled**: RIC delivers per-line-item costs, Finance groups into ~4 SOWs for [[Allison Moriarty]]; design contact to send color palette (+ asked for style guide)
 - [[Fund-Number Change Regeneration Flag]] — pcms [pcms#2356](https://github.com/csb-ric/pcms/issues/2356) (PR #2362); two-color regeneration flag — `total_mismatch` (red, blocks journaling) vs `fund_changed` (yellow, non-blocking)
 - [[MAD3 Billing Basis — Average vs Month-End Snapshot]] — rcservices [eris#2010](https://github.com/csb-ric/eris/issues/2010); MAD3 import temporarily bills the month-end snapshot during the physical→logical cutover; revert to monthly average in July 2026 before August billing

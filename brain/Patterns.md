@@ -26,6 +26,13 @@ Default to **request specs** for controller/endpoint coverage; reserve system (C
 - **Greenfield example**: [[RC FinOps|rcfinops]] (`cloud_costs`) was built request-spec-first — the RBAC/permissions-matrix and line-item-browser coverage is request specs, with system specs only where the dashboard's interactive affordances require a browser.
 - **Conversion example**: [[BioLift|biolift]] converted its existing Capybara system specs (dropped_off, missing_specimen, received) to request specs (`5482673`), citing speed and reliability and shifting auth from mocked methods to real POST login. The same tradeoff applies across the Rails apps.
 
+## Row-Level Authorization as a Shared Concern
+
+When the same ownership/permission scoping is copy-pasted across many controllers, extract it into a pair of shared concerns rather than letting each controller carry its own copy — the copies drift, and in a regulated app divergent auth logic is a real risk.
+
+- **Source**: [[iLog]] (`compliance`) consolidated row-level scoping from **21 controllers** into `PermissionScopable#permission_scope` (controller concern) + `Ownable#owned_by` (model scope, with per-model `owner_joins` overrides) in `777e6318` — ~330 lines removed across 36 files.
+- **Nuance**: not everything folds in — `ContainerAuditScopable` deliberately kept its inline copy because its tenant semantics differ. Centralize the common case; leave genuinely-different scopes separate rather than forcing one abstraction.
+
 ## A Polished Build Doubles as a Design Proof-Point
 
 AI-generated, brand-aligned UI is cheap enough now that a finished app in one project becomes the sales pitch for redesigning another. The old blocker for UI work — hire a design agency, then hand-implement their comps — is gone; asking AI for ~5 MGB-branded options and picking one is minutes of work, not a budget line.
