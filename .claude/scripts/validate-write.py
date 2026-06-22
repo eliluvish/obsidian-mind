@@ -27,7 +27,7 @@ def main():
     normalized = file_path.replace("\\", "/")
     # Skip dotfiles, templates, thinking, and root template files (not vault notes)
     basename = os.path.basename(normalized)
-    root_files = {"CHANGELOG.md", "CONTRIBUTING.md", "CLAUDE.md"}
+    root_files = {"CLAUDE.md"}
     if basename in root_files:
         sys.exit(0)
     # Also skip translated READMEs (README.ja.md, README.zh-CN.md, etc.)

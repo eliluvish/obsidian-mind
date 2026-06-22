@@ -24,30 +24,16 @@ SIGNALS = [
         "name": "DECISION",
         "message": "DECISION detected — consider using /decision to create an ADR in the project's decisions/ folder",
         "patterns": [
-            # English
             "decided", "deciding", "decision", "we chose", "agreed to",
             "let's go with", "the call is", "we're going with",
-            # Japanese
-            "決定した", "決めた", "合意した",
-            # Korean
-            "결정했어", "결정했습니다", "합의했어",
-            # Chinese
-            "决定了", "我们决定", "确定了", "同意",
         ],
     },
     {
         "name": "ARCHITECTURE",
         "message": "ARCHITECTURE discussion — consider creating a reference note in reference/ or a decision record",
         "patterns": [
-            # English
             "architecture", "system design", "rfc", "tech spec",
             "trade-off", "design doc", "adr",
-            # Japanese
-            "アーキテクチャ", "システム設計",
-            # Korean
-            "아키텍처", "시스템 설계",
-            # Chinese
-            "架构", "系统设计", "技术规范",
         ],
     },
     {
@@ -58,12 +44,6 @@ SIGNALS = [
             "told me", "said that", "feedback from", "met with",
             "talked to", "spoke with",
             "mentioned that", "mentioned the", "mentioned a",
-            # Japanese
-            "言ってた", "フィードバック", "話した",
-            # Korean
-            "말했어", "피드백", "얘기했어", "언급했어",
-            # Chinese
-            "说了", "提到", "反馈", "提及",
         ],
     },
     {
@@ -82,12 +62,6 @@ SIGNALS = [
             "went live", "rolled out", "rolling out",
             "merged", "merging", "merges",
             "cut the release", "release cut",
-            # Japanese
-            "スプリント", "マイルストーン", "マージした", "リリースしました",
-            # Korean
-            "스프린트", "마일스톤", "배포", "릴리스", "병합",
-            # Chinese (发布了, 上线 shared with WIN)
-            "迭代", "里程碑", "发布了", "上线", "合并了",
         ],
     },
     {
@@ -97,12 +71,6 @@ SIGNALS = [
             # English
             "switching to", "context switch", "jumping to", "moving to",
             "working on", "back to", "picking up",
-            # Japanese
-            "切り替え", "に移る",
-            # Korean
-            "전환", "으로 이동",
-            # Chinese
-            "切换到", "转到",
         ],
     },
     {
@@ -112,13 +80,7 @@ SIGNALS = [
             # English
             "deploy", "deploying", "deployment",
             "release", "releasing", "production",
-            "staging", "capistrano", "going live",
-            # Japanese
-            "デプロイ", "リリース", "本番",
-            # Korean
-            "배포", "릴리스", "프로덕션",
-            # Chinese
-            "部署", "发布", "上线", "生产环境",
+            "staging", "going live",
         ],
     },
     {
@@ -129,12 +91,6 @@ SIGNALS = [
             "hipaa", "irb", "phi", "audit log", "de-identify",
             "de-identification", "compliance", "ferpa", "pii",
             "data use agreement", "dua",
-            # Japanese
-            "コンプライアンス", "個人情報",
-            # Korean
-            "컴플라이언스", "개인정보",
-            # Chinese
-            "合规", "个人信息", "审计",
         ],
     },
 ]
