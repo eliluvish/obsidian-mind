@@ -27,7 +27,7 @@ The "ticket" is an email that spawns the downstream ServiceNow ticket. `SasSubsc
 ## The decision — new service vs. SAS platform option
 
 > [!success] Decided 2026-06-17 — Option B (new service)
-> **SAS Enclave will be its own standalone service** mirroring SAS Citrix, with the request ticket routing to the **Enclave team** instead of the RCC software queue. Chosen because Alissa wants **custom messaging**, which a standalone service provides. Same billing terms as SAS Citrix; the only material difference is ticketing. Alissa will write up the service page content; Eli to confirm the fields and build it. See [[2026-06-17 Meeting — rcservices]].
+> **SAS Enclave will be its own standalone service** mirroring SAS Citrix/Server, **reusing the regular `SasSubscription`** (same subscription model + billing terms — `service_charges`, April-renewal proration inherited, not duplicated). The request ticket routes to the **Enclave team** instead of the RCC software queue, and Enclave gets **custom messaging** (the deciding factor for going standalone). Alissa will write up the service page content + provide the Enclave team's destination address; Eli to confirm the fields and build it. See [[2026-06-17 Meeting — rcservices]] and [eris#1997](https://github.com/csb-ric/eris/issues/1997).
 
 > [!question]- Original framing (superseded)
 > Implement Enclave as **(A)** a third platform option on the existing SAS service, or **(B)** a separate `SasEnclaveService` mirroring the existing `SasDesktopService`.
