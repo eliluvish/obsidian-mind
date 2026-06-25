@@ -67,6 +67,7 @@ Open review: [[RC FinOps Cost Data Visibility Review]] — what data is shown, w
 - [[RC FinOps Week-1 Build Log]] — greenfield build arc, Jun 4–10
 - [[RC FinOps Week-2 Build Log]] — observability + line-item UX, Jun 10–22
 - [[MGB Subsidy Flagging Business Rule]] — subsidized line-item flagging + role-scoped filtering
+- [[RCS Metadata Sync from Eris]] — **in flight** (branch `feature/rcs-meta-data-eris-sync`, unmerged). Live attribution sync from [[RC Services (Eris)|rcservices]] eris API ([eris#2017](https://github.com/csb-ric/eris/issues/2017)); replaces static seeds, PaperTrail audit trail, daily cron pending.
 
 ## Decisions
 - [[001-Standalone Azure Usage Dashboard App]] — researcher-facing dashboard built as a separate Rails app, pulling from Azure independently rather than extending eris.

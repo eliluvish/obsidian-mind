@@ -2,13 +2,18 @@
 date: "2026-06-16"
 description: "Alissa's request to add a SAS Enclave license type whose requests route to the Enclave team instead of the RCC software queue — new service vs SAS platform option is TBD (eris#1997)."
 project: "rcservices"
-status: active
+status: completed
 github_issue: 1997
 tags:
   - work-note
 ---
 
 # SAS Enclave License Type
+
+## Shipped
+
+> [!success] Merged to master 2026-06-18 (9e95bd8e, closes #1997 + #2020)
+> Built as a standalone `SasEnclaveService` + `SasEnclaveSubscription` STI pair. New installs prorate Oct–Mar at $25/mo; renewals auto-provision and skip the creation-month billing check; annual billing fires in April only. Confirmation email routes to **AnalyticsEnclave@Partners.org**. Factories, model specs, email partials, i18n keys, and a seeding migration included.
 
 ## Context
 
