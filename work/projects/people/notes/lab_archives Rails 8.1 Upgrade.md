@@ -46,4 +46,5 @@ What landed (non-obvious bits worth remembering):
 - [[CADE]]
 - [[Minor Intake Form|minr]]
 - [[Research Intake Survey|ris]]
+- [[PCMS Rails 8.1 Upgrade]] — later 8.1 upgrade, hit the same `jsonapi-resources` keyword-arg breakage
 - [[Index]]

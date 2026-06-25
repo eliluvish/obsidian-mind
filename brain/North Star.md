@@ -30,9 +30,7 @@ _What am I working toward right now?_
 ### Medium-term (This Half)
 
 - complete all accountability logbook tickets (the set Kele/Mirabella added — tracked in [[Accountability Logbook Testing Feedback]]; origin [[2026-04-27 Meeting — ilog]])
-- upgrade PCMS to Rails 8.1
 - iLog accountability logbook — wireframes complete (implementation deferred until after logbook ships); beta testing path through Controlled Substance Work Group → pilot lab(s)
-- finish iLog accountability logbook
 
 ### Long-term (This Year+)
 
@@ -63,3 +61,4 @@ Record when focus changes, with date and reason.
 | 2026-04-24 | Removed rpr deploy hold | ✅ Deployed to production 2026-04-24. |
 | 2026-04-27 | Removed ARC iLog demo from Current Focus | Kele postponed the ARC demo on her own ("we're not ready, no point rushing"). Deploy freeze 2026-04-30 no longer needed. See [[2026-04-27 Meeting — ilog]]. |
 | 2026-06-04 | Cached-charges goal resolved | PR #2307 (CachedTotalAuditor + `audit:cached_totals` cron) merged, closing #2280. Both drift vectors fixed (#2337 + `update_columns`); ongoing monitoring now in place. See [[CachedTotalAuditor — Cache Drift Audit System]]. |
+| 2026-06-24 | PCMS Rails 8.1 upgrade shipped | Medium-term goal complete — Rails 7.2 → 8.1 merged to master. Same `jsonapi-resources` kwarg breakage as lab_archives. See [[PCMS Rails 8.1 Upgrade]]. |

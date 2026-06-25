@@ -3,7 +3,7 @@ date: "2026-04-05"
 description: "Research Core Management System — core facility management, billing, and operations for a research hospital"
 project: pcms
 status: active
-rails_version: "7.2"
+rails_version: "8.1"
 ruby_version: "3.4.4"
 meetings:
   - name: "PCMS Weekly Sync"
@@ -38,7 +38,7 @@ Research Core Management System. Manages core facility operations, billing, and 
 - **Deploy method**: Manual
 
 ## Tech Stack
-- **Rails**: 7.2
+- **Rails**: 8.1
 - **Ruby**: 3.4.4
 - **Database**:
 - **Key gems**:
@@ -57,6 +57,8 @@ None currently.
 
 ## Active Notes
 
+- [[PCMS Rails 8.1 Upgrade]] — **✅ shipped to master 2026-06-24** (`d98e4086`). Rails 7.2 → 8.1; same `jsonapi-resources` kwarg breakage as [[lab_archives Rails 8.1 Upgrade]]; CI modernized; backed by a ~50-commit test-coverage push. Deploy to production pending.
+- [[Security Hardening — XSS, Path Traversal, Mass-Assignment]] — **✅ merged** (2026-06). XSS + path-traversal dependency patches and an `account_id` mass-assignment guard on user-facing service requests. Rides with the Rails 8.1 deploy.
 - [[PCMS UI Facelift]] — **active** (2026-06-11). MGB-branded UI refresh; dated look flagged across all focus groups. Direction agreed; deciding fresh AI mockups vs. implementing the agency design. Likely supersedes [[Core Browse UI Design]] and the About-page ADR rather than running alongside them.
 - [[Calendar Refactor and Drag-Drop Proposal]] — **active**. Cross-core SR scoping bug **fixed & deployed**; PR [#2338](https://github.com/csb-ric/pcms/issues/2338) opened. Daniel proposed a larger calendar refactor (drag/drop events) — scope TBD.
 - [[2026-05-14 Meeting — pcms]] — weekly sync; four-bucket client recap sent
