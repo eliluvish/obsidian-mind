@@ -47,6 +47,13 @@ Both mismatches traced to a single uncaught vector: when a `CalendarEvent` commi
 
 **Fix** ([#2360](https://github.com/csb-ric/pcms/issues/2360) / [#2361](https://github.com/csb-ric/pcms/issues/2361), merged 2026-06-16): `RefreshOverlappingCancelledTrackingsJob` — an `after_commit` on `CalendarEvent` enqueues a job that finds all cancelled reservations overlapping the event's slot and re-caches them off the request cycle (guarded by `no_callbacks`). Both flagged trackings (`970431`, `970869`) resolved.
 
+## Further drift vectors surfaced (2026-06-30)
+
+Two more root causes closed after the arc was marked resolved, both consistent with what the auditor was built to catch:
+
+- **`trackings.units` / `rate` were `FLOAT`, not `DECIMAL`** ([`bee32a16`](https://github.com/csb-ric/pcms/commit/bee32a16)) — floating-point columns silently lost precision, so `cached_total` drifted from a live recompute of `charges` by sub-dollar amounts. This is a **third, independent drift vector** beyond #2337's `update_all` path and the `update_column` timestamp gap: the stored inputs themselves were lossy. Fixed by migrating the columns to `DECIMAL`. This is exactly the class of small discrepancy the `last_year` auditor tier exists to surface.
+- **Usage analytics recomputed `charges` per row instead of reading `cached_total`** ([`09b0e874`](https://github.com/csb-ric/pcms/commit/09b0e874)) — a consumer-side bug, not a drift source: usage summaries N+1'd pricing-tier lookups per row and timed out (405) on year-long ranges for large cores (BPC, CCI). Fixed by reading the persisted `cached_total` the auditor now guards. Reinforces *why* the cache exists — once it's trustworthy, readers should use it rather than recompute.
+
 ## Follow-ups
 
 - [x] Run the auditor (or let the cron run) against production and triage any reported mismatches — first run 2026-06-16 surfaced 2 mismatches; **root-caused + fixed** via [#2360](https://github.com/csb-ric/pcms/issues/2360) / [#2361](https://github.com/csb-ric/pcms/issues/2361) (see above). See [[Cached Total Resync on SR Cancel-Uncancel#Action Items]].

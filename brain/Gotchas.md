@@ -46,6 +46,19 @@ When a job or method writes a cached value (e.g. `Tracking#cached_total`) with `
 - When a freshness/monitoring layer (like a drift auditor) reports "this looks stale but the value is actually right," suspect a write path that skipped `updated_at` before suspecting the data.
 - Both PCMS drift vectors share a theme: a write path that bypasses normal ActiveRecord bookkeeping (`update_all` skips callbacks; `update_column` skips timestamps). When auditing cache integrity, enumerate every write path, not just the obvious one.
 
+## RC Services (Eris)
+
+### Transaction rollback doesn't undo email side-effects — gate mailers in shadow/compare paths
+
+Wrapping an import in a rolled-back transaction rolls back **database** writes, not side-effects. A mailer fired inside that transaction still sends. Running eris's `rake import:usage_compare` (the [[Import Usage Information Decomposition|#1811]] parity harness) against production would have **double-emailed every eligible SAS Desktop subscriber**, because `deliver_email: false` only suppressed the completion *summary* email — subscriber renewal / failure / no-usage notices were sent regardless.
+
+**Why**: Caught pre-production by the parity harness itself (eris `5c93bb4e`, 2026-07-02) before any compare run touched prod. Fixed by threading `deliver_email` through `Importers::Context` and gating **every** mailer on it, in both the legacy and new import paths. This is precisely the hidden side-effect the "write a test that reproduces it first" habit is meant to surface.
+
+**How to apply**:
+- When building a shadow / dry-run / compare path that relies on transaction rollback for safety, enumerate every side-effect that escapes the transaction — email, HTTP calls, background jobs, external API writes, file writes — and gate each one explicitly. Rollback covers the DB and nothing else.
+- A single `deliver_email: false`-style flag is only safe if it gates *all* mail, not just the obvious summary. Grep for every `.deliver_*` / mailer call reachable from the path, not just the one you're thinking of.
+- Before running any new compare/parity task against production data, assume it will fire notifications until proven otherwise.
+
 ## RPR
 
 ### Participant email is shared across all of a participant's studies
