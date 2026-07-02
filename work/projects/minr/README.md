@@ -48,7 +48,7 @@ Shared codebase with other projects in lab_archives. Minr-specific work is scope
 ## Active Notes
 
 - [[Approvals by Institution]] — **active, blocked** ([lab_archives#1187](https://github.com/csb-ric/lab_archives/issues/1187)). Kele wants approvals routed by institution; waiting on the institution → approver mapping.
-- [[Plan to Extract minr from lab_archives]] — plan to split minr into its own app out of the shared lab_archives repo.
+- [[Plan to Extract minr from lab_archives]] — plan to split minr into its own app out of the shared lab_archives repo. ⚠️ **Open fork (2026-07-02)**: [[Daniel Guettler]] says minr may instead be *combined* with another app — opposite direction. Clarify before extracting.
 
 ## Related
 
